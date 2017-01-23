@@ -1,0 +1,21 @@
+{
+  "name": "flea-market",
+  "description": "",
+  "main": "",
+  "authors": [
+    "dungnv"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/at-DungNV/flea-market",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7"
+  }
+}
