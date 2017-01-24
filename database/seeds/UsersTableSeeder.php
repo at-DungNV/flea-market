@@ -18,7 +18,7 @@ class UsersTableSeeder extends Seeder
             User::create([
                 'email' => $faker->email,
                 'password' => bcrypt('12345678'),
-                'isActive' => $faker->boolean(50),
+                'is_active' => $faker->boolean(50),
                 'remember_token' => str_random(60),
                 'created_at' => $faker->dateTimeThisYear($max = 'now')
             ]);

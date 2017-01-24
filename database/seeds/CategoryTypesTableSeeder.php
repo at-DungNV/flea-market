@@ -14,8 +14,9 @@ class CategoryTypesTableSeeder extends Seeder
      */
     public function run()
     {
+        $faker = Faker::create();
         $names = array("Books", "Furnitures", "Others");
-        $categories = Category::all()->lists('id');
+        $categories = Category::all()->pluck('id');
         for ($i=0; $i < count($names); $i++) {
             CategoryType::create([
                 'category_id' => $faker->randomElement($categories->toArray()),

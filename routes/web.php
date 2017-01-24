@@ -14,3 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::resource('categories', 'CategoryController');
+Route::resource('posts', 'PostController');
+Route::get('sidebarCategories', 'CategoryController@getSidebarCategories');

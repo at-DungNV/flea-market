@@ -16,6 +16,9 @@
     "tests"
   ],
   "dependencies": {
-    "bootstrap": "^3.3.7"
+    "bootstrap": "^3.3.7",
+    "skel": "^3.0.1",
+    "util": "^3.46.1",
+    "font-awesome": "^4.7.0"
   }
 }
