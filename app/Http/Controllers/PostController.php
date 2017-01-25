@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use Storage;
 
 class PostController extends Controller
 {
@@ -25,7 +26,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('posts.create');
+      return view('posts.create');
     }
 
     /**
@@ -36,7 +37,16 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $images = $request->file('images');
+        foreach ($images as $image) {
+            Storage::putFileAs(
+                'images', $image, rand(1, 1000).'.'.$image->getClientOriginalExtension()
+            );
+        }
+        return "dung";
+        // $path = Storage::putFile('images', $request->file('images'));
+        // dd($path);
     }
 
     /**

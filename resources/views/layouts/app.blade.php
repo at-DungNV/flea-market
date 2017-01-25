@@ -5,6 +5,8 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <title>App Name - @yield('title')</title>
     <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="/css/myapp.css">
+    <link rel="stylesheet" href="/bower_resources/bootstrap/dist/css/bootstrap.min.css">
   </head>
   <body>
     <div id="wrapper">
@@ -27,6 +29,9 @@
     <script src="/bower_resources/skel/dist/skel.min.js"></script>
     <!-- util -->
     <script src="/bower_resources/util/util.min.js"></script>
+    <!-- bootstrap -->
+    <script src="/bower_resources/bootstrap/dist/js/bootstrap.min.js"></script>
+    @stack('end-page-scripts')
     <!-- main -->
     <script src="/js/app.js"></script>
   </body>
