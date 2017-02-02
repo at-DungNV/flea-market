@@ -17,19 +17,25 @@ class Post extends Model
       'user_id', 'title', 'price', 'state', 'type', 'address', 'slug', 'description'
   ];
 
+
+  /**
+   * Insert image to database and storage
+   *
+   * @param Array $images images from uploading
+   * @return void
+   */
   public function storeImages($images) {
     $index = strtotime(Carbon::now());
     foreach ($images as $image) {
-        $url = str_slug($this->title. $index, '-'). '.'. $image->getClientOriginalExtension();
+        $url = str_slug($this->title. ' '. $index, '-'). '.'. $image->getClientOriginalExtension();
         $index++;
-        $img = new Image;
+        // store images to storage
         Storage::putFileAs(
             'uploads', $image, $url
         );
-
-        $img->url = $url;
-        $img->post_id = $this->id;
-        $img->save();
+        // store images to database
+        $img = new Image;
+        $img->store($url, $this->id);
     }
   }
 }
