@@ -10,21 +10,23 @@
 | to using a Closure or controller method. Build something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::resource('categories', 'CategoryController');
-Route::resource('posts', 'PostController');
-Route::get('sidebarCategories', 'CategoryController@getSidebarCategories');
-
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
+Route::group(['middleware' => ['auth']], function () {
+  Route::get('/', function () {
+      return view('welcome');
+  });
+
+  Route::resource('categories', 'CategoryController');
+  Route::resource('posts', 'PostController');
+  Route::get('sidebarCategories', 'CategoryController@getSidebarCategories');
 
 
-Route::get('image', function ($file) {
-  $file = Storage::get('uploads/438.jpg');
-  dd($file);
+  Route::get('/home', 'HomeController@index');
+
+
+  Route::get('image', function ($file) {
+    $file = Storage::get('uploads/438.jpg');
+    dd($file);
+  });
 });
