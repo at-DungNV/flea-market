@@ -12,10 +12,11 @@
 */
 Auth::routes();
 
+Route::get('/', function () {
+  return view('welcome');
+});
+
 Route::group(['middleware' => ['auth']], function () {
-  Route::get('/', function () {
-      return view('welcome');
-  });
 
   Route::resource('categories', 'CategoryController');
   Route::resource('posts', 'PostController');
