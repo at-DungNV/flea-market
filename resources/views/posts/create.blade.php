@@ -1,5 +1,17 @@
 @extends('layouts.app')
 
+@section('main-title')
+  Create post
+@stop
+
+@section('errors-message')
+    @include('common.errors')
+@stop
+
+@section('susscess-message')
+    @include('common.success')
+@stop
+
 @section('content')
   <div class="row">
     <div class="col-md-8 col-sm-12 col-xs-12 col-md-offset-2">
@@ -11,7 +23,7 @@
         </div>
         <div class="form-group">
           <label for="post-price">Price:</label>
-          <input type="text" name="price" class="form-control" id="post-price">
+          <input type="text" name="price" class="form-control" id="post-price" value="0">
         </div>
         <div class="form-group">
           <label class="radio-button-group">Type:</label>

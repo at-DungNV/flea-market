@@ -26,6 +26,8 @@
         <div class="inner">
           @include('layouts.parts.header')
           <!-- content -->
+          @yield('errors-message')
+          @yield('susscess-message')
           @yield('content')
           <!-- end content -->
           @include('layouts.parts.footer')
@@ -34,7 +36,7 @@
       <!-- sidebar -->
       <div id="sidebar">
         @yield('sidebar')
-        <!-- @include('layouts.parts.sidebar') -->
+        @include('layouts.parts.sidebar')
       </div>
     </div>
     <!-- jQuery -->

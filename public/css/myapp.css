@@ -9,3 +9,20 @@
 #footer {
   margin-top: 50px;
 }
+
+#header {
+  margin-bottom: 2%;
+}
+
+
+/* default value for mobile phone first */
+
+/* For tablets: */
+@media only screen and (min-width: 600px) {
+
+}
+
+/* For desktop: */
+@media only screen and (min-width: 768px) {
+  
+}
