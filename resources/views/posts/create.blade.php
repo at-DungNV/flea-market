@@ -15,9 +15,9 @@
         </div>
         <div class="form-group">
           <label class="radio-button-group">Type:</label>
-  				<input type="radio" name="type" id="post-type-sell">
+  				<input type="radio" name="type" id="post-type-sell" value="sell" checked>
   				<label for="post-type-sell" class="radio-button">Sell</label>
-  				<input type="radio" name="type" id="post-type-buy">
+  				<input type="radio" name="type" id="post-type-buy" value="buy">
   				<label for="post-type-buy">Buy</label>
         </div>
         <div class="form-group">

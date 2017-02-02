@@ -18,3 +18,13 @@ Route::get('/', function () {
 Route::resource('categories', 'CategoryController');
 Route::resource('posts', 'PostController');
 Route::get('sidebarCategories', 'CategoryController@getSidebarCategories');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
+
+
+Route::get('image', function ($file) {
+  $file = Storage::get('uploads/438.jpg');
+  dd($file);
+});
