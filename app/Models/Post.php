@@ -17,6 +17,15 @@ class Post extends Model
       'user_id', 'title', 'price', 'state', 'type', 'address', 'slug', 'description'
   ];
 
+  /**
+   * Post has many images.
+   *
+   * @return Illuminate\Database\Eloquent\Relations\HasMany
+   */
+  public function images()
+  {
+      return $this->hasMany('App\Models\Image');
+  }
 
   /**
    * Insert image to database and storage
@@ -31,7 +40,7 @@ class Post extends Model
         $index++;
         // store images to storage
         Storage::putFileAs(
-            'uploads', $image, $url
+            '', $image, $url
         );
         // store images to database
         $img = new Image;

@@ -25,9 +25,9 @@ Route::group(['middleware' => ['auth']], function () {
 
   Route::get('/home', 'HomeController@index');
 
+  Route::get('/image/{filename}', [
+    'uses' => 'PostController@getPostImages',
+    'as'   => 'posts.getPostImages'
+  ]);
 
-  Route::get('image', function ($file) {
-    $file = Storage::get('uploads/438.jpg');
-    dd($file);
-  });
 });

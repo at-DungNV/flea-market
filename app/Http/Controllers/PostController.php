@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\Response ;
 use App\Http\Requests\PostRequest;
 use App\Models\Post;
 use App\Models\Image;
@@ -19,7 +20,9 @@ class PostController extends Controller
      */
     public function index()
     {
-      $posts = Post::all();
+      $posts = Post::with(['images'=>function($query) {
+          return $query->limit(1);
+      }])->get();
       return view('posts.index', ['posts' => $posts]);
     }
 
@@ -51,7 +54,14 @@ class PostController extends Controller
         // store images
         $images = $request->file('images');
         $post->storeImages($images);
-        return "dung";
+        return redirect()->route('posts.create');
+        // return "dung";
+    }
+
+    public function getPostImages($filename)
+    {
+      $file = Storage::disk('local')->get($filename);
+      return new Response($file, 200);
     }
 
     /**

@@ -8,7 +8,11 @@
     <div class="posts">
       @foreach ($posts as $post)
         <article>
-          <a href="#" class="image"><img src="images/pic01.jpg" alt="" /></a>
+          @if(Storage::disk('local')->exists($post->images->first()['url']))
+            <a href="#" class="image"><img src="{{ route('posts.getPostImages', [$post->images->first()['url']]) }}" alt="" /></a>
+          @else
+            <a href="#" class="image"><img src="images/pic01.jpg" alt="" /></a>
+          @endif
           <h3>{{ $post->title }}</h3>
           <p>
             {{ str_limit($post->description, $limit = 100, $end = '...') }}
