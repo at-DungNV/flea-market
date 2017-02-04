@@ -2,9 +2,6 @@
 
 @section('content')
   <section>
-    <header class="major">
-      <h2>Ipsum sed dolor</h2>
-    </header>
     <div class="posts">
       @foreach ($posts as $post)
         <article>

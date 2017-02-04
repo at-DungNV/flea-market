@@ -7,11 +7,13 @@
     #post-show-images ul li{
       padding-left: 0px;
     }
-    #post-show-images{
-      /*border:4px solid #000;*/
-    }
   </style>
 @endpush
+
+@section('main-title')
+  man hinh show nen de breadcrums here
+@endsection
+
 
 @section('content')
 <h2 id="content">{{ $post->title }}</h2>
@@ -32,12 +34,12 @@
     <div class="panel panel-default">
       <div class="panel-heading"><strong>MUA HÀNG AN TOÀN</strong></div>
       <div class="panel-body">
-        <ul class="list-group">
-          <li class="list-group-item">KHÔNG trả tiền trước khi nhận hàng.</li>
-          <li class="list-group-item">Kiểm tra hàng cẩn thận, đặc biệt với hàng đắt tiền.</li>
-          <li class="list-group-item">Hẹn gặp ở nơi công cộng.</li>
-          <li class="list-group-item">Nếu bạn mua hàng hiệu, hãy gặp mặt tại cửa hàng để nhờ xác minh, tránh mua phải hàng giả.</li>
-          <li class="list-group-item">Tìm hiểu thêm về an toàn mua bán.</li>
+        <ul class="alt">
+          <li>KHÔNG trả tiền trước khi nhận hàng.</li>
+          <li>Kiểm tra hàng cẩn thận, đặc biệt với hàng đắt tiền.</li>
+          <li>Hẹn gặp ở nơi công cộng.</li>
+          <li>Nếu bạn mua hàng hiệu, hãy gặp mặt tại cửa hàng để nhờ xác minh, tránh mua phải hàng giả.</li>
+          <li>Tìm hiểu thêm về an toàn mua bán.</li>
         </ul>
       </div>
     </div>
@@ -45,15 +47,14 @@
 </div>
 
 <div class="row margin-top-10">
-  <!-- <p>
-    Praesent ac adipiscing ullamcorper semper ut amet ac risus. Lorem sapien ut odio odio nunc. Ac adipiscing nibh porttitor erat risus justo adipiscing adipiscing amet placerat accumsan.
-    Vis. Faucibus odio magna tempus adipiscing a non. In mi primis arcu ut non accumsan vivamus ac blandit adipiscing adipiscing arcu metus praesent turpis eu ac lacinia nunc ac commodo
-    gravida adipiscing eget accumsan ac nunc adipiscing adipiscing lorem ipsum dolor sit amet nullam veroeros adipiscing.
-  </p> -->
   <p>
     {{ $post->description }}
   </p>
 </div>
+<h4><i class="fa fa-address-card" aria-hidden="true"></i> Địa chỉ người đăng tin</h4>
+<ul class="alt">
+  <li>{{ $post->address }}</li>
+</ul>
 
 
 

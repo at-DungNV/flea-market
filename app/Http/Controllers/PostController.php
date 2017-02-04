@@ -54,8 +54,7 @@ class PostController extends Controller
         // store images
         $images = $request->file('images');
         $post->storeImages($images);
-        return redirect()->route('posts.create');
-        // return "dung";
+        return redirect()->action('PostController@create')->withMessage('tao thanh cong');
     }
 
     public function getPostImages($filename)
