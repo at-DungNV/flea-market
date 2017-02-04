@@ -20,7 +20,7 @@ class CreateUsersTable extends Migration
             $table->boolean('is_active');
             $table->date('birthday')->nullable();
             $table->string('address', 256)->nullable();
-            $table->string('phone', 11)->nullable();
+            $table->string('phone', 40)->nullable();
             $table->tinyInteger('gender')->nullable();
             $table->string('avatar')->default('default.png');
             $table->rememberToken()->nullable();

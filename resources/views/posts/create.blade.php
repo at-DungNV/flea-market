@@ -33,8 +33,12 @@
   				<label for="post-type-buy">Buy</label>
         </div>
         <div class="form-group">
+          <label for="post-phone">Phone:</label>
+          <input type="text" name="phone" class="form-control" id="post-phone" value="{{Auth::user()->phone}}">
+        </div>
+        <div class="form-group">
           <label for="post-address">Address:</label>
-          <input type="text" name="address" class="form-control" id="post-address">
+          <input type="text" name="address" class="form-control" id="post-address" value="{{Auth::user()->address}}">
         </div>
         <div class="form-group">
           <label for="post-images">Images:</label>

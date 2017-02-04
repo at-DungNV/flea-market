@@ -44,7 +44,6 @@ class PostController extends Controller
      */
     public function store(PostRequest $request)
     {
-        // return strtotime(Carbon::now());
         // store post
         $user_id = Auth::user()->id;
         $request['user_id'] = $user_id;
@@ -54,8 +53,7 @@ class PostController extends Controller
         // store images
         $images = $request->file('images');
         $post->storeImages($images);
-        return redirect()->route('posts.create');
-        // return "dung";
+        return redirect()->action('PostController@create')->withMessage('tao thanh cong');
     }
 
     public function getPostImages($filename)
@@ -72,7 +70,13 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        //
+        try {
+            $post = Post::where('slug', '=', $id)->with('images')->firstOrFail();
+            return view('posts.show', ['post' => $post]);
+        } catch (NotFoundHttpException $ex) {
+            return redirect()->action('PostController@index')
+                             ->withErrors('khong tim thay');
+        }
     }
 
     /**
