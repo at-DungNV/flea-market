@@ -20,13 +20,16 @@
 <div class="row">
   <div class="col-md-8 col-sm-12 col-xs-12">
     <div id="post-show-images">
+      <!-- {{$post->images}} -->
       <ul>
-        <li><img src="/images/pic01.jpg" class="img-rounded"></li>
-        <li><img src="/images/pic02.jpg" class="img-rounded"></li>
+        @foreach ($post->images as $image)
+        <li><img src="{{ route('posts.getPostImages', [$image->url]) }}" class="img-rounded"></li>
+        @endforeach
+        <!-- <li><img src="/images/pic02.jpg" class="img-rounded"></li>
         <li><img src="/images/pic03.jpg" class="img-rounded"></li>
         <li><img src="/images/pic04.jpg" class="img-rounded"></li>
         <li><img src="/images/pic05.jpg" class="img-rounded"></li>
-        <li><img src="/images/pic06.jpg" class="img-rounded"></li>
+        <li><img src="/images/pic06.jpg" class="img-rounded"></li> -->
       </ul>
     </div>
   </div>
@@ -66,11 +69,11 @@
   <script language="javascript">
 		$(document).ready(function(){
         $("#post-show-images").tiksluscarousel({
-          progressBar:true,
-          width:0,
-          height:200,
-          nav:'thumbnails',
-          type:"slide"
+          progressBar: true,
+          width: 0,
+          height: 200,
+          nav: 'thumbnails',
+          type: "slide"
         });
 		});
 		</script>

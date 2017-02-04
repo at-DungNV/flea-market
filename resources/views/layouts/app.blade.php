@@ -9,10 +9,10 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <link rel="stylesheet" href="/css/app.css">
-    <link rel="stylesheet" href="/css/myapp.css">
     <link rel="stylesheet" href="/bower_resources/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="/bower_resources/font-awesome/css/font-awesome.min.css" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="/css/myapp.css">
     @stack('stylesheet')
     <!-- Scripts -->
     <script>

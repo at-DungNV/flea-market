@@ -44,7 +44,6 @@ class PostController extends Controller
      */
     public function store(PostRequest $request)
     {
-        // return strtotime(Carbon::now());
         // store post
         $user_id = Auth::user()->id;
         $request['user_id'] = $user_id;
