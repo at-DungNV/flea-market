@@ -26,6 +26,7 @@ class PostsTableSeeder extends Seeder
           'price' => rand(1, 50) * 10,
           'state' => $states[rand(0, 3)],
           'type' => $types[rand(0, 1)],
+          'phone' => $faker->phoneNumber,
           'address' => $faker->address,
           'slug' => str_slug($title),
           'description' => $faker->text,

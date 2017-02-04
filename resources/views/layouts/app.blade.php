@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="/css/app.css">
     <link rel="stylesheet" href="/css/myapp.css">
     <link rel="stylesheet" href="/bower_resources/bootstrap/dist/css/bootstrap.min.css">
-
+    @stack('stylesheet')
     <!-- Scripts -->
     <script>
         window.Laravel = <?php echo json_encode([

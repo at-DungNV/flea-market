@@ -21,6 +21,7 @@ class CreatePostsTable extends Migration
             $table->integer('price')->nullable();
             $table->string('state', 45)->default('hidden');
             $table->string('type', 10); // buy or sell
+            $table->string('phone', 40)->nullable();
             $table->string('address');
             // $table->double('lat', 10, 6)->nullable();
             // $table->double('lng', 10, 6)->nullable();

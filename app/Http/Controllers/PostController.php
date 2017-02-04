@@ -72,7 +72,13 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        //
+        try {
+            $post = Post::where('slug', '=', $id)->with('images')->firstOrFail();
+            return view('posts.show', ['post' => $post]);
+        } catch (NotFoundHttpException $ex) {
+            return redirect()->action('PostController@index')
+                             ->withErrors('khong tim thay');
+        }
     }
 
     /**
