@@ -11,7 +11,7 @@
 @endpush
 
 @section('main-title')
-  man hinh show nen de breadcrums here
+  @include('common.breadcrumb')
 @endsection
 
 
