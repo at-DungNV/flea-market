@@ -10,6 +10,7 @@ use App\Models\Image;
 use Storage;
 use Auth;
 use Carbon\Carbon;
+use BreadcrumbsHelper;
 
 class PostController extends Controller
 {
@@ -18,12 +19,14 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+      $x = new BreadcrumbsHelper();
+      $crumbs = $x->getCrumbs($request->path());
       $posts = Post::with(['images'=>function($query) {
           return $query->limit(1);
       }])->get();
-      return view('posts.index', ['posts' => $posts]);
+      return view('posts.index', ['posts' => $posts, 'crumbs' => $crumbs]);
     }
 
     /**
@@ -31,9 +34,11 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-      return view('posts.create');
+      $x = new BreadcrumbsHelper();
+      $crumbs = $x->getCrumbs($request->path());
+      return view('posts.create', ['crumbs' => $crumbs]);
     }
 
     /**
