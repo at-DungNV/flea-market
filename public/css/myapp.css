@@ -42,6 +42,10 @@ section {
   padding-top: 0px !important;
 }
 
+.breadcrumb {
+  background-color: #ffffff !important;
+}
+
 /* default value for mobile phone first */
 
 /* For tablets: */
