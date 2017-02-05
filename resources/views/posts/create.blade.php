@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('main-title')
-  Create post
+  @include('common.breadcrumb')
 @stop
 
 @section('errors-message')

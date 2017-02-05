@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('main-title')
+  @include('common.breadcrumb')
+@endsection
+
 @section('content')
   <section>
     <div class="posts">
