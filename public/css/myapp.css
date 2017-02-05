@@ -38,6 +38,10 @@
   margin-top: 70px;
 }
 
+section {
+  padding-top: 0px !important;
+}
+
 /* default value for mobile phone first */
 
 /* For tablets: */

@@ -73,11 +73,13 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request, $id)
     {
         try {
+            $x = new BreadcrumbsHelper();
+            $crumbs = $x->getCrumbs($request->path());
             $post = Post::where('slug', '=', $id)->with('images')->firstOrFail();
-            return view('posts.show', ['post' => $post]);
+            return view('posts.show', ['post' => $post, 'crumbs' => $crumbs]);
         } catch (NotFoundHttpException $ex) {
             return redirect()->action('PostController@index')
                              ->withErrors('khong tim thay');
