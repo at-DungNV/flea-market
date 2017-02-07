@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
 use Storage;
+use App\Models\Image;
+use Image as ImageIntervention;
 
 class Post extends Model
 {
@@ -35,13 +37,13 @@ class Post extends Model
    */
   public function storeImages($images) {
     $index = strtotime(Carbon::now());
+    $path = Storage::disk('local')->getDriver()->getAdapter()->getPathPrefix();
     foreach ($images as $image) {
         $url = str_slug($this->title. ' '. $index, '-'). '.'. $image->getClientOriginalExtension();
         $index++;
         // store images to storage
-        Storage::putFileAs(
-            '', $image, $url
-        );
+        ImageIntervention::make($image)->resize(416, 256)->save($path. '/'. $url);
+
         // store images to database
         $img = new Image;
         $img->store($url, $this->id);
