@@ -30,4 +30,11 @@ Route::group(['middleware' => ['auth']], function () {
     'as'   => 'posts.getPostImages'
   ]);
 
+  // usage inside a laravel route
+  Route::get('/image', function()
+  {
+      $img = Image::make('foo.jpg')->resize(300, 200);
+
+      return $img->response('jpg');
+  });
 });
