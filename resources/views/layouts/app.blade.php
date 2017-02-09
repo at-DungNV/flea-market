@@ -22,23 +22,20 @@
     </script>
   </head>
   <body>
-    <div id="wrapper">
+    @include('layouts.parts.header')
+    <div id="wrapper" class="container">
       <div id="main">
-        <div class="inner">
-          @include('layouts.parts.header')
+          <header id="header">
+            @yield('breadcrumb')
+          </header>
           <!-- content -->
           @yield('errors-message')
           @yield('susscess-message')
           @yield('content')
           <!-- end content -->
           @include('layouts.parts.footer')
-        </div>
       </div>
       <!-- sidebar -->
-      <div id="sidebar">
-        @yield('sidebar')
-        @include('layouts.parts.sidebar')
-      </div>
     </div>
     <!-- jQuery -->
     <script src="/bower_resources/jquery/dist/jquery.min.js"></script>
@@ -64,7 +61,7 @@
 
 
 
-
+<!--
 
 
 @if (Auth::guest())
@@ -87,4 +84,4 @@
                 </form>
 
 
-@endif
+@endif -->

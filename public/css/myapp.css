@@ -49,6 +49,11 @@ section {
 #post-index-article-default {
   display: none;
 }
+
+.profile-image {
+  width: 40%;
+}
+
 /* default value for mobile phone first */
 
 /* For tablets: */

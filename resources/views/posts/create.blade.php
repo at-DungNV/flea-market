@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('main-title')
-  @include('common.breadcrumb')
+@section('breadcrumb')
+    @include('common.breadcrumb')
 @stop
 
 @section('errors-message')
@@ -11,6 +11,7 @@
 @section('susscess-message')
     @include('common.success')
 @stop
+
 
 @section('content')
   <div class="row">
