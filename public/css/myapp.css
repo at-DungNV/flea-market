@@ -46,6 +46,9 @@ section {
   background-color: #ffffff !important;
 }
 
+#post-index-article-default {
+  display: none;
+}
 /* default value for mobile phone first */
 
 /* For tablets: */

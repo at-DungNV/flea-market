@@ -10,6 +10,8 @@
 | to using a Closure or controller method. Build something great!
 |
 */
+use Illuminate\Http\Request;
+
 Auth::routes();
 
 Route::get('/', function () {
@@ -17,6 +19,8 @@ Route::get('/', function () {
 });
 
 Route::group(['middleware' => ['auth']], function () {
+
+  Route::get('/posts/pagination', 'PostController@paginate')->where('page', '[0-9]+');
 
   Route::resource('categories', 'CategoryController');
   Route::resource('posts', 'PostController');
@@ -30,11 +34,12 @@ Route::group(['middleware' => ['auth']], function () {
     'as'   => 'posts.getPostImages'
   ]);
 
-  // usage inside a laravel route
-  Route::get('/image', function()
-  {
-      $img = Image::make('foo.jpg')->resize(300, 200);
 
-      return $img->response('jpg');
+  // usage inside a laravel route
+  Route::get('/test', function(Request $request)
+  {
+
+      dd($request->all());
+      return "dungnv";
   });
 });
