@@ -5,12 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response ;
 use App\Http\Requests\PostRequest;
+use App\Http\Requests\PaginationRequest;
 use App\Models\Post;
 use App\Models\Image;
 use Storage;
 use Auth;
 use Carbon\Carbon;
 use BreadcrumbsHelper;
+use DB;
 
 class PostController extends Controller
 {
@@ -21,12 +23,33 @@ class PostController extends Controller
      */
     public function index(Request $request)
     {
+      $total = Post::count();
+      $number = 9;
+      $totalPages = ceil($total / $number);
       $x = new BreadcrumbsHelper();
       $crumbs = $x->getCrumbs($request->path());
+      return view('posts.index', ['totalPages' => $totalPages, 'crumbs' => $crumbs]);
+    }
+
+    public function paginate(Request $request)
+    {
+      $total = Post::count();
+      $number = 9;
+      $totalPages = ceil($total / $number);
+      $this->validate($request, [
+          'page' => 'required|numeric|min:1|max:'. $totalPages,
+      ]);
+      $offset = 1;
+      $offset = ($request->input('page') - 1) * $number;
       $posts = Post::with(['images'=>function($query) {
-          return $query->limit(1);
-      }])->get();
-      return view('posts.index', ['posts' => $posts, 'crumbs' => $crumbs]);
+                        return $query->limit(1);
+                    }])
+                    ->take($number)
+                    ->offset($offset)
+                    ->get();
+      return response()->json([
+          'posts' => $posts
+      ]);
     }
 
     /**

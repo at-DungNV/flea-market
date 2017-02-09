@@ -19,6 +19,7 @@
     "bootstrap": "^3.3.7",
     "skel": "^3.0.1",
     "util": "^3.46.1",
-    "font-awesome": "^4.7.0"
+    "font-awesome": "^4.7.0",
+    "twbs-pagination": "^1.4.1"
   }
 }
