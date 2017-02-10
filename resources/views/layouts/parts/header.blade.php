@@ -26,7 +26,32 @@
             <li><a href="#contact">Contact</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Your Account</a></li>
+            @if (Auth::guest())
+            <li><a href="{{ url('/login') }}">Login</a></li>
+            <li><a href="{{ url('/register') }}">Register</a></li>
+            @else
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                    {{ Auth::user()->name }} <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a href="{{ route('users.profile') }}">Profile</a></li>
+                  <li>
+                    <a href="{{ route('logout') }}"
+                      onclick="event.preventDefault();
+                      document.getElementById('logout-form').submit();">
+                      Logout
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                      {{ csrf_field() }}
+                    </form>
+                  </li>
+                </ul>
+              </li>
+            @endif
+            <li><a href="#">
+              <span class="img-circle" style="background: url('/images/pic01.jpg'); color: red;"></span> Your Account
+            </a></li>
             <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
           </ul>
         </div><!--/.nav-collapse -->

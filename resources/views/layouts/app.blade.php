@@ -23,17 +23,28 @@
   </head>
   <body>
     @include('layouts.parts.header')
-    <div id="wrapper" class="container">
-      <div id="main">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12">
           <header id="header">
             @yield('breadcrumb')
           </header>
-          <!-- content -->
-          @yield('errors-message')
-          @yield('susscess-message')
-          @yield('content')
-          <!-- end content -->
-          @include('layouts.parts.footer')
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-2">
+          dungnv
+        </div>
+        <div class="col-md-10">
+          <div id="main">
+              <!-- content -->
+              @yield('errors-message')
+              @yield('susscess-message')
+              @yield('content')
+              <!-- end content -->
+              @include('layouts.parts.footer')
+          </div>
+        </div>
       </div>
       <!-- sidebar -->
     </div>
