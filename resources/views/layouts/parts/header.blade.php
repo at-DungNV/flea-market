@@ -15,8 +15,8 @@
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
-        <li class="dropdown">
+        <li class="{{ Request::is('/') ? 'active' : '' }}"><a href="{{ url('/') }}">Home</a></li>
+        <li class="dropdown {{ Request::is('posts/*') ? 'active' : '' }}">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Post <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="{{ route('posts.index') }}">Index</a></li>
@@ -28,8 +28,8 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         @if (Auth::guest())
-          <li><a href="{{ url('/login') }}">Login</a></li>
-          <li><a href="{{ url('/register') }}">Register</a></li>
+          <li class="{{ Request::is('login') ? 'active' : '' }}"><a href="{{ url('/login') }}">Login</a></li>
+          <li class="{{ Request::is('register') ? 'active' : '' }}"><a href="{{ url('/register') }}">Register</a></li>
         @else
           <li class="dropdown align-center">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
