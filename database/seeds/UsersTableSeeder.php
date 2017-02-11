@@ -16,6 +16,7 @@ class UsersTableSeeder extends Seeder
         $faker = Faker::create();
 
         $user = new User();
+        $user->name = 'dungnv';
         $user->email = 'dungnv@gmail.com';
         $user->password = bcrypt('12345678');
         $user->is_active = 1;
@@ -27,6 +28,7 @@ class UsersTableSeeder extends Seeder
 
         for ($i=0; $i < 10; $i++) {
             User::create([
+                'name' => $faker->name,
                 'email' => $faker->email,
                 'password' => bcrypt('12345678'),
                 'is_active' => $faker->boolean(50),

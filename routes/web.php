@@ -22,8 +22,15 @@ Route::group(['middleware' => ['auth']], function () {
 
   Route::get('/posts/pagination', 'PostController@paginate')->where('page', '[0-9]+');
 
-  Route::resource('categories', 'CategoryController');
   Route::resource('posts', 'PostController');
+
+  Route::resource('categories', 'CategoryController');
+
+  Route::get('/profile', [
+    'uses' => 'UserController@profile',
+    'as'   => 'users.profile'
+  ]);
+
   Route::get('sidebarCategories', 'CategoryController@getSidebarCategories');
 
 

@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
-@section('main-title')
-  @include('common.breadcrumb')
-@endsection
+@section('breadcrumb')
+    @include('common.breadcrumb')
+@stop
 
 @section('content')
   <section>
@@ -10,7 +10,7 @@
       <a href="#" class="post-index-article-image image">
         <img src="images/pic01.jpg" alt="" /></a>
       </a>
-      <h3 class="post-index-article-title">hehe</h3>
+      <h3 class="post-index-article-title"></h3>
       <p class="post-index-article-content">
 
       </p>
@@ -52,8 +52,8 @@
 
     function addArticle(index, title, description, slug, image) {
       newArticle = originalArticle.clone().attr('id', 'post-index-article-' + index);
-      newArticle.find('.post-index-article-title').html(title);
-      newArticle.find('.post-index-article-content').html(description);
+      newArticle.find('.post-index-article-title').html(title.substr(0, 25));
+      newArticle.find('.post-index-article-content').html(description.substr(0, 100) + "...");
       newArticle.find('.post-index-article-more').attr("href", urlIndex + "/" + slug);
       newArticle.find('.post-index-article-image').attr("href", urlIndex + "/" + slug);
       if (typeof image != 'undefined') {

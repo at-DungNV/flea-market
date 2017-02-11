@@ -10,10 +10,9 @@
   </style>
 @endpush
 
-@section('main-title')
-  @include('common.breadcrumb')
-@endsection
-
+@section('breadcrumb')
+    @include('common.breadcrumb')
+@stop
 
 @section('content')
 <h2 id="content">{{ $post->title }}</h2>

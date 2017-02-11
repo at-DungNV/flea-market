@@ -1,16 +1,20 @@
 <!-- Sidebar -->
-<div class="inner">
+<!-- <div class="inner"> -->
 
 	<!-- Search -->
-		<section id="search" class="alt">
+		<!-- <section id="search" class="alt">
 			<form method="post" action="#">
 				<input type="text" name="query" id="query" placeholder="Search" />
 			</form>
-		</section>
+		</section> -->
 
 	<!-- Menu -->
-		<nav id="menu">
+		<!-- <nav id="menu">
 			<header class="major">
+				<div>
+					<img src="images/pic01.jpg" class="img-circle profile-image" alt="...">
+				</div>
+				<br>
 				<h2>Menu</h2>
 			</header>
 			<ul>
@@ -49,7 +53,7 @@
 				<li><a href="#">Sapien Mauris</a></li>
 				<li><a href="#">Amet Lacinia</a></li>
 			</ul>
-		</nav>
+		</nav> -->
 
 	<!-- Section -->
 		<!-- <section>
@@ -90,8 +94,8 @@
 		</section> -->
 
 	<!-- Footer -->
-		<footer id="footer">
+		<!-- <footer id="footer">
 			<p class="copyright">&copy; Untitled. All rights reserved. Demo Images: <a href="https://unsplash.com">Unsplash</a>. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
-		</footer>
+		</footer> -->
 
-</div>
+<!-- </div> -->
