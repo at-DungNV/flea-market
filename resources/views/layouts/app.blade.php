@@ -24,7 +24,7 @@
   <body>
     @include('layouts.parts.header')
     <div class="container">
-      <div class="row">
+      <div class="row margin-top-60">
         <div class="col-xs-12 col-sm-12 col-md-12">
           <header id="header">
             @yield('breadcrumb')
@@ -32,15 +32,14 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-md-2">
-          dungnv
-        </div>
-        <div class="col-md-10">
+        <div class="col-xs-12 col-sm-12 col-md-12">
           <div id="main">
               <!-- content -->
               @yield('errors-message')
               @yield('susscess-message')
-              @yield('content')
+              <div class="well well-sm">
+                @yield('content')
+              </div>
               <!-- end content -->
               @include('layouts.parts.footer')
           </div>

@@ -5,28 +5,26 @@
 @stop
 
 @section('content')
-  <div class="well well-sm">
-    <section>
-      <article  id="post-index-article-default">
-        <a href="#" class="post-index-article-image image">
-          <img src="images/pic01.jpg" alt="" /></a>
-        </a>
-        <h3 class="post-index-article-title"></h3>
-        <p class="post-index-article-content">
+  <section>
+    <article  id="post-index-article-default">
+      <a href="#" class="post-index-article-image image">
+        <img src="images/pic01.jpg" alt="" /></a>
+      </a>
+      <h3 class="post-index-article-title"></h3>
+      <p class="post-index-article-content">
 
-        </p>
-        <ul class="actions">
-          <li><a href="" class="button post-index-article-more">More</a></li>
-        </ul>
-      </article>
-      <div class="posts">
+      </p>
+      <ul class="actions">
+        <li><a href="" class="button post-index-article-more">More</a></li>
+      </ul>
+    </article>
+    <div class="posts">
 
-      </div>
-      <div class="text-center">
-        <ul id="post-index-pagination" class="pagination-sm"></ul>
-      </div>
-    </section>
-  </div>
+    </div>
+    <div class="text-center">
+      <ul id="post-index-pagination" class="pagination-sm"></ul>
+    </div>
+  </section>
 @endsection
 
 @push('end-page-scripts')

@@ -15,13 +15,13 @@
 
 @section('content')
   <div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-12" >
+    <!-- <div class="col-xs-12 col-sm-12 col-md-12" >
       <div class="panel panel-info">
         <div class="panel-heading">
-          <h3 class="panel-title">{{ ucfirst(Auth::user()->name) }}</h3>
+          <h3 class="panel-title">{{ ucfirst(Auth::user()->name) }} - Information</h3>
         </div>
         <div class="panel-body">
-          <div class="row">
+          <div class="row"> -->
             <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 " align="center">
               <img alt="User Pic" src="http://babyinfoforyou.com/wp-content/uploads/2014/10/avatar-300x300.png" class="img-circle img-responsive">
             </div>
@@ -29,6 +29,10 @@
             <div class="col-xs-12 col-sm-6 col-md-9 col-lg-9 ">
               <table class="table table-user-information">
                 <tbody>
+                  <tr>
+                    <td>Name:</td>
+                    <td>{{ Auth::user()->name }}</td>
+                  </tr>
                   <tr>
                     <td>Email:</td>
                     <td>{{ Auth::user()->email }}</td>
@@ -51,13 +55,21 @@
                 </tbody>
               </table>
 
-              <a href="#" class="btn btn-primary">Edit profile</a>
-              <a href="#" class="btn btn-primary">Change password</a>
             </div>
           </div>
-        </div>
+          <div class="row align-center">
+            <div class="col-xs-6 col-sm-3 col-md-3 col-sm-offset-6 col-md-offset-3">
+              <a href="#" class="btn btn-primary btn-block">Edit profile</a>
+            </div>
+            <div class="col-xs-6 col-sm-3 col-md-3">
+              <a href="#" class="btn btn-primary btn-block">Change password</a>
+            </div>
+          </div>
+
+
+        <!-- </div>
       </div>
-    </div>
+    </div> -->
   </div>
 @endsection
 
