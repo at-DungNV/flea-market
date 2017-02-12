@@ -26,10 +26,24 @@ Route::group(['middleware' => ['auth']], function () {
 
   Route::resource('categories', 'CategoryController');
 
-  Route::get('/profile', [
-    'uses' => 'UserController@profile',
-    'as'   => 'users.profile'
-  ]);
+  Route::group(['prefix' => 'dashboard'], function () {
+
+    Route::get('/profile', [
+      'uses' => 'UserController@profile',
+      'as'   => 'users.profile'
+    ]);
+
+    Route::put('/', [
+      'uses' => 'UserController@update',
+      'as'   => 'users.update'
+    ]);
+
+    Route::get('/{id}/edit', [
+      'uses' => 'UserController@edit',
+      'as'   => 'users.edit'
+    ]);
+
+  });
 
   Route::get('sidebarCategories', 'CategoryController@getSidebarCategories');
 

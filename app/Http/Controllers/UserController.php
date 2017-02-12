@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use BreadcrumbsHelper;
+use App\Models\User;
+use Auth;
+use Redirect;
 
 class UserController extends Controller
 {
@@ -68,9 +71,11 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request, $id)
     {
-        //
+        $x = new BreadcrumbsHelper();
+        $crumbs = $x->getCrumbs($request->path());
+        return view('users.edit', ['crumbs' => $crumbs]);
     }
 
     /**
@@ -80,9 +85,19 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+      try {
+          $input = $request->all();
+          $user = User::findOrFail(Auth::user()->id);
+          $user->fill($input);
+          $user->save();
+          return Redirect::back()
+              ->withMessage('thanh cong roi nhe')
+              ->withInput();
+      } catch (Exception $saveException) {
+          return Redirect::back()->withErrors('loi roi');
+      }
     }
 
     /**

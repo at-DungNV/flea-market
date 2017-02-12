@@ -59,10 +59,10 @@
           </div>
           <div class="row align-center">
             <div class="col-xs-6 col-sm-3 col-md-3 col-sm-offset-6 col-md-offset-3">
-              <a href="#" class="btn btn-primary btn-block">Edit profile</a>
+              <a href="{{ route('users.edit', [Auth::user()->email]) }}" class="button special btn-block">Edit profile</a>
             </div>
             <div class="col-xs-6 col-sm-3 col-md-3">
-              <a href="#" class="btn btn-primary btn-block">Change password</a>
+              <a href="#" class="button special btn-block">Change password</a>
             </div>
           </div>
 

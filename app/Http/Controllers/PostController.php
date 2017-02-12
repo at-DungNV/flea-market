@@ -24,7 +24,7 @@ class PostController extends Controller
     public function index(Request $request)
     {
       $total = Post::count();
-      $number = 9;
+      $number = \Config::get('common.NUMBER_ITEM_PER_PAGE');
       $totalPages = ceil($total / $number);
       $x = new BreadcrumbsHelper();
       $crumbs = $x->getCrumbs($request->path());
@@ -34,7 +34,7 @@ class PostController extends Controller
     public function paginate(Request $request)
     {
       $total = Post::count();
-      $number = 9;
+      $number = \Config::get('common.NUMBER_ITEM_PER_PAGE');
       $totalPages = ceil($total / $number);
       $this->validate($request, [
           'page' => 'required|numeric|min:1|max:'. $totalPages,
