@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\UpdatePasswordRequest;
 use BreadcrumbsHelper;
 use App\Models\User;
 use Auth;
 use Redirect;
+use Hash;
 
 class UserController extends Controller
 {
@@ -98,6 +100,30 @@ class UserController extends Controller
       } catch (Exception $saveException) {
           return Redirect::back()->withErrors('loi roi');
       }
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function updatePassword(UpdatePasswordRequest $request)
+    {
+      try {
+            $user = User::findOrFail(Auth::user()->id);
+            if (Hash::check($request->current_password, $user->password)) {
+                $user->password = $request->password;
+                $user->save();
+
+                return Redirect::back()->withMessage("doi thanh cong");
+            }
+
+            return Redirect::back()->withErrors("mat khau khong dung");
+        } catch (Exception $saveException) {
+            return Redirect::back()->withErrors("bi loi");
+        }
     }
 
     /**

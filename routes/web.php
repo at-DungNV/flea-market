@@ -33,9 +33,14 @@ Route::group(['middleware' => ['auth']], function () {
       'as'   => 'users.profile'
     ]);
 
-    Route::put('/', [
+    Route::put('/profile', [
       'uses' => 'UserController@update',
       'as'   => 'users.update'
+    ]);
+
+    Route::put('/password', [
+      'uses' => 'UserController@updatePassword',
+      'as'   => 'users.updatePassword'
     ]);
 
     Route::get('/{id}/edit', [
