@@ -18,7 +18,7 @@ class UsersTableSeeder extends Seeder
         $user = new User();
         $user->name = 'dungnv';
         $user->email = 'dungnv@gmail.com';
-        $user->password = bcrypt('12345678');
+        $user->password = '12345678';
         $user->is_active = 1;
         $user->birthday = date("Y-m-d", strtotime('08/11/1994'));
         $user->address = 'Asian Tech Inc';
@@ -30,7 +30,7 @@ class UsersTableSeeder extends Seeder
             User::create([
                 'name' => $faker->name,
                 'email' => $faker->email,
-                'password' => bcrypt('12345678'),
+                'password' => '12345678',
                 'is_active' => $faker->boolean(50),
                 'birthday' => $faker->dateTimeBetween('-40 years', '-18 years')->format('Y-m-d'),
                 'address' => $faker->address,
