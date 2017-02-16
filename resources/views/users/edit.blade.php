@@ -15,7 +15,7 @@
 
 @section('content')
   <div class="row">
-    <div class="col-md-8 col-sm-12 col-xs-12 col-md-offset-2">
+    <div class="col-md-8 col-sm-10 col-xs-10 col-md-offset-2 col-sm-offset-1 col-xs-offset-1">
       <form action="{{ route('users.update') }}" method="POST" class="form-horizontal" name="user-edit-form">
         {{ csrf_field() }}
         {{ method_field('PUT') }}
@@ -30,9 +30,9 @@
         <div class="form-group">
           <label class="radio-button-group">Gender:</label>
   				<input type="radio" name="gender" id="user-edit-gender-male" value="{{ \Config::get('common.MALE_GENDER') }}" checked>
-  				<label for="post-type-sell" class="radio-button">Male</label>
+  				<label for="user-edit-gender-male" class="radio-button">Male</label>
   				<input type="radio" name="gender" id="user-edit-gender-female" value="{{ \Config::get('common.FEMALE_GENDER') }}">
-  				<label for="post-type-buy">Female</label>
+  				<label for="user-edit-gender-female">Female</label>
         </div>
         <div class="form-group">
           <label for="user-edit-birthday">Birthday:</label>
@@ -47,11 +47,11 @@
           <input type="text" name="address" class="form-control" id="user-edit-address" value="{{Auth::user()->address}}">
         </div>
         <div class="form-group">
-          <div class="col-md-3 col-md-offset-3">
-            <a href="#" class="button icon fa-download">Cancel</a>
+          <div class="col-xs-12 col-md-3 col-md-offset-3">
+            <a href="#" class="button btn-block icon fa-download margin-top-10">Cancel</a>
           </div>
           <div class="col-md-3">
-            <a href="#" class="button special icon fa-search" name="user-edit-submit">Confirm</a>
+            <a href="#" class="button btn-block special icon fa-search margin-top-10" name="user-edit-submit">Confirm</a>
           </div>
         </div>
       </form>
