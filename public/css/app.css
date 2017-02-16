@@ -1368,11 +1368,8 @@
 			background: rgba(210, 215, 217, 0.75);
 			content: '';
 			display: block;
-			height: calc(100% + 6em);
-			left: -3em;
 			position: absolute;
 			top: 0;
-			width: 1px;
 		}
 
 		.posts article:after {
@@ -1380,10 +1377,8 @@
 			bottom: -3em;
 			content: '';
 			display: block;
-			height: 1px;
 			position: absolute;
 			right: 0;
-			width: calc(100% + 6em);
 		}
 
 		.posts article > :last-child {
@@ -1427,7 +1422,6 @@
 		@media screen and (max-width: 1680px) {
 
 			.posts article {
-				width: calc(50% - 6em);
 			}
 
 				.posts article:nth-last-child(3) {
@@ -1469,7 +1463,6 @@
 
 				.posts article {
 					margin: 0 0 4.5em 4.5em;
-					width: calc(50% - 4.5em);
 				}
 
 					.posts article:before {

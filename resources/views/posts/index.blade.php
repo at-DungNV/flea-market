@@ -6,7 +6,35 @@
 
 @section('content')
   <section>
-    <article  id="post-index-article-default">
+    
+    <!-- <div class="row"> -->
+       <!-- <div class="col-md-4">
+         <h2>Heading</h2>
+         <a href="#" class="post-index-article-image image">
+           <img src="images/pic01.jpg" alt="" /></a>
+         </a>
+         <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, 
+           tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. 
+           Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. 
+         </p>
+         <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+       </div>
+       <div class="col-md-4">
+         <h2>Heading</h2>
+         <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+         <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+      </div>
+       <div class="col-md-4">
+         <h2>Heading</h2>
+         <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+         <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+       </div> -->
+     <!-- </div> -->
+
+     <hr>
+    
+    
+    <article  id="post-index-article-default" class="col-xs-12 col-sm-6 col-md-4">
       <a href="#" class="post-index-article-image image">
         <img src="images/pic01.jpg" alt="" /></a>
       </a>
@@ -17,6 +45,7 @@
       <ul class="actions">
         <li><a href="" class="button post-index-article-more">More</a></li>
       </ul>
+      <hr>
     </article>
     <div class="posts">
 
