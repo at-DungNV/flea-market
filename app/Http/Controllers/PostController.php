@@ -28,7 +28,24 @@ class PostController extends Controller
       $totalPages = ceil($total / $number);
       $x = new BreadcrumbsHelper();
       $crumbs = $x->getCrumbs($request->path());
-      return view('posts.index', ['totalPages' => $totalPages, 'crumbs' => $crumbs]);
+      
+      
+      $page = $request->input('page');
+      // start checking if page input is null or not
+      if(is_null($page)) {
+        $page = 1;
+      }
+      // end checking if page input is null or not
+      $offset = 1;
+      $offset = ($page - 1) * $number;
+      $posts = Post::with(['images'=>function($query) {
+                        return $query->limit(1);
+                    }])
+                    ->take($number)
+                    ->offset($offset)
+                    ->get();
+      
+      return view('posts.index', ['posts' => $posts, 'totalPages' => $totalPages, 'crumbs' => $crumbs, 'page' => $page]);
     }
 
     public function paginate(Request $request)

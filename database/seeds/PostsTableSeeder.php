@@ -18,7 +18,7 @@ class PostsTableSeeder extends Seeder
       $states = array('active', 'waiting', 'hidden', 'rejected');
       $types = array('buy', 'sell');
       $users = User::all()->pluck('id');
-      for ($i=0; $i < 50; $i++) {
+      for ($i=0; $i < 300; $i++) {
         $title = $faker->text;
         Post::create([
           'user_id' => $faker->randomElement($users->toArray()),
