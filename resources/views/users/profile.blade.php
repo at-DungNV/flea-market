@@ -15,49 +15,73 @@
 
 @section('content')
   <div class="row">
-    <!-- <div class="col-xs-12 col-sm-12 col-md-12" >
-      <div class="panel panel-info">
-        <div class="panel-heading">
-          <h3 class="panel-title">{{ ucfirst(Auth::user()->name) }} - Information</h3>
-        </div>
+    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+      <div class="panel panel-default">
+        <div class="panel-heading" align="center"><h3><strong>Thông tin cá nhân</strong></h3></div>
         <div class="panel-body">
-          <div class="row"> -->
-            <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 " align="center">
-              <img alt="User Pic" src="http://babyinfoforyou.com/wp-content/uploads/2014/10/avatar-300x300.png" class="img-circle img-responsive">
-            </div>
+          <ul class="alt">
+            <li>
+              <a href="{{ route('users.profile') }}">
+                <i class="fa fa-user-circle" aria-hidden="true">
+                </i>Profile
+              </a>
+            </li>
+            <li>
+              <a href="{{ route('users.approvalPosts') }}">
+                <i class="fa fa-money" aria-hidden="true"></i>Đang bán
+              </a>
+            </li>
+            <li>
+              <a href="{{ route('users.rejectedPosts') }}">
+                <i class="fa fa-window-close-o" aria-hidden="true">Bị từ chối</i>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <i class="fa fa-envelope-open" aria-hidden="true"></i>Notification
+              </a>
+            </li>
+            <li></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 " align="center">
+      <img alt="User Pic" src="http://babyinfoforyou.com/wp-content/uploads/2014/10/avatar-300x300.png" class="img-circle img-responsive">
+    </div>
 
-            <div class="col-xs-12 col-sm-6 col-md-9 col-lg-9 ">
-              <table class="table table-user-information">
-                <tbody>
-                  <tr>
-                    <td>Name:</td>
-                    <td>{{ Auth::user()->name }}</td>
-                  </tr>
-                  <tr>
-                    <td>Email:</td>
-                    <td>{{ Auth::user()->email }}</td>
-                  </tr>
-                  <tr>
-                    <td>Gender:</td>
-                    <td>{{ Auth::user()->gender == 1 ? 'Male':'Female' }}</td>
-                  </tr>
-                  <tr>
-                    <td>Birthday:</td>
-                    <td>{{ Auth::user()->birthday }}</td>
-                  </tr>
-                  <tr>
-                    <td>Address:</td>
-                    <td>{{ Auth::user()->address }}</td>
-                  </tr>
-                    <td>Phone:</td>
-                    <td>{{ Auth::user()->phone }}</td>
-                  </tr>
-                </tbody>
-              </table>
+    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 ">
+      <table class="table table-user-information">
+        <tbody>
+          <tr>
+            <td>Name:</td>
+            <td>{{ Auth::user()->name }}</td>
+          </tr>
+          <tr>
+            <td>Email:</td>
+            <td>{{ Auth::user()->email }}</td>
+          </tr>
+          <tr>
+            <td>Gender:</td>
+            <td>{{ Auth::user()->gender == 1 ? 'Male':'Female' }}</td>
+          </tr>
+          <tr>
+            <td>Birthday:</td>
+            <td>{{ Auth::user()->birthday }}</td>
+          </tr>
+          <tr>
+            <td>Address:</td>
+            <td>{{ Auth::user()->address }}</td>
+          </tr>
+            <td>Phone:</td>
+            <td>{{ Auth::user()->phone }}</td>
+          </tr>
+        </tbody>
+      </table>
 
-            </div>
-          </div>
-          <div class="row align-center">
+    </div>
+  </div>
+  <div class="row align-center">
             <div class="col-xs-6 col-sm-3 col-md-3 col-sm-offset-6 col-md-offset-3">
               <a href="{{ route('users.edit', [Auth::user()->email]) }}" class="button special btn-block">Edit profile</a>
             </div>
@@ -112,11 +136,6 @@
             </div>
           </div>
 
-
-        <!-- </div>
-      </div>
-    </div> -->
-  </div>
 @endsection
 
 @push('end-page-scripts')

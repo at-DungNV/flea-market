@@ -50,18 +50,6 @@ section {
   display: none;
 }
 
-.profile-img{
-    margin-top: -5px;
-    margin-right: 5px;
-    float: left;
-    background: url(http://lorempixel.com/80/80/people) 50% 50% no-repeat;
-    background-size: auto 100%;
-    width: 30px;
-    height: 30px;
-}
-
-
-
 
 .dropdown {
     /*background:#fff;*/
@@ -178,8 +166,23 @@ section {
       z-index: 9;
   }
 }
-
+/* Image */
 .image {
   display: block;
   width: 100%;
+}
+
+.profile-img{
+    margin-top: -5px;
+    margin-right: 5px;
+    float: left;
+    background: url(http://lorempixel.com/80/80/people) 50% 50% no-repeat;
+    background-size: auto 100%;
+    width: 30px;
+    height: 30px;
+}
+
+/* h tag */
+.panel>.panel-heading>h3 {
+  margin: 0;
 }

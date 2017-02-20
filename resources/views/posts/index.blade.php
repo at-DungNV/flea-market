@@ -23,7 +23,7 @@
                   <ul class="actions">
                     <li><a href="{{ route('posts.show', [$post->slug]) }}" class="button">More</a></li>
                   </ul>
-                  <hr>
+                  <hr class="margin-top-10">
                 </div>
             @endforeach
         </div>
@@ -49,8 +49,6 @@
         startPage: currentPage,
         initiateStartPageClick: false,
         onPageClick: function (event, page) {
-          console.log(page);
-          console.log(event);
           window.location = currentUrl+"?page="+page;
         }
     });

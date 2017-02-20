@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\UpdatePasswordRequest;
 use BreadcrumbsHelper;
 use App\Models\User;
+use App\Models\Post;
 use Auth;
 use Redirect;
 use Hash;
@@ -124,6 +125,39 @@ class UserController extends Controller
         } catch (Exception $saveException) {
             return Redirect::back()->withErrors("bi loi");
         }
+    }
+    
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function getApprovalPosts(Request $request)
+    {
+      $x = new BreadcrumbsHelper();
+      $crumbs = $x->getCrumbs($request->path());
+      
+      $posts = Post::with(['images'=>function($query) {
+                        return $query->limit(1);
+                    }])
+                    ->where('user_id', '=', Auth::user()->id)
+                    ->Where('state', '=', \Config::get('common.TYPE_POST_ACTIVE'))
+                    ->paginate(3);
+      return view('users.approvalPosts', ['posts' => $posts, 'crumbs' => $crumbs]);
+    }
+    
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function getRejectedPosts(Request $request)
+    {
+      return "dungnv";
     }
 
     /**

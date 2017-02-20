@@ -48,27 +48,6 @@ class PostController extends Controller
       return view('posts.index', ['posts' => $posts, 'totalPages' => $totalPages, 'crumbs' => $crumbs, 'page' => $page]);
     }
 
-    public function paginate(Request $request)
-    {
-      $total = Post::count();
-      $number = \Config::get('common.NUMBER_ITEM_PER_PAGE');
-      $totalPages = ceil($total / $number);
-      $this->validate($request, [
-          'page' => 'required|numeric|min:1|max:'. $totalPages,
-      ]);
-      $offset = 1;
-      $offset = ($request->input('page') - 1) * $number;
-      $posts = Post::with(['images'=>function($query) {
-                        return $query->limit(1);
-                    }])
-                    ->take($number)
-                    ->offset($offset)
-                    ->get();
-      return response()->json([
-          'posts' => $posts
-      ]);
-    }
-
     /**
      * Show the form for creating a new resource.
      *
