@@ -20,8 +20,6 @@ Route::get('/', function () {
 
 Route::group(['middleware' => ['auth']], function () {
 
-  Route::get('/posts/pagination', 'PostController@paginate')->where('page', '[0-9]+');
-
   Route::resource('posts', 'PostController');
 
   Route::resource('categories', 'CategoryController');
@@ -46,6 +44,16 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/{id}/edit', [
       'uses' => 'UserController@edit',
       'as'   => 'users.edit'
+    ]);
+    
+    Route::get('/approval-posts', [
+      'uses' => 'UserController@getApprovalPosts',
+      'as'   => 'users.approvalPosts'
+    ]);
+    
+    Route::get('/rejected-posts', [
+      'uses' => 'UserController@getRejectedPosts',
+      'as'   => 'users.rejectedPosts'
     ]);
 
   });

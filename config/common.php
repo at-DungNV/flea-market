@@ -5,4 +5,8 @@ return [
     'BUY_TYPE' => 'buy',
     'SALE_TYPE' => 'sale',
     'NUMBER_ITEM_PER_PAGE' => 9,
+    'TYPE_POST_WAITING' => 'waiting',
+    'TYPE_POST_REJECTED' => 'rejected',
+    'TYPE_POST_HIDDEN' => 'hidden',
+    'TYPE_POST_ACTIVE' => 'active',
 ];
