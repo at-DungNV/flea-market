@@ -157,7 +157,16 @@ class UserController extends Controller
      */
     public function getRejectedPosts(Request $request)
     {
-      return "dungnv";
+      $x = new BreadcrumbsHelper();
+      $crumbs = $x->getCrumbs($request->path());
+      
+      $posts = Post::with(['images'=>function($query) {
+                        return $query->limit(1);
+                    }])
+                    ->where('user_id', '=', Auth::user()->id)
+                    ->Where('state', '=', \Config::get('common.TYPE_POST_REJECTED'))
+                    ->paginate(3);
+      return view('users.rejectPosts', ['posts' => $posts, 'crumbs' => $crumbs]);
     }
 
     /**
