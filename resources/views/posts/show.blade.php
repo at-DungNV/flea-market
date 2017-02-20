@@ -47,12 +47,9 @@
     </div>
   </div>
 </div>
-
-<div class="row margin-top-10">
-  <p>
-    {{ $post->description }}
-  </p>
-</div>
+<p class="margin-top-10">
+  {{ $post->description }}
+</p>
 <h4><i class="fa fa-address-card" aria-hidden="true"></i> Địa chỉ người đăng tin</h4>
 <ul class="alt">
   <li>{{ $post->address }}</li>
