@@ -6,7 +6,6 @@
 
 @section('content')
   <section>
-    
     @foreach ($posts->chunk(3) as $chunk)
         <div class="row">
             @foreach ($chunk as $post)

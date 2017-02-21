@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Frontend;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\UpdatePasswordRequest;
 use BreadcrumbsHelper;
@@ -23,7 +24,7 @@ class UserController extends Controller
     {
         $x = new BreadcrumbsHelper();
         $crumbs = $x->getCrumbs($request->path());
-        return view('users.profile', ['crumbs' => $crumbs]);
+        return view('frontend.users.profile', ['crumbs' => $crumbs]);
     }
 
     /**
@@ -78,7 +79,7 @@ class UserController extends Controller
     {
         $x = new BreadcrumbsHelper();
         $crumbs = $x->getCrumbs($request->path());
-        return view('users.edit', ['crumbs' => $crumbs]);
+        return view('frontend.users.edit', ['crumbs' => $crumbs]);
     }
 
     /**
@@ -145,7 +146,7 @@ class UserController extends Controller
                     ->where('user_id', '=', Auth::user()->id)
                     ->Where('state', '=', \Config::get('common.TYPE_POST_ACTIVE'))
                     ->paginate(3);
-      return view('users.approvalPosts', ['posts' => $posts, 'crumbs' => $crumbs]);
+      return view('frontend.users.approvalPosts', ['posts' => $posts, 'crumbs' => $crumbs]);
     }
     
     /**
@@ -166,7 +167,7 @@ class UserController extends Controller
                     ->where('user_id', '=', Auth::user()->id)
                     ->Where('state', '=', \Config::get('common.TYPE_POST_REJECTED'))
                     ->paginate(3);
-      return view('users.rejectPosts', ['posts' => $posts, 'crumbs' => $crumbs]);
+      return view('frontend.users.rejectPosts', ['posts' => $posts, 'crumbs' => $crumbs]);
     }
 
     /**

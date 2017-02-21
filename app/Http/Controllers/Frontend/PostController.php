@@ -1,6 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Frontend;
+
+use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response ;
@@ -45,7 +47,7 @@ class PostController extends Controller
                     ->offset($offset)
                     ->get();
       
-      return view('posts.index', ['posts' => $posts, 'totalPages' => $totalPages, 'crumbs' => $crumbs, 'page' => $page]);
+      return view('frontend.posts.index', ['posts' => $posts, 'totalPages' => $totalPages, 'crumbs' => $crumbs, 'page' => $page]);
     }
 
     /**
@@ -57,7 +59,7 @@ class PostController extends Controller
     {
       $x = new BreadcrumbsHelper();
       $crumbs = $x->getCrumbs($request->path());
-      return view('posts.create', ['crumbs' => $crumbs]);
+      return view('frontend.posts.create', ['crumbs' => $crumbs]);
     }
 
     /**
@@ -77,7 +79,7 @@ class PostController extends Controller
         // store images
         $images = $request->file('images');
         $post->storeImages($images);
-        return redirect()->action('PostController@create')->withMessage('tao thanh cong');
+        return redirect()->action('Frontend\PostController@create')->withMessage('tao thanh cong');
     }
 
     public function getPostImages($filename)
@@ -98,7 +100,7 @@ class PostController extends Controller
             $x = new BreadcrumbsHelper();
             $crumbs = $x->getCrumbs($request->path());
             $post = Post::where('slug', '=', $id)->with('images')->firstOrFail();
-            return view('posts.show', ['post' => $post, 'crumbs' => $crumbs]);
+            return view('frontend.posts.show', ['post' => $post, 'crumbs' => $crumbs]);
         } catch (NotFoundHttpException $ex) {
             return redirect()->action('PostController@index')
                              ->withErrors('khong tim thay');
