@@ -16,7 +16,7 @@
 @section('content')
   <div class="row">
     <div class="col-md-8 col-sm-12 col-xs-12 col-md-offset-2">
-      <form action="{{ route('posts.store') }}" method="POST" class="form-horizontal" name="post-form" enctype="multipart/form-data" novalidate>
+      <form action="{{ route('post.store') }}" method="POST" class="form-horizontal" name="post-form" enctype="multipart/form-data" novalidate>
         {{ csrf_field() }}
         <div class="form-group">
           <label for="post-title">Title:</label>

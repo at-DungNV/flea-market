@@ -52,14 +52,14 @@
         <div class="row">
           <div class="col-xs-3 col-sm-3 col-md-3">
             <span class="image left">
-              <a href="{{ route('posts.show', [$post->slug]) }}" class="image">
-                <img class="image img-rounded" src="{{ route('posts.getPostImages', [$post->images->first()['url']]) }}" alt="" />
+              <a href="{{ route('post.show', [$post->slug]) }}" class="image">
+                <img class="image img-rounded" src="{{ route('post.getPostImages', [$post->images->first()['url']]) }}" alt="" />
               </a>
             </span>
           </div>
           <div class="col-xs-9 col-sm-9 col-md-9">
             <h3>
-              <a href="{{ route('posts.show', [$post->slug]) }}" class="image">
+              <a href="{{ route('post.show', [$post->slug]) }}" class="image">
                 {{ str_limit($post->title, $limit = 50, $end = '...') }}
               </a>
             </h3>

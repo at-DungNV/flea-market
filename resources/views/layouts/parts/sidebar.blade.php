@@ -22,8 +22,8 @@
 				<li>
 					<span class="opener">Post</span>
 					<ul>
-						<li><a href="{{ route('posts.index') }}">Index</a></li>
-						<li><a href="{{ route('posts.create') }}">Create</a></li>
+						<li><a href="{{ route('post.index') }}">Index</a></li>
+						<li><a href="{{ route('post.create') }}">Create</a></li>
 						<li><a href="#">Tempus Magna</a></li>
 						<li><a href="#">Feugiat Veroeros</a></li>
 					</ul>

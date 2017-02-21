@@ -12,16 +12,16 @@
             @foreach ($chunk as $post)
                 <div class="col-xs-4 col-md-4">
                   @if(Storage::disk('local')->exists($post->images->first()['url']))
-                  <a href="{{ route('posts.show', [$post->slug]) }}" class="image"><img class="image" src="{{ route('posts.getPostImages', [$post->images->first()['url']]) }}" alt="" /></a>
+                  <a href="{{ route('post.show', [$post->slug]) }}" class="image"><img class="image" src="{{ route('post.getPostImages', [$post->images->first()['url']]) }}" alt="" /></a>
                   @else
-                  <a href="{{ route('posts.show', [$post->slug]) }}" class="image"><img class="image" src="images/pic01.jpg" alt="" /></a>
+                  <a href="{{ route('post.show', [$post->slug]) }}" class="image"><img class="image" src="images/pic01.jpg" alt="" /></a>
                   @endif
                   <h3>{{ str_limit($post->title, $limit = 100, $end = '...') }}</h3>
                   <p>
                     {{ str_limit($post->description, $limit = 100, $end = '...') }}
                   </p>
                   <ul class="actions">
-                    <li><a href="{{ route('posts.show', [$post->slug]) }}" class="button">More</a></li>
+                    <li><a href="{{ route('post.show', [$post->slug]) }}" class="button">More</a></li>
                   </ul>
                   <hr class="margin-top-10">
                 </div>

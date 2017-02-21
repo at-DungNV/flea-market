@@ -21,9 +21,9 @@
                         Post
                         <b class="pull-right glyphicon glyphicon-chevron-up"></b>
                     </li>
-                    <li><a href="{{ route('posts.index') }}">Index</a></li>
+                    <li><a href="{{ route('post.index') }}">Index</a></li>
                     <li class="divider"></li>
-                    <li><a href="{{ route('posts.create') }}">Create</a></li>
+                    <li><a href="{{ route('post.create') }}">Create</a></li>
                 </ul>
               </li>
           </ul>
