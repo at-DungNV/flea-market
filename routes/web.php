@@ -14,72 +14,66 @@ use Illuminate\Http\Request;
 
 Auth::routes();
 
-Route::get('/', 'HomeController@index');
 
-Route::get('/post', [
-  'uses' => 'PostController@index',
-  'as'   => 'post.index'
-]);
-
-Route::group(['middleware' => ['auth']], function () {
-  
-  Route::resource('post', 'PostController', ['except' => [
-      'index'
-  ]]);
-  // Route::resource('posts', 'PostController');
-
-  Route::resource('categories', 'CategoryController');
-
-  Route::group(['prefix' => 'dashboard'], function () {
-
-    Route::get('/profile', [
-      'uses' => 'UserController@profile',
-      'as'   => 'users.profile'
-    ]);
-
-    Route::put('/profile', [
-      'uses' => 'UserController@update',
-      'as'   => 'users.update'
-    ]);
-
-    Route::put('/password', [
-      'uses' => 'UserController@updatePassword',
-      'as'   => 'users.updatePassword'
-    ]);
-
-    Route::get('/{id}/edit', [
-      'uses' => 'UserController@edit',
-      'as'   => 'users.edit'
-    ]);
+Route::group(['namespace' => 'Frontend'], function () {
+    Route::get('/', 'HomeController@index');
     
-    Route::get('/approval-posts', [
-      'uses' => 'UserController@getApprovalPosts',
-      'as'   => 'users.approvalPosts'
+    Route::get('/post', [
+      'uses' => 'PostController@index',
+      'as'   => 'post.index'
     ]);
-    
-    Route::get('/rejected-posts', [
-      'uses' => 'UserController@getRejectedPosts',
-      'as'   => 'users.rejectedPosts'
-    ]);
+    Route::group(['middleware' => ['auth']], function () {
+      
+      Route::resource('post', 'PostController', ['except' => [
+          'index'
+      ]]);
+      // Route::resource('posts', 'PostController');
 
-  });
+      Route::resource('categories', 'CategoryController');
 
-  Route::get('sidebarCategories', 'CategoryController@getSidebarCategories');
+      Route::group(['prefix' => 'dashboard'], function () {
+
+        Route::get('/profile', [
+          'uses' => 'UserController@profile',
+          'as'   => 'users.profile'
+        ]);
+
+        Route::put('/profile', [
+          'uses' => 'UserController@update',
+          'as'   => 'users.update'
+        ]);
+
+        Route::put('/password', [
+          'uses' => 'UserController@updatePassword',
+          'as'   => 'users.updatePassword'
+        ]);
+
+        Route::get('/{id}/edit', [
+          'uses' => 'UserController@edit',
+          'as'   => 'users.edit'
+        ]);
+        
+        Route::get('/approval-posts', [
+          'uses' => 'UserController@getApprovalPosts',
+          'as'   => 'users.approvalPosts'
+        ]);
+        
+        Route::get('/rejected-posts', [
+          'uses' => 'UserController@getRejectedPosts',
+          'as'   => 'users.rejectedPosts'
+        ]);
+
+      });
+
+      Route::get('sidebarCategories', 'CategoryController@getSidebarCategories');
 
 
-  Route::get('/home', 'HomeController@index');
+      Route::get('/home', 'HomeController@index');
 
-  Route::get('/image/{filename}', [
-    'uses' => 'PostController@getPostImages',
-    'as'   => 'post.getPostImages'
-  ]);
+      Route::get('/image/{filename}', [
+        'uses' => 'PostController@getPostImages',
+        'as'   => 'post.getPostImages'
+      ]);
 
-
-  // usage inside a laravel route
-  Route::get('/test', function(Request $request)
-  {
-
-      dd($request->all());
-      return "dungnv";
-  });
+    });
 });
