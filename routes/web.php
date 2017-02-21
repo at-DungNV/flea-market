@@ -14,13 +14,19 @@ use Illuminate\Http\Request;
 
 Auth::routes();
 
-Route::get('/', function () {
-  return view('welcome');
-});
+Route::get('/', 'HomeController@index');
+
+Route::get('/post', [
+  'uses' => 'PostController@index',
+  'as'   => 'post.index'
+]);
 
 Route::group(['middleware' => ['auth']], function () {
-
-  Route::resource('posts', 'PostController');
+  
+  Route::resource('post', 'PostController', ['except' => [
+      'index'
+  ]]);
+  // Route::resource('posts', 'PostController');
 
   Route::resource('categories', 'CategoryController');
 
@@ -65,7 +71,7 @@ Route::group(['middleware' => ['auth']], function () {
 
   Route::get('/image/{filename}', [
     'uses' => 'PostController@getPostImages',
-    'as'   => 'posts.getPostImages'
+    'as'   => 'post.getPostImages'
   ]);
 
 

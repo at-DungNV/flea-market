@@ -22,7 +22,7 @@
       <!-- {{$post->images}} -->
       <ul>
         @foreach ($post->images as $image)
-        <li><img src="{{ route('posts.getPostImages', [$image->url]) }}" class="img-rounded"></li>
+        <li><img src="{{ route('post.getPostImages', [$image->url]) }}" class="img-rounded"></li>
         @endforeach
         <!-- <li><img src="/images/pic02.jpg" class="img-rounded"></li>
         <li><img src="/images/pic03.jpg" class="img-rounded"></li>
