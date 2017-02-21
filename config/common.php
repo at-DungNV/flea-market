@@ -3,7 +3,7 @@ return [
     'MALE_GENDER' => 1,
     'FEMALE_GENDER' => 0,
     'BUY_TYPE' => 'buy',
-    'SALE_TYPE' => 'sale',
+    'SELL_TYPE' => 'sell',
     'NUMBER_ITEM_PER_PAGE' => 9,
     'TYPE_POST_WAITING' => 'waiting',
     'TYPE_POST_REJECTED' => 'rejected',
