@@ -17,20 +17,20 @@ class CreatePostsTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
+            $table->integer('province_id')->unsigned();
+            $table->foreign('province_id')->references('id')->on('provinces');
+            $table->integer('district_id')->unsigned();
+            $table->foreign('district_id')->references('id')->on('districts');
+            $table->integer('ward_id')->unsigned();
+            $table->foreign('ward_id')->references('id')->on('wards');
             $table->string('title', 256);
             $table->integer('price')->nullable();
             $table->string('state', 45)->default('hidden');
             $table->string('type', 10); // buy or sell
             $table->string('phone', 40)->nullable();
             $table->string('address');
-            // $table->double('lat', 10, 6)->nullable();
-            // $table->double('lng', 10, 6)->nullable();
             $table->string('slug', 256);
             $table->text('description');
-            // $table->integer('category_detail_id')->unsigned();
-            // $table->foreign('category_detail_id')->references('id')->on('category_details');
-            // $table->integer('city_id')->unsigned();
-            // $table->foreign('city_id')->references('id')->on('cities');
             $table->timestamps();
         });
     }
