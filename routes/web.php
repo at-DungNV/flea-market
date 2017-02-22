@@ -10,10 +10,8 @@
 | to using a Closure or controller method. Build something great!
 |
 */
-use Illuminate\Http\Request;
 
 Auth::routes();
-
 
 Route::group(['namespace' => 'Frontend'], function () {
     Route::get('/', 'HomeController@index');
@@ -27,9 +25,6 @@ Route::group(['namespace' => 'Frontend'], function () {
       Route::resource('post', 'PostController', ['except' => [
           'index'
       ]]);
-      // Route::resource('posts', 'PostController');
-
-      Route::resource('categories', 'CategoryController');
 
       Route::group(['prefix' => 'dashboard'], function () {
 
@@ -64,9 +59,6 @@ Route::group(['namespace' => 'Frontend'], function () {
         ]);
 
       });
-
-      Route::get('sidebarCategories', 'CategoryController@getSidebarCategories');
-
 
       Route::get('/home', 'HomeController@index');
 
