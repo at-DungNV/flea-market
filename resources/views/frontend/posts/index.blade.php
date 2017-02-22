@@ -4,6 +4,10 @@
     @include('common.breadcrumb')
 @stop
 
+@section('navigation-search')
+    @include('layouts.parts.search')
+@stop
+
 @section('content')
   <section>
     @foreach ($posts->chunk(3) as $chunk)

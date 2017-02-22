@@ -25,27 +25,53 @@ class PostController extends Controller
      */
     public function index(Request $request)
     {
-      $total = Post::count();
+      $total = Post::where('state', '=', \Config::get('common.TYPE_POST_ACTIVE'))->count();
       $number = \Config::get('common.NUMBER_ITEM_PER_PAGE');
       $totalPages = ceil($total / $number);
       $x = new BreadcrumbsHelper();
       $crumbs = $x->getCrumbs($request->path());
       
       
-      $page = $request->input('page');
       // start checking if page input is null or not
-      if(is_null($page)) {
-        $page = 1;
-      }
+      $page = is_null($request->input('page')) ? 1 : $request->input('page');
       // end checking if page input is null or not
       $offset = 1;
       $offset = ($page - 1) * $number;
-      $posts = Post::with(['images'=>function($query) {
-                        return $query->limit(1);
-                    }])
-                    ->take($number)
-                    ->offset($offset)
-                    ->get();
+      
+      
+      switch ($request->input('q')) {
+        case 'sell':
+          $posts = Post::with(['images'=>function($query) {
+            return $query->limit(1);
+          }])
+          ->where('state', '=', \Config::get('common.TYPE_POST_ACTIVE'))
+          ->where('type', '=', \Config::get('common.BUY_TYPE'))
+          ->take($number)
+          ->offset($offset)
+          ->get();
+          break;
+        case 'buy':
+          $posts = Post::with(['images'=>function($query) {
+            return $query->limit(1);
+          }])
+          ->where('state', '=', \Config::get('common.TYPE_POST_ACTIVE'))
+          ->where('type', '=', \Config::get('common.SELL_TYPE'))
+          ->take($number)
+          ->offset($offset)
+          ->get();
+          break;
+        
+        default:
+          $posts = Post::with(['images'=>function($query) {
+            return $query->limit(1);
+          }])
+          ->where('state', '=', \Config::get('common.TYPE_POST_ACTIVE'))
+          ->take($number)
+          ->offset($offset)
+          ->get();
+          break;
+      }
+      
       
       return view('frontend.posts.index', ['posts' => $posts, 'totalPages' => $totalPages, 'crumbs' => $crumbs, 'page' => $page]);
     }
