@@ -17,7 +17,7 @@
               <li class="dropdown {{ Request::is('posts/*') ? 'active' : '' }}">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Post <b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                     <li class="dropdown-plus-title">
+                    <li class="dropdown-plus-title">
                         Post
                         <b class="pull-right glyphicon glyphicon-chevron-up"></b>
                     </li>

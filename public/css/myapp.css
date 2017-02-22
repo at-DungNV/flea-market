@@ -38,6 +38,14 @@
   margin-top: 70px;
 }
 
+.padding-left-0 {
+  padding-left: 0px;
+}
+
+.padding-right-0 {
+  padding-right: 0px;
+}
+
 section {
   padding-top: 0px !important;
 }
@@ -134,3 +142,7 @@ ul.nav li.dropdown ul.dropdown-menu .dropdown-plus-title {
     }
 }
 /* End Navbar */
+
+.width-100-percent {
+  width: 100%;
+}
