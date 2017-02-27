@@ -89,7 +89,7 @@ class Post extends Model
    * @param Array $images images from uploading
    * @return Object Post
    */
-  public static function search($q, $address, $type, $order, $number, $offset) {
+  public static function search($q, $address, $type, $order, $total, $offset) {
     $query = Post::with(['images'=>function($query) {
                     return $query->limit(1);
                   }])
@@ -109,8 +109,13 @@ class Post extends Model
     if ($order != '') {
       $query = $query->orderBy('price', $order);
     }
-    $posts = $query->take($number)->offset($offset)->get();
+    $total = $total == $query->count() ? $total : $query->count();
     
-    return $posts;
+    $posts = $query->take(\Config::get('common.NUMBER_ITEM_PER_PAGE'))->offset($offset)->get();
+    $data = array(
+        'posts'  => $posts,
+        'total' => $total
+    );
+    return $data;
   }
 }
