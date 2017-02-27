@@ -29,7 +29,6 @@ class PostController extends Controller
       
       $total = Post::where('state', '=', \Config::get('common.TYPE_POST_ACTIVE'))->count();
       $number = \Config::get('common.NUMBER_ITEM_PER_PAGE');
-      $totalPages = ceil($total / $number);
       $x = new BreadcrumbsHelper();
       $crumbs = $x->getCrumbs($request->path());
       
@@ -45,7 +44,9 @@ class PostController extends Controller
       $offset = 1;
       $offset = ($page - 1) * $number;
       // get posts
-      $posts = Post::search($q, $address, $type, $order,$number, $offset);
+      $searchResult = Post::search($q, $address, $type, $order, $total, $offset);
+      $totalPages = ceil($searchResult['total'] / $number);
+      $posts = $searchResult['posts'];;
       $x = new Province();
       $data = array(
           'posts'  => $posts,
