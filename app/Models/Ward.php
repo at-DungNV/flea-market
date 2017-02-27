@@ -14,4 +14,5 @@ class Ward extends Model
     protected $fillable = [
         'district_id', 'name', 'type', 'slug'
     ];
+    
 }

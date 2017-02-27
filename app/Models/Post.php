@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
 use Storage;
 use App\Models\Image;
+use App\Models\Province;
+use App\Models\District;
+use App\Models\Ward;
 use Image as ImageIntervention;
 
 class Post extends Model
@@ -28,6 +31,36 @@ class Post extends Model
   {
       return $this->hasMany('App\Models\Image');
   }
+  
+  /**
+   * Post belongs to a Province.
+   *
+   * @return Illuminate\Database\Eloquent\Relations\BelongsTo
+   */
+  public function province()
+  {
+      return $this->belongsTo('App\Models\Province');
+  }
+  
+  /**
+   * Post belongs to a District.
+   *
+   * @return Illuminate\Database\Eloquent\Relations\BelongsTo
+   */
+  public function district()
+  {
+      return $this->belongsTo('App\Models\District');
+  }
+  
+  /**
+   * Post belongs to a Ward.
+   *
+   * @return Illuminate\Database\Eloquent\Relations\BelongsTo
+   */
+  public function ward()
+  {
+      return $this->belongsTo('App\Models\Ward');
+  }
 
   /**
    * Insert image to database and storage
@@ -48,5 +81,36 @@ class Post extends Model
         $img = new Image;
         $img->store($url, $this->id);
     }
+  }
+  
+  /**
+   * Search
+   *
+   * @param Array $images images from uploading
+   * @return Object Post
+   */
+  public static function search($q, $address, $type, $order, $number, $offset) {
+    $query = Post::with(['images'=>function($query) {
+                    return $query->limit(1);
+                  }])
+                  ->where('state', '=', \Config::get('common.TYPE_POST_ACTIVE'));
+    if ($q != null) {
+      $query = $query->where('title', 'like', '%'.$q.'%');
+    }
+    if ($address != '') {
+      // if District added you can you intersect
+      $query = $query->whereHas('province', function ($query) use ($address) {
+          $query->where('name', '=', $address);
+      });
+    }
+    if ($type != '') {
+      $query = $query->where('type', '=', $type);
+    }
+    if ($order != '') {
+      $query = $query->orderBy('price', $order);
+    }
+    $posts = $query->take($number)->offset($offset)->get();
+    
+    return $posts;
   }
 }

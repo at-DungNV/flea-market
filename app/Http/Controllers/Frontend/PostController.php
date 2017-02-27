@@ -10,6 +10,7 @@ use App\Http\Requests\PostRequest;
 use App\Http\Requests\PaginationRequest;
 use App\Models\Post;
 use App\Models\Image;
+use App\Models\Province;
 use Storage;
 use Auth;
 use Carbon\Carbon;
@@ -23,57 +24,42 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index(PostRequest $request)
     {
+      
       $total = Post::where('state', '=', \Config::get('common.TYPE_POST_ACTIVE'))->count();
       $number = \Config::get('common.NUMBER_ITEM_PER_PAGE');
       $totalPages = ceil($total / $number);
       $x = new BreadcrumbsHelper();
       $crumbs = $x->getCrumbs($request->path());
       
+      // input request parameters
+      $q = $request->input('q');
+      $address = $request->input('address');
+      $type = $request->input('type');
+      $order = $request->input('order');
       
       // start checking if page input is null or not
       $page = is_null($request->input('page')) ? 1 : $request->input('page');
       // end checking if page input is null or not
       $offset = 1;
       $offset = ($page - 1) * $number;
+      // get posts
+      $posts = Post::search($q, $address, $type, $order,$number, $offset);
+      $x = new Province();
+      $data = array(
+          'posts'  => $posts,
+          'totalPages' => $totalPages,
+          'crumbs' => $crumbs,
+          'page' => $page,
+          'addresses' => $x->getAddress(),
+          'q' => $q,
+          'address' => $address,
+          'type' => $type,
+          'order' => $order
+      );
       
-      
-      switch ($request->input('q')) {
-        case 'sell':
-          $posts = Post::with(['images'=>function($query) {
-            return $query->limit(1);
-          }])
-          ->where('state', '=', \Config::get('common.TYPE_POST_ACTIVE'))
-          ->where('type', '=', \Config::get('common.BUY_TYPE'))
-          ->take($number)
-          ->offset($offset)
-          ->get();
-          break;
-        case 'buy':
-          $posts = Post::with(['images'=>function($query) {
-            return $query->limit(1);
-          }])
-          ->where('state', '=', \Config::get('common.TYPE_POST_ACTIVE'))
-          ->where('type', '=', \Config::get('common.SELL_TYPE'))
-          ->take($number)
-          ->offset($offset)
-          ->get();
-          break;
-        
-        default:
-          $posts = Post::with(['images'=>function($query) {
-            return $query->limit(1);
-          }])
-          ->where('state', '=', \Config::get('common.TYPE_POST_ACTIVE'))
-          ->take($number)
-          ->offset($offset)
-          ->get();
-          break;
-      }
-      
-      
-      return view('frontend.posts.index', ['posts' => $posts, 'totalPages' => $totalPages, 'crumbs' => $crumbs, 'page' => $page]);
+      return view('frontend.posts.index')->with($data);
     }
 
     /**
