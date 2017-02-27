@@ -24,6 +24,9 @@ class PostRequest extends FormRequest
     public function rules()
     {
         switch ($this->method()) {
+            case 'GET':
+                return [
+                ];
             case 'PUT':
             case 'PATCH':
                 return [

@@ -20,6 +20,8 @@
             'csrfToken' => csrf_token(),
         ]); ?>
     </script>
+    <!-- jQuery -->
+    <script src="/bower_resources/jquery/dist/jquery.min.js"></script>
   </head>
   <body>
     @include('layouts.parts.header')
@@ -48,8 +50,6 @@
       </div>
       <!-- sidebar -->
     </div>
-    <!-- jQuery -->
-    <script src="/bower_resources/jquery/dist/jquery.min.js"></script>
     <!-- skel -->
     <script src="/bower_resources/skel/dist/skel.min.js"></script>
     <!-- util -->

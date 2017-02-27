@@ -14,4 +14,14 @@ class District extends Model
     protected $fillable = [
         'province_id', 'name', 'type', 'slug'
     ];
+    
+    /**
+     * District has many Wards.
+     *
+     * @return Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function wards()
+    {
+        return $this->hasMany('App\Models\Ward');
+    }
 }

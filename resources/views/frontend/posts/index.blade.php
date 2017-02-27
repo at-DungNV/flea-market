@@ -44,7 +44,8 @@
   <script type="text/javascript">
     var totalPages = "{{$totalPages}}";
     var visiblePages = 5;
-    var currentUrl = "{{url()->current()}}";
+    var baseCurrentUrl = "{{url()->current()}}";
+    var currentUrl = "{{url()->full()}}";
     var currentPage = parseInt("{{$page}}");
     $('#post-index-pagination').twbsPagination({
         totalPages: totalPages,
@@ -52,7 +53,12 @@
         startPage: currentPage,
         initiateStartPageClick: false,
         onPageClick: function (event, page) {
-          window.location = currentUrl+"?page="+page;
+          if (currentUrl == baseCurrentUrl) {
+            currentUrl = currentUrl+"?page="+page;
+          } else {
+            currentUrl = currentUrl+"&page="+page;
+          }
+          window.location = currentUrl;
         }
     });
   </script>

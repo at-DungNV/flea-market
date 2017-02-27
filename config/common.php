@@ -9,4 +9,6 @@ return [
     'TYPE_POST_REJECTED' => 'rejected',
     'TYPE_POST_HIDDEN' => 'hidden',
     'TYPE_POST_ACTIVE' => 'active',
+    'ASCENDANT' => 'asc',
+    'DESCENDANT' => 'desc',
 ];
