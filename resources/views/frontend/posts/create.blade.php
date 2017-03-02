@@ -62,7 +62,8 @@
                 <div class="form-group ui-widget">
                   <label class="col-xs-3 col-sm-3 col-md-2 control-label" for="post-create-province">City:</label>
                   <div class="col-xs-9 col-sm-9 col-md-10">
-                    <input type="text" name="province" id="post-create-province" placeholder="City" class="form-control">
+                    <input type="text" id="post-create-province" placeholder="City" class="form-control">
+                    <input type="hidden" name="province" id="post-create-province-hidden">
                   </div>
                 </div>
 
@@ -70,12 +71,14 @@
                 <div class="form-group" id="post-create-district-ward-container">
                   <label class="col-xs-3 col-sm-3 col-md-2 control-label" for="post-create-district">District:</label>
                   <div class="col-xs-9 col-sm-3 col-md-4">
-                    <input type="text" name="district" id="post-create-district" placeholder="district" class="form-control" disabled>
+                    <input type="text"  id="post-create-district" placeholder="district" class="form-control" disabled>
+                    <input type="hidden" name="district" id="post-create-district-hidden">
                   </div>
 
                   <label class="col-xs-3 col-sm-3 col-md-2 control-label" for="post-create-ward">Ward:</label>
                   <div class="col-xs-9 col-sm-3 col-md-4">
-                    <input type="text" name="ward" id="post-create-ward" placeholder="ward" class="form-control" disabled>
+                    <input type="text" id="post-create-ward" placeholder="ward" class="form-control" disabled>
+                    <input type="hidden" name="ward" id="post-create-ward-hidden">
                   </div>
                 </div>
                 
@@ -165,20 +168,21 @@
         },
         minLength: 0,
         select: function(event, ui) {
-          event.preventDefault();
-          $(this).val(ui.item.name);
           if($(this).attr('id') == inputProvince){
+            $("#post-create-province-hidden").val(ui.item.id);
             $.getJSON( getDistrictUrlApi + ui.item.id, function( data ) {
               $("#post-create-district-ward-container").show();
               setAutocomplete("#post-create-district", data.districts);
             });
             $("#post-create-district").removeAttr('disabled');
-          }
-          if ($(this).attr('id')== inputDistrict) {
+          } else if ($(this).attr('id')== inputDistrict) {
+            $("#post-create-district-hidden").val(ui.item.id);
             $.getJSON( getWardUrlApi + ui.item.id, function( data ) {
               setAutocomplete("#post-create-ward", data.wards);
             });
             $("#post-create-ward").removeAttr('disabled');
+          } else {
+            $("#post-create-ward-hidden").val(ui.item.id);
           }
         }
       });

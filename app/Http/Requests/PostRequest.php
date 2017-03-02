@@ -3,6 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Models\District;
+use App\Models\Ward;
 
 class PostRequest extends FormRequest
 {
@@ -36,6 +38,9 @@ class PostRequest extends FormRequest
                   'title' => 'required|min:4|max:256',
                   'price' => 'required|integer',
                   'type' => 'required|in:"sell", "buy',
+                  'province' => 'required|exists:provinces,id',
+                  'district' => 'required|exists:districts,id',
+                  'ward' => 'required|exists:wards,id',
                   'address' => 'required|min:4|max:256',
                   'images' => 'required',
                   'images.*' => 'required|image|max:5120',
