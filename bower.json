@@ -20,6 +20,7 @@
     "skel": "^3.0.1",
     "util": "^3.46.1",
     "font-awesome": "^4.7.0",
-    "twbs-pagination": "^1.4.1"
+    "twbs-pagination": "^1.4.1",
+    "jquery-ui": "^1.12.1"
   }
 }

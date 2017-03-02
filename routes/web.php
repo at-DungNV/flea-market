@@ -20,6 +20,7 @@ Route::group(['namespace' => 'Frontend'], function () {
       'uses' => 'PostController@index',
       'as'   => 'post.index'
     ]);
+    
     Route::group(['middleware' => ['auth']], function () {
       
       Route::resource('post', 'PostController', ['except' => [
@@ -67,5 +68,32 @@ Route::group(['namespace' => 'Frontend'], function () {
         'as'   => 'post.getPostImages'
       ]);
 
+    });
+
+    Route::group(['prefix' => 'api'], function () {
+        Route::get('provinces', [
+          'uses' => 'ProvinceController@index',
+          'as'   => 'province.index'
+        ]);
+        
+        Route::get('province/{id}', [
+          'uses' => 'ProvinceController@getDistricts',
+          'as'   => 'province.getDistricts'
+        ]);
+        
+        Route::get('districts', [
+          'uses' => 'DistrictController@index',
+          'as'   => 'district.index'
+        ]);
+        
+        Route::get('district/{id}', [
+          'uses' => 'DistrictController@getWards',
+          'as'   => 'district.getWards'
+        ]);
+        
+        Route::get('wards', [
+          'uses' => 'WardController@index',
+          'as'   => 'ward.index'
+        ]);
     });
 });
