@@ -37,7 +37,7 @@
                 
                 
                 <div class="form-group has-feedback">
-                  <label class="col-xs-3 col-sm-3 col-md-2 control-label" for="post-price">Price:</label>
+                  <label class="col-xs-3 col-sm-3 col-md-2 control-label" for="post-price">Price:<span class="required">*</span></label>
                   <div class="col-xs-9 col-sm-9 col-md-10">
                     <input type="text" name="price" class="form-control" id="post-price" value="0" pattern="^[0-9]{1,}$" required />
                     <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
@@ -46,7 +46,7 @@
                 </div>
                 
                 <div class="form-group has-feedback">
-                  <label class="col-xs-3 col-sm-3 col-md-2 control-label radio-button-group">Type:</label>
+                  <label class="col-xs-3 col-sm-3 col-md-2 control-label radio-button-group">Type:<span class="required">*</span></label>
                   <div class="col-xs-9 col-sm-9 col-md-10"  style="padding-top: 5px;">
                     <input type="radio" name="type" id="post-type-sell" value="{{ \Config::get('common.SELL_TYPE') }}" checked>
                     <label for="post-type-sell" class="radio-button">Sell</label>
@@ -56,7 +56,7 @@
                 </div>
                 
                 <div class="form-group has-feedback">
-                  <label class="col-xs-3 col-sm-3 col-md-2 control-label" for="post-phone">Phone:</label>
+                  <label class="col-xs-3 col-sm-3 col-md-2 control-label" for="post-phone">Phone:<span class="required">*</span></label>
                   <div class="col-xs-9 col-sm-9 col-md-10">
                     <input type="text" name="phone" class="form-control" id="post-phone" value="{{Auth::user()->phone}}" pattern="^[0-9]{1,11}$" required />
                     <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
@@ -65,7 +65,7 @@
                 
                 <!-- Text input-->
                 <div class="form-group ui-widget has-feedback">
-                  <label class="col-xs-3 col-sm-3 col-md-2 control-label" for="post-create-province">City:</label>
+                  <label class="col-xs-3 col-sm-3 col-md-2 control-label" for="post-create-province">City:<span class="required">*</span></label>
                   <div class="col-xs-9 col-sm-9 col-md-10">
                     <input type="text" id="post-create-province" placeholder="City" class="form-control" required>
                     <input type="hidden" name="province_id" id="post-create-province-hidden">
@@ -75,14 +75,14 @@
 
                 <!-- Text input-->
                 <div class="form-group has-feedback" id="post-create-district-ward-container">
-                  <label class="col-xs-3 col-sm-3 col-md-2 control-label" for="post-create-district">District:</label>
+                  <label class="col-xs-3 col-sm-3 col-md-2 control-label" for="post-create-district">District:<span class="required">*</span></label>
                   <div class="col-xs-9 col-sm-3 col-md-4">
                     <input type="text"  id="post-create-district" placeholder="district" class="form-control" disabled required>
                     <input type="hidden" name="district_id" id="post-create-district-hidden">
                     <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                   </div>
 
-                  <label class="col-xs-3 col-sm-3 col-md-2 control-label" for="post-create-ward">Ward:</label>
+                  <label class="col-xs-3 col-sm-3 col-md-2 control-label" for="post-create-ward">Ward:<span class="required">*</span></label>
                   <div class="col-xs-9 col-sm-3 col-md-4">
                     <input type="text" id="post-create-ward" placeholder="ward" class="form-control" disabled>
                     <input type="hidden" name="ward_id" id="post-create-ward-hidden">
@@ -91,7 +91,7 @@
                 </div>
                 
                 <div class="form-group has-feedback">
-                  <label class="col-xs-3 col-sm-3 col-md-2 control-label" for="post-address">Address:</label>
+                  <label class="col-xs-3 col-sm-3 col-md-2 control-label" for="post-address">Address:<span class="required">*</span></label>
                   <div class="col-xs-9 col-sm-9 col-md-10">
                     <input type="text" name="address" class="form-control" id="post-address" value="{{Auth::user()->address}}" required>
                     <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
@@ -99,7 +99,7 @@
                 </div>
                 
                 <div class="form-group has-feedback">
-                  <label class="col-xs-3 col-sm-3 col-md-2 control-label" for="post-images">Images:</label>
+                  <label class="col-xs-3 col-sm-3 col-md-2 control-label" for="post-images">Images:<span class="required">*</span></label>
                   <div class="col-xs-9 col-sm-9 col-md-10">
                     <input type="file" name="images[]" multiple class="form-control" id="post-images" accept="image/*" required>
                   </div>
@@ -123,8 +123,8 @@
 
               </fieldset>
             </form>
-          </div><!-- /.col-lg-12 -->
-      </div><!-- /.row -->
+          </div>
+      </div>
     </div>
   </div>
 @endsection
