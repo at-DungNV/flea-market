@@ -29,7 +29,7 @@
                 <div class="form-group has-feedback">
                   <label class="col-xs-3 col-sm-3 col-md-2 control-label" for="post-title">Title:<span class="required">*</span></label>
                   <div class="col-xs-9 col-sm-9 col-md-10">
-                    <input type="text" name="title" pattern="^[_A-z0-9]{1,}$" maxlength="256" class="form-control" id="post-title" required>
+                    <input type="text" name="title" pattern="^[_ A-z0-9]{1,}$" maxlength="256" placeholder="Nhập tiêu đề của bài đăng" class="form-control" id="post-title" required>
                     <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                     <div class="help-block with-errors"></div>
                   </div>
@@ -67,7 +67,7 @@
                 <div class="form-group ui-widget has-feedback">
                   <label class="col-xs-3 col-sm-3 col-md-2 control-label" for="post-create-province">City:<span class="required">*</span></label>
                   <div class="col-xs-9 col-sm-9 col-md-10">
-                    <input type="text" id="post-create-province" placeholder="City" class="form-control" required>
+                    <input type="text" id="post-create-province" placeholder="Nhập thành phố hoặc tỉnh thành" class="form-control" required>
                     <input type="hidden" name="province_id" id="post-create-province-hidden">
                     <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                   </div>
@@ -108,7 +108,7 @@
                 <div class="form-group">
                   <label class="col-xs-3 col-sm-3 col-md-2 control-label" for="post-description">Description:</label>
                   <div class="col-xs-9 col-sm-9 col-md-10">
-                    <textarea class="form-control" rows="5" name="description" id="post-description"></textarea>
+                    <textarea class="form-control" rows="5" name="description" id="post-description" placeholder="Nhập mô tả để người dùng dễ hình dung hơn"></textarea>
                   </div>
                 </div>
                 <div class="form-group">
