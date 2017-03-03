@@ -15,7 +15,7 @@
 @stop
 
 @section('content')
-<h2 id="content">{{ $post->title }}</h2>
+<h2 id="content" class="text-center">{{ $post->title }}</h2>
 <div class="row">
   <div class="col-md-8 col-sm-12 col-xs-12">
     <div id="post-show-images">
@@ -47,6 +47,8 @@
     </div>
   </div>
 </div>
+<hr>
+<h2><i class="fa fa-money" aria-hidden="true"></i>: {{ $post->price }} VNĐ</h2>
 <p class="margin-top-10">
   {{ $post->description }}
 </p>

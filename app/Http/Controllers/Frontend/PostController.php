@@ -86,6 +86,7 @@ class PostController extends Controller
         // store post
         $user_id = Auth::user()->id;
         $request['user_id'] = $user_id;
+        $request['title'] = $request->input('title'). ' ' . strtotime(Carbon::now());
         $request['slug'] = str_slug($request->input('title'), '-');
         $post = Post::create($request->all());
 
