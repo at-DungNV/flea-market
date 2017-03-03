@@ -155,3 +155,6 @@ ul.nav li.dropdown ul.dropdown-menu .dropdown-plus-title {
     /* add padding to account for vertical scrollbar */
     padding-right: 20px;
 }
+.required {
+  color: red;
+}
