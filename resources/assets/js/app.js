@@ -18,3 +18,14 @@ Vue.component('example', require('./components/Example.vue'));
 const app = new Vue({
     el: '#app'
 });
+
+window.Pusher = require('pusher-js');
+
+import Echo from "laravel-echo"
+
+window.echo = new Echo('24b72305eb14391936ea');
+
+echo.channel('chat-room.1')
+    .listen('ChatMessageWasReceived', function (data) {
+        console.log(data.user, data.chatMessage);
+    });

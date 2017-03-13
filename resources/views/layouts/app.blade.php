@@ -56,6 +56,8 @@
     <script src="/bower_resources/util/util.min.js"></script>
     <!-- bootstrap -->
     <script src="/bower_resources/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- notification -->
+    <script src="https://js.pusher.com/3.2/pusher.min.js" charset="utf-8"></script>
     @stack('end-page-scripts')
     <!-- main -->
     <script src="/js/app.js"></script>
