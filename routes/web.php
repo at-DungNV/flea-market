@@ -11,7 +11,36 @@
 |
 */
 
+use App\Events\MessagePosted;
+
 Auth::routes();
+
+
+Route::get('/chat', function () {
+    return view('chat');
+})->middleware('auth');
+
+Route::get('/messages', function () {
+    return App\Models\Message::with('user')->get();
+})->middleware('auth');
+
+Route::post('/messages', function () {
+    // Store the new message
+    $user = Auth::user();
+    
+    $message = $user->messages()->create([
+        'message' => request()->get('message')
+    ]);
+    // Announce that a new message has been posted
+    broadcast(new MessagePosted($message, $user))->toOthers();
+
+    return ['status' => 'OK'];
+})->middleware('auth');
+
+
+
+
+
 
 Route::group(['namespace' => 'Frontend'], function () {
     Route::get('/', 'HomeController@index');
