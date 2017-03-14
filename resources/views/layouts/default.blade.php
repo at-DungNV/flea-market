@@ -43,5 +43,9 @@
     @stack('end-page-scripts')
     <!-- main -->
     <script src="/js/app.js"></script>
+    <script>
+        window.Laravel = { csrfToken: '{{ csrf_token() }}' };
+    </script>
+    <script src="{{ asset('js/app.js') }}"></script>
   </body>
 </html>

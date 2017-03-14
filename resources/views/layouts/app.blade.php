@@ -57,6 +57,11 @@
     <!-- bootstrap -->
     <script src="/bower_resources/bootstrap/dist/js/bootstrap.min.js"></script>
     @stack('end-page-scripts')
+    <script>
+      window.Laravel = { csrfToken: '{{ csrf_token() }}' };
+    </script>
+    
+    <script src="{{ asset('js/app.js') }}"></script>
     <!-- main -->
     <script src="/js/app.js"></script>
   </body>

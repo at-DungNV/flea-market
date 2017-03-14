@@ -13,6 +13,43 @@
 
 Auth::routes();
 
+
+Route::post('posts/{id}/comments', [
+    'as' => 'comments.create',
+    function ($id, \Illuminate\Http\Request $request) {
+        $post = \App\Models\Post::findOrFail($id);
+        $comment = new \App\Models\Comment([
+            'comment'  => $request->input('comment'),
+            'user_id'  => \Auth::user()->id,
+            'post_id' => $id,
+        ]);
+        $comment->save();
+        broadcast(new \App\Events\NewComment($comment))->toOthers();
+
+        return $comment;
+    },
+]);
+
+Route::get('posts/{id}', [
+    'as' => 'posts.show',
+    function ($id) {
+        $post = \App\Models\Post::findOrFail($id);
+
+        return view('show')
+            ->with('post', $post);
+    },
+]);
+
+Route::get('posts/{id}/comments', [
+    'as' => 'comments.list',
+    function ($id) {
+        $post = \App\Models\Post::findOrFail($id);
+
+        return $post->comments;
+    },
+]);
+
+
 Route::group(['namespace' => 'Frontend'], function () {
     Route::get('/', 'HomeController@index');
     

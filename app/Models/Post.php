@@ -118,4 +118,12 @@ class Post extends Model
     );
     return $data;
   }
+  
+  
+  
+  public function comments()
+  {
+      return $this->hasMany(Comment::class);
+  }
+
 }
