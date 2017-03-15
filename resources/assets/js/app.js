@@ -37,14 +37,21 @@ const app = new Vue({
             // Add to existing messages
             this.messages.push(message);
             // Persist to the database etc
-            axios.post('/messages', message).then(response => {
-                // Do whatever;
+            
+            Vue.http.post('/messages', message).then((response) => {
             })
+            // axios.post('/messages', message).then(response => {
+            //     // Do whatever;
+            // })
         }
     },
+    
     created() {
-        axios.get('/messages').then(response => {
-            this.messages = response.data;
-        });
+        // axios.get('/messages').then(response => {
+        // });
+        var self = this;
+        Vue.http.get('/messages').then((response) => {
+          this.messages = response.data;
+        })
     }
 });
