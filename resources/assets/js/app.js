@@ -40,16 +40,10 @@ const app = new Vue({
             
             Vue.http.post('/messages', message).then((response) => {
             })
-            // axios.post('/messages', message).then(response => {
-            //     // Do whatever;
-            // })
         }
     },
     
     created() {
-        // axios.get('/messages').then(response => {
-        // });
-        var self = this;
         Vue.http.get('/messages').then((response) => {
           this.messages = response.data;
         })
