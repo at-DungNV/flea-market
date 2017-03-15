@@ -32,7 +32,12 @@ Route::post('/messages', function () {
     return ['status' => 'OK'];
 })->middleware('auth');
 
+Route::get('/broadcast', function() {
+  
+    event(new \App\Events\TestEvent('Broadcasting in Laravel using Pusher!'));
 
+    return view('frontend.welcome');
+});
 
 
 
@@ -120,3 +125,7 @@ Route::group(['namespace' => 'Frontend'], function () {
         ]);
     });
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
