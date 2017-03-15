@@ -37,6 +37,9 @@
       <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
           <div id="main">
+              <div id="app">
+                @yield('chat')
+              </div>
               <!-- content -->
               @yield('errors-message')
               @yield('susscess-message')
