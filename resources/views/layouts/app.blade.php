@@ -11,6 +11,7 @@
 
     <link rel="stylesheet" href="/bower_resources/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="/bower_resources/font-awesome/css/font-awesome.min.css" media="screen" title="no title" charset="utf-8">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="/css/app.css">
     <link rel="stylesheet" href="/css/myapp.css">
     @stack('stylesheet')
@@ -61,6 +62,20 @@
     <script src="/bower_resources/bootstrap/dist/js/bootstrap.min.js"></script>
     @stack('end-page-scripts')
     <!-- main -->
-    <script src="/js/app.js"></script>
+    <!-- <script>
+        window.Laravel = { csrfToken: '{{ csrf_token() }}' };
+    </script> -->
+    <!-- <script src="//js.pusher.com/4.0/pusher.min.js"></script> -->
+    <!-- <script>
+      var pusher = new Pusher("24b72305eb14391936ea", {
+        cluster: 'eu'
+      });
+      var channel = pusher.subscribe('private-test');
+      channel.bind('testevent', function(data) {
+        alert("dungnv");
+      });
+    </script> -->
+    <script src="{{ asset('js/app.js') }}"></script>
+    <!-- <script src="/js/app.js"></script> -->
   </body>
 </html>

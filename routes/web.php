@@ -26,13 +26,21 @@ Route::get('/messages', function () {
 Route::post('/messages', function () {
     // Store the new message
     $user = Auth::user();
-    $user->messages()->create([
+    
+    $message = $user->messages()->create([
         'message' => request()->get('message')
     ]);
+    // Announce that a new message has been posted
+    event(new \App\Events\MessagePosted($message, $user));
+    
     return ['status' => 'OK'];
 })->middleware('auth');
 
+Route::get('/broadcast', function() {
+    event(new \App\Events\TestEvent('Broadcasting in Laravel using Pusher!'));
 
+    return view('frontend.welcome');
+});
 
 
 
