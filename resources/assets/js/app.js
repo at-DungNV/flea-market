@@ -13,52 +13,33 @@ require('./bootstrap');
  * the application, or feel free to tweak this setup for your needs.
  */
 
-Vue.component('example', require('./components/Example.vue'));
-Vue.component('chat-message', require('./components/ChatMessage.vue'));
-Vue.component('chat-log', require('./components/ChatLog.vue'));
-Vue.component('chat-composer', require('./components/ChatComposer.vue'));
 
-const app = new Vue({
-    el: '#app',
+Vue.component('notification-item', require('./components/NotificationItem.vue'));
+Vue.component('notification-log', require('./components/NotificationLog.vue'));
+
+const demo = new Vue({
+    el: '#notification',
     data: {
-        messages: [],
-        usersInRoom: []
+        notifications: []
     },
     methods: {
-        addMessage(message) {
-            // Add to existing messages
-            this.messages.push(message);
-            // Persist to the database etc
-            
-            Vue.http.post('/messages', message).then((response) => {
-            })
-        }
     },
     
     created() {
-        Vue.http.get('/messages').then((response) => {
-          this.messages = response.data;
-        })
+        // khi load trang sẽ lấy giá trị gán vào element giống như gọi bình thường
+        Vue.http.get('/notifications').then((response) => {
+          this.notifications = response.data;
+        });
         
-        // window.Echo.channel('chatroom')
-        //   .listen('MessagePosted', (e) => {
-        //       console.log(e);
-        //   });
-        Echo.join('chatroom')
-            .here((users) => {
-                this.usersInRoom = users;
-            })
-            .joining((user) => {
-                this.usersInRoom.push(user);
-            })
-            .leaving((user) => {
-                this.usersInRoom = this.usersInRoom.filter(u => u != user)
-            })
-            .listen('MessagePosted', (e) => {
-                this.messages.push({
-                    message: e.message.message,
-                    user: e.user
-                });
+        // this is called real time
+        Echo.private('notification')
+            .listen('PostApprovalEvent', (e) => {
+                this.notifications.unshift(e.notification);
+                // if ($("#notificationContainer").is(":visible") == true) {
+                //   
+                // }
+                $("#notification_count").html(parseInt($("#notification_count").html()) + 1);
+                $("#notification_count").fadeIn("slow");
             });
     }
 });

@@ -2,10 +2,8 @@
 
 namespace App\Events;
 
-
-use App\Models\Message;
+use App\Models\Notification;
 use App\Models\User;
-
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Broadcasting\PrivateChannel;
@@ -13,32 +11,34 @@ use Illuminate\Broadcasting\PresenceChannel;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 
-class MessagePosted implements ShouldBroadcast
+class PostApprovalEvent implements ShouldBroadcast
 {
     use InteractsWithSockets, SerializesModels;
     
     /**
-     * Message
-     *
-     * @var Message
-     */
-    public $message;
-    /**
-     * User
-     *
-     * @var User
-     */
+    * User
+    *
+    * @var User
+    */
     public $user;
+    
+    /**
+     * Post
+     *
+     * @var Post
+     */
+    public $notification;
+    
     
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct(Message $message, User $user)
+    public function __construct($user, $notification)
     {
-        $this->message = $message;
         $this->user = $user;
+        $this->notification = $notification;
     }
 
     /**
@@ -48,7 +48,6 @@ class MessagePosted implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return new PrivateChannel('chatroom');
+        return new PrivateChannel('notification');
     }
-    
 }

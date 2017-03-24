@@ -32,6 +32,7 @@ Vue.http.interceptors.push((request, next) => {
 });
 
 
+
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
  * for events that are broadcast by Laravel. Echo and event broadcasting
@@ -50,13 +51,3 @@ window.Echo = new Echo({
     cluster: 'eu',
     encrypted: true
 });
-
-// window.Echo.private('private-test')
-//     .listen('testevent', (e) => {
-//         console.log("dungnv");
-//     });
-    
-// window.Echo.channel('private-test')
-//     .listen('testevent', (e) => {
-//         console.log('Hello World!');
-//     });

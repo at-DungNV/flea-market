@@ -42,6 +42,28 @@ Route::get('/broadcast', function() {
     return view('frontend.welcome');
 });
 
+Route::get('/notifications', function () {
+    return App\Models\Notification::where('user_id', '=', Auth::user()->id)->orderBy('id', 'desc')->get();
+})->middleware('auth');
+
+Route::get('/send-notifications', function () {
+    $user = Auth::user();
+    
+    $notification = App\Models\Notification::create([
+        'user_id' => 1,
+        'post_id' => 1,
+        'message' => 'dungnv',
+        'seen' => 1,
+    ]);
+    // Announce that a new message has been posted
+    event(new \App\Events\PostApprovalEvent($user, $notification));
+    
+    return ['status' => 'OK'];
+})->middleware('auth');
+
+
+
+
 
 
 Route::group(['namespace' => 'Frontend'], function () {

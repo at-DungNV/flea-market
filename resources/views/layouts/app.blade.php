@@ -11,7 +11,7 @@
 
     <link rel="stylesheet" href="/bower_resources/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="/bower_resources/font-awesome/css/font-awesome.min.css" media="screen" title="no title" charset="utf-8">
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet" type="text/css">
+    <!-- <link href="{{ asset('css/app.css') }}" rel="stylesheet" type="text/css"> -->
     <link rel="stylesheet" href="/css/app.css">
     <link rel="stylesheet" href="/css/myapp.css">
     @stack('stylesheet')
@@ -38,9 +38,6 @@
       <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
           <div id="main">
-              <div id="app">
-                @yield('chat')
-              </div>
               <!-- content -->
               @yield('errors-message')
               @yield('susscess-message')
@@ -62,20 +59,32 @@
     <script src="/bower_resources/bootstrap/dist/js/bootstrap.min.js"></script>
     @stack('end-page-scripts')
     <!-- main -->
-    <!-- <script>
-        window.Laravel = { csrfToken: '{{ csrf_token() }}' };
-    </script> -->
-    <!-- <script src="//js.pusher.com/4.0/pusher.min.js"></script> -->
-    <!-- <script>
-      var pusher = new Pusher("24b72305eb14391936ea", {
-        cluster: 'eu'
+    <script src="/js/app.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function() {
+        // console.log($("#notification_count"));
+        // $("#notification_count").html(1);
+        if ($("#notification_count").html() == "0") {
+          $("#notification_count").fadeOut(0);
+        }
+        $("#notificationLink").click(function() {
+          $("#notificationContainer").fadeToggle(300);
+          $("#notification_count").fadeOut(0); // <> fadeIn
+          $("#notification_count").html(0);
+          return false;
+        });
+
+        //Document Click hiding the popup 
+        $(document).click(function() {
+          $("#notificationContainer").hide();
+        });
+
+        //Popup on click
+        $("#notificationContainer").click(function() {
+          return false;
+        });
+
       });
-      var channel = pusher.subscribe('private-test');
-      channel.bind('testevent', function(data) {
-        alert("dungnv");
-      });
-    </script> -->
-    <script src="{{ asset('js/app.js') }}"></script>
-    <!-- <script src="/js/app.js"></script> -->
+    </script>
   </body>
 </html>

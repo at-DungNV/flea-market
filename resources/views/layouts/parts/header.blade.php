@@ -28,6 +28,17 @@
               </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
+            <li id="notification">
+              <span id="notification_count">0</span>
+              <a href="#" id="notificationLink"><i class="fa fa-envelope fa-2x" aria-hidden="true"></i></a>
+              <div id="notificationContainer">
+                <div id="notificationTitle">Notifications</div>
+                <div id="notificationsBody" class="notifications">
+                  <notification-log :notifications="notifications"></notification-log>
+                </div>
+                <div id="notificationFooter"><a href="#">See All</a></div>
+              </div>
+            </li>
             @if (Auth::guest())
               <li class="{{ Request::is('login') ? 'active' : '' }}"><a href="{{ url('/login') }}">Login</a></li>
               <li class="{{ Request::is('register') ? 'active' : '' }}"><a href="{{ url('/register') }}">Register</a></li>
@@ -67,7 +78,6 @@
                   </ul>
               </li>
             @endif
-
           </ul>
       </div>
   </div>
