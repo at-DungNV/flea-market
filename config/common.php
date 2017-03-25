@@ -4,7 +4,7 @@ return [
     'FEMALE_GENDER' => 0,
     'BUY_TYPE' => 'buy',
     'SELL_TYPE' => 'sell',
-    'NUMBER_ITEM_PER_PAGE' => 9,
+    'NUMBER_ITEM_PER_PAGE' => 12,
     'TYPE_POST_WAITING' => 'waiting',
     'TYPE_POST_REJECTED' => 'rejected',
     'TYPE_POST_HIDDEN' => 'hidden',
