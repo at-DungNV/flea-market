@@ -9,7 +9,7 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="icon" type="image/png" href="images/small-logo-01.png">
+    <link rel="icon" type="image/png" href="/images/small-logo-01.png">
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <link rel="stylesheet" href="/bower_resources/bootstrap/dist/css/bootstrap.min.css">
@@ -40,12 +40,12 @@
           @yield('breadcrumb')
         </div>
         <div id="wrapper-bouton-icon">
-        	<div id="bouton-ai"><img src="images/icon-ai.svg" alt="illustrator" title="Illustrator" height="28" width="28"></div>
-        	<div id="bouton-psd"><img src="images/icon-psd.svg" alt="photoshop" title="Photoshop" height="28" width="28"></div>
-        	<div id="bouton-theme"><img src="images/icon-themes.svg" alt="theme" title="Theme" height="28" width="28"></div>
-        	<div id="bouton-font"><img src="images/icon-font.svg" alt="font" title="Font" height="28" width="28"></div>
-        	<div id="bouton-photo"><img src="images/icon-photo.svg" alt="photo" title="Photo" height="28" width="28"></div>
-        	<div id="bouton-premium"><img src="images/icon-premium.svg" alt="premium" title="Premium" height="28" width="28"></div>
+        	<div id="bouton-ai"><img src="/images/icon-ai.svg" alt="illustrator" title="Illustrator" height="28" width="28"></div>
+        	<div id="bouton-psd"><img src="/images/icon-psd.svg" alt="photoshop" title="Photoshop" height="28" width="28"></div>
+        	<div id="bouton-theme"><img src="/images/icon-themes.svg" alt="theme" title="Theme" height="28" width="28"></div>
+        	<div id="bouton-font"><img src="/images/icon-font.svg" alt="font" title="Font" height="28" width="28"></div>
+        	<div id="bouton-photo"><img src="/images/icon-photo.svg" alt="photo" title="Photo" height="28" width="28"></div>
+        	<div id="bouton-premium"><img src="/images/icon-premium.svg" alt="premium" title="Premium" height="28" width="28"></div>
   			</div>
     	</div>
     </div>
@@ -152,7 +152,7 @@
 
 
     <!-- SCRIPT -->
-    <script src="/bower_resources/jquery/dist/jquery.js"></script>
+    <script src="/bower_resources/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="/bower_resources/jquery.scrollTo/jquery.scrollTo.js"></script>
     <script type="text/javascript" src="/bower_resources/jquery.localScroll/jquery.localScroll.js"></script>
     <!-- <script type="text/javascript" src="js/jquery-animate-css-rotate-scale.js"></script> -->

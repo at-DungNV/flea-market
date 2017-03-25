@@ -13,13 +13,13 @@
   <div class="container object">
     <div id="main-container-image">
       <section class="work">
-        
-        
-        
         @if(count($posts) > 0) 
           @foreach ($posts as $post)
             <figure class="white">
-              <a href="details.html">
+              <!-- <h6>{{ str_limit($post->title, $limit = 15, $end = '...') }}</h6> -->
+              <div class="title-text" style="margin-left: 5%;
+                margin-top: 5%;">{{ str_limit($post->title, $limit = 30, $end = '...') }} </div>
+              <a href="{{ route('post.show', [$post->slug]) }}">
                 @if(Storage::disk('local')->exists($post->images->first()['url']))
                 <a href="{{ route('post.show', [$post->slug]) }}" class="image"><img class="image" src="{{ route('post.getPostImages', [$post->images->first()['url']]) }}" alt="" /></a>
                 @else
@@ -27,36 +27,23 @@
                 @endif
                 <!-- mouse hover will display description -->
                 <dl>
-                  <dt>{{ str_limit($post->title, $limit = 15, $end = '...') }}</dt>
+                  <dt>
+                    <a href="{{ route('post.show', [$post->slug]) }}">
+                      {{ str_limit($post->title, $limit = 15, $end = '...') }}
+                    </a>
+                  </dt>
                   <dd>
                     {{ str_limit($post->description, $limit = 100, $end = '...') }}
                   </dd>	
                 </dl>
               </a>
               <div id="wrapper-part-info">
-                <div class="part-info-image"><img src="images/icon-psd.svg" alt="" width="28" height="28"/></div>
+                <div class="part-info-image"><img src="images/money.svg" alt="" width="28" height="28"/></div>
                 <div id="part-info">
-                  {{ $post->price }} - <a href="{{ route('post.show', [$post->slug]) }}" class="button">More.....</a>
+                  {{ $post->price }} - <a href="{{ route('post.show', [$post->slug]) }}" class="button"> {{ $post->created_at->diffForHumans() }}</a>
                 </div>
               </div>
             </figure>
-              <!-- <div class="row">
-                      <div class="col-xs-4 col-md-4">
-                        @if(Storage::disk('local')->exists($post->images->first()['url']))
-                        <a href="{{ route('post.show', [$post->slug]) }}" class="image"><img class="image" src="{{ route('post.getPostImages', [$post->images->first()['url']]) }}" alt="" /></a>
-                        @else
-                        <a href="{{ route('post.show', [$post->slug]) }}" class="image"><img class="image" src="images/pic01.jpg" alt="" /></a>
-                        @endif
-                        <h3>{{ str_limit($post->title, $limit = 100, $end = '...') }}</h3>
-                        <p>
-                          {{ str_limit($post->description, $limit = 100, $end = '...') }}
-                        </p>
-                        <ul class="actions">
-                          <li><a href="{{ route('post.show', [$post->slug]) }}" class="button">More</a></li>
-                        </ul>
-                        <hr class="margin-top-10">
-                      </div>
-              </div> -->
           @endforeach
           
           <div class="text-center">
@@ -90,14 +77,6 @@
     <div class="text-center">
       <ul id="post-index-pagination" class="pagination-sm"></ul>
     </div>
-    <!-- <div class="oldnew">
-      <div class="wrapper-oldnew-prev">
-          <div id="oldnew-prev"></div>
-      </div>
-      <div class="wrapper-oldnew-next">
-        <div id="oldnew-next"></div>
-      </div>
-    </div> -->
   </div>  
   
 @endsection
