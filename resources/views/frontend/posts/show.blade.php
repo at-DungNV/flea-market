@@ -1,13 +1,6 @@
 @extends('layouts.app')
 
 @push('stylesheet')
-  <link href="/css/tiksluscarousel.css" rel="stylesheet">
-  <link href="/css/animate.css" rel="stylesheet">
-  <style media="screen">
-    #post-show-images ul li{
-      padding-left: 0px;
-    }
-  </style>
 @endpush
 
 @section('breadcrumb')
@@ -19,18 +12,32 @@
     <h2 id="content" class="text-center">{{ $post->title }}</h2>
     <div class="row">
       <div class="col-md-8 col-sm-12 col-xs-12">
-        <div id="post-show-images">
-          <!-- {{$post->images}} -->
-          <ul>
-            @foreach ($post->images as $image)
-            <li><img src="{{ route('post.getPostImages', [$image->url]) }}" class="img-rounded"></li>
+        <div id="post-show-images" class="carousel slide" data-ride="carousel">
+          <!-- Indicators -->
+          <ol class="carousel-indicators">
+            @foreach ($post->images as $key => $image)
+              <li data-target="#post-show-images" class="{{ $key == 0 ? 'active' : '' }}"></li>
             @endforeach
-            <!-- <li><img src="/images/pic02.jpg" class="img-rounded"></li>
-            <li><img src="/images/pic03.jpg" class="img-rounded"></li>
-            <li><img src="/images/pic04.jpg" class="img-rounded"></li>
-            <li><img src="/images/pic05.jpg" class="img-rounded"></li>
-            <li><img src="/images/pic06.jpg" class="img-rounded"></li> -->
-          </ul>
+          </ol>
+
+          <!-- Wrapper for slides -->
+          <div class="carousel-inner" role="listbox">
+            @foreach ($post->images as $key => $image)
+              <div class="item {{ $key == 0 ? 'active' : '' }}">
+                <img src="{{ route('post.getPostImages', [$image->url]) }}" class="img-rounded">
+              </div>
+            @endforeach
+          </div>
+
+          <!-- Left and right controls -->
+          <a class="left carousel-control" href="#post-show-images" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="right carousel-control" href="#post-show-images" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
         </div>
       </div>
       <div class="col-md-4 col-sm-12 col-xs-12">
@@ -49,11 +56,12 @@
       </div>
     </div>
     <hr>
+    
+    <h4><i class="fa fa-address-card" aria-hidden="true"></i> Địa chỉ người đăng tin</h4>
     <h2><i class="fa fa-money" aria-hidden="true"></i>: {{ $post->price }} VNĐ</h2>
     <p class="margin-top-10">
       {{ $post->description }}
     </p>
-    <h4><i class="fa fa-address-card" aria-hidden="true"></i> Địa chỉ người đăng tin</h4>
     <ul class="alt">
       <li>{{ $post->address }}</li>
     </ul>
@@ -63,17 +71,4 @@
 @endsection
 
 @push('end-page-scripts')
-  <script type="text/javascript" src="/js/tiksluscarousel.js"></script>
-  <script type="text/javascript" src="/js/rainbow.min.js"></script>
-  <script language="javascript">
-		$(document).ready(function(){
-        $("#post-show-images").tiksluscarousel({
-          progressBar: true,
-          width: 0,
-          height: 200,
-          nav: 'thumbnails',
-          type: "slide"
-        });
-		});
-		</script>
 @endpush
