@@ -145,7 +145,7 @@ class UserController extends Controller
                     }])
                     ->where('user_id', '=', Auth::user()->id)
                     ->Where('state', '=', \Config::get('common.TYPE_POST_ACTIVE'))
-                    ->paginate(3);
+                    ->paginate(8);
       return view('frontend.users.approvalPosts', ['posts' => $posts, 'crumbs' => $crumbs]);
     }
     
@@ -166,7 +166,7 @@ class UserController extends Controller
                     }])
                     ->where('user_id', '=', Auth::user()->id)
                     ->Where('state', '=', \Config::get('common.TYPE_POST_REJECTED'))
-                    ->paginate(3);
+                    ->paginate(8);
       return view('frontend.users.rejectPosts', ['posts' => $posts, 'crumbs' => $crumbs]);
     }
 

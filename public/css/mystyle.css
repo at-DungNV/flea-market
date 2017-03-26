@@ -230,7 +230,10 @@ ul.nav li.dropdown ul.dropdown-menu {
   overflow: auto;
 }
 
-
 .line {
   border:solid #FFF 1px;
+}
+
+.part-info-font-12 {
+  font-size: 12px !important;
 }

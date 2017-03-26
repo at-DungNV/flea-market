@@ -23,7 +23,7 @@
                 @if(Storage::disk('local')->exists($post->images->first()['url']))
                 <a href="{{ route('post.show', [$post->slug]) }}" class="image"><img class="image" src="{{ route('post.getPostImages', [$post->images->first()['url']]) }}" alt="" /></a>
                 @else
-                <a href="{{ route('post.show', [$post->slug]) }}" class="image"><img class="image" src="images/pic01.jpg" alt="" /></a>
+                <a href="{{ route('post.show', [$post->slug]) }}" class="image"><img class="image" src="/images/pic01.jpg" alt="" /></a>
                 @endif
                 <!-- mouse hover will display description -->
                 <dl>
@@ -37,16 +37,15 @@
                   </dd>	
                 </dl>
               </a>
-              <div id="wrapper-part-info">
-                <div class="part-info-image"><img src="images/money.svg" alt="" width="28" height="28"/></div>
-                <div id="part-info">
+              <div class="wrapper-part-info">
+                <div class="part-info-image"><img src="/images/money.svg" alt="" width="28" height="28"/></div>
+                <div class="part-info">
                   {{ $post->price }} - <a href="{{ route('post.show', [$post->slug]) }}" class="button"> {{ $post->created_at->diffForHumans() }}</a>
                 </div>
               </div>
             </figure>
           @endforeach
-          
-          <div class="text-center">
+          <div class="text-center col-xs-12 col-sm-12 col-md-12">
             <ul id="post-index-pagination" class="pagination-sm"></ul>
           </div>
         @else
@@ -66,8 +65,8 @@
              </div>
           </div>
         @endif
-        
       </section>
+        
 
     </div>	
     
