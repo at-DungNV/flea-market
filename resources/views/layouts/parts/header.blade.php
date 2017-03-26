@@ -1,4 +1,4 @@
-<div id="wrapper-header"  class="container-fluid">
+<div id="wrapper-header">
   <div id="main-header" class="object">
     <div class="logo"><img src="/images/logo-burst.png" alt="logo platz" height="38" width="90"></div>
     
@@ -9,9 +9,9 @@
         <li class="dropdown {{ Request::is('posts/*') ? 'active' : '' }}">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Post <b class="caret"></b></a>
           <ul class="dropdown-menu">
-              <li><a href="{{ route('post.index') }}">Index</a></li>
+              <li><a href="{{ route('post.index') }}">Index <span class="glyphicon glyphicon-list pull-right"></span></a></li>
               <li class="divider"></li>
-              <li><a href="{{ route('post.create') }}">Create</a></li>
+              <li><a href="{{ route('post.create') }}">Create <span class="glyphicon glyphicon-plus pull-right"></span></a></li>
           </ul>
         </li>
             
@@ -68,3 +68,4 @@
     <div id="stripes"></div>
   </div>
 </div>
+

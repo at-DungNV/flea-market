@@ -14,7 +14,7 @@
 
 
 @section('content')
-  <div class="row">
+  <div class="content">
     <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
       <div class="panel panel-default">
         <div class="panel-heading" align="center"><h3><strong>Thông tin cá nhân</strong></h3></div>

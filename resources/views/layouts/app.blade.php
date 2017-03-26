@@ -2,10 +2,8 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -25,10 +23,6 @@
     </script>
   </head>
   <body>
-    <div id="notification">
-      
-    </div>
-
     <!-- HEADER -->
     @include('layouts.parts.header')
     
@@ -152,49 +146,16 @@
 
 
     <!-- SCRIPT -->
+    <script src="/bower_resources/jquery/dist/jquery.js"></script>
     <script src="/bower_resources/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="/bower_resources/jquery/dist/jquery.min.js"></script>
-    <!-- <script type="text/javascript" src="/bower_resources/jquery.scrollTo/jquery.scrollTo.js"></script>
-    <script type="text/javascript" src="/bower_resources/jquery.localScroll/jquery.localScroll.js"></script> -->
-    <!-- <script type="text/javascript" src="js/jquery-animate-css-rotate-scale.js"></script> -->
   	<script type="text/javascript" src="/bower_resources/fastclick/lib/fastclick.js"></script>
   	<script type="text/javascript" src="/bower_resources/jquery-color-animation/jquery.animate-colors.js"></script>
   	<script type="text/javascript" src="/bower_resources/jquery-shadow-animation/jquery.animate-shadow-min.js"></script>    
   	<script type="text/javascript" src="/js/main.js"></script>
   
-    <!-- skel -->
-    <!-- <script src="/bower_resources/skel/dist/skel.min.js"></script> -->
-    <!-- util -->
-    <!-- <script src="/bower_resources/util/util.min.js"></script> -->
     <!-- bootstrap -->
     @stack('end-page-scripts')
     <!-- main -->
     <script src="/js/app.js"></script>
-    <script type="text/javascript">
-      $(document).ready(function() {
-        // console.log($("#notification_count"));
-        // $("#notification_count").html(1);
-        if ($("#notification_count").html() == "0") {
-          $("#notification_count").fadeOut(0);
-        }
-        $("#notificationLink").click(function() {
-          $("#notificationContainer").fadeToggle(300);
-          $("#notification_count").fadeOut(0); // <> fadeIn
-          $("#notification_count").html(0);
-          return false;
-        });
-
-        //Document Click hiding the popup 
-        $(document).click(function() {
-          $("#notificationContainer").hide();
-        });
-
-        //Popup on click
-        $("#notificationContainer").click(function() {
-          return false;
-        });
-
-      });
-    </script>
   </body>
 </html>
