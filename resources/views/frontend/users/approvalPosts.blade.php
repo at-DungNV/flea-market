@@ -14,36 +14,25 @@
 
 
 @section('content')
-  <div class="content">
+  <div class="content-container">
     <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
-      <div class="panel panel-default">
-        <div class="panel-heading" align="center"><h3><strong>Thông tin cá nhân</strong></h3></div>
-        <div class="panel-body">
-          <ul class="alt">
-            <li>
-              <a href="{{ route('users.profile') }}">
-                <i class="fa fa-user-circle" aria-hidden="true">
-                </i>Profile
-              </a>
-            </li>
-            <li>
-              <a href="{{ route('users.approvalPosts') }}">
-                <i class="fa fa-money" aria-hidden="true"></i>Đang bán
-              </a>
-            </li>
-            <li>
-              <a href="{{ route('users.rejectedPosts') }}">
-                <i class="fa fa-window-close-o" aria-hidden="true">Bị từ chối</i>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <i class="fa fa-envelope-open" aria-hidden="true"></i>Notification
-              </a>
-            </li>
-            <li></li>
-          </ul>
-        </div>
+      <div class="list-group">
+        <span href="#" class="list-group-item active" align="center">
+          Thông tin Cá nhân
+        </span>
+        <a href="{{ route('users.profile') }}" class="list-group-item">
+          <i class="fa fa-user-circle" aria-hidden="true">
+          </i> Profile
+        </a>
+        <a href="{{ route('users.approvalPosts') }}" class="list-group-item">
+          <i class="fa fa-money" aria-hidden="true"></i> Đang bán
+        </a>
+        <a href="{{ route('users.rejectedPosts') }}" class="list-group-item">
+          <i class="fa fa-window-close-o" aria-hidden="true"> Bị từ chối</i>
+        </a>
+        <a href="#" class="list-group-item">
+          <i class="fa fa-envelope-open" aria-hidden="true"></i> Notification
+        </a>
       </div>
     </div>
     <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9 ">

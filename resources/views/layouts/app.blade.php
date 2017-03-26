@@ -146,8 +146,8 @@
 
 
     <!-- SCRIPT -->
-    <script src="/bower_resources/jquery/dist/jquery.js"></script>
     <script src="/bower_resources/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/bower_resources/jquery/dist/jquery.js"></script>
   	<script type="text/javascript" src="/bower_resources/fastclick/lib/fastclick.js"></script>
   	<script type="text/javascript" src="/bower_resources/jquery-color-animation/jquery.animate-colors.js"></script>
   	<script type="text/javascript" src="/bower_resources/jquery-shadow-animation/jquery.animate-shadow-min.js"></script>    
