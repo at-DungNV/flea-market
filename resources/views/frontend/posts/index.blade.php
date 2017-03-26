@@ -73,11 +73,11 @@
     
   </div>
 
-  <div id="wrapper-oldnew">
+  <!-- <div id="wrapper-oldnew"> -->
     <div class="text-center">
       <ul id="post-index-pagination" class="pagination-sm"></ul>
     </div>
-  </div>  
+  <!-- </div>   -->
   
 @endsection
 

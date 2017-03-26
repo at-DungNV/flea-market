@@ -31,7 +31,7 @@
 
     <!-- HEADER -->
     @include('layouts.parts.header')
-
+    
     <!-- NAVBAR -->
 
     <div id="wrapper-navbar">
@@ -152,9 +152,10 @@
 
 
     <!-- SCRIPT -->
+    <script src="/bower_resources/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="/bower_resources/jquery/dist/jquery.min.js"></script>
-    <script type="text/javascript" src="/bower_resources/jquery.scrollTo/jquery.scrollTo.js"></script>
-    <script type="text/javascript" src="/bower_resources/jquery.localScroll/jquery.localScroll.js"></script>
+    <!-- <script type="text/javascript" src="/bower_resources/jquery.scrollTo/jquery.scrollTo.js"></script>
+    <script type="text/javascript" src="/bower_resources/jquery.localScroll/jquery.localScroll.js"></script> -->
     <!-- <script type="text/javascript" src="js/jquery-animate-css-rotate-scale.js"></script> -->
   	<script type="text/javascript" src="/bower_resources/fastclick/lib/fastclick.js"></script>
   	<script type="text/javascript" src="/bower_resources/jquery-color-animation/jquery.animate-colors.js"></script>
@@ -162,11 +163,10 @@
   	<script type="text/javascript" src="/js/main.js"></script>
   
     <!-- skel -->
-    <script src="/bower_resources/skel/dist/skel.min.js"></script>
+    <!-- <script src="/bower_resources/skel/dist/skel.min.js"></script> -->
     <!-- util -->
-    <script src="/bower_resources/util/util.min.js"></script>
+    <!-- <script src="/bower_resources/util/util.min.js"></script> -->
     <!-- bootstrap -->
-    <script src="/bower_resources/bootstrap/dist/js/bootstrap.min.js"></script>
     @stack('end-page-scripts')
     <!-- main -->
     <script src="/js/app.js"></script>

@@ -9,10 +9,6 @@
         <li class="dropdown {{ Request::is('posts/*') ? 'active' : '' }}">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Post <b class="caret"></b></a>
           <ul class="dropdown-menu">
-              <li class="dropdown-plus-title">
-                  Post
-                  <b class="pull-right glyphicon glyphicon-chevron-up"></b>
-              </li>
               <li><a href="{{ route('post.index') }}">Index</a></li>
               <li class="divider"></li>
               <li><a href="{{ route('post.create') }}">Create</a></li>
@@ -44,13 +40,6 @@
                 </span>
               </a>
               <ul class="dropdown-menu">
-                <li class="dropdown-plus-title">
-                  <div class="img-rounded profile-img"></div>
-                  <span>
-                    {{ str_limit(Auth::user()->name, $limit= 10, $end= '...') }}
-                    <b class="pull-right glyphicon glyphicon-chevron-up"></b>
-                  </span>
-                </li>
                 <li><a href="#">Settings <span class="glyphicon glyphicon-cog pull-right"></span></a></li>
                 <li class="divider"></li>
                 <li><a href="{{ route('users.profile') }}">Profile<span class="glyphicon glyphicon-stats pull-right"></span></a></li>
@@ -71,8 +60,11 @@
             </li>
           @endif
       </ul>
-      
     </div><!-- /.navbar-collapse -->
+    
+    
+    
+    
     <div id="stripes"></div>
   </div>
 </div>
