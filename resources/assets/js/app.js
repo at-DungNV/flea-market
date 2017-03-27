@@ -13,8 +13,34 @@ require('./bootstrap');
  * the application, or feel free to tweak this setup for your needs.
  */
 
-Vue.component('example', require('./components/Example.vue'));
 
-const app = new Vue({
-    el: '#app'
+Vue.component('notification-item', require('./components/NotificationItem.vue'));
+Vue.component('notification-log', require('./components/NotificationLog.vue'));
+
+const demo = new Vue({
+    el: '#notification',
+    data: {
+        notifications: []
+    },
+    methods: {
+    },
+    
+    created() {
+        // khi load trang sẽ lấy giá trị gán vào element giống như gọi bình thường
+        Vue.http.get('/notifications').then((response) => {
+          this.notifications = response.data;
+        });
+        
+        // this is called real time
+        Echo.private('notification')
+            .listen('PostApprovalEvent', (e) => {
+                this.notifications.unshift(e.notification);
+                // if ($("#notificationContainer").is(":visible") == true) {
+                //   
+                // }
+                $("#notification-count").html(parseInt($('#notification-count').html())+ 1);
+                // sessionStorage.setItem('notificationCount', parseInt(sessionStorage.getItem('notificationCount')) + 1);
+                // $('#notification-count').show();
+            });
+    }
 });

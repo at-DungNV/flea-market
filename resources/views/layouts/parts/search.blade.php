@@ -2,7 +2,7 @@
   <form action="{{ route('post.index') }}" method="GET" name="search-form">
     <div class="col-xs-6 col-sm-6 col-md-8 padding-right-0">
       <input type="text" name="q" placeholder="Nhập từ khoá bạn tìm kiếm" value="{{ !is_null($q) ? $q : ' ' }}" style=" border-radius: 0.375em; border: 0;
-    box-shadow: inset 0 0 0 2px #f56a6a; height: 2.8em;">
+    box-shadow: inset 0 0 0 2px #f56a6a; height: 2.8em; width: 100%;">
     </div>
     <div class="col-xs-3 col-sm-3 col-md-2 padding-left-0 padding-right-0 align-center">
       <a class="button btn-block advanced-search" data-toggle="collapse" data-target="#advanced-search">

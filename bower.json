@@ -17,11 +17,13 @@
   ],
   "dependencies": {
     "bootstrap": "^3.3.7",
-    "skel": "^3.0.1",
-    "util": "^3.46.1",
     "font-awesome": "^4.7.0",
     "twbs-pagination": "^1.4.1",
     "jquery-ui": "^1.12.1",
-    "bootstrap-validator": "^0.11.9"
+    "bootstrap-validator": "^0.11.9",
+    "fastclick": "^1.0.6",
+    "jquery-shadow-animation": "^1.11.0",
+    "jquery": "^3.2.1",
+    "jquery-color-animation": "^1.6.0"
   }
 }

@@ -13,7 +13,47 @@
 
 Auth::routes();
 
+
+Route::get('/broadcast', function() {
+    event(new \App\Events\TestEvent('Broadcasting in Laravel using Pusher!'));
+
+    return view('frontend.welcome');
+});
+
+
+
+Route::get('/send-notifications', function () {
+    $user = Auth::user();
+    
+    $notification = App\Models\Notification::create([
+        'user_id' => 1,
+        'post_id' => 1,
+        'message' => 'dungnv',
+        'seen' => 1,
+    ]);
+    // Announce that a new message has been posted
+    event(new \App\Events\PostApprovalEvent($user, $notification));
+    
+    return ['status' => 'OK'];
+})->middleware('auth');
+
+
+
+
+
+
 Route::group(['namespace' => 'Frontend'], function () {
+  
+    Route::get('/notifications', [
+      'uses' => 'NotificationController@index',
+      'as'   => 'notification.index'
+    ])->middleware('auth');
+    
+    Route::get('/update-unread-notification', [
+      'uses' => 'NotificationController@updateUnreadNotification',
+      'as'   => 'notification.updateUnreadNotification'
+    ])->middleware('auth');
+    
     Route::get('/', 'HomeController@index');
     
     Route::get('/post', [

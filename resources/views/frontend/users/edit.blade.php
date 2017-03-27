@@ -14,7 +14,7 @@
 
 
 @section('content')
-  <div class="row">
+  <div class="content-container">
     <div class="col-md-8 col-sm-10 col-xs-10 col-md-offset-2 col-sm-offset-1 col-xs-offset-1">
       <form action="{{ route('users.update') }}" method="POST" class="form-horizontal" name="user-edit-form">
         {{ csrf_field() }}

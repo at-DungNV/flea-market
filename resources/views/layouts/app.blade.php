@@ -7,12 +7,13 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="icon" type="image/png" href="/images/small-logo-01.png">
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <link rel="stylesheet" href="/bower_resources/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="/bower_resources/font-awesome/css/font-awesome.min.css" media="screen" title="no title" charset="utf-8">
-    <link rel="stylesheet" href="/css/app.css">
-    <link rel="stylesheet" href="/css/myapp.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/mystyle.css">
     @stack('stylesheet')
     <!-- Scripts -->
     <script>
@@ -20,44 +21,140 @@
             'csrfToken' => csrf_token(),
         ]); ?>
     </script>
-    <!-- jQuery -->
-    <script src="/bower_resources/jquery/dist/jquery.min.js"></script>
   </head>
   <body>
+    <!-- HEADER -->
     @include('layouts.parts.header')
-    <div class="container">
-      <div class="row margin-top-60">
-        <div class="col-xs-12 col-sm-12 col-md-12">
-          <header id="header">
-            @yield('breadcrumb')
-          </header>
+    
+    <!-- NAVBAR -->
+
+    <div id="wrapper-navbar">
+  		<div class="navbar object">
+    		<div id="wrapper-sorting">
+          @yield('breadcrumb')
         </div>
-      </div>
-      @yield('navigation-search')
-      <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12">
-          <div id="main">
-              <!-- content -->
-              @yield('errors-message')
-              @yield('susscess-message')
-              <div class="well well-sm">
-                @yield('content')
-              </div>
-              <!-- end content -->
-              @include('layouts.parts.footer')
-          </div>
-        </div>
-      </div>
-      <!-- sidebar -->
+        <div id="wrapper-bouton-icon">
+        	<div id="bouton-ai"><img src="/images/icon-ai.svg" alt="illustrator" title="Illustrator" height="28" width="28"></div>
+        	<div id="bouton-psd"><img src="/images/icon-psd.svg" alt="photoshop" title="Photoshop" height="28" width="28"></div>
+        	<div id="bouton-theme"><img src="/images/icon-themes.svg" alt="theme" title="Theme" height="28" width="28"></div>
+        	<div id="bouton-font"><img src="/images/icon-font.svg" alt="font" title="Font" height="28" width="28"></div>
+        	<div id="bouton-photo"><img src="/images/icon-photo.svg" alt="photo" title="Photo" height="28" width="28"></div>
+        	<div id="bouton-premium"><img src="/images/icon-premium.svg" alt="premium" title="Premium" height="28" width="28"></div>
+  			</div>
+    	</div>
     </div>
-    <!-- skel -->
-    <script src="/bower_resources/skel/dist/skel.min.js"></script>
-    <!-- util -->
-    <script src="/bower_resources/util/util.min.js"></script>
-    <!-- bootstrap -->
-    <script src="/bower_resources/bootstrap/dist/js/bootstrap.min.js"></script>
-    @stack('end-page-scripts')
+
+
+    <!-- MENU -->	
+
+  	<div id="main-container-menu" class="object">
+    	<div class="container-menu">
+        <div id="main-cross">
+        	<div id="cross-menu"></div>
+        </div>
+            
+        <div id="main-small-logo">
+        	<div class="small-logo"></div>
+        </div>
+        
+        <div id="main-premium-ressource">
+            <div class="premium-ressource"><a href="#">Premium resources</a></div>
+        </div>
+        
+        <div id="main-themes">
+            <div class="themes"><a href="#">Latest themes</a></div>
+        </div>
+        
+        <div id="main-psd">
+            <div class="psd"><a href="#">PSD goodies</a></div>
+        </div>
+            
+        <div id="main-ai">
+            <div class="ai"><a href="#">Illustrator freebies</a></div>
+        </div>
+        
+        <div id="main-font">
+            <div class="font"><a href="#">Free fonts</a></div>
+        </div>
+        
+        <div id="main-photo">
+            <div class="photo"><a href="#">Free stock photos</a></div>
+        </div>
+            
+        </div>
+    </div>
+
+
+    <!-- PORTFOLIO -->
+
+  	<div id="wrapper-container">
+      @yield('errors-message')
+      @yield('susscess-message')
+      @yield('content')
+      
+              
+    	<!-- <div id="wrapper-thank">
+        	<div class="thank">
+            	<div class="thank-text">pl<span style="letter-spacing:-5px;">a</span>tz</div>
+        	</div>
+    	</div> -->
+  	    
+    	<div id="main-container-footer">
+    		<div class="container-footer">
+            	
+                <div id="row-1f">
+                	<div class="text-row-1f"><span style="font-weight:600;font-size:15px;color:#666;line-height:250%;text-transform:uppercase;letter-spacing:1.5px;">What is Platz</span><br>Platz is a blog showcasing hand-picked free themes, design stuff, free fonts and other resources for web designers.</div>
+                </div>
+                
+                <div id="row-2f">
+                	<div class="text-row-2f"><span style="font-weight:600;font-size:15px;color:#666;line-height:250%;text-transform:uppercase;letter-spacing:1.5px;">How does it work</span><br>Platz offers you all the latest freebies found all over the fourth corners without to pay.</div>
+                </div>
+                
+                <div id="row-3f">
+                	<div class="text-row-3f"><span style="font-weight:600;font-size:15px;color:#666;line-height:250%;text-transform:uppercase;letter-spacing:1.5px;">Get in touch!</span><br>Subscribe our RSS or follow us on Facebook, Google+, Pinterest or Dribbble to keep updated.</div>
+                </div>
+                
+                <div id="row-4f">
+                	<div class="text-row-4f"><span style="font-weight:600;font-size:15px;color:#666;line-height:250%;text-transform:uppercase;letter-spacing:1.5px;">Newsletter</span><br>You will be informed monthly about the latest content avalaible.</div>
+
+    				<div id="main_tip_newsletter"> 
+    					<form>
+    						<input type="text" name="newsletter" id="tip_newsletter_input" list="newsletter" autocomplete=off required>
+    					</form>
+    				</div>
+                </div>
+                
+    		</div>
+    	</div>
+      
+      
+      <div id="wrapper-copyright">
+    		<div class="copyright">
+      		<div class="copy-text object">Copyright © 2016. Template by <a style="color:#D0D1D4;" href="https://dcrazed.com/">Dcrazed</a></div>
+      		
+  			<div class="wrapper-navbouton">
+      			<div class="google object">g</div>
+      			<div class="facebook object">f</div>
+      			<div class="linkin object">i</div>
+      			<div class="dribbble object">d</div>
+      		</div>
+      	</div>
+      </div>
+
+    </div>
+
+    <!-- SCRIPT -->
+    <script src="/bower_resources/jquery/dist/jquery.js"></script>
+  	<script type="text/javascript" src="/bower_resources/fastclick/lib/fastclick.js"></script>
+  	<script type="text/javascript" src="/bower_resources/jquery-color-animation/jquery.animate-colors.js"></script>
+  	<script type="text/javascript" src="/bower_resources/jquery-shadow-animation/jquery.animate-shadow-min.js"></script>    
+    <script src="{{ asset('js/app.js') }}"></script>
     <!-- main -->
-    <script src="/js/app.js"></script>
+  	<script type="text/javascript" src="/js/main.js"></script>
+    <script type="text/javascript">
+    </script>
+    <script type="text/javascript" src="/js/mymain.js"></script>
+    
+    @stack('end-page-scripts')
   </body>
 </html>
