@@ -38,9 +38,9 @@ const demo = new Vue({
                 // if ($("#notificationContainer").is(":visible") == true) {
                 //   
                 // }
-                $("#notification-count").html(parseInt(sessionStorage.getItem('notificationCount')) + 1);
-                sessionStorage.setItem('notificationCount', parseInt(sessionStorage.getItem('notificationCount')) + 1);
-                $('#notification-count').show();
+                $("#notification-count").html(parseInt($('#notification-count').html())+ 1);
+                // sessionStorage.setItem('notificationCount', parseInt(sessionStorage.getItem('notificationCount')) + 1);
+                // $('#notification-count').show();
             });
     }
 });

@@ -14,37 +14,13 @@
 Auth::routes();
 
 
-
-Route::get('/chat', function () {
-    return view('chat');
-})->middleware('auth');
-
-Route::get('/messages', function () {
-    return App\Models\Message::with('user')->get();
-})->middleware('auth');
-
-Route::post('/messages', function () {
-    // Store the new message
-    $user = Auth::user();
-    
-    $message = $user->messages()->create([
-        'message' => request()->get('message')
-    ]);
-    // Announce that a new message has been posted
-    event(new \App\Events\MessagePosted($message, $user));
-    
-    return ['status' => 'OK'];
-})->middleware('auth');
-
 Route::get('/broadcast', function() {
     event(new \App\Events\TestEvent('Broadcasting in Laravel using Pusher!'));
 
     return view('frontend.welcome');
 });
 
-Route::get('/notifications', function () {
-    return App\Models\Notification::where('user_id', '=', Auth::user()->id)->orderBy('id', 'desc')->get();
-})->middleware('auth');
+
 
 Route::get('/send-notifications', function () {
     $user = Auth::user();
@@ -67,6 +43,17 @@ Route::get('/send-notifications', function () {
 
 
 Route::group(['namespace' => 'Frontend'], function () {
+  
+    Route::get('/notifications', [
+      'uses' => 'NotificationController@index',
+      'as'   => 'notification.index'
+    ])->middleware('auth');
+    
+    Route::get('/update-unread-notification', [
+      'uses' => 'NotificationController@updateUnreadNotification',
+      'as'   => 'notification.updateUnreadNotification'
+    ])->middleware('auth');
+    
     Route::get('/', 'HomeController@index');
     
     Route::get('/post', [

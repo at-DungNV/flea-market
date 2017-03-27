@@ -23,7 +23,7 @@
           <li class="dropdown dropdown-large" id="notification">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <i class="fa fa-envelope fa-1x" aria-hidden="true"></i>
-              <span class="badge" id="notification-count" style="background-color: #f00 !important; font-size: 16px;"></span>
+              <span class="badge" id="notification-count" style="background-color: #f00 !important; font-size: 16px;">{{ Auth::user()->unread_notification }}</span>
             </a>
             <ul class="dropdown-menu dropdown-menu-large">
               <notification-log :notifications="notifications"></notification-log>
