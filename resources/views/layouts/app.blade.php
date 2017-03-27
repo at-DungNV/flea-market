@@ -25,6 +25,36 @@
   <body>
     <!-- HEADER -->
     @include('layouts.parts.header')
+    <!-- <div id="notification"></div>
+    <div id="stripes"></div> -->
+    
+    
+
+    
+    
+    
+    <div class="dropdown">
+      <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
+      <span class="caret"></span></button>
+      <ul class="dropdown-menu">
+        <li><a href="#">HTML</a></li>
+        <li><a href="#">CSS</a></li>
+        <li><a href="#">JavaScript</a></li>
+      </ul>
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     <!-- NAVBAR -->
 
@@ -146,16 +176,44 @@
 
 
     <!-- SCRIPT -->
-    <script src="/bower_resources/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="/bower_resources/jquery/dist/jquery.js"></script>
+    <script src="/bower_resources/bootstrap/dist/js/bootstrap.min.js"></script>
   	<script type="text/javascript" src="/bower_resources/fastclick/lib/fastclick.js"></script>
   	<script type="text/javascript" src="/bower_resources/jquery-color-animation/jquery.animate-colors.js"></script>
   	<script type="text/javascript" src="/bower_resources/jquery-shadow-animation/jquery.animate-shadow-min.js"></script>    
+    <script src="{{ asset('js/app.js') }}"></script>
   	<script type="text/javascript" src="/js/main.js"></script>
-  
+    
+    <script type="text/javascript">
+      $(document).ready(function() {
+        // console.log($("#notification_count"));
+        // $("#notification_count").html(1);
+        if ($("#notification_count").html() == "0") {
+          $("#notification_count").fadeOut(0);
+        }
+        $("#notificationLink").click(function() {
+          $("#notificationContainer").fadeToggle(300);
+          $("#notification_count").fadeOut(0); // <> fadeIn
+          $("#notification_count").html(0);
+          return false;
+        });
+
+        //Document Click hiding the popup 
+        $(document).click(function() {
+          $("#notificationContainer").hide();
+        });
+
+        //Popup on click
+        $("#notificationContainer").click(function() {
+          return false;
+        });
+
+      });
+    </script>
+    
+    
     <!-- bootstrap -->
     @stack('end-page-scripts')
     <!-- main -->
-    <script src="/js/app.js"></script>
   </body>
 </html>

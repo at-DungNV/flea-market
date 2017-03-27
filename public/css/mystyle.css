@@ -110,7 +110,8 @@ ul.nav li.dropdown ul.dropdown-menu {
 
 /* Notification */
 #notification {
-  position:relative
+  position:relative;
+  z-index: 2;
 }
 
 #notificationContainer {
