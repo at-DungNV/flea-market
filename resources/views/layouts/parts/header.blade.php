@@ -14,23 +14,22 @@
               <li><a href="{{ route('post.create') }}">Create <span class="glyphicon glyphicon-plus pull-right"></span></a></li>
           </ul>
         </li>
-            
-        <li id="notification">
-          <span id="notification_count">0</span>
-          <a href="#" id="notificationLink"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a>
-          <div id="notificationContainer">
-            <div id="notificationTitle">Notifications</div>
-            <div id="notificationsBody" class="notifications">
-              <notification-log :notifications="notifications"></notification-log>
-            </div>
-            <div id="notificationFooter"><a href="#">See All</a></div>
-          </div>
-        </li>
+        
 
         @if (Auth::guest())
           <li class="{{ Request::is('login') ? 'active' : '' }}"><a href="{{ url('/login') }}">Login</a></li>
           <li class="{{ Request::is('register') ? 'active' : '' }}"><a href="{{ url('/register') }}">Register</a></li>
         @else
+          <li class="dropdown dropdown-large" id="notification">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <i class="fa fa-envelope fa-1x" aria-hidden="true"></i>
+              <span class="badge" id="notification-count" style="background-color: #f00 !important; font-size: 16px;"></span>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-large">
+              <notification-log :notifications="notifications"></notification-log>
+            </ul>
+            
+          </li>  
           <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <div class="img-rounded profile-img"></div>
