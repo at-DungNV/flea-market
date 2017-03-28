@@ -253,3 +253,21 @@ ul.nav li.dropdown ul.dropdown-menu {
     width: 30px;
     height: 30px;
 }
+
+.title-text {
+	font-family: Helvetica, sans-serif;
+	-webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 22px;
+	font-weight:600;
+	color:#686868;
+	line-height:125%;
+	height:auto;
+	width:100%;
+	margin-top:16px;
+  margin-bottom: 16px;
+}
+
+.radio-inline {
+  color: #130808 !important;
+}

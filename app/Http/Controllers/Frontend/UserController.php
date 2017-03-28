@@ -92,6 +92,7 @@ class UserController extends Controller
     public function update(Request $request)
     {
       try {
+          $request['birthday'] = date("Y-m-d", strtotime($request['birthday']));
           $input = $request->all();
           $user = User::findOrFail(Auth::user()->id);
           $user->fill($input);

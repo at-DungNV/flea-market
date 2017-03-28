@@ -22,6 +22,7 @@
     <div class="col-md-8 col-sm-12 col-xs-12 col-md-offset-2">
       <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="title-text text-center">Create New Post </div>
             <form action="{{ route('post.store') }}" method="POST" data-toggle="validator" role="form" class="form-horizontal" name="post-form" enctype="multipart/form-data">
               <fieldset>
                 {{ csrf_field() }}
@@ -45,13 +46,18 @@
                   </div>
                 </div>
                 
+                
+                
                 <div class="form-group has-feedback">
-                  <label class="col-xs-3 col-sm-3 col-md-2 control-label radio-button-group">Type:<span class="required">*</span></label>
-                  <div class="col-xs-9 col-sm-9 col-md-10"  style="padding-top: 5px;">
-                    <input type="radio" name="type" id="post-type-sell" value="{{ \Config::get('common.SELL_TYPE') }}" checked>
-                    <label for="post-type-sell" class="radio-button">Sell</label>
-                    <input type="radio" name="type" id="post-type-buy" value="{{ \Config::get('common.BUY_TYPE') }}">
-                    <label for="post-type-buy">Buy</label>
+                  <label class="col-xs-3 col-sm-3 col-md-2 control-label">Type:<span class="required">*</span></label>
+                  <div class="col-xs-9 col-sm-9 col-md-10">
+                    <label class="radio-inline" for="post-type-sell">
+                      <input type="radio" name="type" id="post-type-sell" value="{{ \Config::get('common.SELL_TYPE') }}" required checked>Sell
+                    </label>
+                    
+                    <label class="radio-inline" for="post-type-buy">
+                      <input type="radio" name="type" id="post-type-buy" value="{{ \Config::get('common.BUY_TYPE') }}" required>Buy
+                    </label>
                   </div>
                 </div>
                 
@@ -64,7 +70,7 @@
                 </div>
                 
                 <!-- Text input-->
-                <div class="form-group ui-widget has-feedback">
+                <div class="form-group has-feedback">
                   <label class="col-xs-3 col-sm-3 col-md-2 control-label" for="post-create-province">City:<span class="required">*</span></label>
                   <div class="col-xs-9 col-sm-9 col-md-10">
                     <input type="text" id="post-create-province" placeholder="Nhập thành phố hoặc tỉnh thành" class="form-control" required>
@@ -113,10 +119,10 @@
                 </div>
                 <div class="form-group">
                   <div class="col-md-3 col-md-offset-3">
-                    <a href="#" class="button icon fa-download">Cancel</a>
+                    <a href="#" class="btn btn-warning btn-lg btn-block">Cancel</a>
                   </div>
                   <div class="col-md-3">
-                    <input type="submit" class="button special icon fa-search" name="post-submit" value="Confirm">
+                    <input type="submit" class="btn btn-primary btn-lg btn-block" name="post-submit" value="Confirm">
                   </div>
                 </div>
                 
@@ -194,8 +200,5 @@
         }
       });
     }
-  </script>
-  <script type="text/javascript">
-    
   </script>
 @endpush

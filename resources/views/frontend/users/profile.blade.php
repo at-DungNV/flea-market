@@ -58,7 +58,7 @@
               </tr>
               <tr>
                 <td>Birthday:</td>
-                <td>{{ Auth::user()->birthday }}</td>
+                <td>{{ date("d/m/Y", strtotime(Auth::user()->birthday)) }}</td>
               </tr>
               <tr>
                 <td>Address:</td>
@@ -111,10 +111,10 @@
                   </div>
                   <div class="modal-footer align-center">
                     <div class="col-xs-6 col-sm-3 col-md-3 col-sm-offset-3 col-md-offset-3">
-                      <a href="" class="button special btn-block" data-dismiss="modal">Close</a>
+                      <a href="" class="btn btn-warning btn-lg btn-block" data-dismiss="modal">Close</a>
                     </div>
                     <div class="col-xs-6 col-sm-3 col-md-3">
-                      <a href="" name="user-edit-password-submit" class="button special btn-block" data-toggle="modal" data-target="#user-profife-edit-modal">Confirm</a>
+                      <a href="" name="user-edit-password-submit" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#user-profife-edit-modal">Confirm</a>
                     </div>
                   </div>
                 </div>
