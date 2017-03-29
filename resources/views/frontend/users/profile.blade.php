@@ -102,7 +102,7 @@
                         </div>
                       </div>
                       <div class="form-group">
-                        <label class="control-label col-sm-3" for="user-profile-comfirmation-password">Retype password:</label>
+                        <label class="control-label col-sm-3" for="user-profile-comfirmation-password">Re-password:</label>
                         <div class="col-sm-9">
                           <input type="password" class="form-control" name="password_confirmation" id="user-profile-comfirmation-password" placeholder="Enter confirmation password...">
                         </div>

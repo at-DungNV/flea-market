@@ -10,8 +10,11 @@
 
 @section('content')
 
-  <div class="container object">
-    <div id="main-container-image">
+  <div class="content-container">
+    <div class="content">
+      <div class="well">
+        @include('layouts.parts.search')
+      </div>
       <section class="work">
         @if(count($posts) > 0) 
           @foreach ($posts as $post)
