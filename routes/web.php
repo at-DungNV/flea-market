@@ -98,6 +98,11 @@ Route::group(['namespace' => 'Frontend'], function () {
           'uses' => 'UserController@getRejectedPosts',
           'as'   => 'users.rejectedPosts'
         ]);
+        
+        Route::get('/waiting-posts', [
+          'uses' => 'UserController@getWaitingPosts',
+          'as'   => 'users.waitingPosts'
+        ]);
 
       });
 

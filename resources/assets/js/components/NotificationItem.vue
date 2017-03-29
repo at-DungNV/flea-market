@@ -1,6 +1,6 @@
 <template lang="html">
   <li class="notification-item list-group-item" v-bind:class="[notification.seen === 1 ? 'unread-message' : 'read-message']">
-    <i class="fa fa-dot-circle-o fa-lg" aria-hidden="true"></i> {{ notification.message }} - {{notification.created_at}} - {{notification.seen}}
+    <i class="fa fa-dot-circle-o fa-lg" aria-hidden="true"></i> {{ notification.message }} - {{notification.created_at}}
   </li>
 </template>
 

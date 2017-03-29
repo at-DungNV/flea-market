@@ -146,6 +146,7 @@ class UserController extends Controller
                     }])
                     ->where('user_id', '=', Auth::user()->id)
                     ->Where('state', '=', \Config::get('common.TYPE_POST_ACTIVE'))
+                    ->orderBy('created_at', 'desc')
                     ->paginate(8);
       return view('frontend.users.approvalPosts', ['posts' => $posts, 'crumbs' => $crumbs]);
     }
@@ -167,8 +168,31 @@ class UserController extends Controller
                     }])
                     ->where('user_id', '=', Auth::user()->id)
                     ->Where('state', '=', \Config::get('common.TYPE_POST_REJECTED'))
+                    ->orderBy('created_at', 'desc')
                     ->paginate(8);
       return view('frontend.users.rejectPosts', ['posts' => $posts, 'crumbs' => $crumbs]);
+    }
+    
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function getWaitingPosts(Request $request)
+    {
+      $x = new BreadcrumbsHelper();
+      $crumbs = $x->getCrumbs($request->path());
+      
+      $posts = Post::with(['images'=>function($query) {
+                        return $query->limit(1);
+                    }])
+                    ->where('user_id', '=', Auth::user()->id)
+                    ->Where('state', '=', \Config::get('common.TYPE_POST_WAITING'))
+                    ->orderBy('created_at', 'desc')
+                    ->paginate(8);
+      return view('frontend.users.waitingPosts', ['posts' => $posts, 'crumbs' => $crumbs]);
     }
 
     /**
