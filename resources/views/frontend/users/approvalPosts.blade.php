@@ -28,6 +28,9 @@
           <a href="{{ route('users.approvalPosts') }}" class="list-group-item">
             <i class="fa fa-money" aria-hidden="true"></i> Đang bán
           </a>
+          <a href="{{ route('users.waitingPosts') }}" class="list-group-item">
+            <i class="fa fa-telegram" aria-hidden="true"></i> Chờ duyệt
+          </a>
           <a href="{{ route('users.rejectedPosts') }}" class="list-group-item">
             <i class="fa fa-window-close-o" aria-hidden="true"> Bị từ chối</i>
           </a>
@@ -42,7 +45,7 @@
             @foreach ($posts as $post)
               <figure class="white">
                 <!-- <h6>{{ str_limit($post->title, $limit = 15, $end = '...') }}</h6> -->
-                <div class="title-text" style="margin-left: 5%;
+                <div style="margin-left: 5%;
                   margin-top: 5%;">{{ str_limit($post->title, $limit = 30, $end = '...') }} </div>
                 <a href="{{ route('post.show', [$post->slug]) }}">
                   @if(Storage::disk('local')->exists($post->images->first()['url']))

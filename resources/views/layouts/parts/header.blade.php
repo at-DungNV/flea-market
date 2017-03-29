@@ -19,6 +19,7 @@
         @if (Auth::guest())
           <li class="{{ Request::is('login') ? 'active' : '' }}"><a href="{{ url('/login') }}">Login</a></li>
           <li class="{{ Request::is('register') ? 'active' : '' }}"><a href="{{ url('/register') }}">Register</a></li>
+          <div id="notification"></div>
         @else
           <li class="dropdown dropdown-large" id="notification">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">

@@ -26,4 +26,27 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+    
+    /**
+     * Set the user's birthday.
+     *
+     * @param  string $birthday
+     * @return void
+     */
+    public function setBirthdayAttribute($birthday)
+    {
+        $this->attributes['birthday'] = Carbon::createFromFormat('y-m-d', $birthday)->toDateString();
+    }
+    
+    /**
+     * Get the user's birthday.
+     *
+     * @param  string $birthday
+     * @return string
+     */
+    public function getBirthdayAttribute($birthday)
+    {
+        return date("d/m/Y", strtotime($birthday));
+    }
+    
 }

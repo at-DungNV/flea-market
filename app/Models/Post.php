@@ -111,7 +111,7 @@ class Post extends Model
     }
     $total = $total == $query->count() ? $total : $query->count();
     
-    $posts = $query->take(\Config::get('common.NUMBER_ITEM_PER_PAGE'))->offset($offset)->get();
+    $posts = $query->take(\Config::get('common.NUMBER_ITEM_PER_PAGE'))->offset($offset)->orderBy('created_at', 'desc')->get();
     $data = array(
         'posts'  => $posts,
         'total' => $total

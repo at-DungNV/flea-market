@@ -39,6 +39,7 @@
     top: -5px;
     padding: 30px 25px;
     height: 70px;
+    color: #fff !important;
 }
 .navbar-brand {
     float: left;
@@ -70,7 +71,6 @@
 .navbar-inverse {
     background-color: #17191b;
     border:none;
-   
 }
 
 /* Navbar */
@@ -181,68 +181,6 @@ ul.nav li.dropdown ul.dropdown-menu {
   z-index: 2;
 }
 
-/*#notificationContainer {
-  background-color: #fff;
-  border: 1px solid rgba(100, 100, 100, .4);
-  -webkit-box-shadow: 0 3px 8px rgba(0, 0, 0, .25);
-  overflow: visible;
-  position: absolute;
-  top: 30px;
-  margin-left: -170px;
-  width: 400px;
-  z-index: -1;
-  display: none;
-}
-
-#notificationContainer:before {
-  content: '';
-  display: block;
-  position: absolute;
-  width: 0;
-  height: 0;
-  color: transparent;
-  border: 10px solid black;
-  border-color: transparent transparent white;
-  margin-top: -20px;
-  margin-left: 188px;
-}
-#notificationTitle {
-  font-weight: bold;
-  padding: 8px;
-  font-size: 13px;
-  background-color: #ffffff;
-  position: fixed;
-  z-index: 1000;
-  width: 384px;
-  border-bottom: 1px solid #dddddd;
-}
-#notificationsBody {
-  padding: 33px 0px 0px 0px !important;
-  min-height:300px;
-  height: 350px;
-  overflow: scroll;
-}
-#notificationFooter {
-  background-color: #e9eaed;
-  text-align: center;
-  font-weight: bold;
-  padding: 8px;
-  font-size: 12px;
-  border-top: 1px solid #dddddd;
-}*/
-/*#notification_count {
-  padding: 3px 7px 3px 7px;
-  background: #cc0000;
-  color: #ffffff;
-  font-weight: bold;
-  margin-left: 3.5em;
-  border-radius: 9px;
-  -moz-border-radius: 9px; 
-  -webkit-border-radius: 9px;
-  position: absolute;
-  margin-top: 10px;
-  font-size: 11px;
-}*/
 
 /*Breadcrum*/
 .breadcrumb {
@@ -304,4 +242,32 @@ ul.nav li.dropdown ul.dropdown-menu {
 
 .part-info-font-12 {
   font-size: 12px !important;
+}
+
+.profile-img{
+    margin-top: -5px;
+    margin-right: 5px;
+    float: left;
+    background: url(/images/avatar.jpg) 50% 50% no-repeat;
+    background-size: auto 100%;
+    width: 30px;
+    height: 30px;
+}
+
+.title-text {
+	font-family: Helvetica, sans-serif;
+	-webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 22px;
+	font-weight:600;
+	color:#686868;
+	line-height:125%;
+	height:auto;
+	width:100%;
+	margin-top:16px;
+  margin-bottom: 16px;
+}
+
+.radio-inline {
+  color: #130808 !important;
 }
