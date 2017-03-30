@@ -6,7 +6,7 @@
   {
     const PARENTS_CATEGORIES = array('posts', 'users');
     const HOME_CATEGORY = '/';
-    const LIMIT_STRING_SIZE = 30;
+    const LIMIT_STRING_SIZE = 50;
     const DEFAULT_INDEX = 'tất cả danh mục';
     const DASHBOARD = 'dashboard';
 
