@@ -24,6 +24,7 @@
     "fastclick": "^1.0.6",
     "jquery-shadow-animation": "^1.11.0",
     "jquery": "^3.2.1",
-    "jquery-color-animation": "^1.6.0"
+    "jquery-color-animation": "^1.6.0",
+    "gentelella": "^1.4.0"
   }
 }

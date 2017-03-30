@@ -30,7 +30,7 @@
                 <div class="form-group has-feedback">
                   <label class="col-xs-3 col-sm-3 col-md-2 control-label" for="post-title">Title:<span class="required">*</span></label>
                   <div class="col-xs-9 col-sm-9 col-md-10">
-                    <input type="text" name="title" pattern="^[_ A-z0-9]{1,}$" maxlength="256" placeholder="Nhập tiêu đề của bài đăng" class="form-control" id="post-title" required>
+                    <input type="text" name="title"  maxlength="256" placeholder="Nhập tiêu đề của bài đăng" class="form-control" id="post-title" required>
                     <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                     <div class="help-block with-errors"></div>
                   </div>

@@ -75,7 +75,7 @@ class Post extends Model
         $url = str_slug($this->title. ' '. $index, '-'). '.'. $image->getClientOriginalExtension();
         $index++;
         // store images to storage
-        ImageIntervention::make($image)->resize(416, 256)->save($path. '/'. $url);
+        ImageIntervention::make($image)->resize(600, 400)->save($path. '/'. $url);
 
         // store images to database
         $img = new Image;

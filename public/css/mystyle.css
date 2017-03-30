@@ -271,3 +271,7 @@ ul.nav li.dropdown ul.dropdown-menu {
 .radio-inline {
   color: #130808 !important;
 }
+
+.carousel-inner > .item > img {
+    margin: 0 auto;
+}
