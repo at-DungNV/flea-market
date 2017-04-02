@@ -32,7 +32,7 @@
                 <dl>
                   <dt>
                     <a href="{{ route('post.show', [$post->slug]) }}">
-                      {{ str_limit($post->title, $limit = 15, $end = '...') }}
+                      {{ str_limit($post->title, $limit = 25, $end = '...') }}
                     </a>
                   </dt>
                   <dd>
