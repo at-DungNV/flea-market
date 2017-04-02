@@ -90,9 +90,7 @@ class Post extends Model
    * @return Object Post
    */
   public static function search($q, $address, $type, $order, $total, $offset) {
-    $query = Post::with(['images'=>function($query) {
-                    return $query->limit(1);
-                  }])
+    $query = Post::with('images')
                   ->where('state', '=', \Config::get('common.TYPE_POST_ACTIVE'));
     if ($q != null) {
       $query = $query->where('title', 'like', '%'.$q.'%');
