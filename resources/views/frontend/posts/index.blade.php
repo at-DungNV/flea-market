@@ -36,7 +36,7 @@
                     </a>
                   </dt>
                   <dd>
-                    {{ str_limit($post->description, $limit = 100, $end = '...') }}
+                    {!! str_limit(nl2br(e($post->description)), $limit = 100, $end = '...') !!}
                   </dd>	
                 </dl>
               </a>

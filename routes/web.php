@@ -43,6 +43,11 @@ Route::get('/send-notifications', function () {
 
 
 Route::group(['namespace' => 'Frontend'], function () {
+    
+    Route::get('/image/{filename}', [
+      'uses' => 'PostController@getPostImages',
+      'as'   => 'post.getPostImages'
+    ]);
   
     Route::get('/notifications', [
       'uses' => 'NotificationController@index',
@@ -107,11 +112,6 @@ Route::group(['namespace' => 'Frontend'], function () {
       });
 
       Route::get('/home', 'HomeController@index');
-
-      Route::get('/image/{filename}', [
-        'uses' => 'PostController@getPostImages',
-        'as'   => 'post.getPostImages'
-      ]);
 
     });
 

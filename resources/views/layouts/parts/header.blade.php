@@ -40,11 +40,7 @@
                 </span>
               </a>
               <ul class="dropdown-menu">
-                <li><a href="#">Settings <span class="glyphicon glyphicon-cog pull-right"></span></a></li>
-                <li class="divider"></li>
                 <li><a href="{{ route('users.profile') }}">Profile<span class="glyphicon glyphicon-stats pull-right"></span></a></li>
-                <li class="divider"></li>
-                <li><a href="#">Messages <span class="badge pull-right"> 42 </span></a></li>
                 <li class="divider"></li>
                 <li>
                   <a href="{{ route('logout') }}"

@@ -21,7 +21,7 @@
           <span href="#" class="list-group-item active" align="center">
             Thông tin Cá nhân
           </span>
-          <a href="{{ route('users.profile') }}" class="list-group-item">
+          <a href="{{ route('users.profile') }}" class="list-group-item list-group-item-success">
             <i class="fa fa-user-circle" aria-hidden="true">
             </i> Profile
           </a>
@@ -33,9 +33,6 @@
           </a>
           <a href="{{ route('users.rejectedPosts') }}" class="list-group-item">
             <i class="fa fa-window-close-o" aria-hidden="true"> Bị từ chối</i>
-          </a>
-          <a href="#" class="list-group-item">
-            <i class="fa fa-envelope-open" aria-hidden="true"></i> Notification
           </a>
         </div>
       </div>
