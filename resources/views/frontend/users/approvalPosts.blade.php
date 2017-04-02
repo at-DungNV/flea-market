@@ -25,7 +25,7 @@
             <i class="fa fa-user-circle" aria-hidden="true">
             </i> Profile
           </a>
-          <a href="{{ route('users.approvalPosts') }}" class="list-group-item">
+          <a href="{{ route('users.approvalPosts') }}" class="list-group-item list-group-item-success">
             <i class="fa fa-money" aria-hidden="true"></i> Đang bán
           </a>
           <a href="{{ route('users.waitingPosts') }}" class="list-group-item">

@@ -62,7 +62,7 @@
     </ul>
     <h2><i class="fa fa-money" aria-hidden="true"></i>: {{ $post->price }} VNĐ</h2>
     <p class="margin-top-10">
-      {{ $post->description }}
+      {!! nl2br(e($post->description)) !!}
     </p>
   </div>
 </div>

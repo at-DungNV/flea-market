@@ -528,34 +528,6 @@ body,html{
 	margin-bottom:100px;
 }
 
-/*----------------------------*/
-/* NEWSLETTER BOX */
-/*----------------------------*/
-
-#main_tip_newsletter{
-	float:left;
-	width:100%;
-	height:auto;
-	margin-top:20px;
-}
-
-#tip_newsletter_input
-{
-    font: 15px/1.6 Helvetica, sans-serif;
-	color: #CCC;
-	padding: 5px 5px 5px 46px;
-	width: 170px;
-	border:solid 2px #CCC;
-	border-radius: 5px;
-	-moz-appearance: none;
-	-webkit-appearance: none;
-    box-shadow: none; 
-	outline: 0;
-	background: url(/images/icon-newsletter.svg) no-repeat 10px 9px;
-	margin-left:20px;
-	vertical-align:center;
-	font-weight:400;
-}
 
 /*----------------------------*/
 /* SEARCH BOX */

@@ -21,7 +21,7 @@
           <span href="#" class="list-group-item active" align="center">
             Thông tin Cá nhân
           </span>
-          <a href="{{ route('users.profile') }}" class="list-group-item">
+          <a href="{{ route('users.profile') }}" class="list-group-item list-group-item-success">
             <i class="fa fa-user-circle" aria-hidden="true">
             </i> Profile
           </a>

@@ -28,7 +28,7 @@
           <a href="{{ route('users.approvalPosts') }}" class="list-group-item">
             <i class="fa fa-money" aria-hidden="true"></i> Đang bán
           </a>
-          <a href="{{ route('users.waitingPosts') }}" class="list-group-item">
+          <a href="{{ route('users.waitingPosts') }}" class="list-group-item list-group-item-success">
             <i class="fa fa-telegram" aria-hidden="true"></i> Chờ duyệt
           </a>
           <a href="{{ route('users.rejectedPosts') }}" class="list-group-item">

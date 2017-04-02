@@ -31,7 +31,7 @@
           <a href="{{ route('users.waitingPosts') }}" class="list-group-item">
             <i class="fa fa-telegram" aria-hidden="true"></i> Chờ duyệt
           </a>
-          <a href="{{ route('users.rejectedPosts') }}" class="list-group-item">
+          <a href="{{ route('users.rejectedPosts') }}" class="list-group-item list-group-item-success">
             <i class="fa fa-window-close-o" aria-hidden="true"> Bị từ chối</i>
           </a>
         </div>
