@@ -14,14 +14,14 @@ class ImagesTableSeeder extends Seeder
      */
     public function run()
     {
-        $faker = Faker::create();
-        $posts = Post::all()->pluck('id');
-        for ($i=0; $i < 100; $i++) {
-          Image::create([
-            'url' => str_slug($faker->text). '.jpg',
-            'post_id' => $faker->randomElement($posts->toArray()),
-            'created_at' => $faker->dateTimeThisYear($max = 'now')
-          ]);
-        }
+        // $faker = Faker::create();
+        // $posts = Post::all()->pluck('id');
+        // for ($i=0; $i < 100; $i++) {
+        //   Image::create([
+        //     'url' => str_slug($faker->text). '.jpg',
+        //     'post_id' => $faker->randomElement($posts->toArray()),
+        //     'created_at' => $faker->dateTimeThisYear($max = 'now')
+        //   ]);
+        // }
     }
 }

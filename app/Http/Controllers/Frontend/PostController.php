@@ -46,7 +46,7 @@ class PostController extends Controller
       // get posts
       $searchResult = Post::search($q, $address, $type, $order, $total, $offset);
       $totalPages = ceil($searchResult['total'] / $number);
-      $posts = $searchResult['posts'];;
+      $posts = $searchResult['posts'];
       $x = new Province();
       $data = array(
           'posts'  => $posts,
