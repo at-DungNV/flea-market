@@ -1,14 +1,14 @@
 <div class="row">
   <form action="{{ route('post.index') }}" method="GET" name="search-form">
-    <div class="col-xs-6 col-sm-6 col-md-8 padding-right-0">
+    <div class="col-xs-12 col-sm-6 col-md-8 padding-right-0">
       <input type="text" name="q" class="form-control" placeholder="Nhập từ khoá bạn tìm kiếm">
     </div>
-    <div class="col-xs-3 col-sm-3 col-md-2 padding-left-0 padding-right-0 align-center">
+    <div class="col-xs-12 col-sm-3 col-md-2 padding-left-0 padding-right-0 align-center">
       <a class="btn btn-success btn-block advanced-search" data-toggle="collapse" data-target="#advanced-search">
         <i class="fa fa-caret-square-o-down" aria-hidden="true"></i> Advanced Search
       </a>
     </div>
-    <div class="col-xs-3 col-sm-3 col-md-2 padding-left-0">
+    <div class="col-xs-12 col-sm-3 col-md-2 padding-left-0">
       <button type="submit" class="btn btn-primary btn-block"><i class="fa fa-search fa-lg" aria-hidden="true"></i></button>
     </div>
     <div id="advanced-search" class="collapse col-md-12">

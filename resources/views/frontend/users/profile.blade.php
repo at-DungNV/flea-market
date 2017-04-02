@@ -34,9 +34,6 @@
           <a href="{{ route('users.rejectedPosts') }}" class="list-group-item">
             <i class="fa fa-window-close-o" aria-hidden="true"> Bị từ chối</i>
           </a>
-          <a href="#" class="list-group-item">
-            <i class="fa fa-envelope-open" aria-hidden="true"></i> Notification
-          </a>
         </div>
       </div>
       <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 " align="center">

@@ -34,14 +34,11 @@
           <a href="{{ route('users.rejectedPosts') }}" class="list-group-item">
             <i class="fa fa-window-close-o" aria-hidden="true"> Bị từ chối</i>
           </a>
-          <a href="#" class="list-group-item">
-            <i class="fa fa-envelope-open" aria-hidden="true"></i> Notification
-          </a>
         </div>
       </div>
       <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9 ">
         @if(count($posts) > 0) 
-          <section class="work">
+          <section class="work-col-4">
             @foreach ($posts as $post)
               <figure class="white">
                 <!-- <h6>{{ str_limit($post->title, $limit = 15, $end = '...') }}</h6> -->

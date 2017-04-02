@@ -6,7 +6,6 @@ $(".advanced-search").click(function() {
                                       || $('#advanced-search').find('select[name="category"]').val() != ''
                                       || $('#advanced-search').find('select[name="order"]').val() != '';
   if (isClosed == 'true' && !isSelectedAdvancedSearchElement) {
-    console.log(isSelectedAdvancedSearchElement);
     // nếu có chọn bất cứ cái nào thì không xóa
     // còn không thì xóa
     $('#advanced-search').find('.panel-body').empty();
