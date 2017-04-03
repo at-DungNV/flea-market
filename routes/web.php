@@ -150,7 +150,8 @@ Route::group(['namespace' => 'Frontend'], function () {
 
 
 Route::group(['namespace' => 'Backend', 'prefix' => 'admin'], function () {
-  Route::get('/broadcast', function() {
-      return view('backend.test');
-  });
+  Route::get('/post', [
+    'uses' => 'PostController@index',
+    'as'   => 'admin.post.index'
+  ]);
 });

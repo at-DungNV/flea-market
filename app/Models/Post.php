@@ -23,6 +23,16 @@ class Post extends Model
   ];
 
   /**
+   * Post belongs to an User.
+   *
+   * @return Illuminate\Database\Eloquent\Relations\BelongsTo
+   */
+  public function user()
+  {
+      return $this->belongsTo('App\Models\User');
+  }
+  
+  /**
    * Post has many images.
    *
    * @return Illuminate\Database\Eloquent\Relations\HasMany

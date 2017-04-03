@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Post;
 
 class PostController extends Controller
 {
@@ -13,8 +14,12 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        //
+    {   
+        $posts = Post::with('user')->get();
+        $data = array(
+            'posts'  => $posts
+        );
+        return view('backend.posts.index')->with($data);
     }
 
     /**
