@@ -25,8 +25,15 @@
     <!-- bootstrap-daterangepicker -->
     <link href="/bower_resources/gentelella/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
 
+    <!-- Datatable -->
+    <link href="/bower_resources/gentelella/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
     <!-- Custom Theme Style -->
     <link href="/bower_resources/gentelella/build/css/custom.min.css" rel="stylesheet">
+    
+    <!-- jQuery -->
+    <script src="/bower_resources/gentelella/vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Datatable -->
+    <script src="/bower_resources/gentelella/vendors/datatables.net/js/jquery.dataTables.min.js" charset="utf-8"></script>
   </head>
 
   <body class="nav-md">
@@ -79,23 +86,6 @@
         
         <!-- page content -->
         <div class="right_col" role="main">
-          <div class="page-title">
-            <div class="title_left">
-              @yield('page-title')
-            </div>
-
-            <div class="title_right">
-              <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
-                <div class="input-group">
-                  <input type="text" class="form-control" placeholder="Search for...">
-                  <span class="input-group-btn">
-                    <button class="btn btn-default" type="button">Go!</button>
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="clearfix"></div>
           @yield('content')
         </div>
         <!-- /page content -->
@@ -104,8 +94,6 @@
       </div>
     </div>
 
-    <!-- jQuery -->
-    <script src="/bower_resources/gentelella/vendors/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap -->
     <script src="/bower_resources/gentelella/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- FastClick -->
