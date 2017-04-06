@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Backend;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Post;
+use App\Models\Image;
+use App\Models\Notification;
 
 class PostController extends Controller
 {
@@ -51,7 +53,13 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        //
+      try {
+          $post = Post::where('id', '=', $id)->with('images', 'user')->firstOrFail();
+          return view('backend.posts.show', ['post' => $post]);
+      } catch (NotFoundHttpException $ex) {
+          return redirect()->action('PostController@index')
+                           ->withErrors('khong tim thay');
+      }
     }
 
     /**
@@ -62,7 +70,13 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+        try {
+            $post = Post::where('id', '=', $id)->with('images', 'user')->firstOrFail();
+            return view('backend.posts.edit', ['post' => $post]);
+        } catch (NotFoundHttpException $ex) {
+            return redirect()->action('PostController@index')
+                             ->withErrors('khong tim thay');
+        }
     }
 
     /**
@@ -85,6 +99,17 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $errors = "bi loi khi xoa";
+        try {
+            $post = Post::findOrFail($id);
+            Image::where('post_id', '=', $id)->delete();
+            Notification::where('post_id', '=', $id)->delete();
+            $post->delete();
+            return redirect()->route('admin.post.index')
+                             ->withMessage("xoa thanh cong");
+        } catch (Exception $modelNotFound) {
+            return redirect()->route('admin.post.index')->withErrors("loi khi xoa");
+        }
+        return redirect()->route('admin.post.index')->withErrors($errors);
     }
 }

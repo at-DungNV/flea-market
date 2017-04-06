@@ -1,5 +1,11 @@
 @extends('layouts.backend.app')
+@section('errors-message')
+    @include('common.errors')
+@stop
 
+@section('susscess-message')
+    @include('common.success')
+@stop
 @section('content')
 
   <div class="col-md-12 col-sm-12 col-xs-12">
@@ -25,6 +31,8 @@
       </div>
 
       <div class="x_content">
+        @yield('errors-message')
+        @yield('susscess-message')
         <div class="table-responsive">
           <table class="table table-striped" id="admin-post-index-table">
             <thead>
@@ -59,22 +67,56 @@
                 <td class=" ">{{ $post->state }}</td>
                 <td class="a-right a-right ">{{ number_format ( $post->price  , 0 , "." , "." ) }} VNĐ</td>
                 <td class="last">
-                  <a href="#">View</a>
-                  <a href="#">Delete</a>
+                  <a href="{{ route('admin.post.show', [$post->id]) }}" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> View </a>
+                  <a href="{{ route('admin.post.edit', [$post->id]) }}" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit </a>
+                  <a data-toggle="modal" data-target="#confirm-deleting" class="btn btn-danger btn-xs admin-post-index-delete">
+                    <i class="fa fa-trash-o"></i> Delete
+                  </a>
+                  <input id="post_id" type="hidden" value="{{ $post->id }}">
                 </td>
               </tr>
               @endforeach
             </tbody>
           </table>
         </div>
+        @if (count($posts) > 0 )
+        <!-- Modal Confirmation -->
+          <div class="modal fade" id="confirm-deleting" role="dialog">
+            <div class="modal-dialog">
 
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title">xoa bai dang</h4>
+                </div>
+                <div class="modal-body">
+                  <h5>ban co muon xoa khong</h5>
+                </div>
+                <div class="modal-footer">
+                    <form action="{{ url('$post->id') }}" method="POST">
+                        {{ csrf_field() }}
+                        {{ method_field('DELETE') }}
+                        <button type="submit" class="btn btn-danger">xoa</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">cancel</button>
+                    </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        @endif
       </div>
     </div>
   </div>
   <script type="text/javascript">
-  $('#admin-post-index-table').DataTable({
-        fixedHeader: true
-      });
-
+    $('#admin-post-index-table').DataTable({
+      fixedHeader: true
+    });
+    $(document).ready(function() {
+        $(document).on('click',".admin-post-index-delete", function() {
+            var id = $(this).next().val();
+            $('form').attr('action','post/'+id);
+        });
+    });
   </script>
 @stop

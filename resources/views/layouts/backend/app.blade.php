@@ -10,20 +10,9 @@
     <title>Gentelella Alela! | </title>
 
     <!-- Bootstrap -->
-    <link href="/bower_resources/gentelella/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/bower_resources/bootstrap/dist/css/bootstrap.min.css">
     <!-- Font Awesome -->
-    <link href="/bower_resources/gentelella/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <!-- NProgress -->
-    <link href="/bower_resources/gentelella/vendors/nprogress/nprogress.css" rel="stylesheet">
-    <!-- iCheck -->
-    <link href="/bower_resources/gentelella/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
-	
-    <!-- bootstrap-progressbar -->
-    <link href="/bower_resources/gentelella/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
-    <!-- JQVMap -->
-    <link href="/bower_resources/gentelella/vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
-    <!-- bootstrap-daterangepicker -->
-    <link href="/bower_resources/gentelella/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+    <link href="/bower_resources/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 
     <!-- Datatable -->
     <link href="/bower_resources/gentelella/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
@@ -31,7 +20,7 @@
     <link href="/bower_resources/gentelella/build/css/custom.min.css" rel="stylesheet">
     
     <!-- jQuery -->
-    <script src="/bower_resources/gentelella/vendors/jquery/dist/jquery.min.js"></script>
+    <script src="/bower_resources/jquery/dist/jquery.min.js"></script>
     <!-- Datatable -->
     <script src="/bower_resources/gentelella/vendors/datatables.net/js/jquery.dataTables.min.js" charset="utf-8"></script>
   </head>
@@ -42,7 +31,7 @@
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Gentelella Alela!</span></a>
+              <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>FM Management</span></a>
             </div>
 
             <div class="clearfix"></div>
@@ -95,40 +84,7 @@
     </div>
 
     <!-- Bootstrap -->
-    <script src="/bower_resources/gentelella/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
-    <!-- FastClick -->
-    <script src="/bower_resources/gentelella/vendors/fastclick/lib/fastclick.js"></script>
-    <!-- NProgress -->
-    <script src="/bower_resources/gentelella/vendors/nprogress/nprogress.js"></script>
-    <!-- Chart.js -->
-    <script src="/bower_resources/gentelella/vendors/Chart.js/dist/Chart.min.js"></script>
-    <!-- gauge.js -->
-    <script src="/bower_resources/gentelella/vendors/gauge.js/dist/gauge.min.js"></script>
-    <!-- bootstrap-progressbar -->
-    <script src="/bower_resources/gentelella/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
-    <!-- iCheck -->
-    <script src="/bower_resources/gentelella/vendors/iCheck/icheck.min.js"></script>
-    <!-- Skycons -->
-    <script src="/bower_resources/gentelella/vendors/skycons/skycons.js"></script>
-    <!-- Flot -->
-    <script src="/bower_resources/gentelella/vendors/Flot/jquery.flot.js"></script>
-    <script src="/bower_resources/gentelella/vendors/Flot/jquery.flot.pie.js"></script>
-    <script src="/bower_resources/gentelella/vendors/Flot/jquery.flot.time.js"></script>
-    <script src="/bower_resources/gentelella/vendors/Flot/jquery.flot.stack.js"></script>
-    <script src="/bower_resources/gentelella/vendors/Flot/jquery.flot.resize.js"></script>
-    <!-- Flot plugins -->
-    <script src="/bower_resources/gentelella/vendors/flot.orderbars/js/jquery.flot.orderBars.js"></script>
-    <script src="/bower_resources/gentelella/vendors/flot-spline/js/jquery.flot.spline.min.js"></script>
-    <script src="/bower_resources/gentelella/vendors/flot.curvedlines/curvedLines.js"></script>
-    <!-- DateJS -->
-    <script src="/bower_resources/gentelella/vendors/DateJS/build/date.js"></script>
-    <!-- JQVMap -->
-    <script src="/bower_resources/gentelella/vendors/jqvmap/dist/jquery.vmap.js"></script>
-    <script src="/bower_resources/gentelella/vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
-    <script src="/bower_resources/gentelella/vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
-    <!-- bootstrap-daterangepicker -->
-    <script src="/bower_resources/gentelella/vendors/moment/min/moment.min.js"></script>
-    <script src="/bower_resources/gentelella/vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <script src="/bower_resources/bootstrap/dist/js/bootstrap.min.js"></script>
 
     <!-- Custom Theme Scripts -->
     <script src="/bower_resources/gentelella/build/js/custom.min.js"></script>
