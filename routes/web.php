@@ -154,4 +154,20 @@ Route::group(['namespace' => 'Backend', 'prefix' => 'admin'], function () {
     'uses' => 'PostController@index',
     'as'   => 'admin.post.index'
   ]);
+  
+  Route::get('/post/{post}', [
+    'uses' => 'PostController@show',
+    'as'   => 'admin.post.show'
+  ]);
+  
+  Route::delete('/post/{post}', [
+    'uses' => 'PostController@destroy',
+    'as'   => 'admin.post.destroy'
+  ]);
+  
+  Route::get('/post/{post}/edit', [
+    'uses' => 'PostController@edit',
+    'as'   => 'admin.post.edit'
+  ]);
+  
 });
