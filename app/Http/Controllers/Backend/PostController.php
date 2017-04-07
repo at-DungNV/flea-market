@@ -59,7 +59,9 @@ class PostController extends Controller
           $states = array(
               \Config::get('common.TYPE_POST_ACTIVE'), 
               \Config::get('common.TYPE_POST_HIDDEN'), 
-              \Config::get('common.TYPE_POST_REJECTED'));
+              \Config::get('common.TYPE_POST_REJECTED'),
+              \Config::get('common.TYPE_POST_WAITING')
+          );
           $states = array_diff($states, [$post->state]);
           return view('backend.posts.show', ['post' => $post, 'states' => $states]);
       } catch (NotFoundHttpException $ex) {
@@ -127,6 +129,44 @@ class PostController extends Controller
                     ->orderBy('created_at', 'desc')
                     ->paginate(8);
       return view('backend.posts.rejectedPosts', ['posts' => $posts]);
+    }
+    
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function getWaitingPosts(Request $request)
+    {
+      
+      $posts = Post::with(['images'=>function($query) {
+                        return $query->limit(1);
+                    }])
+                    ->Where('state', '=', \Config::get('common.TYPE_POST_WAITING'))
+                    ->orderBy('created_at', 'desc')
+                    ->paginate(8);
+      return view('backend.posts.waitingPosts', ['posts' => $posts]);
+    }
+    
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function getApprovalPosts(Request $request)
+    {
+      
+      $posts = Post::with(['images'=>function($query) {
+                        return $query->limit(1);
+                    }])
+                    ->Where('state', '=', \Config::get('common.TYPE_POST_ACTIVE'))
+                    ->orderBy('created_at', 'desc')
+                    ->paginate(8);
+      return view('backend.posts.approvalPosts', ['posts' => $posts]);
     }
     
 

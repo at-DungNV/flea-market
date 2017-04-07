@@ -25,7 +25,7 @@ class CreatePostsTable extends Migration
             $table->foreign('ward_id')->references('id')->on('wards');
             $table->string('title', 256);
             $table->integer('price')->nullable();
-            $table->string('state', 45)->default('hidden');
+            $table->string('state', 45)->default('waiting');
             $table->string('type', 10); // buy or sell
             $table->string('phone', 40)->nullable();
             $table->string('address');

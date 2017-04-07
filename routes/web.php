@@ -170,6 +170,16 @@ Route::group(['namespace' => 'Backend', 'prefix' => 'admin'], function () {
     'as'   => 'admin.post.rejected'
   ]);
   
+  Route::get('/waiting-posts', [
+    'uses' => 'PostController@getWaitingPosts',
+    'as'   => 'admin.post.waiting'
+  ]);
+  
+  Route::get('/approval-posts', [
+    'uses' => 'PostController@getApprovalPosts',
+    'as'   => 'admin.post.approval'
+  ]);
+  
   Route::put('/post', [
     'uses' => 'PostController@update',
     'as'   => 'admin.post.update'
