@@ -73,8 +73,18 @@
                     <i class="fa fa-phone" aria-hidden="true"></i> Phone: {{ $post->phone }}
                   </li>
                   <li class="list-group-item">
-                    <i class="fa fa-check-square" aria-hidden="true"></i> Chỉnh sửa: 
-                    <a href="{{ route('admin.post.edit', [$post->id]) }}" class="btn btn-info btn-block"><i class="fa fa-pencil"></i> Edit </a>
+                    <i class="fa fa-adjust" aria-hidden="true"></i> Chỉnh sửa trạng thái: 
+                    <div class="form-group">
+                      <!-- <label for="sel1">Select list (select one):</label> -->
+                      <select class="form-control backend-post-show-state">
+                        @foreach ($states as $state)
+                          <option value="{{ $state }}"> {{ $state }}</option>
+                        @endforeach
+                      </select>
+                      <a data-toggle="modal" data-target="#backend-confirm-updating" class="btn btn-danger btn-block admin-post-show-update">
+                        <i class="fa fa-trash-o"></i> Update
+                      </a>
+                    </div>
                   </li>
                 </ul>
               </div>
@@ -91,4 +101,40 @@
       </div>
     </div>
   </div>
+  
+  <div class="modal fade" id="backend-confirm-updating" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">update bai dang</h4>
+        </div>
+        <div class="modal-body">
+          <h5>Trạng thái hiện tại: {{$post->state}}</h5>
+          <h5>Trạng thái sau khi cập nhật: <span class="backend-post-show-label-state"> </span></h5>
+        </div>
+        <div class="modal-footer">
+            <form action="{{ route('admin.post.update') }}" method="POST">
+                {{ csrf_field() }}
+                {{ method_field('PUT') }}
+                <input type="hidden" name="id" value="{{$post->id}}">
+                <input type="hidden" name="state" value="">
+                <button type="submit" class="btn btn-danger">Update</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript">
+    $(document).ready(function() {
+        $(document).on('click',".admin-post-show-update", function() {
+            var state = $('.backend-post-show-state').val();
+            $('input[name="state"]').val(state);
+            $('.backend-post-show-label-state').html(state);
+        });
+    });
+  </script>
 @stop

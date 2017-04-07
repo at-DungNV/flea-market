@@ -9,8 +9,8 @@
       <li><a><i class="fa fa-edit"></i> Post Management <span class="fa fa-chevron-down"></span></a>
         <ul class="nav child_menu">
           <li><a href="{{ route('admin.post.index') }}">list</a></li>
-          <li><a href="form_advanced.html">rejected posts</a></li>
           <li><a href="form_validation.html">waiting posts</a></li>
+          <li><a href="{{ route('admin.post.rejected') }}">rejected posts</a></li>
           <li><a href="form_wizards.html">approval posts</a></li>
         </ul>
       </li>
