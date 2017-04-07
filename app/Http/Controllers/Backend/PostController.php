@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Post;
 use App\Models\Image;
 use App\Models\Notification;
+use Auth;
 
 class PostController extends Controller
 {
@@ -55,7 +56,12 @@ class PostController extends Controller
     {
       try {
           $post = Post::where('id', '=', $id)->with('images', 'user')->firstOrFail();
-          return view('backend.posts.show', ['post' => $post]);
+          $states = array(
+              \Config::get('common.TYPE_POST_ACTIVE'), 
+              \Config::get('common.TYPE_POST_HIDDEN'), 
+              \Config::get('common.TYPE_POST_REJECTED'));
+          $states = array_diff($states, [$post->state]);
+          return view('backend.posts.show', ['post' => $post, 'states' => $states]);
       } catch (NotFoundHttpException $ex) {
           return redirect()->action('PostController@index')
                            ->withErrors('khong tim thay');
@@ -70,13 +76,6 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        try {
-            $post = Post::where('id', '=', $id)->with('images', 'user')->firstOrFail();
-            return view('backend.posts.edit', ['post' => $post]);
-        } catch (NotFoundHttpException $ex) {
-            return redirect()->action('PostController@index')
-                             ->withErrors('khong tim thay');
-        }
     }
 
     /**
@@ -86,10 +85,50 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $errors = "bi loi khi update";
+        try {
+            $post = Post::findOrFail($request['id']);
+            $post->state = $request['state'];
+            $post->save();
+            
+            $notification = Notification::create([
+                'user_id' => $post->user_id,
+                'post_id' => $post->id,
+                'message' => 'Bài đăng của bạn đã được cập nhật thành '. $request['state'],
+                'seen' => 0,
+            ]);
+            // Announce that a new message has been posted
+            event(new \App\Events\PostApprovalEvent($post->user, $notification));
+            
+            return redirect()->route('admin.post.show',['id' => $request['id']])
+                             ->withMessage("xoa thanh cong");
+        } catch (Exception $modelNotFound) {
+            return redirect()->route('admin.post.show',['id' => $request['id']])->withErrors("loi khi xoa");
+        }
+        return redirect()->route('admin.post.show',['id' => $request['id']])->withErrors($errors);
     }
+    
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function getRejectedPosts(Request $request)
+    {
+      
+      $posts = Post::with(['images'=>function($query) {
+                        return $query->limit(1);
+                    }])
+                    ->Where('state', '=', \Config::get('common.TYPE_POST_REJECTED'))
+                    ->orderBy('created_at', 'desc')
+                    ->paginate(8);
+      return view('backend.posts.rejectedPosts', ['posts' => $posts]);
+    }
+    
 
     /**
      * Remove the specified resource from storage.

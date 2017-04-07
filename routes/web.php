@@ -165,9 +165,13 @@ Route::group(['namespace' => 'Backend', 'prefix' => 'admin'], function () {
     'as'   => 'admin.post.destroy'
   ]);
   
-  Route::get('/post/{post}/edit', [
-    'uses' => 'PostController@edit',
-    'as'   => 'admin.post.edit'
+  Route::get('/rejected-posts', [
+    'uses' => 'PostController@getRejectedPosts',
+    'as'   => 'admin.post.rejected'
   ]);
   
+  Route::put('/post', [
+    'uses' => 'PostController@update',
+    'as'   => 'admin.post.update'
+  ]);
 });
