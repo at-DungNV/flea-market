@@ -65,3 +65,8 @@
   </div>
 </div>
 
+<script type="text/javascript">
+  var id = "{{Auth::user()->id}}";
+  console.log(id);
+</script>
+
