@@ -32,7 +32,7 @@ const demo = new Vue({
         });
         
         // this is called real time
-        Echo.private('notification')
+        Echo.private('notification'+id)
             .listen('PostApprovalEvent', (e) => {
                 this.notifications.unshift(e.notification);
                 // if ($("#notificationContainer").is(":visible") == true) {

@@ -27,8 +27,8 @@ class BroadcastServiceProvider extends ServiceProvider
             return $user;
         });
         
-        Broadcast::channel('notification', function ($user) {
-            return $user;
+        Broadcast::channel('notification*', function ($user, $userId) {
+            return (int) $user->id === (int) $userId;
         });
     }
 }
