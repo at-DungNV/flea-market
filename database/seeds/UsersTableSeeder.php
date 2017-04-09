@@ -24,6 +24,7 @@ class UsersTableSeeder extends Seeder
         $user->address = 'Asian Tech Inc';
         $user->phone = '0123456789';
         $user->gender = 1;
+        $user->is_admin = 1;
         $user->save();
 
         for ($i=0; $i < 10; $i++) {

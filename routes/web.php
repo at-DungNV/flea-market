@@ -149,7 +149,7 @@ Route::group(['namespace' => 'Frontend'], function () {
 
 
 
-Route::group(['namespace' => 'Backend', 'prefix' => 'admin'], function () {
+Route::group(['namespace' => 'Backend', 'prefix' => 'admin', 'middleware' => 'admin'], function () {
   Route::get('/post', [
     'uses' => 'PostController@index',
     'as'   => 'admin.post.index'

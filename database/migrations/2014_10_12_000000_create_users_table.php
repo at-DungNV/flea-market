@@ -25,6 +25,7 @@ class CreateUsersTable extends Migration
             $table->tinyInteger('gender')->nullable();
             $table->string('avatar')->default('default.png');
             $table->integer('unread_notification')->default(0);
+            $table->boolean('is_admin')->default(0);
             $table->rememberToken()->nullable();
             $table->timestamps();
         });
