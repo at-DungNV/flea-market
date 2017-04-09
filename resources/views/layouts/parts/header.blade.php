@@ -66,7 +66,10 @@
 </div>
 
 <script type="text/javascript">
-  var id = "{{Auth::user()->id}}";
-  console.log(id);
+  var id="";
+  var user = {!! json_encode(auth()->user()) !!};
+  if (user != null) {
+    id = user['id'];
+  }
 </script>
 

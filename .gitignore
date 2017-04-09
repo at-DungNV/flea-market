@@ -8,3 +8,4 @@ Homestead.yaml
 /public/bower_resources
 composer.json
 composer.lock
+storage/debugbar
