@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'is_active', 'birthday', 'address', 'phone', 'gender', 'avatar'
+        'name', 'email', 'password', 'is_active', 'birthday', 'address', 'phone', 'gender', 'avatar', 'unread_notification', 'is_admin'
     ];
 
     /**
@@ -42,5 +42,10 @@ class User extends Authenticatable
     public function messages()
     {
         return $this->hasMany(Message::class);
+    }
+    
+    public function isAdmin()
+    {
+        return $this->is_admin;
     }
 }
