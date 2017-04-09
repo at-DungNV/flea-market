@@ -40,6 +40,7 @@
                       <b class="caret"></b>
                     </span>
                   </a>
+<<<<<<< Updated upstream
                   <ul class="dropdown-menu">
                     <li class="dropdown-plus-title">
                       <div class="img-rounded profile-img"></div>
@@ -67,6 +68,32 @@
                   </ul>
               </li>
             @endif
+=======
+                  <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    {{ csrf_field() }}
+                  </form>
+                </li>
+              </ul>
+            </li>
+          @endif
+      </ul>
+    </div>
+    
+    
+    
+    
+    <div id="stripes"></div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  var id="";
+  var user = {!! json_encode(auth()->user()) !!};
+  if (user != null) {
+    id = user['id'];
+  }
+</script>
+>>>>>>> Stashed changes
 
           </ul>
       </div>
