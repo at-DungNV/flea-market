@@ -1,6 +1,6 @@
 <div id="wrapper-header">
   <div id="main-header" class="object">
-    <div class="logo"><img src="/images/2.png" alt="logo platz" height="38" width="90"></div>
+    <div class="logo"><img src="/images/logo.png" alt="logo platz"></div>
     
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
