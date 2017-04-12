@@ -34,11 +34,11 @@
         @yield('errors-message')
         @yield('susscess-message')
         <div class="table-responsive">
-          <table class="table table-striped" id="admin-post-index-table">
+          <table class="table table-striped jambo_table check-action" id="admin-post-index-table">
             <thead>
               <tr class="headings">
                 <th>
-                  <input type="checkbox" id="check-all" class="icheckbox_flat-green">
+                  <input type="checkbox" id="check-all" class="flat">
                 </th>
                 <th class="column-title">ID </th>
                 <th class="column-title">Created Date </th>
@@ -48,8 +48,8 @@
                 <th class="column-title">Amount </th>
                 <th class="column-title no-link last"><span class="nobr">Action</span>
                 </th>
-                <th class="bulk-actions" colspan="7">
-                  <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
+                <th class="check-actions" colspan="7">
+                  <a class="antoo" style="color:#fff; font-weight:500;">Dung NV ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
                 </th>
               </tr>
             </thead>

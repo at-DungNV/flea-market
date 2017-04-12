@@ -16,9 +16,12 @@
 
     <!-- Datatable -->
     <link href="/bower_resources/gentelella/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <!-- iCheck -->
+    <link href="/bower_resources/gentelella/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
     <!-- Custom Theme Style -->
     <link href="/bower_resources/gentelella/build/css/custom.min.css" rel="stylesheet">
     
+    <link href="/css/admin/app.css" rel="stylesheet">
     <!-- jQuery -->
     <script src="/bower_resources/jquery/dist/jquery.min.js"></script>
     <!-- Datatable -->
@@ -85,9 +88,10 @@
 
     <!-- Bootstrap -->
     <script src="/bower_resources/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/bower_resources/gentelella/vendors/iCheck/icheck.min.js" charset="utf-8"></script>
 
     <!-- Custom Theme Scripts -->
     <script src="/bower_resources/gentelella/build/js/custom.min.js"></script>
-	
+    <script src="/js/admin/app.js" charset="utf-8"></script>
   </body>
 </html>
