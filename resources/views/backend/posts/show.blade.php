@@ -73,7 +73,7 @@
                     <i class="fa fa-phone" aria-hidden="true"></i> Phone: {{ $post->phone }}
                   </li>
                   <li class="list-group-item">
-                    <i class="fa fa-adjust" aria-hidden="true"></i> Chỉnh sửa trạng thái: 
+                    <i class="fa fa-adjust" aria-hidden="true"></i> <span style="font-weight:bold; font-size: 20px;">Chỉnh sửa trạng thái: </span>
                     <div class="form-group">
                       <!-- <label for="sel1">Select list (select one):</label> -->
                       <select class="form-control backend-post-show-state">
