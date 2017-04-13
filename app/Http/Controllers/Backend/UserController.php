@@ -21,6 +21,21 @@ class UserController extends Controller
         );
         return view('backend.users.index')->with($data);
     }
+    
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getBlockedUsers()
+    {
+        $users = User::Where('is_active', '=', \Config::get('common.USER_BLOCKED_DIGITAL'))->get();
+        $data = array(
+            'users'  => $users
+        );
+        return view('backend.users.blockedUsers')->with($data);
+    }
+    
 
     /**
      * Show the form for creating a new resource.

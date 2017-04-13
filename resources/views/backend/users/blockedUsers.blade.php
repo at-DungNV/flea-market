@@ -34,7 +34,7 @@
         @yield('errors-message')
         @yield('susscess-message')
         <div class="table-responsive">
-          <table class="table table-striped jambo_table check-action" id="admin-post-index-table">
+          <table class="table table-striped jambo_table check-action">
             <thead>
               <tr class="headings">
                 <th>

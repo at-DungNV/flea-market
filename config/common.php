@@ -11,6 +11,8 @@ return [
     'TYPE_POST_ACTIVE' => 'active',
     'ASCENDANT' => 'asc',
     'DESCENDANT' => 'desc',
+    'USER_ACTIVE_DIGITAL' => 1,
+    'USER_BLOCKED_DIGITAL' => 0,
     'USER_ACTIVE' => 'active',
     'USER_BLOCKED' => 'blocked',
     'ACCOUNT_TYPE_USER' => 'user',
