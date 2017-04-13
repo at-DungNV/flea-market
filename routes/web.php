@@ -184,4 +184,10 @@ Route::group(['namespace' => 'Backend', 'prefix' => 'admin', 'middleware' => 'ad
     'uses' => 'PostController@update',
     'as'   => 'admin.post.update'
   ]);
+  
+  
+  Route::get('/user', [
+    'uses' => 'UserController@index',
+    'as'   => 'admin.user.index'
+  ]);
 });

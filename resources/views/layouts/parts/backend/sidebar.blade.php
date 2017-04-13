@@ -16,7 +16,7 @@
       </li>
       <li><a><i class="fa fa-desktop"></i> User Management <span class="fa fa-chevron-down"></span></a>
         <ul class="nav child_menu">
-          <li><a href="general_elements.html">list</a></li>
+          <li><a href="{{ route('admin.user.index') }}">list</a></li>
           <li><a href="media_gallery.html">blocked users</a></li>
         </ul>
       </li>
