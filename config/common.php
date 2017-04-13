@@ -11,4 +11,8 @@ return [
     'TYPE_POST_ACTIVE' => 'active',
     'ASCENDANT' => 'asc',
     'DESCENDANT' => 'desc',
+    'USER_ACTIVE' => 'active',
+    'USER_BLOCKED' => 'blocked',
+    'ACCOUNT_TYPE_USER' => 'user',
+    'ACCOUNT_TYPE_ADMIN' => 'admin'
 ];
