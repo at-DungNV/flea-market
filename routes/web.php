@@ -194,4 +194,8 @@ Route::group(['namespace' => 'Backend', 'prefix' => 'admin', 'middleware' => 'ad
     'uses' => 'UserController@getBlockedUsers',
     'as'   => 'admin.user.blocked'
   ]);
+  Route::delete('/user/{id}', [
+    'uses' => 'UserController@destroy',
+    'as'   => 'admin.user.destroy'
+  ]);
 });

@@ -181,8 +181,7 @@ class PostController extends Controller
         $errors = "bi loi khi xoa";
         try {
             $post = Post::findOrFail($id);
-            Image::where('post_id', '=', $id)->delete();
-            Notification::where('post_id', '=', $id)->delete();
+            $post->deleteReferences();
             $post->delete();
             return redirect()->route('admin.post.index')
                              ->withMessage("xoa thanh cong");

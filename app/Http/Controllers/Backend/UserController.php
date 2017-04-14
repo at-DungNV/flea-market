@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Post;
 
 class UserController extends Controller
 {
@@ -100,6 +101,16 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $errors = "bi loi khi cap nhat";
+        try {
+            $user = User::findOrFail($id);
+            $user->is_active = !$user->is_active;
+            $user->save();
+            return redirect()->route('admin.user.index')
+                             ->withMessage("cap nhat thanh cong");
+        } catch (Exception $modelNotFound) {
+            return redirect()->route('admin.user.index')->withErrors("loi khi cap nhat");
+        }
+        return redirect()->route('admin.user.index')->withErrors($errors);
     }
 }

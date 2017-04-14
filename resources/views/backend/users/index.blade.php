@@ -34,7 +34,7 @@
         @yield('errors-message')
         @yield('susscess-message')
         <div class="table-responsive">
-          <table class="table table-striped jambo_table check-action" id="admin-post-index-table">
+          <table class="table table-striped jambo_table check-action" id="admin-user-index-table">
             <thead>
               <tr class="headings">
                 <th>
@@ -66,10 +66,16 @@
                 <td class=" ">{{ $user->created_at }}</td>
                 <td class="last">
                   <a href="" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> View </a>
-                  <a data-toggle="modal" data-target="#confirm-deleting" class="btn btn-danger btn-xs admin-post-index-delete">
-                    <i class="fa fa-trash-o"></i> Delete
+                  @if ($user->is_active == 1)
+                  <a data-toggle="modal" data-target="#confirm-deleting" class="btn btn-danger btn-lock btn-xs admin-user-index-delete">
+                    <i class="fa fa-trash-o"></i> Block
                   </a>
-                  <input id="post_id" type="hidden" value="">
+                  @else
+                  <a data-toggle="modal" data-target="#confirm-deleting" class="btn btn-danger btn-lock btn-xs admin-user-index-delete">
+                    <i class="fa fa-trash-o"></i> Unblock
+                  </a>
+                  @endif
+                  <input type="hidden" value="{{ $user->id }}">
                 </td>
               </tr>
               @endforeach
@@ -91,7 +97,7 @@
                   <h5>ban co muon xoa khong</h5>
                 </div>
                 <div class="modal-footer">
-                    <form action="{{ url('$post->id') }}" method="POST">
+                    <form action="{{ url('') }}" method="POST">
                         {{ csrf_field() }}
                         {{ method_field('DELETE') }}
                         <button type="submit" class="btn btn-danger">xoa</button>
@@ -106,13 +112,13 @@
     </div>
   </div>
   <script type="text/javascript">
-    $('#admin-post-index-table').DataTable({
+    $('#admin-user-index-table').DataTable({
       fixedHeader: true
     });
     $(document).ready(function() {
-        $(document).on('click',".admin-post-index-delete", function() {
+        $(document).on('click',".admin-user-index-delete", function() {
             var id = $(this).next().val();
-            $('form').attr('action','post/'+id);
+            $('form').attr('action','user/'+id);
         });
     });
   </script>
