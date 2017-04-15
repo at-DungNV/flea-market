@@ -9,6 +9,7 @@ use App\Models\Image;
 use App\Models\Province;
 use App\Models\District;
 use App\Models\Ward;
+use App\Models\Notification;
 use Image as ImageIntervention;
 
 class Post extends Model
@@ -125,5 +126,10 @@ class Post extends Model
         'total' => $total
     );
     return $data;
+  }
+  
+  public function deleteReferences() {
+      Image::where('post_id', '=', $this->id)->delete();
+      Notification::where('post_id', '=', $this->id)->delete();
   }
 }

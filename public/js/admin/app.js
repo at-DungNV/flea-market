@@ -50,3 +50,8 @@ function countChecked() {
         $('.check-actions').hide();
     }
 }
+
+
+$('.table-fixed-header').DataTable({
+  fixedHeader: true
+});

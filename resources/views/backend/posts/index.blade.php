@@ -34,7 +34,7 @@
         @yield('errors-message')
         @yield('susscess-message')
         <div class="table-responsive">
-          <table class="table table-striped jambo_table check-action" id="admin-post-index-table">
+          <table class="table table-striped jambo_table check-action table-fixed-header" id="admin-post-index-table">
             <thead>
               <tr class="headings">
                 <th>
@@ -108,9 +108,6 @@
     </div>
   </div>
   <script type="text/javascript">
-    $('#admin-post-index-table').DataTable({
-      fixedHeader: true
-    });
     $(document).ready(function() {
         $(document).on('click',".admin-post-index-delete", function() {
             var id = $(this).next().val();
