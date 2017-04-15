@@ -65,7 +65,7 @@
                 <td class=" ">{{ $user->is_admin == 1 ? \Config::get('common.ACCOUNT_TYPE_ADMIN') : \Config::get('common.ACCOUNT_TYPE_USER') }}</td>
                 <td class=" ">{{ $user->created_at }}</td>
                 <td class="last">
-                  <a href="" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> View </a>
+                  <a href="{{ route('admin.user.show', [$user->id]) }}" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> View </a>
                   @if ($user->is_active == 1)
                   <a data-toggle="modal" data-target="#confirm-deleting" class="btn btn-danger btn-lock btn-xs admin-user-index-delete">
                     <i class="fa fa-trash-o"></i> Block

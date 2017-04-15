@@ -190,6 +190,13 @@ Route::group(['namespace' => 'Backend', 'prefix' => 'admin', 'middleware' => 'ad
     'uses' => 'UserController@index',
     'as'   => 'admin.user.index'
   ]);
+  
+  
+  Route::get('/user/{id}', [
+    'uses' => 'UserController@show',
+    'as'   => 'admin.user.show'
+  ]);
+  
   Route::get('/user-blocked', [
     'uses' => 'UserController@getBlockedUsers',
     'as'   => 'admin.user.blocked'

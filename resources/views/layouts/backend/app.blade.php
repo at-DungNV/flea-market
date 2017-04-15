@@ -86,12 +86,13 @@
       </div>
     </div>
 
+    <script src="/bower_resources/jquery-ui/jquery-ui.min.js" charset="utf-8"></script>
     <!-- Bootstrap -->
     <script src="/bower_resources/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="/bower_resources/gentelella/vendors/iCheck/icheck.min.js" charset="utf-8"></script>
 
     <!-- Custom Theme Scripts -->
-    <script src="/bower_resources/gentelella/build/js/custom.min.js"></script>
+    <script src="/bower_resources/gentelella/build/js/custom.js"></script>
     <script src="/js/admin/app.js" charset="utf-8"></script>
   </body>
 </html>
