@@ -99,9 +99,10 @@ class PostController extends Controller
                 'post_id' => $post->id,
                 'message' => 'Bài đăng của bạn đã được cập nhật thành '. $request['state'],
                 'seen' => 0,
+                'approver' => Auth::user()->avatar
             ]);
+            // loi approval khong dung nguoi
             
-            // $notification = Notification::with('user')->findOrFail($notification->id);
             // Announce that a new message has been posted
             event(new \App\Events\PostApprovalEvent($post->user, $notification));
             

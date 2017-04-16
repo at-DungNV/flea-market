@@ -24,6 +24,7 @@ class NotificationsTableSeeder extends Seeder
             'post_id' => $faker->randomElement($posts->toArray()),
             'message' => $faker->text,
             'seen' => $faker->boolean(50),
+            'approver' => 'default.png',
             'created_at' => $faker->dateTimeThisYear($max = 'now')
           ]);
         }

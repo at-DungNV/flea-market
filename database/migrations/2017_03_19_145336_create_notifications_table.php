@@ -21,6 +21,7 @@ class CreateNotificationsTable extends Migration
             $table->foreign('post_id')->references('id')->on('posts');
             $table->text('message');
             $table->boolean('seen');
+            $table->string('approver', 256);
             $table->timestamps();
         });
     }
