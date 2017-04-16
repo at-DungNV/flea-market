@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\Post;
+use App\Models\Notification;
+use Auth;
 
 class UserController extends Controller
 {
@@ -146,5 +148,37 @@ class UserController extends Controller
             return redirect()->route('admin.user.index')->withErrors("loi khi cap nhat");
         }
         return redirect()->route('admin.user.index')->withErrors($errors);
+    }
+    
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function sendMessage(Request $request)
+    {
+        $id = $request['id'];
+        $message = $request['message'];
+        $errors = "bi loi khi update";
+        try {
+            $user = User::findOrFail($id);
+            $notification = Notification::create([
+                'user_id' => $id,
+                // 'post_id' => $post->id,
+                'message' => Auth::user()->name. " sent you a message: ".$message,
+                'seen' => 0,
+                'approver' => Auth::user()->avatar
+            ]);
+            // loi approval khong dung nguoi
+            
+            // Announce that a new message has been posted
+            event(new \App\Events\SendMessageEvent($user, $notification));
+            
+            return redirect()->route('admin.user.show',['id' => $id])
+                             ->withMessage("gui message thanh cong");
+        } catch (Exception $modelNotFound) {
+            return redirect()->route('admin.user.show',['id' => $id])->withErrors("loi khi xoa");
+        }
+        return redirect()->route('admin.user.show',['id' => $id])->withErrors($errors);
     }
 }

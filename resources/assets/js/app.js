@@ -35,7 +35,12 @@ if(user != null) {
       // this is called real time
       Echo.private('notification'+id)
       .listen('PostApprovalEvent', (e) => {
-        e.notification.user = e.user;
+        this.notifications.unshift(e.notification);
+        $("#notification-count").html(parseInt($('#notification-count').html())+ 1);
+      });
+      
+      Echo.private('notification'+id)
+      .listen('SendMessageEvent', (e) => {
         this.notifications.unshift(e.notification);
         $("#notification-count").html(parseInt($('#notification-count').html())+ 1);
       });
