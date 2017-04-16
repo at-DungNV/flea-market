@@ -74,8 +74,35 @@
             </li>
           </ul>
 
-          <a class="btn btn-success"><i class="fa fa-edit m-right-xs"></i>Edit Profile</a>
-          <br />
+          <a class="btn btn-success btn-block"><i class="fa fa-edit m-right-xs"></i>Edit Profile</a>
+          <a class="btn btn-success btn-block" data-toggle="modal" data-target="#demo"><i class="fa fa-edit m-right-xs"></i>Send Message</a>
+          <div id="demo" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title">Modal Header</h4>
+                </div>
+                <form method="POST" action="{{ route('admin.user.message') }}">
+                  <div class="modal-body">
+                      {{ csrf_field() }}
+                      <input type="hidden" name="id" value="{{$user->id}}">
+                      <div class="form-group">
+                        <label for="message">Message:</label>
+                        <textarea class="form-control" name="message" rows="5" id="message"></textarea>
+                      </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="submit" class="btn btn-danger">Send</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  </div>
+                </form>
+              </div>
+
+            </div>
+          </div>
 
         </div>
         

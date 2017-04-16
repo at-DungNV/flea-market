@@ -21,7 +21,7 @@ class NotificationsTableSeeder extends Seeder
         for ($i=0; $i < 100; $i++) {
           Notification::create([
             'user_id' => $faker->randomElement($users->toArray()),
-            'post_id' => $faker->randomElement($posts->toArray()),
+            // 'post_id' => $faker->randomElement($posts->toArray()),
             'message' => $faker->text,
             'seen' => $faker->boolean(50),
             'approver' => 'default.png',
