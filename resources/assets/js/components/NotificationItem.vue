@@ -1,6 +1,10 @@
 <template lang="html">
-  <li class="notification-item list-group-item" v-bind:class="[notification.seen === 1 ? 'unread-message' : 'read-message']">
-    <i class="fa fa-dot-circle-o fa-lg" aria-hidden="true"></i> {{ notification.message }} - {{notification.created_at}} - {{notification.seen}}
+  <li class="notification-item list-group-item" v-bind:class="[notification.seen === 0 ? 'unread-message' : 'read-message']">
+    <img class="image" :src="'http://fleamarket.me/image/'+notification.user.avatar" alt="" width="32" height="32" />
+    {{ notification.message }}
+    <p>
+      <i class="fa fa-calendar-times-o" aria-hidden="true"></i> {{notification.created_at}}
+    </p>
   </li>
 </template>
 

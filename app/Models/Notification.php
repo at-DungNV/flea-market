@@ -14,4 +14,15 @@ class Notification extends Model
     protected $fillable = [
         'user_id', 'post_id', 'message', 'seen'
     ];
+    
+    /**
+     * Post belongs to an User.
+     *
+     * @return Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User');
+    }
+    
 }
