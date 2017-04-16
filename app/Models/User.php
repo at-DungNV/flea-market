@@ -49,4 +49,14 @@ class User extends Authenticatable
         return $this->is_admin;
     }
     
+    public function isBlocked()
+    {
+        return $this->is_active;
+    }
+    
+    public function setActive($isActive)
+    {
+       $this->is_active = (int)$isActive;
+    }
+    
 }
