@@ -94,13 +94,14 @@ class PostController extends Controller
             $post = Post::findOrFail($request['id']);
             $post->state = $request['state'];
             $post->save();
-            
             $notification = Notification::create([
                 'user_id' => $post->user_id,
                 'post_id' => $post->id,
                 'message' => 'Bài đăng của bạn đã được cập nhật thành '. $request['state'],
                 'seen' => 0,
             ]);
+            
+            // $notification = Notification::with('user')->findOrFail($notification->id);
             // Announce that a new message has been posted
             event(new \App\Events\PostApprovalEvent($post->user, $notification));
             
