@@ -124,9 +124,19 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $errors = "bi loi khi cap nhat";
+        try {
+            $user = User::findOrFail($request['id']);
+            $user->setActive($request['isActive']);
+            $user->save();
+            return redirect()->route('admin.user.show', ['id' => $request['id']])
+                             ->withMessage("cap nhat thanh cong");
+        } catch (Exception $modelNotFound) {
+            return redirect()->route('admin.user.show', ['id' => $request['id']])->withErrors("loi khi cap nhat");
+        }
+        return redirect()->route('admin.user.show', ['id' => $request['id']])->withErrors($errors);
     }
 
     /**

@@ -206,4 +206,9 @@ Route::group(['namespace' => 'Backend', 'prefix' => 'admin', 'middleware' => 'ad
     'uses' => 'UserController@sendMessage',
     'as'   => 'admin.user.message'
   ]);
+  
+  Route::put('/user', [
+    'uses' => 'UserController@update',
+    'as'   => 'admin.user.update'
+  ]);
 });

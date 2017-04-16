@@ -74,8 +74,10 @@
             </li>
           </ul>
 
-          <a class="btn btn-success btn-block"><i class="fa fa-edit m-right-xs"></i>Edit Profile</a>
-          <a class="btn btn-success btn-block" data-toggle="modal" data-target="#backend-user-show-message"><i class="fa fa-edit m-right-xs"></i>Send Message</a>
+          <a class="btn btn-success btn-block" data-toggle="modal" data-target="#backend-user-show-message"><i class="fa fa-envelope" aria-hidden="true"></i> Send Message</a>
+          <a class="btn btn-danger btn-block" data-toggle="modal" data-target="#backend-user-change-active">
+            <i class="fa fa-adjust" aria-hidden="true"></i> {{ $user->isBlocked() == 1 ? 'Block User' : 'Unblock User'  }}
+          </a>
           <div id="backend-user-show-message" class="modal fade" role="dialog">
             <div class="modal-dialog">
 
@@ -103,7 +105,35 @@
 
             </div>
           </div>
+          
+          
+          <!-- unblock or block user -->
+          <div class="modal fade" id="backend-user-change-active" role="dialog">
+            <div class="modal-dialog">
 
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title">Cập nhật tài khoản</h4>
+                </div>
+                <div class="modal-body">
+                  <h5>ban co muon <span class="label label-warning">{{ $user->isBlocked() == 1 ? 'Block User' : 'Unblock User'  }}</span> không?</h5>
+                </div>
+                <div class="modal-footer">
+                    <form action="{{ route('admin.user.update') }}" method="POST">
+                        <input type="hidden" name="id" value="{{ $user->id }}">
+                        <input type="hidden" name="isActive" value="{{ !$user->isBlocked() }}">
+                        {{ csrf_field() }}
+                        {{ method_field('PUT') }}
+                        <button type="submit" class="btn btn-danger">Update</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- end unblock or block user -->
         </div>
         
         <div class="col-md-9 col-sm-9 col-xs-12">
