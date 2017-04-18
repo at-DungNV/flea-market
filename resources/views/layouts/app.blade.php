@@ -110,11 +110,12 @@
   	<script type="text/javascript" src="/bower_resources/fastclick/lib/fastclick.js"></script>
   	<script type="text/javascript" src="/bower_resources/jquery-color-animation/jquery.animate-colors.js"></script>
   	<script type="text/javascript" src="/bower_resources/jquery-shadow-animation/jquery.animate-shadow-min.js"></script>    
+    <script type="text/javascript">
+      var urlPostShow = "{{ url('/post') }}";
+    </script>
     <script src="{{ asset('js/app.js') }}"></script>
     <!-- main -->
   	<script type="text/javascript" src="/js/main.js"></script>
-    <script type="text/javascript">
-    </script>
     <script type="text/javascript" src="/js/mymain.js"></script>
     
     @stack('end-page-scripts')

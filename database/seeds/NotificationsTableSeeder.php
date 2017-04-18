@@ -25,6 +25,7 @@ class NotificationsTableSeeder extends Seeder
             'message' => $faker->text,
             'seen' => $faker->boolean(50),
             'approver' => 'default.png',
+            'url' => url('/post').'/'. Post::find($faker->randomElement($users->toArray()))->slug,
             'created_at' => $faker->dateTimeThisYear($max = 'now')
           ]);
         }

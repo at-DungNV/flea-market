@@ -22,6 +22,7 @@ class CreateNotificationsTable extends Migration
             $table->text('message');
             $table->boolean('seen');
             $table->string('approver', 256);
+            $table->string('url', 256)->nullable();
             $table->timestamps();
         });
     }
