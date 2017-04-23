@@ -96,14 +96,15 @@ class PostController extends Controller
             $post->save();
             $notification = Notification::create([
                 'user_id' => $post->user_id,
-                'message' => 'Bài đăng của bạn đã được cập nhật thành '. $request['state'],
+                'message' => 'Bài đăng ' . $post->title . ' của bạn đã được cập nhật thành '. $request['state'],
                 'seen' => 0,
-                'approver' => Auth::user()->avatar
+                'approver' => Auth::user()->avatar,
+                'url' => url('/post').'/'.$post->slug
             ]);
             // loi approval khong dung nguoi
             
             // Announce that a new message has been posted
-            event(new \App\Events\PostApprovalEvent($post->user, $notification));
+            event(new \App\Events\PostApprovalEvent($post->user, $post, $notification));
             
             return redirect()->route('admin.post.show',['id' => $request['id']])
                              ->withMessage("xoa thanh cong");

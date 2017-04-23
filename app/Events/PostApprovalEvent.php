@@ -27,6 +27,13 @@ class PostApprovalEvent implements ShouldBroadcast
      *
      * @var Post
      */
+    public $post;
+    
+    /**
+     * Notification
+     *
+     * @var notification
+     */
     public $notification;
     
     
@@ -35,9 +42,10 @@ class PostApprovalEvent implements ShouldBroadcast
      *
      * @return void
      */
-    public function __construct($user, $notification)
+    public function __construct($user, $post, $notification)
     {
         $this->user = $user;
+        $this->post = $post;
         $this->notification = $notification;
         $user->unread_notification = $user->unread_notification + 1;
         $user->save();

@@ -11,6 +11,7 @@ use App\Http\Requests\PaginationRequest;
 use App\Models\Post;
 use App\Models\Image;
 use App\Models\Province;
+use App\Models\Notification;
 use Storage;
 use Auth;
 use Carbon\Carbon;
@@ -116,6 +117,11 @@ class PostController extends Controller
             $x = new BreadcrumbsHelper();
             $crumbs = $x->getCrumbs($request->path());
             $post = Post::where('slug', '=', $id)->with('images')->firstOrFail();
+            if($request['notification']) {
+              $notification = Notification::findOrFail($request['notification']);
+              $notification->seen = 1;
+              $notification->save();
+            }
             return view('frontend.posts.show', ['post' => $post, 'crumbs' => $crumbs]);
         } catch (NotFoundHttpException $ex) {
             return redirect()->action('PostController@index')

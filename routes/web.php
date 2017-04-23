@@ -59,6 +59,11 @@ Route::group(['namespace' => 'Frontend'], function () {
       'as'   => 'notification.updateUnreadNotification'
     ])->middleware('auth');
     
+    Route::put('/notifications/{id}', [
+      'uses' => 'NotificationController@update',
+      'as'   => 'notification.update'
+    ])->middleware('auth');
+    
     Route::get('/', 'HomeController@index');
     
     Route::get('/post', [

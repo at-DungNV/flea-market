@@ -29,7 +29,10 @@
             <ul class="dropdown-menu dropdown-menu-large">
               <notification-log :notifications="notifications"></notification-log>
             </ul>
-            
+            <form class="" action="" method="post" name="notification-form">
+              {{ csrf_field() }}
+              {{ method_field('PUT') }}
+            </form>
           </li>  
           <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
