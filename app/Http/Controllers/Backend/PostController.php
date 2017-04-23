@@ -66,7 +66,7 @@ class PostController extends Controller
           return view('backend.posts.show', ['post' => $post, 'states' => $states]);
       } catch (NotFoundHttpException $ex) {
           return redirect()->action('PostController@index')
-                           ->withErrors('khong tim thay');
+                           ->withErrors(trans('backend/common.post.not_found_post'));
       }
     }
 
@@ -89,7 +89,7 @@ class PostController extends Controller
      */
     public function update(Request $request)
     {
-        $errors = "bi loi khi update";
+        $errors = trans('backend/common.post.update_unsuccessfully');
         try {
             $post = Post::findOrFail($request['id']);
             $post->state = $request['state'];
@@ -107,9 +107,9 @@ class PostController extends Controller
             event(new \App\Events\PostApprovalEvent($post->user, $post, $notification));
             
             return redirect()->route('admin.post.show',['id' => $request['id']])
-                             ->withMessage("xoa thanh cong");
+                             ->withMessage(trans('backend/common.post.update_successfully'));
         } catch (Exception $modelNotFound) {
-            return redirect()->route('admin.post.show',['id' => $request['id']])->withErrors("loi khi xoa");
+            return redirect()->route('admin.post.show',['id' => $request['id']])->withErrors(trans('backend/common.post.delete_unsuccessfully'));
         }
         return redirect()->route('admin.post.show',['id' => $request['id']])->withErrors($errors);
     }
@@ -180,15 +180,15 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        $errors = "bi loi khi xoa";
+        $errors = trans('backend/common.post.delete_unsuccessfully');
         try {
             $post = Post::findOrFail($id);
             $post->deleteReferences();
             $post->delete();
             return redirect()->route('admin.post.index')
-                             ->withMessage("xoa thanh cong");
+                             ->withMessage(trans('backend/common.post.delete_successfully'));
         } catch (Exception $modelNotFound) {
-            return redirect()->route('admin.post.index')->withErrors("loi khi xoa");
+            return redirect()->route('admin.post.index')->withErrors($errors);
         }
         return redirect()->route('admin.post.index')->withErrors($errors);
     }

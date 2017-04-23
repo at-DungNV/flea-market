@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Flea Market Management</title>
+    <title>@lang('backend/common.app_name')</title>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="/bower_resources/bootstrap/dist/css/bootstrap.min.css">
@@ -34,7 +34,7 @@
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>FM Management</span></a>
+              <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>@lang('backend/common.app_name_sidebar')</span></a>
             </div>
 
             <div class="clearfix"></div>
@@ -78,6 +78,8 @@
         
         <!-- page content -->
         <div class="right_col" role="main">
+          @yield('errors-message')
+          @yield('susscess-message')
           @yield('content')
         </div>
         <!-- /page content -->

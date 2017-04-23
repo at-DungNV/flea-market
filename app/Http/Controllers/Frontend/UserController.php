@@ -108,11 +108,11 @@ class UserController extends Controller
             if (Hash::check($request->current_password, $user->password)) {
                 $user->password = $request->password;
                 $user->save();
-                return Redirect::back()->withMessage("doi thanh cong");
+                return Redirect::back()->withMessage(trans('frontend/common.user.change_password_successfully'));
             }
-            return Redirect::back()->withErrors("mat khau khong dung");
+            return Redirect::back()->withErrors(trans('frontend/common.user.password_not_match'));
         } catch (Exception $saveException) {
-            return Redirect::back()->withErrors("bi loi");
+            return Redirect::back()->withErrors(trans('frontend/common.error_message'));
         }
     }
     
