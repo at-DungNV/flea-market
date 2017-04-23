@@ -96,6 +96,7 @@ class PostController extends Controller
             $post->save();
             $notification = Notification::create([
                 'user_id' => $post->user_id,
+                'type' => \Config::get('common.TYPE_NOTIFICATION'),
                 'message' => 'Bài đăng ' . $post->title . ' của bạn đã được cập nhật thành '. $request['state'],
                 'seen' => 0,
                 'approver' => Auth::user()->avatar,

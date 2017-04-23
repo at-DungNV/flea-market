@@ -31,8 +31,6 @@
       </div>
 
       <div class="x_content">
-        @yield('errors-message')
-        @yield('susscess-message')
         <div class="col-md-3 col-sm-3 col-xs-12 profile_left">
           <div class="profile_img">
             <div id="crop-avatar">
