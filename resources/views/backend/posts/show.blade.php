@@ -1,6 +1,14 @@
 @extends('layouts.backend.app')
 
+
 @section('content')
+  @section('errors-message')
+  @include('common.errors')
+  @stop
+
+  @section('susscess-message')
+  @include('common.success')
+  @stop
 
   <div class="col-md-12 col-sm-12 col-xs-12">
     <div class="x_panel">

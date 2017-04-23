@@ -1,5 +1,5 @@
 @if (count($errors) > 0)
-    <div class="alert alert-danger">
+    <div class="alert alert-danger" style="margin-top: 50px;">
         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
         <ul>
             @foreach ($errors->all() as $error)

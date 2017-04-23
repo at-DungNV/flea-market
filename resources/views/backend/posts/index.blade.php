@@ -31,8 +31,6 @@
       </div>
 
       <div class="x_content">
-        @yield('errors-message')
-        @yield('susscess-message')
         <div class="table-responsive">
           <table class="table table-striped jambo_table check-action table-fixed-header" id="admin-post-index-table">
             <thead>

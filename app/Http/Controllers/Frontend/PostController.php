@@ -96,7 +96,7 @@ class PostController extends Controller
         // store images
         $images = $request->file('images');
         $post->storeImages($images);
-        return redirect()->action('Frontend\PostController@create')->withMessage('tao thanh cong');
+        return redirect()->action('Frontend\PostController@create')->withMessage(trans('frontend/common.post.create_successfully'));
     }
 
     public function getPostImages($filename)
@@ -125,7 +125,7 @@ class PostController extends Controller
             return view('frontend.posts.show', ['post' => $post, 'crumbs' => $crumbs]);
         } catch (NotFoundHttpException $ex) {
             return redirect()->action('PostController@index')
-                             ->withErrors('khong tim thay');
+                             ->withErrors(trans('frontend/common.post.not_found_post'));
         }
     }
 
