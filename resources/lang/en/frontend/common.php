@@ -3,6 +3,7 @@
 return [
     'app_name' => 'Flea - Market',
     'error_message' => 'Oops. Something went wrong! Please try again.',
+    'blocked_error_message' => 'Your account is blocked. Please another one!',
     'post' => [
         'create_successfully' => 'Created successfully',
         'create_unsuccessfully' => 'Oops. Something went wrong! Please try again.',

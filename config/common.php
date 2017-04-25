@@ -16,5 +16,7 @@ return [
     'USER_ACTIVE' => 'active',
     'USER_BLOCKED' => 'blocked',
     'ACCOUNT_TYPE_USER' => 'user',
-    'ACCOUNT_TYPE_ADMIN' => 'admin'
+    'ACCOUNT_TYPE_ADMIN' => 'admin',
+    'TYPE_NOTIFICATION' => 1,
+    'TYPE_MESSAGE' => 2,
 ];

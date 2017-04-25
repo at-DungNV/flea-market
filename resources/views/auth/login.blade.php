@@ -1,5 +1,13 @@
 @extends('layouts.app')
 
+@section('errors-message')
+    @include('common.errors')
+@stop
+
+@section('susscess-message')
+    @include('common.success')
+@stop
+
 @section('content')
 <div class="container">
     <div class="row">
