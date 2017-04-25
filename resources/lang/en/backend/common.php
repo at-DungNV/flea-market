@@ -14,6 +14,12 @@ return [
     'user' => [
         'change_password_successfully' => 'Password changed successfully',
         'password_not_match' => 'Oops. Password not match',
-        'not_found_post' => 'So sorry. Seems like post not found',
+        'not_found_user' => 'So sorry. Seems like user not found',
+        'send_message_succesfully' => 'Message sent successfully',
+        'send_message_unsuccesfully' => 'Oops. Something went wrong! Please try again.',
+        'update_successfully' => 'Updated successfully',
+        'update_unsuccessfully' => 'Oops. Something went wrong! Please try again.',
+        'delete_successfully' => 'Deleted successfully',
+        'delete_unsuccessfully' => 'Oops. Something went wrong! Please try again.',
     ],
 ];

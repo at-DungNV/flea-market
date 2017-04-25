@@ -4,8 +4,25 @@
     
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li class="{{ Request::is('/') ? 'active' : '' }}"><a href="{{ url('/') }}">Home</a></li>
-        
+        <li class="dropdown dropdown-large">
+          <li class="dropdown-toggle {{ Request::is('/') ? 'active' : '' }}" data-toggle="dropdown"><a href="{{ url('/') }}">Home</a></li>
+          <ul class="dropdown-menu dropdown-menu-large row">
+            @foreach (Session::get('categories')->chunk(count(Session::get('categories'))/2) as $categories)
+              <li class="col-sm-6">
+                <ul>
+                  @foreach ($categories as $category)
+                  <li class="dropdown-header">{{$category->name}}</li>
+                    @foreach ($category->children as $child)
+                    <li><a href="{{ route('post.index')}}?category={{$child->slug}}">{{$child->name}}</a></li>
+                    @endforeach
+                  <li class="divider"></li>
+                  @endforeach
+                </ul>
+              </li>
+            @endforeach
+          </ul>
+          
+        </li>
         <li class="dropdown {{ Request::is('posts/*') ? 'active' : '' }}">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Post <b class="caret"></b></a>
           <ul class="dropdown-menu">

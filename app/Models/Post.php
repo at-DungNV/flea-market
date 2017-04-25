@@ -20,7 +20,7 @@ class Post extends Model
    * @var array
    */
   protected $fillable = [
-      'user_id', 'province_id', 'district_id', 'ward_id', 'title', 'price', 'state', 'type', 'phone', 'address', 'slug', 'description'
+      'user_id', 'province_id', 'district_id', 'ward_id', 'category_id', 'title', 'price', 'state', 'type', 'phone', 'address', 'slug', 'description'
   ];
 
   /**
@@ -100,7 +100,7 @@ class Post extends Model
    * @param Array $images images from uploading
    * @return Object Post
    */
-  public static function search($q, $address, $type, $order, $total, $offset) {
+  public static function search($q, $address, $type, $category, $order, $total, $offset) {
     $query = Post::with('images')
                   ->where('state', '=', \Config::get('common.TYPE_POST_ACTIVE'));
     if ($q != null) {
@@ -115,12 +115,21 @@ class Post extends Model
     if ($type != '') {
       $query = $query->where('type', '=', $type);
     }
+    if ($category != '') {
+      $query = $query->whereIn('category_id', function($query) use ($category){
+          $query->select('id')
+          ->from('categories')
+          ->where('slug', '=', $category);
+      });
+    }
     if ($order != '') {
       $query = $query->orderBy('price', $order);
     }
-    $total = $total == $query->count() ? $total : $query->count();
+    $count = $query->count();
+    $total = $total == $count ? $total : $count;
     
     $posts = $query->take(\Config::get('common.NUMBER_ITEM_PER_PAGE'))->offset($offset)->orderBy('created_at', 'desc')->get();
+
     $data = array(
         'posts'  => $posts,
         'total' => $total

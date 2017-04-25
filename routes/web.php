@@ -39,7 +39,7 @@ Route::get('/send-notifications', function () {
 
 
 
-
+Route::get('/categories', 'CategoryController@index');
 
 
 Route::group(['namespace' => 'Frontend'], function () {
@@ -71,7 +71,7 @@ Route::group(['namespace' => 'Frontend'], function () {
       'as'   => 'post.index'
     ]);
     
-    Route::group(['middleware' => ['auth']], function () {
+    Route::group(['middleware' => ['auth', 'active']], function () {
       
       Route::resource('post', 'PostController', ['except' => [
           'index'
@@ -154,7 +154,7 @@ Route::group(['namespace' => 'Frontend'], function () {
 
 
 
-Route::group(['namespace' => 'Backend', 'prefix' => 'admin', 'middleware' => 'admin'], function () {
+Route::group(['namespace' => 'Backend', 'prefix' => 'admin', 'middleware' => ['admin', 'active']], function () {
   Route::get('/post', [
     'uses' => 'PostController@index',
     'as'   => 'admin.post.index'
