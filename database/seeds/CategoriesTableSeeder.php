@@ -23,11 +23,20 @@ class CategoriesTableSeeder extends Seeder
               'created_at' => $faker->dateTimeThisYear($max = 'now')
           ]);
         }
-        for ($i=0; $i < 20; $i++) {
+        for ($i=0; $i < 10; $i++) {
           $name = $faker->name;
           Category::create([
               'name' => $name,
               'parent_id' => rand(1, count($names)),
+              'slug' => str_slug($name),
+              'created_at' => $faker->dateTimeThisYear($max = 'now')
+          ]);
+        }
+        for ($i=0; $i < 10; $i++) {
+          $name = $faker->name;
+          Category::create([
+              'name' => $name,
+              'parent_id' => rand(10, 20),
               'slug' => str_slug($name),
               'created_at' => $faker->dateTimeThisYear($max = 'now')
           ]);

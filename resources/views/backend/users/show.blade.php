@@ -31,8 +31,6 @@
       </div>
 
       <div class="x_content">
-        @yield('errors-message')
-        @yield('susscess-message')
         <div class="col-md-3 col-sm-3 col-xs-12 profile_left">
           <div class="profile_img">
             <div id="crop-avatar">
@@ -76,7 +74,7 @@
 
           <a class="btn btn-success btn-block" data-toggle="modal" data-target="#backend-user-show-message"><i class="fa fa-envelope" aria-hidden="true"></i> Send Message</a>
           <a class="btn btn-danger btn-block" data-toggle="modal" data-target="#backend-user-change-active">
-            <i class="fa fa-adjust" aria-hidden="true"></i> {{ $user->isBlocked() == 1 ? 'Block User' : 'Unblock User'  }}
+            <i class="fa fa-adjust" aria-hidden="true"></i> {{ $user->isActive() == 1 ? 'Block User' : 'Unblock User'  }}
           </a>
           <div id="backend-user-show-message" class="modal fade" role="dialog">
             <div class="modal-dialog">
@@ -118,12 +116,12 @@
                   <h4 class="modal-title">Cập nhật tài khoản</h4>
                 </div>
                 <div class="modal-body">
-                  <h5>ban co muon <span class="label label-warning">{{ $user->isBlocked() == 1 ? 'Block User' : 'Unblock User'  }}</span> không?</h5>
+                  <h5>ban co muon <span class="label label-warning">{{ $user->isActive() == 1 ? 'Block User' : 'Unblock User'  }}</span> không?</h5>
                 </div>
                 <div class="modal-footer">
                     <form action="{{ route('admin.user.update') }}" method="POST">
                         <input type="hidden" name="id" value="{{ $user->id }}">
-                        <input type="hidden" name="isActive" value="{{ !$user->isBlocked() }}">
+                        <input type="hidden" name="isActive" value="{{ !$user->isActive() }}">
                         {{ csrf_field() }}
                         {{ method_field('PUT') }}
                         <button type="submit" class="btn btn-danger">Update</button>

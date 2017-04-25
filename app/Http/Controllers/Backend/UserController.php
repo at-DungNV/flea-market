@@ -102,7 +102,7 @@ class UserController extends Controller
             return view('backend.users.show', $data);
         } catch (NotFoundHttpException $ex) {
             return redirect()->action('UserController@index')
-                             ->withErrors('khong tim thay');
+                             ->withErrors(trans('backend/common.user.not_found_user'));
         }
     }
 
@@ -126,15 +126,15 @@ class UserController extends Controller
      */
     public function update(Request $request)
     {
-        $errors = "bi loi khi cap nhat";
+        $errors = trans('backend/common.user.update_unsuccessfully');
         try {
             $user = User::findOrFail($request['id']);
             $user->setActive($request['isActive']);
             $user->save();
             return redirect()->route('admin.user.show', ['id' => $request['id']])
-                             ->withMessage("cap nhat thanh cong");
+                             ->withMessage(trans('backend/common.user.update_successfully'));
         } catch (Exception $modelNotFound) {
-            return redirect()->route('admin.user.show', ['id' => $request['id']])->withErrors("loi khi cap nhat");
+            return redirect()->route('admin.user.show', ['id' => $request['id']])->withErrors(trans('backend/common.user.update_unsuccessfully'));
         }
         return redirect()->route('admin.user.show', ['id' => $request['id']])->withErrors($errors);
     }
@@ -147,15 +147,15 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        $errors = "bi loi khi cap nhat";
+        $errors = trans('backend/common.user.update_unsuccessfully');
         try {
             $user = User::findOrFail($id);
             $user->is_active = !$user->is_active;
             $user->save();
             return redirect()->route('admin.user.index')
-                             ->withMessage("cap nhat thanh cong");
+                             ->withMessage(trans('backend/common.user.delete_successfully'));
         } catch (Exception $modelNotFound) {
-            return redirect()->route('admin.user.index')->withErrors("loi khi cap nhat");
+            return redirect()->route('admin.user.index')->withErrors($errors);
         }
         return redirect()->route('admin.user.index')->withErrors($errors);
     }
@@ -169,11 +169,12 @@ class UserController extends Controller
     {
         $id = $request['id'];
         $message = $request['message'];
-        $errors = "bi loi khi update";
+        $errors = trans('backend/common.user.send_message_unsuccesfully');
         try {
             $user = User::findOrFail($id);
             $notification = Notification::create([
                 'user_id' => $id,
+                'type' => \Config::get('common.TYPE_MESSAGE'),
                 // 'post_id' => $post->id,
                 'message' => Auth::user()->name. " sent you a message: ".$message,
                 'seen' => 0,
@@ -185,9 +186,9 @@ class UserController extends Controller
             event(new \App\Events\SendMessageEvent($user, $notification));
             
             return redirect()->route('admin.user.show',['id' => $id])
-                             ->withMessage("gui message thanh cong");
+                             ->withMessage(trans('backend/common.user.send_message_succesfully'));
         } catch (Exception $modelNotFound) {
-            return redirect()->route('admin.user.show',['id' => $id])->withErrors("loi khi xoa");
+            return redirect()->route('admin.user.show',['id' => $id])->withErrors(trans('backend/common.user.send_message_unsuccesfully'));
         }
         return redirect()->route('admin.user.show',['id' => $id])->withErrors($errors);
     }
