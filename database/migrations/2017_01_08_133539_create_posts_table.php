@@ -23,6 +23,8 @@ class CreatePostsTable extends Migration
             $table->foreign('district_id')->references('id')->on('districts');
             $table->integer('ward_id')->unsigned();
             $table->foreign('ward_id')->references('id')->on('wards');
+            $table->integer('category_id')->unsigned();
+            $table->foreign('category_id')->references('id')->on('categories');
             $table->string('title', 256);
             $table->integer('price')->nullable();
             $table->string('state', 45)->default('waiting');

@@ -11,6 +11,7 @@ use App\Http\Requests\PaginationRequest;
 use App\Models\Post;
 use App\Models\Image;
 use App\Models\Province;
+use App\Models\Category;
 use App\Models\Notification;
 use Storage;
 use Auth;
@@ -38,6 +39,7 @@ class PostController extends Controller
       $address = $request->input('address');
       $type = $request->input('type');
       $order = $request->input('order');
+      $category = $request->input('category');
       
       // start checking if page input is null or not
       $page = is_null($request->input('page')) ? 1 : $request->input('page');
@@ -45,10 +47,14 @@ class PostController extends Controller
       $offset = 1;
       $offset = ($page - 1) * $number;
       // get posts
-      $searchResult = Post::search($q, $address, $type, $order, $total, $offset);
+      $searchResult = Post::search($q, $address, $type, $category, $order, $total, $offset);
+      // dd($searchResult);
       $totalPages = ceil($searchResult['total'] / $number);
       $posts = $searchResult['posts'];
       $x = new Province();
+      
+      $categories = Category::whereNull('parent_id')->with('children')->get();
+      $request->session()->put('categories', $categories);
       $data = array(
           'posts'  => $posts,
           'totalPages' => $totalPages,
@@ -58,6 +64,7 @@ class PostController extends Controller
           'q' => $q,
           'address' => $address,
           'type' => $type,
+          'category' => $category,
           'order' => $order
       );
       

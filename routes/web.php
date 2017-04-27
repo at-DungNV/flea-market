@@ -39,9 +39,7 @@ Route::get('/send-notifications', function () {
 
 
 
-Route::get('/test', function(){
-  return "dungnv";
-});
+Route::get('/categories', 'CategoryController@index');
 
 
 Route::group(['namespace' => 'Frontend'], function () {

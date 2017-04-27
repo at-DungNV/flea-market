@@ -14,7 +14,10 @@ class CategoriesTableSeeder extends Seeder
     public function run()
     {
         $faker = Faker::create();
-        $names = array('Books', 'Furnitures', 'Economy', 'Buddhism', 'Others');
+        $names = array('Sách', 'Việc làm', 'Đồ gia dụng', 'Khác');
+        $books = array('Đại cương', 'Chuyên ngành', 'Công nghệ thông tin', 'Điện tử viễn thông');
+        $jobs = array('Gia sư', 'Nội trợ', 'Part time', 'Bán hàng');
+        $things = array('Xe cộ', 'Máy tính', 'Điện thoại', 'Bàn ghê');
         for ($i=0; $i < count($names); $i++) {
           Category::create([
               'name' => $names[$i],
@@ -23,12 +26,27 @@ class CategoriesTableSeeder extends Seeder
               'created_at' => $faker->dateTimeThisYear($max = 'now')
           ]);
         }
-        for ($i=0; $i < 20; $i++) {
-          $name = $faker->name;
+        for ($i=0; $i < count($books); $i++) {
           Category::create([
-              'name' => $name,
-              'parent_id' => rand(1, count($names)),
-              'slug' => str_slug($name),
+              'name' => $books[$i],
+              'parent_id' => 1,
+              'slug' => str_slug($books[$i]),
+              'created_at' => $faker->dateTimeThisYear($max = 'now')
+          ]);
+        }
+        for ($i=0; $i < count($jobs); $i++) {
+          Category::create([
+              'name' => $jobs[$i],
+              'parent_id' => 2,
+              'slug' => str_slug($jobs[$i]),
+              'created_at' => $faker->dateTimeThisYear($max = 'now')
+          ]);
+        }
+        for ($i=0; $i < count($things); $i++) {
+          Category::create([
+              'name' => $things[$i],
+              'parent_id' => 3,
+              'slug' => str_slug($things[$i]),
               'created_at' => $faker->dateTimeThisYear($max = 'now')
           ]);
         }

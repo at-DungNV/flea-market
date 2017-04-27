@@ -9,7 +9,6 @@
 @stop
 
 @section('content')
-
   <div class="content-container">
     <div class="content">
       <div class="well">

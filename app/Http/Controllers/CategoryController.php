@@ -11,7 +11,7 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
       $sql = 'select root.name  as root_name
                  , node1.name as node1_name
@@ -35,6 +35,7 @@ class CategoryController extends Controller
                  , node3_name';
       $sql1 = 'select * from categories';
       $categories = DB::select($sql);
+      $request->session()->forget('categories');
       dd($categories);
     }
 

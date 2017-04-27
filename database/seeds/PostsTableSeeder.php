@@ -8,6 +8,7 @@ use App\Models\Province;
 use App\Models\District;
 use App\Models\Ward;
 use App\Models\Image;
+use App\Models\Category;
 
 class PostsTableSeeder extends Seeder
 {
@@ -55,6 +56,7 @@ class PostsTableSeeder extends Seeder
       $provinces = Province::all()->pluck('id');
       $districts = District::all()->pluck('id');
       $wards = Ward::all()->pluck('id');
+      $categories = Category::all()->pluck('id');
       $titles = array(
         'ip6 gold 16gb độ vỏ 7 còn mới',
         'laptop sony vaio fit 15 core i5-4200u card rời 2g',
@@ -212,6 +214,7 @@ class PostsTableSeeder extends Seeder
           'province_id' => $faker->randomElement($provinces->toArray()),
           'district_id' => $faker->randomElement($districts->toArray()),
           'ward_id' => $faker->randomElement($wards->toArray()),
+          'category_id' => $faker->randomElement($categories->toArray()),
           'title' => $titles[$i],
           'price' => $prices[$i],
           'state' => $states[0],

@@ -14,4 +14,24 @@ class Category extends Model
     protected $fillable = [
         'name', 'parent_id', 'slug'
     ];
+    
+    /**
+     * Post belongs to an User.
+     *
+     * @return Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function parent()
+    {
+        return $this->belongsTo(self::class, 'parent_id');
+    }
+    
+    /**
+     * Post has many children.
+     *
+     * @return Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function children()
+    {
+        return $this->hasMany(self::class, 'parent_id');
+    }
 }
