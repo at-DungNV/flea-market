@@ -7,7 +7,7 @@
         <li class="dropdown dropdown-large">
           <li class="dropdown-toggle {{ Request::is('/') ? 'active' : '' }}" data-toggle="dropdown"><a href="{{ url('/') }}">Home</a></li>
           <ul class="dropdown-menu dropdown-menu-large row">
-            @foreach (Session::get('categories')->chunk(count(Session::get('categories'))/2) as $categories)
+            @foreach ($categories->chunk(count($categories)/2) as $categories)
               <li class="col-sm-6">
                 <ul>
                   @foreach ($categories as $category)

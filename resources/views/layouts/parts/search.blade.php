@@ -40,7 +40,7 @@
     <div class="form-group">
         <label>Danh mục:</label>
         <select name="category" class="form-control">
-          @foreach (Session::get('categories') as $category)
+          @foreach ($categories as $category)
             <optgroup label="{{ $category->name }}">
               @foreach ($category->children as $child)
                 <option value="{{$child->slug}}" {{ $category == $child->slug ? 'selected' : ' ' }}>{{ $child->name }}</option>

@@ -18,6 +18,7 @@ use Auth;
 use Carbon\Carbon;
 use BreadcrumbsHelper;
 use DB;
+use View;
 
 class PostController extends Controller
 {
@@ -54,7 +55,7 @@ class PostController extends Controller
       $x = new Province();
       
       $categories = Category::whereNull('parent_id')->with('children')->get();
-      $request->session()->put('categories', $categories);
+      View::share('categories', $categories);
       $data = array(
           'posts'  => $posts,
           'totalPages' => $totalPages,
