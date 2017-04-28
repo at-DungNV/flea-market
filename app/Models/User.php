@@ -59,4 +59,15 @@ class User extends Authenticatable
        $this->is_active = (int)$isActive;
     }
     
+    public function getUnreadNotification()
+    {
+        return $this->unread_notification;
+    }
+    
+    public function updateUnreadNotification($number = 0)
+    {
+        $this->unread_notification = $number;
+        $this->save();
+    }
+    
 }

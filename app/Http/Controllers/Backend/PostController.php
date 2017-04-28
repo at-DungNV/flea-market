@@ -102,8 +102,6 @@ class PostController extends Controller
                 'user_id' => $post->user_id,
                 'data' => json_encode($data)
             ]);
-            // var_dump(json_decode($notification->data));
-            // die("dungnv");
             // Announce that a new message has been posted
             event(new \App\Events\PostApprovalEvent($post->user, $post, $notification));
             

@@ -54,8 +54,8 @@ class PostController extends Controller
       $posts = $searchResult['posts'];
       $x = new Province();
       
-      $categories = Category::whereNull('parent_id')->with('children')->get();
-      View::share('categories', $categories);
+      // $categories = Category::whereNull('parent_id')->with('children')->get();
+      // View::share('categories', $categories);
       $data = array(
           'posts'  => $posts,
           'totalPages' => $totalPages,

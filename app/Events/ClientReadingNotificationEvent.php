@@ -2,19 +2,18 @@
 
 namespace App\Events;
 
-use App\Models\Notification;
-use App\Models\User;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Broadcasting\PresenceChannel;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
+use App\Models\User;
 
-class SendMessageEvent implements ShouldBroadcast
+class ClientReadingNotificationEvent implements ShouldBroadcast
 {
     use InteractsWithSockets, SerializesModels;
-
+    
     /**
     * User
     *
@@ -23,22 +22,21 @@ class SendMessageEvent implements ShouldBroadcast
     public $user;
     
     /**
-     * Post
-     *
-     * @var Post
-     */
-    public $notification;
-
+    * User
+    *
+    * @var User
+    */
+    public $unreadNotification;
+    
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct($user, $notification)
+    public function __construct($user, $unreadNotification)
     {
         $this->user = $user;
-        $this->notification = $notification;
-        $this->user->updateUnreadNotification($this->user->getUnreadNotification()+ 1);
+        $this->unreadNotification = $unreadNotification;
     }
 
     /**

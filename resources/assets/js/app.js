@@ -66,14 +66,16 @@ if(user != null) {
         this.notifications.unshift(e.notification);
         $("#notification-count").html(parseInt($('#notification-count').html())+ 1);
         notifyMe(e.notification.data.message, e.notification.data.url);
-      });
-      
-      Echo.private('notification'+id)
+      })
       .listen('SendMessageEvent', (e) => {
         this.notifications.unshift(e.notification);
         $("#notification-count").html(parseInt($('#notification-count').html())+ 1);
         notifyMe(e.notification.data.message, "http://stackoverflow.com/a/13328397/1269037");
+      })
+      .listen('ClientReadingNotificationEvent', (e) => {
+        $("#notification-count").html(e.unreadNotification);
       });
+      
     }
   });
 }

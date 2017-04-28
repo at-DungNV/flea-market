@@ -172,15 +172,13 @@ class UserController extends Controller
         $errors = trans('backend/common.user.send_message_unsuccesfully');
         try {
             $user = User::findOrFail($id);
+            $data = array();
+            $data['message'] = Auth::user()->name. " sent you a message: ".$message;
+            $data['approver'] = Auth::user()->avatar;
             $notification = Notification::create([
                 'user_id' => $id,
-                'type' => \Config::get('common.TYPE_MESSAGE'),
-                // 'post_id' => $post->id,
-                'message' => Auth::user()->name. " sent you a message: ".$message,
-                'seen' => 0,
-                'approver' => Auth::user()->avatar
+                'data' => json_encode($data)
             ]);
-            // loi approval khong dung nguoi
             
             // Announce that a new message has been posted
             event(new \App\Events\SendMessageEvent($user, $notification));

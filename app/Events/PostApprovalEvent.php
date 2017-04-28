@@ -47,8 +47,7 @@ class PostApprovalEvent implements ShouldBroadcast
         $this->user = $user;
         $this->post = $post;
         $this->notification = $notification;
-        $user->unread_notification = $user->unread_notification + 1;
-        $user->save();
+        $this->user->updateUnreadNotification($post->user->getUnreadNotification()+ 1);
     }
 
     /**
