@@ -126,7 +126,7 @@ class PostController extends Controller
             $post = Post::where('slug', '=', $id)->with('images')->firstOrFail();
             if($request['notification']) {
               $notification = Notification::findOrFail($request['notification']);
-              $notification->seen = 1;
+              $notification->read_at = Carbon::now();
               $notification->save();
             }
             return view('frontend.posts.show', ['post' => $post, 'crumbs' => $crumbs]);

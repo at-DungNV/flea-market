@@ -94,16 +94,16 @@ class PostController extends Controller
             $post = Post::findOrFail($request['id']);
             $post->state = $request['state'];
             $post->save();
+            $data = array();
+            $data['message'] = 'Bài đăng ' . $post->title . ' của bạn đã được cập nhật thành '. $request['state'];
+            $data['approver'] = Auth::user()->avatar;
+            $data['url'] = url('/post').'/'.$post->slug;
             $notification = Notification::create([
                 'user_id' => $post->user_id,
-                'type' => \Config::get('common.TYPE_NOTIFICATION'),
-                'message' => 'Bài đăng ' . $post->title . ' của bạn đã được cập nhật thành '. $request['state'],
-                'seen' => 0,
-                'approver' => Auth::user()->avatar,
-                'url' => url('/post').'/'.$post->slug
+                'data' => json_encode($data)
             ]);
-            // loi approval khong dung nguoi
-            
+            // var_dump(json_decode($notification->data));
+            // die("dungnv");
             // Announce that a new message has been posted
             event(new \App\Events\PostApprovalEvent($post->user, $post, $notification));
             

@@ -65,14 +65,14 @@ if(user != null) {
       .listen('PostApprovalEvent', (e) => {
         this.notifications.unshift(e.notification);
         $("#notification-count").html(parseInt($('#notification-count').html())+ 1);
-        notifyMe(e.notification.message, e.notification.url);
+        notifyMe(e.notification.data.message, e.notification.data.url);
       });
       
       Echo.private('notification'+id)
       .listen('SendMessageEvent', (e) => {
         this.notifications.unshift(e.notification);
         $("#notification-count").html(parseInt($('#notification-count').html())+ 1);
-        notifyMe(e.notification.message, "http://stackoverflow.com/a/13328397/1269037");
+        notifyMe(e.notification.data.message, "http://stackoverflow.com/a/13328397/1269037");
       });
     }
   });

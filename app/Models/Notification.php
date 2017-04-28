@@ -12,7 +12,7 @@ class Notification extends Model
      * @var array
      */
     protected $fillable = [
-        'user_id', 'type', 'message', 'seen', 'approver', 'url'
+        'user_id', 'data'
     ];
     
     /**
@@ -25,4 +25,15 @@ class Notification extends Model
         return $this->belongsTo('App\Models\User');
     }
     
+    
+    /**
+     * Get the user's first name.
+     *
+     * @param  string  $value
+     * @return string
+     */
+    public function getDataAttribute($data)
+    {
+        return json_decode($data);
+    }
 }
