@@ -21,6 +21,16 @@ Route::get('/broadcast', function() {
 });
 
 
+use App\Notifications\InvoicePaid;
+Route::get('/test', function(){
+  $user = App\Models\User::find(1);
+  $user->notify(new InvoicePaid($user));
+});
+
+
+
+
+
 
 Route::get('/send-notifications', function () {
     $user = Auth::user();

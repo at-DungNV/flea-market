@@ -74,6 +74,12 @@ if(user != null) {
         $("#notification-count").html(parseInt($('#notification-count').html())+ 1);
         notifyMe(e.notification.message, "http://stackoverflow.com/a/13328397/1269037");
       });
+      
+      
+      Echo.private('App.User.1')
+      .notification((notification) => {
+          console.log(notification);
+      });
     }
   });
 }
