@@ -18,6 +18,7 @@ use Auth;
 use Carbon\Carbon;
 use BreadcrumbsHelper;
 use DB;
+use View;
 
 class PostController extends Controller
 {
@@ -53,8 +54,8 @@ class PostController extends Controller
       $posts = $searchResult['posts'];
       $x = new Province();
       
-      $categories = Category::whereNull('parent_id')->with('children')->get();
-      $request->session()->put('categories', $categories);
+      // $categories = Category::whereNull('parent_id')->with('children')->get();
+      // View::share('categories', $categories);
       $data = array(
           'posts'  => $posts,
           'totalPages' => $totalPages,
@@ -126,7 +127,7 @@ class PostController extends Controller
             $post = Post::where('slug', '=', $id)->with('images')->firstOrFail();
             if($request['notification']) {
               $notification = Notification::findOrFail($request['notification']);
-              $notification->seen = 1;
+              $notification->read_at = Carbon::now();
               $notification->save();
             }
             return view('frontend.posts.show', ['post' => $post, 'crumbs' => $crumbs]);

@@ -20,11 +20,9 @@ class CheckActiveUser
     {
         if (!Auth::user()->isActive())
         {
-            // return redirect('/home');
             Session::flush();
             return Redirect::back()->withErrors(trans('frontend/common.blocked_error_message'));
         }
-
         return $next($request);
     }
 }

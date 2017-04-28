@@ -17,13 +17,8 @@ class CreateNotificationsTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
-            $table->tinyInteger('type');// notification or message
-            // $table->integer('post_id')->unsigned();
-            // $table->foreign('post_id')->references('id')->on('posts');
-            $table->text('message');
-            $table->boolean('seen');
-            $table->string('approver', 256);
-            $table->string('url', 256)->nullable();
+            $table->text('data');
+            $table->timestamp('read_at')->nullable();
             $table->timestamps();
         });
     }

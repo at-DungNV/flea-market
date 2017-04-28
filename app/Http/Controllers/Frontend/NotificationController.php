@@ -85,6 +85,8 @@ class NotificationController extends Controller
         $user = Auth::user();
         $user->unread_notification = 0;
         $user->save();
+        // Announce that a new message has been posted
+        event(new \App\Events\ClientReadingNotificationEvent($user, 0));
     }
 
     /**

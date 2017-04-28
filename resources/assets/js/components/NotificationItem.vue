@@ -1,14 +1,14 @@
 <template lang="html">
-  <li class="notification-item list-group-item" v-bind:class="[notification.seen === 0 ? 'unread-message' : 'read-message']">
-    <div v-if="notification.url">
-      <a v-bind:href="notification.url" class="notification-link" @click="viewNotification">
-        <img class="image" :src="'http://fleamarket.me/image/'+notification.approver" alt="" width="32" height="32" />
-        {{ notification.message }}
+  <li class="notification-item list-group-item" v-bind:class="[notification.read_at == null ? 'unread-message' : 'read-message']">
+    <div v-if="notification.data.url">
+      <a v-bind:href="notification.data.url" class="notification-link" @click="viewNotification">
+        <img class="image" :src="'http://fleamarket.me/image/'+notification.data.approver" alt="" width="32" height="32" />
+        {{ notification.data.message }}
       </a>
     </div>
     <div class="" v-else>
-      <img class="image" :src="'http://fleamarket.me/image/'+notification.approver" alt="" width="32" height="32" />
-      {{ notification.message }}
+      <img class="image" :src="'http://fleamarket.me/image/'+notification.data.approver" alt="" width="32" height="32" />
+      {{ notification.data.message }}
     </div>
     <p>
       <i class="fa fa-calendar-times-o" aria-hidden="true"></i> {{notification.created_at}}
@@ -21,14 +21,13 @@
     props: ['notification'],
     methods: {
       viewNotification() {
-        var url = this.notification.url;
-        if(this.notification.seen == 0) {
+        var url = this.notification.data.url;
+        if(this.notification.read_at == null) {
           url = url+ "?notification="+ this.notification.id;
         }
         $.get(url, function(data, status){
           
         });
-        // console.log(this.notification.url+"?x=vandung");
       }
     }
   }
