@@ -126,7 +126,7 @@ Route::group(['namespace' => 'Frontend'], function () {
           'as'   => 'province.index'
         ]);
         
-        Route::get('provinces/{id}', [
+        Route::get('provinces/{id}/districts', [
           'uses' => 'ProvinceController@getDistricts',
           'as'   => 'province.getDistricts'
         ]);
@@ -136,7 +136,7 @@ Route::group(['namespace' => 'Frontend'], function () {
           'as'   => 'district.index'
         ]);
         
-        Route::get('district/{id}', [
+        Route::get('districts/{id}/wards', [
           'uses' => 'DistrictController@getWards',
           'as'   => 'district.getWards'
         ]);
