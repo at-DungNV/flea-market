@@ -71,27 +71,23 @@ class UserController extends Controller
     {
         try {
             $user = User::where('id', '=', $id)->firstOrFail();
-            $activePosts = Post
-                          ::where('user_id', '=', $id)
+            $query = Post::where('user_id', '=', $id);
+            $activePosts = $query
                           ->Where('state', '=', \Config::get('common.TYPE_POST_ACTIVE'))
                           ->orderBy('created_at', 'desc')
                           ->paginate(8);
-            $waitingPosts = Post
-                          ::where('user_id', '=', $id)
+            $waitingPosts = $query
                           ->Where('state', '=', \Config::get('common.TYPE_POST_WAITING'))
                           ->orderBy('created_at', 'desc')
                           ->paginate(8);
-            $hiddenPosts = Post
-                          ::where('user_id', '=', $id)
+            $hiddenPosts = $query
                           ->Where('state', '=', \Config::get('common.TYPE_POST_HIDDEN'))
                           ->orderBy('created_at', 'desc')
                           ->paginate(8);
-            $rejectedPosts = Post
-                          ::where('user_id', '=', $id)
+            $rejectedPosts = $query
                           ->Where('state', '=', \Config::get('common.TYPE_POST_REJECTED'))
                           ->orderBy('created_at', 'desc')
                           ->paginate(8);
-                          
             $data = array(
                 'user'  => $user,
                 'activePosts' => $activePosts,

@@ -49,7 +49,6 @@ class PostController extends Controller
       $offset = ($page - 1) * $number;
       // get posts
       $searchResult = Post::search($q, $address, $type, $category, $order, $total, $offset);
-      // dd($searchResult);
       $totalPages = ceil($searchResult['total'] / $number);
       $posts = $searchResult['posts'];
       $x = new Province();

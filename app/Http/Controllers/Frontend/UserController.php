@@ -124,32 +124,23 @@ class UserController extends Controller
     public function getApprovalPosts(Request $request, BreadcrumbsHelper $bc)
     {
       $crumbs = $bc->getCrumbs($request->path());
-      
-      $approvalPosts = Post::with(['images'=>function($query) {
+      $query = Post::with(['images'=>function($query) {
                         return $query->limit(1);
                     }])
-                    ->where('user_id', '=', Auth::user()->id)
+                    ->where('user_id', '=', Auth::user()->id);
+      $approvalPosts = $query
                     ->Where('state', '=', \Config::get('common.TYPE_POST_ACTIVE'))
                     ->orderBy('created_at', 'desc')
                     ->paginate(8);
-      $waitingPosts = Post::with(['images'=>function($query) {
-                      return $query->limit(1);
-                    }])
-                    ->where('user_id', '=', Auth::user()->id)
+      $waitingPosts = $query
                     ->Where('state', '=', \Config::get('common.TYPE_POST_WAITING'))
                     ->orderBy('created_at', 'desc')
                     ->paginate(8);
-      $hiddenPosts = Post::with(['images'=>function($query) {
-                      return $query->limit(1);
-                    }])
-                    ->where('user_id', '=', Auth::user()->id)
+      $hiddenPosts = $query
                     ->Where('state', '=', \Config::get('common.TYPE_POST_HIDDEN'))
                     ->orderBy('created_at', 'desc')
                     ->paginate(8);
-      $rejectedPosts = Post::with(['images'=>function($query) {
-                        return $query->limit(1);
-                    }])
-                    ->where('user_id', '=', Auth::user()->id)
+      $rejectedPosts = $query
                     ->Where('state', '=', \Config::get('common.TYPE_POST_REJECTED'))
                     ->orderBy('created_at', 'desc')
                     ->paginate(8);
