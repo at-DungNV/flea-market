@@ -21,16 +21,16 @@
               <!-- <h6>{{ str_limit($post->title, $limit = 15, $end = '...') }}</h6> -->
               <div style="margin-left: 5%;
                 margin-top: 5%;font-weight:bold;">{{ str_limit($post->title, $limit = 30, $end = '...') }} </div>
-              <a href="{{ route('post.show', [$post->slug]) }}">
+              <a href="{{ route('posts.show', [$post->slug]) }}">
                 @if(Storage::disk('local')->exists($post->images->first()['url']))
-                <a href="{{ route('post.show', [$post->slug]) }}" class="image"><img class="image" src="{{ route('post.getPostImages', [$post->images->first()['url']]) }}" alt="" /></a>
+                <a href="{{ route('posts.show', [$post->slug]) }}" class="image"><img class="image" src="{{ route('post.getPostImages', [$post->images->first()['url']]) }}" alt="" /></a>
                 @else
-                <a href="{{ route('post.show', [$post->slug]) }}" class="image"><img class="image" src="/images/pic01.jpg" alt="" /></a>
+                <a href="{{ route('posts.show', [$post->slug]) }}" class="image"><img class="image" src="/images/pic01.jpg" alt="" /></a>
                 @endif
                 <!-- mouse hover will display description -->
                 <dl>
                   <dt>
-                    <a href="{{ route('post.show', [$post->slug]) }}">
+                    <a href="{{ route('posts.show', [$post->slug]) }}">
                       {{ str_limit($post->title, $limit = 25, $end = '...') }}
                     </a>
                   </dt>
@@ -42,7 +42,7 @@
               <div class="wrapper-part-info">
                 <div class="part-info-image"><img src="/images/money.svg" alt="" width="28" height="28"/></div>
                 <div class="part-info part-info-font-12">
-                  {{ number_format ( $post->price  , 0 , "." , "." ) }} VNĐ - <a href="{{ route('post.show', [$post->slug]) }}" class="button"> {{ $post->created_at->diffForHumans() }}</a>
+                  {{ number_format ( $post->price  , 0 , "." , "." ) }} VNĐ - <a href="{{ route('posts.show', [$post->slug]) }}" class="button"> {{ $post->created_at->diffForHumans() }}</a>
                 </div>
               </div>
             </figure>
@@ -58,7 +58,7 @@
                 Sorry, an error has occured, Requested page not found!
              </div>
              <div class="error-actions">
-                <a href="{{ route('post.index') }}" class="button special"><span class="glyphicon glyphicon-home"></span>
+                <a href="{{ route('posts.index') }}" class="button special"><span class="glyphicon glyphicon-home"></span>
                   Back First Page
                 </a>
                 <a href="" class="button"><span class="glyphicon glyphicon-envelope"></span>

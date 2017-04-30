@@ -23,7 +23,7 @@
       <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="title-text text-center">Create New Post </div>
-            <form action="{{ route('post.store') }}" method="POST" data-toggle="validator" role="form" class="form-horizontal" name="post-form" enctype="multipart/form-data">
+            <form action="{{ route('posts.store') }}" method="POST" data-toggle="validator" role="form" class="form-horizontal" name="post-form" enctype="multipart/form-data">
               <fieldset>
                 {{ csrf_field() }}
                 <!-- Text input-->

@@ -13,7 +13,7 @@
                   @foreach ($categories as $category)
                   <li class="dropdown-header">{{$category->name}}</li>
                     @foreach ($category->children as $child)
-                    <li><a href="{{ route('post.index')}}?category={{$child->slug}}">{{$child->name}}</a></li>
+                    <li><a href="{{ route('posts.index')}}?category={{$child->slug}}">{{$child->name}}</a></li>
                     @endforeach
                   <li class="divider"></li>
                   @endforeach
@@ -26,9 +26,9 @@
         <li class="dropdown {{ Request::is('posts/*') ? 'active' : '' }}">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Post <b class="caret"></b></a>
           <ul class="dropdown-menu">
-              <li><a href="{{ route('post.index') }}">Index <span class="glyphicon glyphicon-list pull-right"></span></a></li>
+              <li><a href="{{ route('posts.index') }}">Index <span class="glyphicon glyphicon-list pull-right"></span></a></li>
               <li class="divider"></li>
-              <li><a href="{{ route('post.create') }}">Create <span class="glyphicon glyphicon-plus pull-right"></span></a></li>
+              <li><a href="{{ route('posts.create') }}">Create <span class="glyphicon glyphicon-plus pull-right"></span></a></li>
           </ul>
         </li>
         

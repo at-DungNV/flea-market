@@ -1,5 +1,5 @@
 <div class="row">
-  <form action="{{ route('post.index') }}" method="GET" name="search-form">
+  <form action="{{ route('posts.index') }}" method="GET" name="search-form">
     <div class="col-xs-12 col-sm-6 col-md-8 padding-right-0">
       <input type="text" name="q" class="form-control" placeholder="Nhập từ khoá bạn tìm kiếm">
     </div>

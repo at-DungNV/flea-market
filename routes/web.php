@@ -44,7 +44,7 @@ Route::get('/categories', 'CategoryController@index');
 
 Route::group(['namespace' => 'Frontend'], function () {
     
-    Route::get('/image/{filename}', [
+    Route::get('/images/{filename}', [
       'uses' => 'PostController@getPostImages',
       'as'   => 'post.getPostImages'
     ]);
@@ -66,14 +66,14 @@ Route::group(['namespace' => 'Frontend'], function () {
     
     Route::get('/', 'HomeController@index');
     
-    Route::get('/post', [
+    Route::get('/posts', [
       'uses' => 'PostController@index',
-      'as'   => 'post.index'
+      'as'   => 'posts.index'
     ]);
     
     Route::group(['middleware' => ['auth', 'active']], function () {
       
-      Route::resource('post', 'PostController', ['except' => [
+      Route::resource('posts', 'PostController', ['except' => [
           'index'
       ]]);
 
@@ -126,7 +126,7 @@ Route::group(['namespace' => 'Frontend'], function () {
           'as'   => 'province.index'
         ]);
         
-        Route::get('province/{id}', [
+        Route::get('provinces/{id}', [
           'uses' => 'ProvinceController@getDistricts',
           'as'   => 'province.getDistricts'
         ]);
