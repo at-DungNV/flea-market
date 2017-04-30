@@ -75,7 +75,7 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request, , BreadcrumbsHelper $bc)
+    public function create(Request $request, BreadcrumbsHelper $bc)
     {
       $crumbs = $bc->getCrumbs($request->path());
       return view('frontend.posts.create', ['crumbs' => $crumbs]);

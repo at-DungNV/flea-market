@@ -11,50 +11,6 @@
 |
 */
 
-interface BarInterface {
-  
-}
-
-class Bar implements BarInterface {
-  
-}
-
-class SecondBar implements BarInterface {
-  
-}
-// second param is Class Name
-App::bind('BarInterface', 'Bar');
-App::bind('BarInterface', 'SecondBar');
-
-
-// dung Independence Injection
-Route::get('bar', function(BarInterface $bar) {
-  dd($bar);
-});
-
-
-// sau khi bind vao thi lay ra khi can
-Route::get('bar', function() {
-  $bar = App::make('BarInterface');
-  // $bar = app('BarInterface');
-  dd($bar);
-});
-
-Route::get('foo', 'FooController@foo');
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 Auth::routes();
 
 
