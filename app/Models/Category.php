@@ -34,4 +34,9 @@ class Category extends Model
     {
         return $this->hasMany(self::class, 'parent_id');
     }
+    
+    public function getIdBySlug($slug)
+    {
+        return $this->where('slug', '=', $slug)->select('id')->first()->id;
+    }
 }

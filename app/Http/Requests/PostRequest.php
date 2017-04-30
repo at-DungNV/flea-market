@@ -38,6 +38,7 @@ class PostRequest extends FormRequest
                   'title' => 'required|min:4|max:256',
                   'price' => 'required|integer',
                   'type' => 'required|in:"sell", "buy',
+                  'category' => 'required|exists:categories,slug',
                   'province_id' => 'required|exists:provinces,id',
                   'district_id' => 'required|exists:districts,id',
                   'ward_id' => 'required|exists:wards,id',

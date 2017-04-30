@@ -87,15 +87,15 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(PostRequest $request)
+    public function store(PostRequest $request, Category $category)
     {
-      
         // store post
         $user_id = Auth::user()->id;
         $request['user_id'] = $user_id;
         $request['title'] = $request->input('title'). ' ' . strtotime(Carbon::now());
         $request['slug'] = str_slug($request->input('title'), '-');
         $request['description'] = str_replace(' ', '&nbsp;', $request['description']);
+        $request['category_id'] = $category->getIdBySlug($request['category']);
         $post = Post::create($request->all());
 
         // store images

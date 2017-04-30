@@ -23,7 +23,7 @@
       <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="title-text text-center">Create New Post </div>
-            <form action="{{ route('post.store') }}" method="POST" data-toggle="validator" role="form" class="form-horizontal" name="post-form" enctype="multipart/form-data">
+            <form action="{{ route('posts.store') }}" method="POST" data-toggle="validator" role="form" class="form-horizontal" name="post-form" enctype="multipart/form-data">
               <fieldset>
                 {{ csrf_field() }}
                 <!-- Text input-->
@@ -38,7 +38,7 @@
                 
                 
                 <div class="form-group has-feedback">
-                  <label class="col-xs-3 col-sm-3 col-md-2 control-label" for="post-price">Price:<span class="required">*</span></label>
+                  <label class="col-xs-3 col-sm-3 col-md-2 control-label" for="post-price">Price(VNĐ):<span class="required">*</span></label>
                   <div class="col-xs-9 col-sm-9 col-md-10">
                     <input type="text" name="price" class="form-control" id="post-price" value="0" pattern="^[0-9]{1,}$" required />
                     <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
@@ -59,6 +59,22 @@
                       <input type="radio" name="type" id="post-type-buy" value="{{ \Config::get('common.BUY_TYPE') }}" required>Buy
                     </label>
                   </div>
+                </div>
+                
+                
+                <div class="form-group has-feedback">
+                  <label class="col-xs-3 col-sm-3 col-md-2 control-label">Danh mục:<span class="required">*</span></label>
+                  <div class="col-xs-9 col-sm-9 col-md-10">
+                    <select name="category" class="form-control">
+                      @foreach ($categories as $category)
+                        <optgroup label="{{ $category->name }}">
+                          @foreach ($category->children as $child)
+                            <option value="{{$child->slug}}">{{ $child->name }}</option>
+                          @endforeach
+                        </optgroup>
+                      @endforeach
+                    </select>     
+                  </div>                           
                 </div>
                 
                 <div class="form-group has-feedback">
@@ -144,8 +160,8 @@
     var wardUrl = "{{ route('ward.index')}}";
     var APP_URL = {!! json_encode(url('/')) !!};
     
-    var getDistrictUrlApi = APP_URL + "/api/province/";
-    var getWardUrlApi = APP_URL + "/api/district/";
+    var getDistrictUrlApi = APP_URL + "/api/provinces/";
+    var getWardUrlApi = APP_URL + "/api/districts/";
     
     
     var inputProvince = "post-create-province";
@@ -183,14 +199,14 @@
         select: function(event, ui) {
           if($(this).attr('id') == inputProvince){
             $("#post-create-province-hidden").val(ui.item.id);
-            $.getJSON( getDistrictUrlApi + ui.item.id, function( data ) {
+            $.getJSON( getDistrictUrlApi + ui.item.id + '/districts', function( data ) {
               $("#post-create-district-ward-container").show();
               setAutocomplete("#post-create-district", data.districts);
             });
             $("#post-create-district").removeAttr('disabled');
           } else if ($(this).attr('id')== inputDistrict) {
             $("#post-create-district-hidden").val(ui.item.id);
-            $.getJSON( getWardUrlApi + ui.item.id, function( data ) {
+            $.getJSON( getWardUrlApi + ui.item.id + '/wards', function( data ) {
               setAutocomplete("#post-create-ward", data.wards);
             });
             $("#post-create-ward").removeAttr('disabled');

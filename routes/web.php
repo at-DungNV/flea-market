@@ -44,7 +44,7 @@ Route::get('/categories', 'CategoryController@index');
 
 Route::group(['namespace' => 'Frontend'], function () {
     
-    Route::get('/image/{filename}', [
+    Route::get('/images/{filename}', [
       'uses' => 'PostController@getPostImages',
       'as'   => 'post.getPostImages'
     ]);
@@ -66,14 +66,14 @@ Route::group(['namespace' => 'Frontend'], function () {
     
     Route::get('/', 'HomeController@index');
     
-    Route::get('/post', [
+    Route::get('/posts', [
       'uses' => 'PostController@index',
-      'as'   => 'post.index'
+      'as'   => 'posts.index'
     ]);
     
     Route::group(['middleware' => ['auth', 'active']], function () {
       
-      Route::resource('post', 'PostController', ['except' => [
+      Route::resource('posts', 'PostController', ['except' => [
           'index'
       ]]);
 
@@ -99,19 +99,9 @@ Route::group(['namespace' => 'Frontend'], function () {
           'as'   => 'users.edit'
         ]);
         
-        Route::get('/approval-posts', [
+        Route::get('/posts', [
           'uses' => 'UserController@getApprovalPosts',
-          'as'   => 'users.approvalPosts'
-        ]);
-        
-        Route::get('/rejected-posts', [
-          'uses' => 'UserController@getRejectedPosts',
-          'as'   => 'users.rejectedPosts'
-        ]);
-        
-        Route::get('/waiting-posts', [
-          'uses' => 'UserController@getWaitingPosts',
-          'as'   => 'users.waitingPosts'
+          'as'   => 'users.show.posts'
         ]);
 
       });
@@ -126,7 +116,7 @@ Route::group(['namespace' => 'Frontend'], function () {
           'as'   => 'province.index'
         ]);
         
-        Route::get('province/{id}', [
+        Route::get('provinces/{id}/districts', [
           'uses' => 'ProvinceController@getDistricts',
           'as'   => 'province.getDistricts'
         ]);
@@ -136,7 +126,7 @@ Route::group(['namespace' => 'Frontend'], function () {
           'as'   => 'district.index'
         ]);
         
-        Route::get('district/{id}', [
+        Route::get('districts/{id}/wards', [
           'uses' => 'DistrictController@getWards',
           'as'   => 'district.getWards'
         ]);
