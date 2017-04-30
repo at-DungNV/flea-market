@@ -97,7 +97,7 @@ class PostController extends Controller
             $data = array();
             $data['message'] = 'Bài đăng ' . $post->title . ' của bạn đã được cập nhật thành '. $request['state'];
             $data['approver'] = Auth::user()->avatar;
-            $data['url'] = url('/post').'/'.$post->slug;
+            $data['url'] = url('/posts').'/'.$post->slug;
             $notification = Notification::create([
                 'user_id' => $post->user_id,
                 'data' => json_encode($data)
