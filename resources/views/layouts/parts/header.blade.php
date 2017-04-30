@@ -5,7 +5,8 @@
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown dropdown-large">
-          <li class="dropdown-toggle {{ Request::is('/') ? 'active' : '' }}" data-toggle="dropdown"><a href="{{ url('/') }}">Home</a></li>
+          <li class="{{ Request::is('/') ? 'active' : '' }}"><a href="{{ url('/') }}">Home</a></li>
+          <li class="dropdown-toggle" data-toggle="dropdown"><a href="{{ url('/') }}">Category</a></li>
           <ul class="dropdown-menu dropdown-menu-large row">
             @foreach ($categories->chunk(count($categories)/2) as $categories)
               <li class="col-sm-6">

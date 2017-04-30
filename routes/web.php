@@ -99,19 +99,9 @@ Route::group(['namespace' => 'Frontend'], function () {
           'as'   => 'users.edit'
         ]);
         
-        Route::get('/approval-posts', [
+        Route::get('/posts', [
           'uses' => 'UserController@getApprovalPosts',
-          'as'   => 'users.approvalPosts'
-        ]);
-        
-        Route::get('/rejected-posts', [
-          'uses' => 'UserController@getRejectedPosts',
-          'as'   => 'users.rejectedPosts'
-        ]);
-        
-        Route::get('/waiting-posts', [
-          'uses' => 'UserController@getWaitingPosts',
-          'as'   => 'users.waitingPosts'
+          'as'   => 'users.show.posts'
         ]);
 
       });

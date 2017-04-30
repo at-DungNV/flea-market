@@ -25,14 +25,8 @@
             <i class="fa fa-user-circle" aria-hidden="true">
             </i> Profile
           </a>
-          <a href="{{ route('users.approvalPosts') }}" class="list-group-item">
+          <a href="{{ route('users.show.posts') }}" class="list-group-item">
             <i class="fa fa-money" aria-hidden="true"></i> Đang bán
-          </a>
-          <a href="{{ route('users.waitingPosts') }}" class="list-group-item">
-            <i class="fa fa-telegram" aria-hidden="true"></i> Chờ duyệt
-          </a>
-          <a href="{{ route('users.rejectedPosts') }}" class="list-group-item">
-            <i class="fa fa-window-close-o" aria-hidden="true"> Bị từ chối</i>
           </a>
         </div>
       </div>
