@@ -27,13 +27,13 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(PostRequest $request)
+    public function index(PostRequest $request, BreadcrumbsHelper $bc)
     {
       
       $total = Post::where('state', '=', \Config::get('common.TYPE_POST_ACTIVE'))->count();
       $number = \Config::get('common.NUMBER_ITEM_PER_PAGE');
-      $x = new BreadcrumbsHelper();
-      $crumbs = $x->getCrumbs($request->path());
+      
+      $crumbs = $bc->getCrumbs($request->path());
       
       // input request parameters
       $q = $request->input('q');
@@ -54,8 +54,6 @@ class PostController extends Controller
       $posts = $searchResult['posts'];
       $x = new Province();
       
-      // $categories = Category::whereNull('parent_id')->with('children')->get();
-      // View::share('categories', $categories);
       $data = array(
           'posts'  => $posts,
           'totalPages' => $totalPages,
@@ -77,10 +75,9 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function create(Request $request, , BreadcrumbsHelper $bc)
     {
-      $x = new BreadcrumbsHelper();
-      $crumbs = $x->getCrumbs($request->path());
+      $crumbs = $bc->getCrumbs($request->path());
       return view('frontend.posts.create', ['crumbs' => $crumbs]);
     }
 
@@ -119,11 +116,10 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request, $id)
+    public function show(Request $request, $id, BreadcrumbsHelper $bc)
     {
         try {
-            $x = new BreadcrumbsHelper();
-            $crumbs = $x->getCrumbs($request->path());
+            $crumbs = $bc->getCrumbs($request->path());
             $post = Post::where('slug', '=', $id)->with('images')->firstOrFail();
             if($request['notification']) {
               $notification = Notification::findOrFail($request['notification']);

@@ -25,8 +25,6 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-        // $categories = Category::whereNull('parent_id')->with('children')->get();
-        // $request->session()->put('categories', $categories);
         return redirect()->action(
           'Frontend\PostController@index'
         );

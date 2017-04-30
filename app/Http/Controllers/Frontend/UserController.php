@@ -16,10 +16,9 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function profile(Request $request)
+    public function profile(Request $request, BreadcrumbsHelper $bc)
     {
-        $x = new BreadcrumbsHelper();
-        $crumbs = $x->getCrumbs($request->path());
+        $crumbs = $bc->getCrumbs($request->path());
         return view('frontend.users.profile', ['crumbs' => $crumbs]);
     }
     /**
@@ -66,10 +65,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $request, $id)
+    public function edit(Request $request, $id, BreadcrumbsHelper $bc)
     {
-        $x = new BreadcrumbsHelper();
-        $crumbs = $x->getCrumbs($request->path());
+        $crumbs = $bc->getCrumbs($request->path());
         return view('frontend.users.edit', ['crumbs' => $crumbs]);
     }
     /**
@@ -123,10 +121,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function getApprovalPosts(Request $request)
+    public function getApprovalPosts(Request $request, BreadcrumbsHelper $bc)
     {
-      $x = new BreadcrumbsHelper();
-      $crumbs = $x->getCrumbs($request->path());
+      $crumbs = $bc->getCrumbs($request->path());
       
       $posts = Post::with(['images'=>function($query) {
                         return $query->limit(1);
@@ -145,10 +142,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function getRejectedPosts(Request $request)
+    public function getRejectedPosts(Request $request, BreadcrumbsHelper $bc)
     {
-      $x = new BreadcrumbsHelper();
-      $crumbs = $x->getCrumbs($request->path());
+      $crumbs = $bc->getCrumbs($request->path());
       
       $posts = Post::with(['images'=>function($query) {
                         return $query->limit(1);
@@ -167,10 +163,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function getWaitingPosts(Request $request)
+    public function getWaitingPosts(Request $request, BreadcrumbsHelper $bc)
     {
-      $x = new BreadcrumbsHelper();
-      $crumbs = $x->getCrumbs($request->path());
+      $crumbs = $bc->getCrumbs($request->path());
       
       $posts = Post::with(['images'=>function($query) {
                         return $query->limit(1);
