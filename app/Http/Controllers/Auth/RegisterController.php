@@ -105,8 +105,9 @@ class RegisterController extends Controller
             'facebook_id' => $socialUser->getId(),
             'name' => $socialUser->getName(),
             'email' => $socialUser->getEmail(),
-            'is_active' => 1,
-            'gender' => $socialUser->user['gender'] == \Config::get('common.FEMALE_GENDER_FACEBOOK') ? 0 : 1,
+            'is_active' => \Config::get('common.USER_ACTIVE_DIGITAL'),
+            'gender' => $socialUser->user['gender'] == \Config::get('common.FEMALE_GENDER_FACEBOOK') ? 
+                        \Config::get('common.FEMALE_GENDER') : \Config::get('common.MALE_GENDER'),
             'avatar' => $socialUser->avatar_original
           ]);
         }
