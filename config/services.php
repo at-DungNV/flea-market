@@ -34,5 +34,10 @@ return [
         'key' => env('STRIPE_KEY'),
         'secret' => env('STRIPE_SECRET'),
     ],
-
+    
+    'facebook' => [
+        'client_id' => '267891363620714',
+        'client_secret' => '5424d274a76f1d488b4f27cb4c1c8f00',
+        'redirect' => 'http://fleamarket.me/auth/facebook/callback',
+    ],
 ];
