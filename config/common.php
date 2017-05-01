@@ -2,6 +2,8 @@
 return [
     'MALE_GENDER' => 1,
     'FEMALE_GENDER' => 0,
+    'MALE_GENDER_FACEBOOK' => 'male',
+    'FEMALE_GENDER_FACEBOOK' => 'female',
     'BUY_TYPE' => 'buy',
     'SELL_TYPE' => 'sell',
     'NUMBER_ITEM_PER_PAGE' => 12,

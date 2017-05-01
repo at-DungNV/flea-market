@@ -31,7 +31,11 @@
         </div>
       </div>
       <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 " align="center">
+        @if(Auth::user()->facebook_id != null)
+        <img alt="User Pic" src="{{ Auth::user()->avatar }}" class="img-circle img-responsive">
+        @else
         <img alt="User Pic" src="http://babyinfoforyou.com/wp-content/uploads/2014/10/avatar-300x300.png" class="img-circle img-responsive">
+        @endif
       </div>
       
       <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 ">

@@ -21,6 +21,12 @@ Route::get('/broadcast', function() {
 });
 
 
+Route::get('auth/facebook', [
+  'uses' => 'Auth\RegisterController@redirectToProvider',
+  'as'   => 'auth.facebook'
+]);
+Route::get('auth/facebook/callback', 'Auth\RegisterController@handleProviderCallback');
+
 
 Route::get('/send-notifications', function () {
     $user = Auth::user();
