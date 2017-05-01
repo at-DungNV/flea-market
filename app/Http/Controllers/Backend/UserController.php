@@ -75,19 +75,19 @@ class UserController extends Controller
             $activePosts = $query
                           ->Where('state', '=', \Config::get('common.TYPE_POST_ACTIVE'))
                           ->orderBy('created_at', 'desc')
-                          ->paginate(8);
+                          ->paginate(\Config::get('common.PAGINATION_LIMIT'));
             $waitingPosts = $query
                           ->Where('state', '=', \Config::get('common.TYPE_POST_WAITING'))
                           ->orderBy('created_at', 'desc')
-                          ->paginate(8);
+                          ->paginate(\Config::get('common.PAGINATION_LIMIT'));
             $hiddenPosts = $query
                           ->Where('state', '=', \Config::get('common.TYPE_POST_HIDDEN'))
                           ->orderBy('created_at', 'desc')
-                          ->paginate(8);
+                          ->paginate(\Config::get('common.PAGINATION_LIMIT'));
             $rejectedPosts = $query
                           ->Where('state', '=', \Config::get('common.TYPE_POST_REJECTED'))
                           ->orderBy('created_at', 'desc')
-                          ->paginate(8);
+                          ->paginate(\Config::get('common.PAGINATION_LIMIT'));
             $data = array(
                 'user'  => $user,
                 'activePosts' => $activePosts,

@@ -21,4 +21,9 @@ return [
     'ACCOUNT_TYPE_ADMIN' => 'admin',
     'TYPE_NOTIFICATION' => 1,
     'TYPE_MESSAGE' => 2,
+    'RESET_UNREAD_NOTIFICATION' => 0,
+    'PAGINATION_LIMIT' => 8,
+    'SUCCESS_CODE' => 200,
+    'CLIENT_ERROR_CODE' => 400,
+    'SERVER_ERROR_CODE' => 500,
 ];

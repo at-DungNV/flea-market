@@ -8,6 +8,8 @@ return [
         'create_successfully' => 'Created successfully',
         'create_unsuccessfully' => 'Oops. Something went wrong! Please try again.',
         'not_found_post' => 'So sorry. Seems like post not found',
+        'update_successfully' => 'Updated successfully',
+        'update_unsuccessfully' => 'Oops. Something went wrong! Please try again.',
     ],
     'user' => [
         'change_password_successfully' => 'Password changed successfully',

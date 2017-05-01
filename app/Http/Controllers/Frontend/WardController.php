@@ -17,11 +17,11 @@ class WardController extends Controller
     {
         $wards = Ward::all();
         if ($wards) {
-            return response()->json(['wards' => $wards], 200);
+            return response()->json(['wards' => $wards], \Config::get('common.SUCCESS_CODE'));
         }
         return response()->json([
                 'success' => false,
-            ], 400);
+            ], \Config::get('common.CLIENT_ERROR_CODE'));
     }
 
     /**
