@@ -86,10 +86,10 @@ class UserController extends Controller
           $user->fill($input);
           $user->save();
           return Redirect::back()
-              ->withMessage('thanh cong roi nhe')
+              ->withMessage(trans('frontend/common.post.update_successfully'))
               ->withInput();
       } catch (Exception $saveException) {
-          return Redirect::back()->withErrors('loi roi');
+          return Redirect::back()->withErrors(trans('frontend/common.post.update_unsuccessfully'));
       }
     }
     /**
@@ -131,19 +131,19 @@ class UserController extends Controller
       $approvalPosts = $query
                     ->Where('state', '=', \Config::get('common.TYPE_POST_ACTIVE'))
                     ->orderBy('created_at', 'desc')
-                    ->paginate(8);
+                    ->paginate(\Config::get('common.PAGINATION_LIMIT'));
       $waitingPosts = $query
                     ->Where('state', '=', \Config::get('common.TYPE_POST_WAITING'))
                     ->orderBy('created_at', 'desc')
-                    ->paginate(8);
+                    ->paginate(\Config::get('common.PAGINATION_LIMIT'));
       $hiddenPosts = $query
                     ->Where('state', '=', \Config::get('common.TYPE_POST_HIDDEN'))
                     ->orderBy('created_at', 'desc')
-                    ->paginate(8);
+                    ->paginate(\Config::get('common.PAGINATION_LIMIT'));
       $rejectedPosts = $query
                     ->Where('state', '=', \Config::get('common.TYPE_POST_REJECTED'))
                     ->orderBy('created_at', 'desc')
-                    ->paginate(8);
+                    ->paginate(\Config::get('common.PAGINATION_LIMIT'));
           
       $data = array(
           'crumbs'  => $crumbs,

@@ -18,11 +18,11 @@ class DistrictController extends Controller
     {
         $districts = District::all();
         if ($districts) {
-            return response()->json(['districts' => $districts], 200);
+            return response()->json(['districts' => $districts], \Config::get('common.SUCCESS_CODE'));
         }
         return response()->json([
                 'success' => false,
-            ], 400);
+            ], \Config::get('common.CLIENT_ERROR_CODE'));
     }
 
     /**
@@ -34,11 +34,11 @@ class DistrictController extends Controller
     {
         $wards = Ward::where('district_id', '=', $id)->get();
         if ($wards) {
-            return response()->json(['wards' => $wards], 200);
+            return response()->json(['wards' => $wards], \Config::get('common.SUCCESS_CODE'));
         }
         return response()->json([
                 'success' => false,
-            ], 400);
+            ], \Config::get('common.CLIENT_ERROR_CODE'));
     }
 
     /**

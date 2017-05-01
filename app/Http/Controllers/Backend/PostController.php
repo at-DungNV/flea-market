@@ -128,7 +128,7 @@ class PostController extends Controller
                     }])
                     ->Where('state', '=', \Config::get('common.TYPE_POST_REJECTED'))
                     ->orderBy('created_at', 'desc')
-                    ->paginate(8);
+                    ->paginate(\Config::get('common.PAGINATION_LIMIT'));
       return view('backend.posts.rejectedPosts', ['posts' => $posts]);
     }
     
@@ -147,7 +147,7 @@ class PostController extends Controller
                     }])
                     ->Where('state', '=', \Config::get('common.TYPE_POST_WAITING'))
                     ->orderBy('created_at', 'desc')
-                    ->paginate(8);
+                    ->paginate(\Config::get('common.PAGINATION_LIMIT'));
       return view('backend.posts.waitingPosts', ['posts' => $posts]);
     }
     
@@ -166,7 +166,7 @@ class PostController extends Controller
                     }])
                     ->Where('state', '=', \Config::get('common.TYPE_POST_ACTIVE'))
                     ->orderBy('created_at', 'desc')
-                    ->paginate(8);
+                    ->paginate(\Config::get('common.PAGINATION_LIMIT'));
       return view('backend.posts.approvalPosts', ['posts' => $posts]);
     }
     

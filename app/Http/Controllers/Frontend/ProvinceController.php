@@ -18,11 +18,11 @@ class ProvinceController extends Controller
     {
         $provinces = Province::all();
         if ($provinces) {
-            return response()->json(['provinces' => $provinces], 200);
+            return response()->json(['provinces' => $provinces], \Config::get('common.SUCCESS_CODE'));
         }
         return response()->json([
                 'success' => false,
-            ], 400);
+            ], \Config::get('common.CLIENT_ERROR_CODE'));
     }
     
     /**
@@ -34,11 +34,11 @@ class ProvinceController extends Controller
     {
         $districts = District::where('province_id', '=', $id)->get();
         if ($districts) {
-            return response()->json(['districts' => $districts], 200);
+            return response()->json(['districts' => $districts], \Config::get('common.SUCCESS_CODE'));
         }
         return response()->json([
                 'success' => false,
-            ], 400);
+            ], \Config::get('common.CLIENT_ERROR_CODE'));
     }
 
     /**

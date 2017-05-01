@@ -83,10 +83,10 @@ class NotificationController extends Controller
     public function updateUnreadNotification(Request $request)
     {
         $user = Auth::user();
-        $user->unread_notification = 0;
+        $user->unread_notification = \Config::get('common.RESET_UNREAD_NOTIFICATION');
         $user->save();
         // Announce that a new message has been posted
-        event(new \App\Events\ClientReadingNotificationEvent($user, 0));
+        event(new \App\Events\ClientReadingNotificationEvent($user, \Config::get('common.RESET_UNREAD_NOTIFICATION')));
     }
 
     /**
