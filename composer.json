@@ -25,7 +25,8 @@
             "app/Library/BreadcrumbsHelper.php"
         ],
         "psr-4": {
-            "App\\": "app/"
+            "App\\": "app/",
+            "Enchance\\Bleh\\": "packages/enchance/bleh/src"
         }
     },
     "autoload-dev": {

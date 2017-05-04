@@ -11,8 +11,14 @@
 |
 */
 
+
+
+
 Auth::routes();
 
+Route::get('/test', function () {
+  return Bleh::saySomething();
+});
 
 Route::get('/broadcast', function() {
     event(new \App\Events\TestEvent('Broadcasting in Laravel using Pusher!'));
