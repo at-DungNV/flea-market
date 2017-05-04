@@ -13,6 +13,10 @@
 
 Auth::routes();
 
+Route::get('/test', function () {
+    return Dungnv::sayHello();
+});
+
 
 Route::get('/broadcast', function() {
     event(new \App\Events\TestEvent('Broadcasting in Laravel using Pusher!'));
