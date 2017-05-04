@@ -11,6 +11,11 @@
 |
 */
 
+Route::get('/test', function () {
+    return Dungnv::sayHello();
+});
+
+
 Auth::routes();
 
 

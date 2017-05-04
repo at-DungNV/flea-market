@@ -25,7 +25,8 @@
             "app/Library/BreadcrumbsHelper.php"
         ],
         "psr-4": {
-            "App\\": "app/"
+            "App\\": "app/",
+            "Dungnv\\Helloworld\\": "packages/dungnv/helloworld/src"
         }
     },
     "autoload-dev": {

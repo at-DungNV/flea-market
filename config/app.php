@@ -182,6 +182,7 @@ return [
         Intervention\Image\ImageServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
+        Dungnv\Helloworld\DungNVServiceProvider::class,
     ],
 
     /*
@@ -232,6 +233,7 @@ return [
         'Image' => Intervention\Image\Facades\Image::class,
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+        'Dungnv' => Dungnv\Helloworld\Facade\Helloworld::class,
     ],
 
 ];
