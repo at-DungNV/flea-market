@@ -10,7 +10,8 @@
         "intervention/image": "^2.3",
         "pusher/pusher-php-server": "^2.6",
         "barryvdh/laravel-debugbar": "^2.3",
-        "laravel/socialite": "^2.0"
+        "laravel/socialite": "^2.0",
+        "dungnv/helloworld": "dev-master"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
@@ -25,7 +26,8 @@
             "app/Library/BreadcrumbsHelper.php"
         ],
         "psr-4": {
-            "App\\": "app/"
+            "App\\": "app/",
+            "Dungnv\\Helloworld\\": "vendor/dungnv/helloworld/src"
         }
     },
     "autoload-dev": {

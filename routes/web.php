@@ -14,6 +14,62 @@
 Auth::routes();
 
 
+
+
+
+// Binding into service container
+\App::bind('computer', function() {
+    $keyboard = new Keyboard();
+    $monitor = new Mobitor();
+    $computer = new Computer($monitor, $keyboard);
+    return $computer;
+});
+
+// Resolving (get back from service container)
+\App::make('computer'); // c1
+app('computer'); //c2
+app()->make('computer'); //c3
+app()['computer']; //c4
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Route::get('/test', function () {
+    return Dungnv::sayHello();
+});
+
 Route::get('/broadcast', function() {
     event(new \App\Events\TestEvent('Broadcasting in Laravel using Pusher!'));
 
