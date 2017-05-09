@@ -80,7 +80,7 @@ Route::group(['namespace' => 'Frontend'], function () {
     Route::group(['middleware' => ['auth', 'active']], function () {
       
       Route::resource('posts', 'PostController', ['except' => [
-          'index'
+          'index', 'update'
       ]]);
 
       Route::group(['prefix' => 'dashboard'], function () {
@@ -108,6 +108,11 @@ Route::group(['namespace' => 'Frontend'], function () {
         Route::get('/posts', [
           'uses' => 'UserController@getApprovalPosts',
           'as'   => 'users.show.posts'
+        ]);
+
+        Route::put('/posts', [
+          'uses' => 'PostController@update',
+          'as'   => 'frontend.post.update'
         ]);
 
       });

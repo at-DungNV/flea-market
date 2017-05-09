@@ -117,15 +117,20 @@ class PostController extends Controller
      */
     public function show(Request $request, $id, BreadcrumbsHelper $bc)
     {
+        $states = array(
+            \Config::get('common.TYPE_POST_ACTIVE'),
+            \Config::get('common.TYPE_POST_HIDDEN')
+        );
         try {
             $crumbs = $bc->getCrumbs($request->path());
             $post = Post::where('slug', '=', $id)->with('images')->firstOrFail();
+            $states = array_diff($states, [$post->state]);
             if($request['notification']) {
               $notification = Notification::findOrFail($request['notification']);
               $notification->read_at = Carbon::now();
               $notification->save();
             }
-            return view('frontend.posts.show', ['post' => $post, 'crumbs' => $crumbs]);
+            return view('frontend.posts.show', ['post' => $post, 'crumbs' => $crumbs, 'states' => $states]);
         } catch (NotFoundHttpException $ex) {
             return redirect()->action('PostController@index')
                              ->withErrors(trans('frontend/common.post.not_found_post'));
@@ -150,9 +155,19 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $errors = trans('frontend/common.post.update_unsuccessfully');
+        try {
+            $post = Post::findOrFail($request['id']);
+            $post->state = $request['state'];
+            $post->save();
+            return redirect()->route('posts.show',['id' => $post->slug])
+                             ->withMessage(trans('frontend/common.post.update_successfully'));
+        } catch (Exception $modelNotFound) {
+            return redirect()->route('posts.show',['id' => $post->slug])->withErrors(trans('frontend/common.post.not_found_post'));
+        }
+        return redirect()->route('posts.show',['id' => $post->slug])->withErrors($errors);
     }
 
     /**
