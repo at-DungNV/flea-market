@@ -18,18 +18,50 @@ Auth::routes();
 
 
 // Binding into service container
-\App::bind('computer', function() {
-    $keyboard = new Keyboard();
-    $monitor = new Mobitor();
-    $computer = new Computer($monitor, $keyboard);
-    return $computer;
-});
+// \App::bind('computer', function() {
+//     $keyboard = new Keyboard();
+//     $monitor = new Mobitor();
+//     $computer = new Computer($monitor, $keyboard);
+//     return $computer;
+// });
 
 // Resolving (get back from service container)
-\App::make('computer'); // c1
-app('computer'); //c2
-app()->make('computer'); //c3
-app()['computer']; //c4
+// \App::make('computer'); // c1
+// app('computer'); //c2
+// app()->make('computer'); //c3
+// app()['computer']; //c4
+
+
+
+
+interface AnimalInterface {
+    public function fly();
+}
+
+class Passerine implements AnimalInterface {
+    public function fly() {
+        return "I'm a Passerine and can fly with 10 km/h";
+    }
+}
+
+class Eagle implements AnimalInterface {
+    public function fly() {
+        return "I'm an Eagle and can fly with 200 km/h";
+    }
+}
+
+App::bind('AnimalInterface', 'Passerine');
+
+App::bind('AnimalInterface', 'Eagle');
+
+Route::get('animal', function(AnimalInterface $animal) {
+    dd($animal->fly());
+});
+
+Route::get('second/animal', function() {
+    $animal = App::make('AnimalInterface');
+    dd($animal->fly());
+});
 
 
 
@@ -39,12 +71,15 @@ app()['computer']; //c4
 
 
 
-
-
-
-
-
-
+// notice that BarInterface is just a key to get back
+// App::bind('BarInterface', function() {
+//     return new Bar;
+// });
+// Route::get('bar', function() {
+//     $bar = App::make('BarInterface');
+//     dd($bar);
+// });
+// 
 
 
 
@@ -67,7 +102,7 @@ app()['computer']; //c4
 
 
 Route::get('/test', function () {
-    return Dungnv::sayHello();
+    return Dungnv::saySomething("ahihi");
 });
 
 Route::get('/broadcast', function() {
