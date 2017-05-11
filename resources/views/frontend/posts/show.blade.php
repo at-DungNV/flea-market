@@ -50,7 +50,7 @@
             <li class="list-group-item"><i class="fa fa-check-square" aria-hidden="true"></i> Hẹn gặp ở nơi công cộng.</li>
             <li class="list-group-item"><i class="fa fa-check-square" aria-hidden="true"></i> Nếu bạn mua hàng hiệu, hãy gặp mặt tại cửa hàng để nhờ xác minh, tránh mua phải hàng giả.</li>
             <li class="list-group-item"><i class="fa fa-check-square" aria-hidden="true"></i> Tìm hiểu thêm về an toàn mua bán.</li>
-              @if(Auth::user()->id == $post->user->id)
+              @if(Auth::user()->id == $post->user->id && ($post->state == \Config::get('common.TYPE_POST_ACTIVE') || $post->state == \Config::get('common.TYPE_POST_HIDDEN')))
                 <li class="list-group-item">
                   <i class="fa fa-adjust" aria-hidden="true"></i> <span style="font-weight:bold; font-size: 20px;">Chỉnh sửa trạng thái: </span>
                   <div class="form-group">
