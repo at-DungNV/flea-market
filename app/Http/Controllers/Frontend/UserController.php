@@ -124,27 +124,10 @@ class UserController extends Controller
     public function getApprovalPosts(Request $request, BreadcrumbsHelper $bc)
     {
       $crumbs = $bc->getCrumbs($request->path());
-      $query = Post::with(['images'=>function($query) {
-                        return $query->limit(1);
-                    }])
-                    ->where('user_id', '=', Auth::user()->id);
-      $approvalPosts = $query
-                    ->Where('state', '=', \Config::get('common.TYPE_POST_ACTIVE'))
-                    ->orderBy('created_at', 'desc')
-                    ->paginate(\Config::get('common.PAGINATION_LIMIT'));
-      $waitingPosts = $query
-                    ->Where('state', '=', \Config::get('common.TYPE_POST_WAITING'))
-                    ->orderBy('created_at', 'desc')
-                    ->paginate(\Config::get('common.PAGINATION_LIMIT'));
-      $hiddenPosts = $query
-                    ->Where('state', '=', \Config::get('common.TYPE_POST_HIDDEN'))
-                    ->orderBy('created_at', 'desc')
-                    ->paginate(\Config::get('common.PAGINATION_LIMIT'));
-      $rejectedPosts = $query
-                    ->Where('state', '=', \Config::get('common.TYPE_POST_REJECTED'))
-                    ->orderBy('created_at', 'desc')
-                    ->paginate(\Config::get('common.PAGINATION_LIMIT'));
-          
+      $approvalPosts = Post::getPostsByState(\Config::get('common.TYPE_POST_ACTIVE'));
+      $waitingPosts = Post::getPostsByState(\Config::get('common.TYPE_POST_WAITING'));
+      $hiddenPosts = Post::getPostsByState(\Config::get('common.TYPE_POST_HIDDEN'));
+      $rejectedPosts = Post::getPostsByState(\Config::get('common.TYPE_POST_REJECTED'));
       $data = array(
           'crumbs'  => $crumbs,
           'approvalPosts' => $approvalPosts,

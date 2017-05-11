@@ -11,6 +11,7 @@ use App\Models\District;
 use App\Models\Ward;
 use App\Models\Notification;
 use Image as ImageIntervention;
+use Auth;
 
 class Post extends Model
 {
@@ -140,5 +141,16 @@ class Post extends Model
   public function deleteReferences() {
       Image::where('post_id', '=', $this->id)->delete();
       Notification::where('post_id', '=', $this->id)->delete();
+  }
+  
+  public static function getPostsByState($state) {
+      $posts = Post::with(['images'=>function($query) {
+                        return $query->limit(1);
+                    }])
+                    ->where('user_id', '=', Auth::user()->id)
+                    ->Where('state', '=', $state)
+                    ->orderBy('created_at', 'desc')
+                    ->paginate(\Config::get('common.PAGINATION_LIMIT'));
+      return $posts;
   }
 }
