@@ -22,13 +22,13 @@
     <div class="col-md-8 col-sm-12 col-xs-12 col-md-offset-2">
       <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="title-text text-center">Create New Post </div>
+            <div class="title-text text-center">Tạo bài đăng </div>
             <form action="{{ route('posts.store') }}" method="POST" data-toggle="validator" role="form" class="form-horizontal" name="post-form" enctype="multipart/form-data">
               <fieldset>
                 {{ csrf_field() }}
                 <!-- Text input-->
                 <div class="form-group has-feedback">
-                  <label class="col-xs-3 col-sm-3 col-md-2 control-label" for="post-title">Title:<span class="required">*</span></label>
+                  <label class="col-xs-3 col-sm-3 col-md-2 control-label" for="post-title">Tiêu đề:<span class="required">*</span></label>
                   <div class="col-xs-9 col-sm-9 col-md-10">
                     <input type="text" name="title"  maxlength="256" placeholder="Nhập tiêu đề của bài đăng" class="form-control" id="post-title" required>
                     <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
@@ -38,7 +38,7 @@
                 
                 
                 <div class="form-group has-feedback">
-                  <label class="col-xs-3 col-sm-3 col-md-2 control-label" for="post-price">Price(VNĐ):<span class="required">*</span></label>
+                  <label class="col-xs-3 col-sm-3 col-md-2 control-label" for="post-price">Giá(VNĐ):<span class="required">*</span></label>
                   <div class="col-xs-9 col-sm-9 col-md-10">
                     <input type="text" name="price" class="form-control" id="post-price" value="0" pattern="^[0-9]{1,}$" required />
                     <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
@@ -49,7 +49,7 @@
                 
                 
                 <div class="form-group has-feedback">
-                  <label class="col-xs-3 col-sm-3 col-md-2 control-label">Type:<span class="required">*</span></label>
+                  <label class="col-xs-3 col-sm-3 col-md-2 control-label">Loại:<span class="required">*</span></label>
                   <div class="col-xs-9 col-sm-9 col-md-10">
                     <label class="radio-inline" for="post-type-sell">
                       <input type="radio" name="type" id="post-type-sell" value="{{ \Config::get('common.SELL_TYPE') }}" required checked>Sell
@@ -78,7 +78,7 @@
                 </div>
                 
                 <div class="form-group has-feedback">
-                  <label class="col-xs-3 col-sm-3 col-md-2 control-label" for="post-phone">Phone:<span class="required">*</span></label>
+                  <label class="col-xs-3 col-sm-3 col-md-2 control-label" for="post-phone">Số điện thoại:<span class="required">*</span></label>
                   <div class="col-xs-9 col-sm-9 col-md-10">
                     <input type="text" name="phone" class="form-control" id="post-phone" value="{{Auth::user()->phone}}" pattern="^[0-9]{1,11}$" required />
                     <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
@@ -87,7 +87,7 @@
                 
                 <!-- Text input-->
                 <div class="form-group has-feedback">
-                  <label class="col-xs-3 col-sm-3 col-md-2 control-label" for="post-create-province">City:<span class="required">*</span></label>
+                  <label class="col-xs-3 col-sm-3 col-md-2 control-label" for="post-create-province">Thành phố:<span class="required">*</span></label>
                   <div class="col-xs-9 col-sm-9 col-md-10">
                     <input type="text" id="post-create-province" placeholder="Nhập thành phố hoặc tỉnh thành" class="form-control" required>
                     <input type="hidden" name="province_id" id="post-create-province-hidden">
@@ -97,14 +97,14 @@
 
                 <!-- Text input-->
                 <div class="form-group has-feedback" id="post-create-district-ward-container">
-                  <label class="col-xs-3 col-sm-3 col-md-2 control-label" for="post-create-district">District:<span class="required">*</span></label>
+                  <label class="col-xs-3 col-sm-3 col-md-2 control-label" for="post-create-district">Quận:<span class="required">*</span></label>
                   <div class="col-xs-9 col-sm-3 col-md-4">
                     <input type="text"  id="post-create-district" placeholder="district" class="form-control" disabled required>
                     <input type="hidden" name="district_id" id="post-create-district-hidden">
                     <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                   </div>
 
-                  <label class="col-xs-3 col-sm-3 col-md-2 control-label" for="post-create-ward">Ward:<span class="required">*</span></label>
+                  <label class="col-xs-3 col-sm-3 col-md-2 control-label" for="post-create-ward">Phường:<span class="required">*</span></label>
                   <div class="col-xs-9 col-sm-3 col-md-4">
                     <input type="text" id="post-create-ward" placeholder="ward" class="form-control" disabled>
                     <input type="hidden" name="ward_id" id="post-create-ward-hidden">
@@ -113,7 +113,7 @@
                 </div>
                 
                 <div class="form-group has-feedback">
-                  <label class="col-xs-3 col-sm-3 col-md-2 control-label" for="post-address">Address:<span class="required">*</span></label>
+                  <label class="col-xs-3 col-sm-3 col-md-2 control-label" for="post-address">Địa chỉ:<span class="required">*</span></label>
                   <div class="col-xs-9 col-sm-9 col-md-10">
                     <input type="text" name="address" class="form-control" id="post-address" value="{{Auth::user()->address}}" required>
                     <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
@@ -121,7 +121,7 @@
                 </div>
                 
                 <div class="form-group has-feedback">
-                  <label class="col-xs-3 col-sm-3 col-md-2 control-label" for="post-images">Images:<span class="required">*</span></label>
+                  <label class="col-xs-3 col-sm-3 col-md-2 control-label" for="post-images">Hình ảnh:<span class="required">*</span></label>
                   <div class="col-xs-9 col-sm-9 col-md-10">
                     <input type="file" name="images[]" multiple class="form-control" id="post-images" accept="image/*" required>
                   </div>

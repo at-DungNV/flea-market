@@ -33,13 +33,13 @@
       <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
         <div class="" role="tabpanel" data-example-id="togglable-tabs">
           <ul id="frontend-profile-tab" class="nav nav-tabs bar_tabs" role="tablist">
-            <li role="presentation" class="active"><a href="#frontend-profile-active" role="tab" data-toggle="tab" aria-expanded="true">Active Posts</a>
+            <li role="presentation" class="active"><a href="#frontend-profile-active" role="tab" data-toggle="tab" aria-expanded="true">Đang bán</a>
             </li>
-            <li role="presentation" class=""><a href="#frontend-profile-waiting" role="tab" data-toggle="tab" aria-expanded="false">Waiting Posts</a>
+            <li role="presentation" class=""><a href="#frontend-profile-waiting" role="tab" data-toggle="tab" aria-expanded="false">Đợi duyệt</a>
             </li>
-            <li role="presentation" class=""><a href="#frontend-profile-hidden" role="tab" data-toggle="tab" aria-expanded="false">Hidden Posts</a>
+            <li role="presentation" class=""><a href="#frontend-profile-hidden" role="tab" data-toggle="tab" aria-expanded="false">Bài đăng ẩn</a>
             </li>
-            <li role="presentation" class=""><a href="#frontend-profile-rejected" role="tab" data-toggle="tab" aria-expanded="false">Rejected Posts</a>
+            <li role="presentation" class=""><a href="#frontend-profile-rejected" role="tab" data-toggle="tab" aria-expanded="false">Bị từ chối</a>
             </li>
           </ul>
           <div id="frontend-profile-tab-content" class="tab-content">
@@ -85,16 +85,15 @@
               @else
                 <div class="text-center text-center error-template">
                    <h1>Oops!</h1>
-                   <h2>404 Not Found</h2>
                    <div class="error-details">
-                      Sorry, an error has occured, Requested page not found!
+                      Danh sách bài đăng rỗng
                    </div>
                    <div class="error-actions">
-                      <a href="{{ route('users.show.posts') }}" class="button special"><span class="glyphicon glyphicon-home"></span>
-                        Back First Page
+                      <a href="{{ route('posts.index') }}" class="btn btn-primary special"><span class="glyphicon glyphicon-home"></span>
+                        Trở về trang chủ
                       </a>
-                      <a href="" class="button"><span class="glyphicon glyphicon-envelope"></span>
-                        Contact Support
+                      <a href="{{ route('posts.create') }}" class="btn btn-warning"><span class="glyphicon glyphicon-plus"></span>
+                        Tạo mới bài đăng
                       </a>
                    </div>
                 </div>
@@ -143,16 +142,16 @@
               @else
                 <div class="text-center text-center error-template">
                    <h1>Oops!</h1>
-                   <h2>404 Not Found</h2>
                    <div class="error-details">
-                      Sorry, an error has occured, Requested page not found!
+                      Danh sách bài đăng rỗng
                    </div>
                    <div class="error-actions">
-                      <a href="{{ route('users.show.posts') }}" class="button special"><span class="glyphicon glyphicon-home"></span>
-                        Back First Page
+                      <a href="{{ route('posts.index') }}" class="btn btn-primary special"><span class="glyphicon glyphicon-home"></span>
+                        Trở về trang chủ
                       </a>
-                      <a href="" class="button"><span class="glyphicon glyphicon-envelope"></span>
-                        Contact Support
+                      <a href="{{ route('posts.create') }}" class="btn btn-warning">
+                        <span class="glyphicon glyphicon-plus"></span>
+                        Tạo mới bài đăng
                       </a>
                    </div>
                 </div>
@@ -200,16 +199,15 @@
               @else
                 <div class="text-center text-center error-template">
                    <h1>Oops!</h1>
-                   <h2>404 Not Found</h2>
                    <div class="error-details">
-                      Sorry, an error has occured, Requested page not found!
+                      Danh sách bài đăng rỗng
                    </div>
                    <div class="error-actions">
-                      <a href="{{ route('users.show.posts') }}" class="button special"><span class="glyphicon glyphicon-home"></span>
-                        Back First Page
+                      <a href="{{ route('posts.index') }}" class="btn btn-primary special"><span class="glyphicon glyphicon-home"></span>
+                        Trở về trang chủ
                       </a>
-                      <a href="" class="button"><span class="glyphicon glyphicon-envelope"></span>
-                        Contact Support
+                      <a href="{{ route('posts.create') }}" class="btn btn-warning"><span class="glyphicon glyphicon-plus"></span>
+                        Tạo mới bài đăng
                       </a>
                    </div>
                 </div>
@@ -257,16 +255,15 @@
               @else
                 <div class="text-center text-center error-template">
                    <h1>Oops!</h1>
-                   <h2>404 Not Found</h2>
                    <div class="error-details">
-                      Sorry, an error has occured, Requested page not found!
+                      Danh sách bài đăng rỗng
                    </div>
                    <div class="error-actions">
-                      <a href="{{ route('users.show.posts') }}" class="button special"><span class="glyphicon glyphicon-home"></span>
-                        Back First Page
+                      <a href="{{ route('posts.index') }}" class="btn btn-primary special"><span class="glyphicon glyphicon-home"></span>
+                        Trở về trang chủ
                       </a>
-                      <a href="" class="button"><span class="glyphicon glyphicon-envelope"></span>
-                        Contact Support
+                      <a href="{{ route('posts.create') }}" class="btn btn-warning"><span class="glyphicon glyphicon-plus"></span>
+                        Tạo mới bài đăng
                       </a>
                    </div>
                 </div>
