@@ -54,7 +54,11 @@
           </li>  
           <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <div class="img-rounded profile-img"></div>
+                @if (Auth::user()->facebook_id)
+                  <div class="img-rounded profile-img" style="background: url({{ Auth::user()->avatar }}) 10% 10% no-repeat;"></div>
+                @else
+                  <div class="img-rounded profile-img" style="background: url(/images/{{ Auth::user()->avatar }}) 50% 50% no-repeat;"></div>
+                @endif
                 <span>
                   {{ str_limit(Auth::user()->name, $limit= 10, $end= '...') }}
                   <b class="caret"></b>
