@@ -22,4 +22,8 @@
     padding: 1rem;
     text-align: center;
   }
+  
+  .notification-log {
+    margin-bottom: 0px;
+  }
 </style>
