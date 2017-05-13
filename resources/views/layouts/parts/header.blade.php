@@ -25,11 +25,11 @@
           
         </li>
         <li class="dropdown {{ Request::is('posts/*') ? 'active' : '' }}">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Post <b class="caret"></b></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Bài đăng <b class="caret"></b></a>
           <ul class="dropdown-menu">
-              <li><a href="{{ route('posts.index') }}">Index <span class="glyphicon glyphicon-list pull-right"></span></a></li>
+              <li><a href="{{ route('posts.index') }}">Danh sách <span class="glyphicon glyphicon-list pull-right"></span></a></li>
               <li class="divider"></li>
-              <li><a href="{{ route('posts.create') }}">Create <span class="glyphicon glyphicon-plus pull-right"></span></a></li>
+              <li><a href="{{ route('posts.create') }}">Đăng bài <span class="glyphicon glyphicon-plus pull-right"></span></a></li>
           </ul>
         </li>
         

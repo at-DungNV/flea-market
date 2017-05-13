@@ -5,7 +5,7 @@
     </div>
     <div class="col-xs-12 col-sm-3 col-md-2 padding-left-0 padding-right-0 align-center">
       <a class="btn btn-success btn-block advanced-search" data-toggle="collapse" data-target="#advanced-search">
-        <i class="fa fa-caret-square-o-down" aria-hidden="true"></i> Advanced Search
+        <i class="fa fa-caret-square-o-down" aria-hidden="true"></i> Tìm kiếm nâng cao
       </a>
     </div>
     <div class="col-xs-12 col-sm-3 col-md-2 padding-left-0">
