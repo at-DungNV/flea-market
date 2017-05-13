@@ -118,8 +118,6 @@ ul.nav li.dropdown ul.dropdown-menu {
   margin-right: 16px;
   padding: 20px 0px;
   width: 40% !important;
-  min-height:300px;
-  height: 350px;
   overflow: scroll;
 }
 .dropdown-menu-large > li > ul {
