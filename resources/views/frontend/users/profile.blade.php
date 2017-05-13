@@ -34,7 +34,7 @@
         @if(Auth::user()->facebook_id != null)
         <img alt="User Pic" src="{{ Auth::user()->avatar }}" class="img-circle img-responsive">
         @else
-        <img alt="User Pic" src="http://babyinfoforyou.com/wp-content/uploads/2014/10/avatar-300x300.png" class="img-circle img-responsive">
+        <img alt="User Pic" src="/images/{{ Auth::user()->avatar }}" class="img-circle img-responsive">
         @endif
       </div>
       
