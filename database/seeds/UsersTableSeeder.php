@@ -26,6 +26,18 @@ class UsersTableSeeder extends Seeder
         $user->gender = 1;
         $user->is_admin = 1;
         $user->save();
+        
+        $user = new User();
+        $user->name = 'trungnv';
+        $user->email = 'trungnv@gmail.com';
+        $user->password = '12345678';
+        $user->is_active = 1;
+        $user->birthday = date("Y-m-d", strtotime('29/03/2007'));
+        $user->address = 'K 81/103 Ngô Thì Nhậm';
+        $user->phone = '0123456789';
+        $user->gender = 1;
+        $user->is_admin = 0;
+        $user->save();
 
         for ($i=0; $i < 10; $i++) {
             User::create([
