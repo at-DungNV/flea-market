@@ -25,5 +25,6 @@
   
   .notification-log {
     margin-bottom: 0px;
+    max-height: 300px !important;
   }
 </style>
