@@ -390,43 +390,6 @@ body,html{
 
 /*.part-info-image img{width:100%;height:100%;}*/
 
-/*----------------------------*/
-/* RESPONSIVE MENU LIST  */
-/*----------------------------*/
-
-#main-premium-ressource,#main-themes,#main-psd,#main-ai,#main-font,#main-photo{
-	float:left;
-	width:100%;
-	min-height:36px;
-}
-
-.premium-ressource,.themes,.psd,.ai,.font,.photo{
-	position:relative;
-	text-align:center;
-	font-family: Helvetica, sans-serif;
-    font-size: 16px;
-	font-weight:400;
-	height:36px;
-	line-height:36px;
-	-webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-
-.premium-ressource a,.themes a,.psd a,.ai a,.font a,.photo a{
-	transition: all 0.2s ease-in-out;
-    -webkit-transition: all 0.2s ease-in-out; 
-    -moz-transition: all 0.2s ease-in-out; 
-    -o-transition: all 0.2s ease-in-out;
-}
-
-.premium-ressource a,.themes a,.psd a,.photo a,.font a,.ai a{color:#999;}
-
-.premium-ressource a:hover{color:#CCC;}
-.themes a:hover{color:#66CC7A;}
-.psd a:hover{color:#2B9ED8;}
-.photo a:hover{color:#56514C;}
-.font a:hover{color:#B88DFF;}
-.ai a:hover{color:#FF9000;}
 
 /*----------------------------*/
 /* UNDERNEATH THE MAIN IMAGE PART    */

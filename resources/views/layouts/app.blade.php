@@ -48,32 +48,50 @@
         <div id="main-small-logo">
         	<div class="small-logo"></div>
         </div>
-        
-        <div id="main-premium-ressource">
-            <div class="premium-ressource"><a href="#">Premium resources</a></div>
+        <div class="responsive-menu-container">
+            <div class="item"><a href="#">Trang chủ</a></div>
         </div>
         
-        <div id="main-themes">
-            <div class="themes"><a href="#">Latest themes</a></div>
+        <div class="responsive-menu-container">
+            <div class="item"><a href="#">Danh sách bài đăng</a></div>
         </div>
         
-        <div id="main-psd">
-            <div class="psd"><a href="#">PSD goodies</a></div>
+        <div class="responsive-menu-container">
+            <div class="item"><a href="#">Đăng bài</a></div>
         </div>
+        
+        @if (Auth::guest())
+        <div class="responsive-menu-container">
+            <div class="item">
+              <a href="{{ url('/login') }}">Login</a>
+            </div>
+        </div>
+        <div class="responsive-menu-container">
+            <div class="item">
+              <a href="{{ url('/register') }}">Register</a>
+            </div>
+        </div>
+        <div id="notification"></div>
+        @else
+        <div class="responsive-menu-container">
+            <div class="item"><a href="{{ route('users.profile') }}">Profile</a></div>
+        </div>
+        
+        <div class="responsive-menu-container">
+            <div class="item">
+              <a href="{{ route('logout') }}"
+                onclick="event.preventDefault();
+                document.getElementById('logout-form').submit();">
+                Sign Out
+              </a>
+              <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                {{ csrf_field() }}
+              </form>
+            </div>
+        </div>
+        @endif
             
-        <div id="main-ai">
-            <div class="ai"><a href="#">Illustrator freebies</a></div>
-        </div>
-        
-        <div id="main-font">
-            <div class="font"><a href="#">Free fonts</a></div>
-        </div>
-        
-        <div id="main-photo">
-            <div class="photo"><a href="#">Free stock photos</a></div>
-        </div>
-            
-        </div>
+      </div>
     </div>
 
 
