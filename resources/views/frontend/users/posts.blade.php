@@ -19,27 +19,27 @@
       <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
         <div class="list-group">
           <span href="#" class="list-group-item active" align="center">
-            Thông tin Cá nhân
+            {{trans('users.label_profile')}}
           </span>
           <a href="{{ route('users.profile') }}" class="list-group-item">
             <i class="fa fa-user-circle" aria-hidden="true">
-            </i> Profile
+            </i> {{trans('users.label_info')}}
           </a>
           <a href="{{ route('users.show.posts') }}" class="list-group-item list-group-item-success">
-            <i class="fa fa-money" aria-hidden="true"></i> Bài đăng
+            <i class="fa fa-money" aria-hidden="true"></i> {{trans('users.label_posts')}}
           </a>
         </div>
       </div>
       <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
         <div class="" role="tabpanel" data-example-id="togglable-tabs">
           <ul id="frontend-profile-tab" class="nav nav-tabs bar_tabs" role="tablist">
-            <li role="presentation" class="active"><a href="#frontend-profile-active" role="tab" data-toggle="tab" aria-expanded="true">Đang bán</a>
+            <li role="presentation" class="active"><a href="#frontend-profile-active" role="tab" data-toggle="tab" aria-expanded="true">{{trans('users.label_active_posts')}}</a>
             </li>
-            <li role="presentation" class=""><a href="#frontend-profile-waiting" role="tab" data-toggle="tab" aria-expanded="false">Đợi duyệt</a>
+            <li role="presentation" class=""><a href="#frontend-profile-waiting" role="tab" data-toggle="tab" aria-expanded="false">{{trans('users.label_waiting_posts')}}</a>
             </li>
-            <li role="presentation" class=""><a href="#frontend-profile-hidden" role="tab" data-toggle="tab" aria-expanded="false">Bài đăng ẩn</a>
+            <li role="presentation" class=""><a href="#frontend-profile-hidden" role="tab" data-toggle="tab" aria-expanded="false">{{trans('users.label_hidden_posts')}}</a>
             </li>
-            <li role="presentation" class=""><a href="#frontend-profile-rejected" role="tab" data-toggle="tab" aria-expanded="false">Bị từ chối</a>
+            <li role="presentation" class=""><a href="#frontend-profile-rejected" role="tab" data-toggle="tab" aria-expanded="false">{{trans('users.label_rejected_posts')}}</a>
             </li>
           </ul>
           <div id="frontend-profile-tab-content" class="tab-content">
