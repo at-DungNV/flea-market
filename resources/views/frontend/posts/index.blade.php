@@ -42,7 +42,7 @@
               <div class="wrapper-part-info">
                 <div class="part-info-image"><img src="/images/money.svg" alt="" width="28" height="28"/></div>
                 <div class="part-info part-info-font-12">
-                  {{ number_format ( $post->price  , 0 , "." , "." ) }} VNĐ - <a href="{{ route('posts.show', [$post->slug]) }}" class="button"> {{ $post->created_at->diffForHumans() }}</a>
+                  {{ number_format ( $post->price  , 0 , "." , "." ) }} {{trans('common.label_currency')}} - <a href="{{ route('posts.show', [$post->slug]) }}" class="button"> {{ $post->created_at->diffForHumans() }}</a>
                 </div>
               </div>
             </figure>
@@ -51,21 +51,7 @@
             <ul id="post-index-pagination" class="pagination-sm"></ul>
           </div>
         @else
-          <div class="text-center text-center error-template">
-             <h1>Oops!</h1>
-             <h2>404 Not Found</h2>
-             <div class="error-details">
-                Sorry, an error has occured, Requested page not found!
-             </div>
-             <div class="error-actions">
-                <a href="{{ route('posts.index') }}" class="button special"><span class="glyphicon glyphicon-home"></span>
-                  Back First Page
-                </a>
-                <a href="" class="button"><span class="glyphicon glyphicon-envelope"></span>
-                  Contact Support
-                </a>
-             </div>
-          </div>
+          @include('common.notFoundError')
         @endif
       </section>
         

@@ -63,7 +63,7 @@
                 <td class=" ">{{ $post->type }}</td>
                 <td class=" ">{{ $post->user->name }}</td>
                 <td class=" ">{{ $post->state }}</td>
-                <td class="a-right a-right ">{{ number_format ( $post->price  , 0 , "." , "." ) }} VNĐ</td>
+                <td class="a-right a-right ">{{ number_format ( $post->price  , 0 , "." , "." ) }} {{trans('common.label_currency')}}</td>
                 <td class="last">
                   <a href="{{ route('admin.post.show', [$post->id]) }}" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> View </a>
                   <a data-toggle="modal" data-target="#confirm-deleting" class="btn btn-danger btn-xs admin-post-index-delete">

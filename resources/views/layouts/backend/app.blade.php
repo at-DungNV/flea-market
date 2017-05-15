@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>@lang('backend/common.app_name')</title>
+    <title>@lang('common.app_name_backend')</title>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="/bower_resources/bootstrap/dist/css/bootstrap.min.css">

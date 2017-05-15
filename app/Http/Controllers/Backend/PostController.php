@@ -66,7 +66,7 @@ class PostController extends Controller
           return view('backend.posts.show', ['post' => $post, 'states' => $states]);
       } catch (NotFoundHttpException $ex) {
           return redirect()->action('PostController@index')
-                           ->withErrors(trans('backend/common.post.not_found_post'));
+                           ->withErrors(trans('common.post.not_found_post'));
       }
     }
 
@@ -89,7 +89,7 @@ class PostController extends Controller
      */
     public function update(Request $request)
     {
-        $errors = trans('backend/common.post.update_unsuccessfully');
+        $errors = trans('common.post.update_unsuccessfully');
         try {
             $post = Post::findOrFail($request['id']);
             $post->state = $request['state'];
@@ -106,9 +106,9 @@ class PostController extends Controller
             event(new \App\Events\PostApprovalEvent($post->user, $post, $notification));
             
             return redirect()->route('admin.post.show',['id' => $request['id']])
-                             ->withMessage(trans('backend/common.post.update_successfully'));
+                             ->withMessage(trans('common.post.update_successfully'));
         } catch (Exception $modelNotFound) {
-            return redirect()->route('admin.post.show',['id' => $request['id']])->withErrors(trans('backend/common.post.delete_unsuccessfully'));
+            return redirect()->route('admin.post.show',['id' => $request['id']])->withErrors(trans('common.post.delete_unsuccessfully'));
         }
         return redirect()->route('admin.post.show',['id' => $request['id']])->withErrors($errors);
     }
@@ -179,13 +179,13 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        $errors = trans('backend/common.post.delete_unsuccessfully');
+        $errors = trans('common.post.delete_unsuccessfully');
         try {
             $post = Post::findOrFail($id);
             $post->deleteReferences();
             $post->delete();
             return redirect()->route('admin.post.index')
-                             ->withMessage(trans('backend/common.post.delete_successfully'));
+                             ->withMessage(trans('common.post.delete_successfully'));
         } catch (Exception $modelNotFound) {
             return redirect()->route('admin.post.index')->withErrors($errors);
         }
