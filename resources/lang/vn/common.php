@@ -14,11 +14,27 @@ return [
     'label_logout' => 'Đăng xuất',
     'label_currency' => 'VNĐ',
     
+    
+    'label_advanced_search' => 'Tìm kiếm nâng cao',
+    'label_city' => 'Thành phố',
+    'label_type' => 'Loại',
+    'label_order' => 'Sắp xếp',
+    'label_order_asc' => 'Giá thấp nhất',
+    'label_order_desc' => 'Giá cao nhất',
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     'button_cancel' => 'Hủy bỏ',
     'button_confirm' => 'Xác nhận',
     'button_update' => 'Cập nhật',
-    
-    
     
     'app_name_frontend' => 'Flea - Market',
     'app_name_backend' => 'Flea Market Management',
