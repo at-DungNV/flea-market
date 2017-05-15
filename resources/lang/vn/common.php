@@ -12,7 +12,10 @@ return [
     'label_post_create' => 'Đăng bài',
     'label_profile' => 'Cá nhân',
     'label_logout' => 'Đăng xuất',
+    'label_currency' => 'VNĐ',
     
+    'button_cancel' => 'Hủy bỏ',
+    'button_confirm' => 'Xác nhận',
     
     
     

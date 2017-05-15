@@ -11,6 +11,7 @@ return [
     'label_post_create' => 'Create',
     'label_profile' => 'Profile',
     'label_logout' => 'Sign out',
+    'label_currency' => 'USD',
   
     'app_name_frontend' => 'Flea - Market',
     'app_name_backend' => 'Flea Market Management',

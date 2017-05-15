@@ -75,7 +75,7 @@
     <ul class="alt">
       <li>{{ $post->address }}</li>
     </ul>
-    <h2><i class="fa fa-money" aria-hidden="true"></i>: {{ number_format ( $post->price  , 0 , "." , "." ) }} VNĐ</h2>
+    <h2><i class="fa fa-money" aria-hidden="true"></i>: {{ number_format ( $post->price  , 0 , "." , "." ) }} {{trans('common.label_currency')}}</h2>
     <p class="margin-top-10">
       {!! nl2br(e($post->description)) !!}
     </p>

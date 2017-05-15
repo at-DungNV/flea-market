@@ -42,7 +42,7 @@
               <div class="wrapper-part-info">
                 <div class="part-info-image"><img src="/images/money.svg" alt="" width="28" height="28"/></div>
                 <div class="part-info part-info-font-12">
-                  {{ number_format ( $post->price  , 0 , "." , "." ) }} VNĐ - <a href="{{ route('posts.show', [$post->slug]) }}" class="button"> {{ $post->created_at->diffForHumans() }}</a>
+                  {{ number_format ( $post->price  , 0 , "." , "." ) }} {{trans('common.label_currency')}} - <a href="{{ route('posts.show', [$post->slug]) }}" class="button"> {{ $post->created_at->diffForHumans() }}</a>
                 </div>
               </div>
             </figure>
