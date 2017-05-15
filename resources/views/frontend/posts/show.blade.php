@@ -33,26 +33,26 @@
           <!-- Left and right controls -->
           <a class="left carousel-control" href="#post-show-images" role="button" data-slide="prev">
             <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
+            <span class="sr-only">{{trans('posts.label_previous')}}</span>
           </a>
           <a class="right carousel-control" href="#post-show-images" role="button" data-slide="next">
             <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
+            <span class="sr-only">{{trans('posts.label_next')}}</span>
           </a>
         </div>
       </div>
       <div class="col-md-4 col-sm-12 col-xs-12">
         <div class="panel panel-primary">
-          <div class="panel-heading" align="center"><strong>MUA HÀNG AN TOÀN</strong></div>
+          <div class="panel-heading" align="center"><strong>{{trans('posts.label_announcement')}}</strong></div>
           <ul class="list-group">
-            <li class="list-group-item"><i class="fa fa-check-square" aria-hidden="true"></i> KHÔNG trả tiền trước khi nhận hàng.</li>
-            <li class="list-group-item"><i class="fa fa-check-square" aria-hidden="true"></i> Kiểm tra hàng cẩn thận, đặc biệt với hàng đắt tiền.</li>
-            <li class="list-group-item"><i class="fa fa-check-square" aria-hidden="true"></i> Hẹn gặp ở nơi công cộng.</li>
-            <li class="list-group-item"><i class="fa fa-check-square" aria-hidden="true"></i> Nếu bạn mua hàng hiệu, hãy gặp mặt tại cửa hàng để nhờ xác minh, tránh mua phải hàng giả.</li>
-            <li class="list-group-item"><i class="fa fa-check-square" aria-hidden="true"></i> Tìm hiểu thêm về an toàn mua bán.</li>
+            <li class="list-group-item"><i class="fa fa-check-square" aria-hidden="true"></i> {{trans('posts.content_announcement1')}}</li>
+            <li class="list-group-item"><i class="fa fa-check-square" aria-hidden="true"></i> {{trans('posts.content_announcement2')}}</li>
+            <li class="list-group-item"><i class="fa fa-check-square" aria-hidden="true"></i> {{trans('posts.content_announcement3')}}</li>
+            <li class="list-group-item"><i class="fa fa-check-square" aria-hidden="true"></i> {{trans('posts.content_announcement4')}}</li>
+            <li class="list-group-item"><i class="fa fa-check-square" aria-hidden="true"></i> {{trans('posts.content_announcement5')}}</li>
               @if(Auth::user()->id == $post->user->id && ($post->state == \Config::get('common.TYPE_POST_ACTIVE') || $post->state == \Config::get('common.TYPE_POST_HIDDEN')))
                 <li class="list-group-item">
-                  <i class="fa fa-adjust" aria-hidden="true"></i> <span style="font-weight:bold; font-size: 20px;">Chỉnh sửa trạng thái: </span>
+                  <i class="fa fa-adjust" aria-hidden="true"></i> <span style="font-weight:bold; font-size: 20px;">{{trans('posts.label_update_post')}}: </span>
                   <div class="form-group">
                     <select class="form-control frontend-post-show-state">
                       @foreach ($states as $state)
@@ -60,7 +60,7 @@
                       @endforeach
                     </select>
                     <a data-toggle="modal" data-target="#frontend-confirm-updating" class="btn btn-danger btn-block frontend-post-show-update">
-                      <i class="fa fa-rocket"></i> Update
+                      <i class="fa fa-rocket"></i> {{trans('posts.label_update')}}
                     </a>
                   </div>
                 </li>
@@ -71,7 +71,7 @@
     </div>
     <hr>
     
-    <h4><i class="fa fa-address-card" aria-hidden="true"></i> Địa chỉ người đăng tin</h4>
+    <h4><i class="fa fa-address-card" aria-hidden="true"></i> {{trans('posts.label_post_owner_address')}}</h4>
     <ul class="alt">
       <li>{{ $post->address }}</li>
     </ul>
@@ -88,11 +88,11 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Cập nhật bài đăng</h4>
+          <h4 class="modal-title">{{trans('posts.label_update_post')}}</h4>
         </div>
         <div class="modal-body">
-          <h5>Trạng thái hiện tại: {{$post->state}}</h5>
-          <h5>Trạng thái sau khi cập nhật: <span class="frontend-post-show-label-state"> </span></h5>
+          <h5>{{trans('posts.label_current_state')}}: {{$post->state}}</h5>
+          <h5>{{trans('posts.label_updated_state')}}: <span class="frontend-post-show-label-state"> </span></h5>
         </div>
         <div class="modal-footer">
             <form action="{{ route('frontend.post.update') }}" method="POST">
@@ -100,8 +100,8 @@
                 {{ method_field('PUT') }}
                 <input type="hidden" name="id" value="{{$post->id}}">
                 <input type="hidden" name="state" value="">
-                <button type="submit" class="btn btn-danger">Update</button>
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <button type="submit" class="btn btn-danger">{{trans('common.button_update')}}</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">{{trans('common.button_cancel')}}</button>
             </form>
         </div>
       </div>

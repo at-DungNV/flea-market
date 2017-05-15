@@ -12,6 +12,10 @@ return [
     'label_profile' => 'Profile',
     'label_logout' => 'Sign out',
     'label_currency' => 'USD',
+    
+    'button_cancel' => 'Cancel',
+    'button_confirm' => 'Confirm',
+    'button_update' => 'Update',
   
     'app_name_frontend' => 'Flea - Market',
     'app_name_backend' => 'Flea Market Management',

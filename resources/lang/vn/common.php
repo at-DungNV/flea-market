@@ -16,6 +16,7 @@ return [
     
     'button_cancel' => 'Hủy bỏ',
     'button_confirm' => 'Xác nhận',
+    'button_update' => 'Cập nhật',
     
     
     
