@@ -1,9 +1,22 @@
 <?php
 
 return [
-    'app_name' => 'Flea Market Management',
+  
+    'label_home' => 'Home',
+    'label_category' => 'Category',
+    'label_login' => 'Login',
+    'label_register' => 'Register',
+    'label_post' => 'Post',
+    'label_post_index' => 'Index',
+    'label_post_create' => 'Create',
+    'label_profile' => 'Profile',
+    'label_logout' => 'Sign out',
+  
+    'app_name_frontend' => 'Flea - Market',
+    'app_name_backend' => 'Flea Market Management',
     'app_name_sidebar' => 'FM Management',
     'error_message' => 'Oops. Something went wrong! Please try again.',
+    'blocked_error_message' => 'Your account is blocked. Please another one!',
     'post' => [
         'delete_successfully' => 'Deleted successfully',
         'delete_unsuccessfully' => 'Oops. Something went wrong! Please try again.',

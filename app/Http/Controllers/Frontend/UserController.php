@@ -86,10 +86,10 @@ class UserController extends Controller
           $user->fill($input);
           $user->save();
           return Redirect::back()
-              ->withMessage(trans('frontend/common.post.update_successfully'))
+              ->withMessage(trans('common.post.update_successfully'))
               ->withInput();
       } catch (Exception $saveException) {
-          return Redirect::back()->withErrors(trans('frontend/common.post.update_unsuccessfully'));
+          return Redirect::back()->withErrors(trans('common.post.update_unsuccessfully'));
       }
     }
     /**
@@ -106,11 +106,11 @@ class UserController extends Controller
             if (Hash::check($request->current_password, $user->password)) {
                 $user->password = $request->password;
                 $user->save();
-                return Redirect::back()->withMessage(trans('frontend/common.user.change_password_successfully'));
+                return Redirect::back()->withMessage(trans('common.user.change_password_successfully'));
             }
-            return Redirect::back()->withErrors(trans('frontend/common.user.password_not_match'));
+            return Redirect::back()->withErrors(trans('common.user.password_not_match'));
         } catch (Exception $saveException) {
-            return Redirect::back()->withErrors(trans('frontend/common.error_message'));
+            return Redirect::back()->withErrors(trans('common.error_message'));
         }
     }
     

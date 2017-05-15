@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="icon" type="image/png" href="/images/small-logo-01.png">
-    <title>@lang('frontend/common.app_name')</title>
+    <title>@lang('common.app_name_frontend')</title>
 
     <link rel="stylesheet" href="/bower_resources/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="/bower_resources/font-awesome/css/font-awesome.min.css" media="screen" title="no title" charset="utf-8">
@@ -49,32 +49,32 @@
         	<div class="small-logo"></div>
         </div>
         <div class="responsive-menu-container">
-            <div class="item"><a href="#">Trang chủ</a></div>
+            <div class="item"><a href="#">{{trans('common.label_home')}}</a></div>
         </div>
         
         <div class="responsive-menu-container">
-            <div class="item"><a href="#">Danh sách bài đăng</a></div>
+            <div class="item"><a href="#">{{trans('common.label_post_index')}}</a></div>
         </div>
         
         <div class="responsive-menu-container">
-            <div class="item"><a href="#">Đăng bài</a></div>
+            <div class="item"><a href="#">{{trans('common.label_post_create')}}</a></div>
         </div>
         
         @if (Auth::guest())
         <div class="responsive-menu-container">
             <div class="item">
-              <a href="{{ url('/login') }}">Login</a>
+              <a href="{{ url('/login') }}">{{trans('common.label_login')}}</a>
             </div>
         </div>
         <div class="responsive-menu-container">
             <div class="item">
-              <a href="{{ url('/register') }}">Register</a>
+              <a href="{{ url('/register') }}">{{trans('common.label_register')}}</a>
             </div>
         </div>
         <div id="notification"></div>
         @else
         <div class="responsive-menu-container">
-            <div class="item"><a href="{{ route('users.profile') }}">Profile</a></div>
+            <div class="item"><a href="{{ route('users.profile') }}">{{trans('common.label_profile')}}</a></div>
         </div>
         
         <div class="responsive-menu-container">
@@ -82,7 +82,7 @@
               <a href="{{ route('logout') }}"
                 onclick="event.preventDefault();
                 document.getElementById('logout-form').submit();">
-                Sign Out
+                {{trans('common.label_logout')}}
               </a>
               <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                 {{ csrf_field() }}
@@ -102,13 +102,6 @@
       @yield('susscess-message')
       @yield('content')
       
-              
-    	<!-- <div id="wrapper-thank">
-        	<div class="thank">
-            	<div class="thank-text">pl<span style="letter-spacing:-5px;">a</span>tz</div>
-        	</div>
-    	</div> -->
-  	    
   		@include('layouts.parts.footer')
       
       

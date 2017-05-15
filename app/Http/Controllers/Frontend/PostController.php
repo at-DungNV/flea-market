@@ -100,7 +100,7 @@ class PostController extends Controller
         // store images
         $images = $request->file('images');
         $post->storeImages($images);
-        return redirect()->action('Frontend\PostController@create')->withMessage(trans('frontend/common.post.create_successfully'));
+        return redirect()->action('Frontend\PostController@create')->withMessage(trans('common.post.create_successfully'));
     }
 
     public function getPostImages($filename)
@@ -133,7 +133,7 @@ class PostController extends Controller
             return view('frontend.posts.show', ['post' => $post, 'crumbs' => $crumbs, 'states' => $states]);
         } catch (NotFoundHttpException $ex) {
             return redirect()->action('PostController@index')
-                             ->withErrors(trans('frontend/common.post.not_found_post'));
+                             ->withErrors(trans('common.post.not_found_post'));
         }
     }
 
@@ -157,15 +157,15 @@ class PostController extends Controller
      */
     public function update(Request $request)
     {
-        $errors = trans('frontend/common.post.update_unsuccessfully');
+        $errors = trans('common.post.update_unsuccessfully');
         try {
             $post = Post::findOrFail($request['id']);
             $post->state = $request['state'];
             $post->save();
             return redirect()->route('posts.show',['id' => $post->slug])
-                             ->withMessage(trans('frontend/common.post.update_successfully'));
+                             ->withMessage(trans('common.post.update_successfully'));
         } catch (Exception $modelNotFound) {
-            return redirect()->route('posts.show',['id' => $post->slug])->withErrors(trans('frontend/common.post.not_found_post'));
+            return redirect()->route('posts.show',['id' => $post->slug])->withErrors(trans('common.post.not_found_post'));
         }
         return redirect()->route('posts.show',['id' => $post->slug])->withErrors($errors);
     }
