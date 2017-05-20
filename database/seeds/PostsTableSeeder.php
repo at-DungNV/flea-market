@@ -70,7 +70,9 @@ class PostsTableSeeder extends Seeder
         'Sh 125 màu đỏ tươi xe /15',
         'Exciter 150 fi biển 43',
         'xe hàn quốc biển 43',
-        'Xe sirius SYM đk12 43'
+        'Xe sirius SYM đk12 43',
+        'loa vi tính 2.0 hợp cho loại pc (100hz-20khz)',
+        'Bộ âm thanh Kara YamahaE164N mới chưa sử dụng'
       ); 
       $prices = array(
         '4400000',
@@ -85,7 +87,9 @@ class PostsTableSeeder extends Seeder
         '66000000',
         '39000000',
         '3900000',
-        '6500000'
+        '6500000',
+        '75000',
+        '3100000'
       );
       $descriptions = array(
         'Ip6 gold 16g qte vỏ độ ip7 máy đẹp còn mới dùng tốt. ngoài bị mất vân tay ra thì mọi thứ vẫn tốt ai 
@@ -137,7 +141,14 @@ class PostsTableSeeder extends Seeder
         'Cần bán dream hàn quốc xe máy móc ok .vì trứoc kia ngừoi già đi .máy móc chưa đụng chạm còn rin .xe rất mới .biển 43. Giấy tờ 
           đầy đủ.có fix cho ngừoi thiện chí.',
         'Xe như trong hình cần bán gấp máy móc nguyên bản giấy tờ chính chủ biển số đà nẵng chính hãng sym máy móc cực em ae có lòng 
-          đến 599 tôn đức thắng xem xe nha ae'
+          đến 599 tôn đức thắng xem xe nha ae',
+        'loại loa này là hàng nhập về còn mới ( giá siêu rẻ ) kích thước hình vuông (5cm) 3W*2(thd)',
+        'chuyển hướng kinh doanh ko sử dụng Bán Dàn âm thanh Chuyên karaoke, nghe nhạc cực chuẩn còn mới chưa dung nguyên rin, mới 100% nguyên đai thùng kiện, tem niêm còn bảo hành 1 năm.....gồm
+        1. Cặp Loa nén YAMAHA KMS910E, Loa bass25cm màng xanh tinh năng khuếch đại âm thanh cựa mạnh, công suất 700W ,2 treble Xanh lớn , bass treble rõ ràng sắc nét, âm thanh cực mạnh....
+        2 Amply JAGUAR in korea 303XG chạy 12 fet Công suất Lớn, chạy 4 loa 4 micro, Echo chỉnh giọng hát chuyên nghiệp, chưc năng hiệu ứng âm thanh EQ lọc tiếng...
+        3. Tặng kèm Micro kara Sure.
+        _Mua 6 tr7 Nay tôi bán nhanh cho ae có nhu cầu giá 3tr100..
+        đến nhà test âm thanh hát thử chuẩn. biết thêm thông tin xem google'
       );
       
       $images = array(
@@ -206,6 +217,16 @@ class PostsTableSeeder extends Seeder
           'xe-sirius-sym-dk12-43-1491097677-1491097679.jpg',
           'xe-sirius-sym-dk12-43-1491097677-1491097680.jpg',
           'xe-sirius-sym-dk12-43-1491097677-1491097681.jpg'
+        ),
+        array(
+          'loa-vi-tinh-20-hop-cho-loai-pc-100hz-20khz-1495288922-1495288922.jpg'
+        ),
+        array(
+          'bo-am-thanh-kara-yamahae164n-moi-chua-su-dung-1495289108-1495289108.jpg',
+          'bo-am-thanh-kara-yamahae164n-moi-chua-su-dung-1495289108-1495289109.jpg',
+          'bo-am-thanh-kara-yamahae164n-moi-chua-su-dung-1495289108-1495289110.jpg',
+          'bo-am-thanh-kara-yamahae164n-moi-chua-su-dung-1495289108-1495289111.jpg',
+          'bo-am-thanh-kara-yamahae164n-moi-chua-su-dung-1495289108-1495289112.jpg'
         )
       );
       for ($i=0; $i < count($titles); $i++) {

@@ -42,6 +42,7 @@ return [
     'app_name_sidebar' => 'FM Management',
     'error_message' => 'Oops. Something went wrong! Please try again.',
     'blocked_error_message' => 'Your account is blocked. Please another one!',
+    'error_empty_result' => 'Sorry, We are not able to find any matched results. Please try again',
     'post' => [
         'delete_successfully' => 'Deleted successfully',
         'delete_unsuccessfully' => 'Oops. Something went wrong! Please try again.',

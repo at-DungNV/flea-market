@@ -21,7 +21,7 @@ class NotificationsTableSeeder extends Seeder
         $types = array('1', '2');
         for ($i=0; $i < 500; $i++) {
           $data = array();
-          $data["message"] = $faker->text;
+          $data["message"] = substr($faker->text, 0, 60);
           $data['approver'] = 'default.png';
           $data['url'] = url('/post').'/'. Post::find($faker->randomElement($users->toArray()))->slug;
           Notification::create([

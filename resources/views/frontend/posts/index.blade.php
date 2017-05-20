@@ -51,7 +51,7 @@
             <ul id="post-index-pagination" class="pagination-sm"></ul>
           </div>
         @else
-          @include('common.notFoundError')
+          @include('common.emptyResult')
         @endif
       </section>
         
