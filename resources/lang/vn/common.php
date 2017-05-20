@@ -41,7 +41,9 @@ return [
     'app_name_sidebar' => 'FM Management',
     'error_message' => 'Oops. Đã có lỗi xảy ra, xin vui lòng thử lại!',
     'blocked_error_message' => 'Tài khoản của bạn đã bị khóa, vui lòng thử lại tài khoản khác!',
+    'error_empty_result' => 'Không tìm thấy bài đăng phù hợp',
     'post' => [
+        'create_successfully' => 'Bạn đã đăng bài thành công',
         'delete_successfully' => 'Bài đăng xóa thành công',
         'delete_unsuccessfully' => 'Oops. Đã có lỗi xảy ra, xin vui lòng thử lại!',
         'not_found_post' => 'Không tìm thấy bài đăng, vui lòng thử lại',
