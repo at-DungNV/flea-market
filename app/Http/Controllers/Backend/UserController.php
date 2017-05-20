@@ -18,7 +18,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        $users = User::orderBy('created_at', 'desc')->get();
         $data = array(
             'users'  => $users
         );
@@ -32,7 +32,7 @@ class UserController extends Controller
      */
     public function getBlockedUsers()
     {
-        $users = User::Where('is_active', '=', \Config::get('common.USER_BLOCKED_DIGITAL'))->get();
+        $users = User::Where('is_active', '=', \Config::get('common.USER_BLOCKED_DIGITAL'))->orderBy('created_at', 'desc')->get();
         $data = array(
             'users'  => $users
         );
