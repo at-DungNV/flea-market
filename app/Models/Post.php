@@ -138,11 +138,21 @@ class Post extends Model
     return $data;
   }
   
+  /**
+   * Delete dependencies of post
+   *
+   * @return void
+   */
   public function deleteReferences() {
       Image::where('post_id', '=', $this->id)->delete();
-      Notification::where('post_id', '=', $this->id)->delete();
   }
   
+  /**
+   * Get post by state
+   *
+   * @param String $state status of post
+   * @return Object Post
+   */
   public static function getPostsByState($state) {
       $posts = Post::with(['images'=>function($query) {
                         return $query->limit(1);

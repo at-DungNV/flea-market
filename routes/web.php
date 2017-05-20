@@ -217,4 +217,9 @@ Route::group(['namespace' => 'Backend', 'prefix' => 'admin', 'middleware' => ['a
     'uses' => 'UserController@update',
     'as'   => 'admin.user.update'
   ]);
+  
+  Route::delete('/user/{id}', [
+    'uses' => 'UserController@destroy',
+    'as'   => 'admin.user.destroy'
+  ]);
 });

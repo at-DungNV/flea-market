@@ -32,15 +32,6 @@ return [
     'content_feed_back1' => 'Flea-Market luôn luôn mong muốn nhận được phản hồi của các bạn. Mọi sự góp ý đều được chúng tôi ghi nhận và chân thành tiếp thu.',
     'content_feed_back2' => 'Xin gửi góp ý về hòm thư: dungnv.itdn@gmail.com',
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
     'button_cancel' => 'Hủy bỏ',
     'button_confirm' => 'Xác nhận',
     'button_update' => 'Cập nhật',
@@ -65,7 +56,7 @@ return [
         'send_message_unsuccesfully' => 'Oops. Đã có lỗi xảy ra, xin vui lòng thử lại!',
         'update_successfully' => 'Cập nhật thông tin người dùng thành công',
         'update_unsuccessfully' => 'Oops. Đã có lỗi xảy ra, xin vui lòng thử lại!',
-        'delete_successfully' => 'Xóa người dùng thành công',
+        'delete_successfully' => 'Cập nhật người dùng thành công',
         'delete_unsuccessfully' => 'Oops. Đã có lỗi xảy ra, xin vui lòng thử lại!',
     ],
 ];
