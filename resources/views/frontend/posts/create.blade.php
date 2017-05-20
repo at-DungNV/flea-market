@@ -37,15 +37,6 @@
                 </div>
                 
                 
-                <div class="form-group has-feedback">
-                  <label class="col-xs-3 col-sm-3 col-md-2 control-label" for="post-price">{{trans('posts.label_price')}}:<span class="required">*</span></label>
-                  <div class="col-xs-9 col-sm-9 col-md-10">
-                    <input type="text" name="price" class="form-control" id="post-price" value="0" pattern="^[0-9]{1,}$" required />
-                    <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
-                    <div class="help-block with-errors"></div>
-                  </div>
-                </div>
-                
                 
                 
                 <div class="form-group has-feedback">
@@ -62,6 +53,15 @@
                   </div>
                 </div>
                 
+                
+                <div class="form-group has-feedback" id="frontend-post-create-price-container">
+                  <label class="col-xs-3 col-sm-3 col-md-2 control-label" for="post-price">{{trans('posts.label_price')}}:<span class="required">*</span></label>
+                  <div class="col-xs-9 col-sm-9 col-md-10">
+                    <input type="text" name="price" class="form-control" id="post-price" value="0" pattern="^[0-9]{1,}$" required />
+                    <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                    <div class="help-block with-errors"></div>
+                  </div>
+                </div>
                 
                 <div class="form-group has-feedback">
                   <label class="col-xs-3 col-sm-3 col-md-2 control-label">{{trans('posts.label_category')}}:<span class="required">*</span></label>
@@ -168,6 +168,14 @@
     var inputProvince = "post-create-province";
     var inputDistrict = "post-create-district";
     var inputWard = "post-create-ward";
+    
+    $("input[name=type]").bind('change', function(){
+      if ($(this).val() == 'buy') {
+        $("#frontend-post-create-price-container").hide();
+      } else {
+        $("#frontend-post-create-price-container").show();
+      }
+    }); 
     
     $("#post-create-district-ward-container").hide();
     setAutoCompleteProvince();

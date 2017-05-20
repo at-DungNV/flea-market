@@ -18,7 +18,7 @@ return [
     'label_previous' => 'Trước',
     'label_next' => 'Sau',
     'label_update' => 'Cập nhật',
-    'label_post_owner_address' => 'Địa chỉ người đăng tin',
+    'label_post_owner_address' => 'Thông tin cơ bản',
     'label_update_post' => 'Cập nhật bài đăng',
     'label_current_state' => 'Trạng thái hiện tại',
     'label_updated_state' => 'Trạng thái sau khi cập nhật',
