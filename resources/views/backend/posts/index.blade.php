@@ -85,17 +85,17 @@
               <div class="modal-content">
                 <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal">&times;</button>
-                  <h4 class="modal-title">xoa bai dang</h4>
+                  <h4 class="modal-title">Xóa bài đăng</h4>
                 </div>
                 <div class="modal-body">
-                  <h5>ban co muon xoa khong</h5>
+                  <h5>Bạn có muốn xóa bài đăng này không</h5>
                 </div>
                 <div class="modal-footer">
                     <form action="{{ url('$post->id') }}" method="POST">
                         {{ csrf_field() }}
                         {{ method_field('DELETE') }}
-                        <button type="submit" class="btn btn-danger">xoa</button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal">cancel</button>
+                        <button type="submit" class="btn btn-danger">Xóa</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Hủy bỏ</button>
                     </form>
                 </div>
               </div>
