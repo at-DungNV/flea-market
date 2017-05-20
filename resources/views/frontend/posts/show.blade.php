@@ -73,9 +73,14 @@
     
     <h4><i class="fa fa-address-card" aria-hidden="true"></i> {{trans('posts.label_post_owner_address')}}</h4>
     <ul class="alt">
-      <li>{{ $post->address }}</li>
+      <li>{{trans('posts.label_type')}}: {{ $post->type ==  \Config::get('common.SELL_TYPE') ? trans('posts.label_type_sell') : trans('posts.label_type_buy')}}</li>
+      <li>{{trans('posts.label_address')}}: {{ $post->address }}</li>
+      <li>{{trans('posts.label_phone')}}: {{ $post->phone }}</li>
     </ul>
+    <hr>
+    @if($post->type == \Config::get('common.SELL_TYPE') && Auth::user()->id != $post->user->id)
     <h2><i class="fa fa-money" aria-hidden="true"></i>: {{ number_format ( $post->price  , 0 , "." , "." ) }} {{trans('common.label_currency')}}</h2>
+    @endif
     <p class="margin-top-10">
       {!! nl2br(e($post->description)) !!}
     </p>
