@@ -31,10 +31,13 @@ return [
     'label_feed_back' => 'Gửi phản hồi',
     'content_feed_back1' => 'Flea-Market luôn luôn mong muốn nhận được phản hồi của các bạn. Mọi sự góp ý đều được chúng tôi ghi nhận và chân thành tiếp thu.',
     'content_feed_back2' => 'Xin gửi góp ý về hòm thư: dungnv.itdn@gmail.com',
+    'content_empty_result' => 'Danh sách bài đăng rỗng',
     
     'button_cancel' => 'Hủy bỏ',
     'button_confirm' => 'Xác nhận',
     'button_update' => 'Cập nhật',
+    'button_come_back_home_page' => 'Trở về trang chủ',
+    'button_create_new_post' => 'Tạo mới bài đăng',
     
     'app_name_frontend' => 'Flea - Market',
     'app_name_backend' => 'Flea Market Management',

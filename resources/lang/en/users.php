@@ -23,4 +23,5 @@ return [
     'label_retype_password' => 'Re-password',
     'label_change_password' => 'Change password',
     'button_change_password' => 'Change password',
+    'label_change_avatar' => 'Update avatar',
 ];

@@ -24,7 +24,7 @@ class CreateUsersTable extends Migration
             $table->string('address', 256)->nullable();
             $table->string('phone', 40)->nullable();
             $table->tinyInteger('gender')->nullable();
-            $table->string('avatar')->default('default.png');
+            $table->string('avatar')->default('http://fleamarket.me/images/default.png');
             $table->integer('unread_notification')->default(0);
             $table->boolean('is_admin')->default(0);
             $table->rememberToken()->nullable();

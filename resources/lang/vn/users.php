@@ -24,4 +24,5 @@ return [
     'label_retype_password' => 'Xác nhận',
     'label_change_password' => 'Đổi mật khẩu',
     'button_change_password' => 'Đổi mật khẩu',
+    'label_change_avatar' => 'Cập nhật ảnh đại diện',
 ];

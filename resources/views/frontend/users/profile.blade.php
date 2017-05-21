@@ -30,7 +30,7 @@
           </a>
           
           <a class="list-group-item" data-toggle="collapse" data-target="#frontend-user-profile-update-image-container">
-            <i class="fa fa-file-image-o" aria-hidden="true"></i> Cập nhật ảnh đại diện <i class="fa fa-sort-desc" aria-hidden="true"></i>
+            <i class="fa fa-file-image-o" aria-hidden="true"></i> {{trans('users.label_change_avatar')}} <i class="fa fa-sort-desc" aria-hidden="true"></i>
           </a>
           <div id="frontend-user-profile-update-image-container" class="collapse well">
             <form class="avatar-form" action="{{ route('users.profile') }}" enctype="multipart/form-data" method="post">
@@ -40,14 +40,10 @@
                 <input class="avatar-input" id="imgInp" name="image" type="file" required="required" style="max-width: 216px !important;">
               </div>
               <div class="row">
-                  <button class="btn btn-primary btn-block avatar-save" type="submit"> confirm </button>
+                  <button class="btn btn-primary btn-block avatar-save" type="submit"> {{trans('common.button_confirm')}} </button>
               </div>
             </form>
           </div>
-
-
-
-
         </div>
       </div>
       <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 " align="center" id="frontend-user-profile-image-container">
@@ -148,8 +144,6 @@
   $("a[name='user-edit-password-submit']").click(function() {
     $("form[name='user-edit-password-form']").submit();
   });
-  
-  console.log($('#frontend-user-profile-image-container').find('img'));
   
   function readURL(input) {
       if (input.files && input.files[0]) {
