@@ -9,6 +9,9 @@ use App\Models\Post;
 use Auth;
 use Redirect;
 use Hash;
+use Storage;
+use Image as ImageIntervention;
+
 class UserController extends Controller
 {
     /**
@@ -79,17 +82,36 @@ class UserController extends Controller
      */
     public function update(Request $request)
     {
+      $image = $request->file('image');
       try {
-          $request['birthday'] = date("Y-m-d", strtotime($request['birthday']));
-          $input = $request->all();
-          $user = User::findOrFail(Auth::user()->id);
-          $user->fill($input);
-          $user->save();
-          return Redirect::back()
-              ->withMessage(trans('common.post.update_successfully'))
-              ->withInput();
+        if ($image) {
+              $user = User::findOrFail(Auth::user()->id);
+              
+              $path = Storage::disk('local')->getDriver()->getAdapter()->getPathPrefix();
+              if ($image) {
+                  $filename = $user->id.'.'.$image->getClientOriginalExtension();
+                  // store images to storage
+                  ImageIntervention::make($image)->resize(\Config::get('common.IMAGE_WIDTH'), \Config::get('common.IMAGE_HEIGHT'))
+                  ->save($path. '/'. $filename);
+                  $user->avatar = url('/').'/images/'.$filename;
+                  $user->update();
+
+                  return Redirect::back()->withMessage(trans('users.edit.edit_avatar_successful_message'));
+              }
+
+              return Redirect::back()->withErrors(trans('users.edit.error_password_incorrect'));
+        } else {
+            $request['birthday'] = date("Y-m-d", strtotime($request['birthday']));
+            $input = $request->all();
+            $user = User::findOrFail(Auth::user()->id);
+            $user->fill($input);
+            $user->save();
+            return Redirect::back()
+            ->withMessage(trans('common.post.update_successfully'))
+            ->withInput();
+        }
       } catch (Exception $saveException) {
-          return Redirect::back()->withErrors(trans('common.post.update_unsuccessfully'));
+         return Redirect::back()->withErrors(trans('users.error_message'));
       }
     }
     /**
@@ -111,6 +133,38 @@ class UserController extends Controller
             return Redirect::back()->withErrors(trans('common.user.password_not_match'));
         } catch (Exception $saveException) {
             return Redirect::back()->withErrors(trans('common.error_message'));
+        }
+    }
+    
+    /**
+     * Update user avatar.
+     *
+     * @param Request $request hold all data from request
+     * @param int     $id      determine specific user
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function updateAvatar(Request $request, $id)
+    {
+        try {
+            $user = User::findOrFail($id);
+            $image = $request->file('image');
+            
+            $path = Storage::disk('local')->getDriver()->getAdapter()->getPathPrefix();
+            if ($image) {
+                $filename = $user->id.'.'.$image->getClientOriginalExtension();
+                // store images to storage
+                ImageIntervention::make($image)->resize(\Config::get('common.IMAGE_WIDTH'), \Config::get('common.IMAGE_HEIGHT'))
+                ->save($path. '/'. $url);
+                $user->avatar = $filename;
+                $user->update();
+
+                return Redirect::back()->withMessage(trans('users.edit.edit_avatar_successful_message'));
+            }
+
+            return Redirect::back()->withErrors(trans('users.edit.error_password_incorrect'));
+        } catch (Exception $saveException) {
+            return Redirect::back()->withErrors(trans('users.error_message'));
         }
     }
     

@@ -42,7 +42,7 @@
             <!-- menu profile quick info -->
             <div class="profile clearfix">
               <div class="profile_pic">
-                <img src="{{ route('post.getPostImages', [Auth::user()->avatar]) }}" alt="..." class="img-circle profile_img">
+                <img src="{{Auth::user()->avatar }}" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>
