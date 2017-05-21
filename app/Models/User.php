@@ -39,31 +39,63 @@ class User extends Authenticatable
         $this->attributes['password'] = bcrypt($password);
     }
     
+    /**
+     * User has many messages.
+     *
+     * @return Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function messages()
     {
         return $this->hasMany(Message::class);
     }
     
+    /**
+     * Check if admin or not
+     *
+     * @return boolean
+     */
     public function isAdmin()
     {
         return $this->is_admin;
     }
     
+    /**
+     * Check if account is blocked or not
+     *
+     * @return boolean
+     */
     public function isActive()
     {
         return $this->is_active;
     }
     
+    /**
+     * Update unblocked or blocked account
+     *
+     * @param Int $isActive state
+     * @return void
+     */
     public function setActive($isActive)
     {
        $this->is_active = (int)$isActive;
     }
     
+    /**
+     * Return user's unread notification
+     *
+     * @return Int
+     */
     public function getUnreadNotification()
     {
         return $this->unread_notification;
     }
     
+    /**
+     * Update unread notification
+     *
+     * @param Int $number number of unread notifications
+     * @return void
+     */
     public function updateUnreadNotification($number = 0)
     {
         $this->unread_notification = $number;

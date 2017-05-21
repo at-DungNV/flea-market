@@ -35,6 +35,12 @@ class Category extends Model
         return $this->hasMany(self::class, 'parent_id');
     }
     
+    /**
+     * Get Category by slug
+     *
+     * @param String $slug slug of post
+     * @return Object Category
+     */
     public function getIdBySlug($slug)
     {
         return $this->where('slug', '=', $slug)->select('id')->first()->id;

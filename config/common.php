@@ -28,4 +28,5 @@ return [
     'SERVER_ERROR_CODE' => 500,
     'IMAGE_WIDTH' => 600,
     'IMAGE_HEIGHT' => 400,
+    'DIRECTORY_SEPARATOR' => '/',
 ];
