@@ -23,7 +23,7 @@ class NotificationsTableSeeder extends Seeder
           $data = array();
           $data["message"] = substr($faker->text, 0, 60);
           $data['approver'] = 'http://fleamarket.me/images/default.png';
-          $data['url'] = url('/post').'/'. Post::find($faker->randomElement($users->toArray()))->slug;
+          $data['url'] = url('/posts').'/'. Post::find($faker->randomElement($users->toArray()))->slug;
           Notification::create([
             'user_id' => $faker->randomElement($users->toArray()),
             // 'post_id' => $faker->randomElement($posts->toArray()),
