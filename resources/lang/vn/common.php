@@ -60,5 +60,6 @@ return [
         'update_unsuccessfully' => 'Oops. Đã có lỗi xảy ra, xin vui lòng thử lại!',
         'delete_successfully' => 'Cập nhật người dùng thành công',
         'delete_unsuccessfully' => 'Oops. Đã có lỗi xảy ra, xin vui lòng thử lại!',
+        'update_avatar_successfully' => 'Cập nhật ảnh đại diện thành công',
     ],
 ];
