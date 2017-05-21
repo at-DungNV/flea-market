@@ -51,18 +51,7 @@
         </div>
       </div>
       <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 " align="center" id="frontend-user-profile-image-container">
-        @if(Auth::user()->facebook_id != null)
         <img alt="User Pic" src="{{ Auth::user()->avatar }}" class="img-circle img-responsive">
-        @else
-        <img alt="User Pic" src="{{ Auth::user()->avatar }}" class="img-circle img-responsive">
-        @endif
-        
-        
-        
-        
-        
-        
-        
       </div>
       
       <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 ">
