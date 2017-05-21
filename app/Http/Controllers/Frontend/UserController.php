@@ -96,10 +96,10 @@ class UserController extends Controller
                   $user->avatar = url('/').'/images/'.$filename;
                   $user->update();
 
-                  return Redirect::back()->withMessage(trans('users.edit.edit_avatar_successful_message'));
+                  return Redirect::back()->withMessage(trans('common.user.update_avatar_successfully'));
               }
 
-              return Redirect::back()->withErrors(trans('users.edit.error_password_incorrect'));
+              return Redirect::back()->withErrors(trans('common.user.update_unsuccessfully'));
         } else {
             $request['birthday'] = date("Y-m-d", strtotime($request['birthday']));
             $input = $request->all();
