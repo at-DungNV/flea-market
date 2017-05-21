@@ -24,6 +24,8 @@ return [
     'button_cancel' => 'Cancel',
     'button_confirm' => 'Confirm',
     'button_update' => 'Update',
+    'button_come_back_home_page' => 'Go back home',
+    'button_create_new_post' => 'Create new post',
     
     'label_what_is_flea_market' => 'What is Flea-Market ',
     'content_flea_market_definition' => 'Flea-Market gives you an environment to share things that you no longer need it. That is way can help you save money and save natual resources',
@@ -35,6 +37,7 @@ return [
     'label_feed_back' => 'Send feedback',
     'content_feed_back1' => 'Flea-Market always listen to your feedback and we appreciate your time.',
     'content_feed_back2' => 'Email address: dungnv.itdn@gmail.com',
+    'content_empty_result' => 'Can not find any matched results',
     
   
     'app_name_frontend' => 'Flea - Market',
