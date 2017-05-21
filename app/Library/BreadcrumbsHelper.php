@@ -9,6 +9,7 @@
     const LIMIT_STRING_SIZE = 50;
     const DEFAULT_INDEX = 'tất cả danh mục';
     const DASHBOARD = 'dashboard';
+    const HOME = 'home';
 
     public function getCrumbs($uri)
     {
@@ -20,7 +21,7 @@
       // xử lý khi uri là tù khác trang home
       $tem = explode('/',  $uri);
       foreach($tem as $crumb){
-        if ($crumb != self::DASHBOARD) {
+        if ($crumb != self::DASHBOARD && $crumb != self::HOME) {
           array_push($crumbs, str_replace(array('.php','_'),array('',' '), $crumb));
         }
       }
