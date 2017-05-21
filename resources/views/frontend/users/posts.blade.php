@@ -28,6 +28,21 @@
           <a href="{{ route('users.show.posts') }}" class="list-group-item list-group-item-success">
             <i class="fa fa-money" aria-hidden="true"></i> {{trans('users.label_posts')}}
           </a>
+          <a class="list-group-item" data-toggle="collapse" data-target="#frontend-user-profile-update-image-container">
+            <i class="fa fa-file-image-o" aria-hidden="true"></i> Cập nhật ảnh đại diện <i class="fa fa-sort-desc" aria-hidden="true"></i>
+          </a>
+          <div id="frontend-user-profile-update-image-container" class="collapse well">
+            <form class="avatar-form" action="{{ route('users.profile', [Auth::user()->id]) }}" enctype="multipart/form-data" method="post">
+              <input type="hidden" name="_method" value="PUT">
+              <input type="hidden" name="_token" value="{{ csrf_token() }}">
+              <div class="form-group">
+                <input class="avatar-input" id="imgInp" name="image" type="file" required="required" style="max-width: 216px !important;">
+              </div>
+              <div class="row">
+                  <button class="btn btn-primary btn-block avatar-save" type="submit"> confirm </button>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
       <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">

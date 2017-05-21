@@ -28,14 +28,41 @@
           <a href="{{ route('users.show.posts') }}" class="list-group-item">
             <i class="fa fa-money" aria-hidden="true"></i> {{trans('users.label_posts')}}
           </a>
+          
+          <a class="list-group-item" data-toggle="collapse" data-target="#frontend-user-profile-update-image-container">
+            <i class="fa fa-file-image-o" aria-hidden="true"></i> Cập nhật ảnh đại diện <i class="fa fa-sort-desc" aria-hidden="true"></i>
+          </a>
+          <div id="frontend-user-profile-update-image-container" class="collapse well">
+            <form class="avatar-form" action="{{ route('users.profile') }}" enctype="multipart/form-data" method="post">
+              <input type="hidden" name="_method" value="PUT">
+              <input type="hidden" name="_token" value="{{ csrf_token() }}">
+              <div class="form-group">
+                <input class="avatar-input" id="imgInp" name="image" type="file" required="required" style="max-width: 216px !important;">
+              </div>
+              <div class="row">
+                  <button class="btn btn-primary btn-block avatar-save" type="submit"> confirm </button>
+              </div>
+            </form>
+          </div>
+
+
+
+
         </div>
       </div>
-      <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 " align="center">
+      <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 " align="center" id="frontend-user-profile-image-container">
         @if(Auth::user()->facebook_id != null)
         <img alt="User Pic" src="{{ Auth::user()->avatar }}" class="img-circle img-responsive">
         @else
-        <img alt="User Pic" src="/images/{{ Auth::user()->avatar }}" class="img-circle img-responsive">
+        <img alt="User Pic" src="{{ Auth::user()->avatar }}" class="img-circle img-responsive">
         @endif
+        
+        
+        
+        
+        
+        
+        
       </div>
       
       <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 ">
@@ -131,6 +158,24 @@
 <script type="text/javascript">
   $("a[name='user-edit-password-submit']").click(function() {
     $("form[name='user-edit-password-form']").submit();
+  });
+  
+  console.log($('#frontend-user-profile-image-container').find('img'));
+  
+  function readURL(input) {
+      if (input.files && input.files[0]) {
+          var reader = new FileReader();
+          
+          reader.onload = function (e) {
+              $('#frontend-user-profile-image-container').find('img').attr('src', e.target.result);
+          }
+          
+          reader.readAsDataURL(input.files[0]);
+      }
+  }
+  
+  $("#imgInp").change(function(){
+      readURL(this);
   });
 </script>
 @endpush
