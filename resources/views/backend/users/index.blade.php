@@ -64,14 +64,16 @@
                 <td class=" ">{{ $user->created_at }}</td>
                 <td class="last">
                   <a href="{{ route('admin.user.show', [$user->id]) }}" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> View </a>
-                  @if ($user->is_active == 1)
-                  <a data-toggle="modal" data-target="#confirm-deleting" class="btn btn-danger btn-lock btn-xs admin-user-index-delete">
-                    <i class="fa fa-lock"></i> Block
-                  </a>
-                  @else
-                  <a data-toggle="modal" data-target="#confirm-deleting" class="btn btn-danger btn-lock btn-xs admin-user-index-delete">
-                    <i class="fa fa-unlock"></i> Unblock
-                  </a>
+                  @if (!$user->isAdmin())
+                    @if ($user->is_active == 1)
+                    <a data-toggle="modal" data-target="#confirm-deleting" class="btn btn-danger btn-lock btn-xs admin-user-index-delete">
+                      <i class="fa fa-lock"></i> Block
+                    </a>
+                    @else
+                    <a data-toggle="modal" data-target="#confirm-deleting" class="btn btn-danger btn-lock btn-xs admin-user-index-delete">
+                      <i class="fa fa-unlock"></i> Unblock
+                    </a>
+                    @endif
                   @endif
                   <input type="hidden" value="{{ $user->id }}">
                 </td>
