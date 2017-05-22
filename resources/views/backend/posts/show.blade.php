@@ -102,7 +102,7 @@
           
           <h4><i class="fa fa-address-card" aria-hidden="true"></i> Địa chỉ người đăng tin</h4>
           {{ $post->address }}
-          <h2><i class="fa fa-money" aria-hidden="true"></i>: {{ number_format ( $post->price  , 0 , "." , "." ) }} VNĐ</h2>
+          <h2><i class="fa fa-money" aria-hidden="true"></i>: {{ number_format ( $post->price  , 0 , "." , "." ) }} {{trans('common.label_currency')}}</h2>
           <p class="margin-top-10">
             {!! nl2br(e($post->description)) !!}
           </p>
@@ -117,7 +117,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">update bai dang</h4>
+          <h4 class="modal-title">Cập nhật bài đăng</h4>
         </div>
         <div class="modal-body">
           <h5>Trạng thái hiện tại: {{$post->state}}</h5>

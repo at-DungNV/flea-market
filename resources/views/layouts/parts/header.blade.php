@@ -5,8 +5,8 @@
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown dropdown-large">
-          <li class="{{ Request::is('/') ? 'active' : '' }}"><a href="{{ url('/') }}">Home</a></li>
-          <li class="dropdown-toggle" data-toggle="dropdown"><a href="{{ url('/') }}">Category</a></li>
+          <li class="{{ Request::is('/') ? 'active' : '' }}"><a href="{{ url('/') }}">{{trans('common.label_home')}}</a></li>
+          <li class="dropdown-toggle" data-toggle="dropdown"><a href="{{ url('/') }}">{{trans('common.label_category')}}</a></li>
           <ul class="dropdown-menu dropdown-menu-large row">
             @foreach ($categories->chunk(count($categories)/2) as $categories)
               <li class="col-sm-6">
@@ -25,18 +25,18 @@
           
         </li>
         <li class="dropdown {{ Request::is('posts/*') ? 'active' : '' }}">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Post <b class="caret"></b></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{trans('common.label_post')}} <b class="caret"></b></a>
           <ul class="dropdown-menu">
-              <li><a href="{{ route('posts.index') }}">Index <span class="glyphicon glyphicon-list pull-right"></span></a></li>
+              <li><a href="{{ route('posts.index') }}">{{trans('common.label_post_index')}} <span class="glyphicon glyphicon-list pull-right"></span></a></li>
               <li class="divider"></li>
-              <li><a href="{{ route('posts.create') }}">Create <span class="glyphicon glyphicon-plus pull-right"></span></a></li>
+              <li><a href="{{ route('posts.create') }}">{{trans('common.label_post_create')}} <span class="glyphicon glyphicon-plus pull-right"></span></a></li>
           </ul>
         </li>
         
 
         @if (Auth::guest())
-          <li class="{{ Request::is('login') ? 'active' : '' }}"><a href="{{ url('/login') }}">Login</a></li>
-          <li class="{{ Request::is('register') ? 'active' : '' }}"><a href="{{ url('/register') }}">Register</a></li>
+          <li class="{{ Request::is('login') ? 'active' : '' }}"><a href="{{ url('/login') }}">{{trans('common.label_login')}}</a></li>
+          <li class="{{ Request::is('register') ? 'active' : '' }}"><a href="{{ url('/register') }}">{{trans('common.label_register')}}</a></li>
           <div id="notification"></div>
         @else
           <li class="dropdown dropdown-large" id="notification">
@@ -54,20 +54,24 @@
           </li>  
           <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <div class="img-rounded profile-img"></div>
+                @if (Auth::user()->facebook_id)
+                  <div class="img-rounded profile-img" style="background: url({{ Auth::user()->avatar }}) 10% 10% no-repeat;"></div>
+                @else
+                  <div class="img-rounded profile-img" style="background: url({{ Auth::user()->avatar }}) 50% 50% no-repeat;"></div>
+                @endif
                 <span>
                   {{ str_limit(Auth::user()->name, $limit= 10, $end= '...') }}
                   <b class="caret"></b>
                 </span>
               </a>
               <ul class="dropdown-menu">
-                <li><a href="{{ route('users.profile') }}">Profile<span class="glyphicon glyphicon-stats pull-right"></span></a></li>
+                <li><a href="{{ route('users.profile') }}">{{trans('common.label_profile')}}<span class="glyphicon glyphicon-stats pull-right"></span></a></li>
                 <li class="divider"></li>
                 <li>
                   <a href="{{ route('logout') }}"
                     onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">
-                    Sign Out <span class="glyphicon glyphicon-log-out pull-right"></span>
+                    {{trans('common.label_logout')}} <span class="glyphicon glyphicon-log-out pull-right"></span>
                   </a>
                   <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                     {{ csrf_field() }}

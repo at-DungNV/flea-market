@@ -35,7 +35,7 @@
           <div class="profile_img">
             <div id="crop-avatar">
               <!-- Current avatar -->
-              <img class="img-responsive avatar-view" src="{{ route('post.getPostImages', [Auth::user()->avatar]) }}" width="221" height="221" alt="Avatar" title="Change the avatar">
+              <img class="img-responsive avatar-view" src="{{ Auth::user()->avatar }}" width="221" height="221" alt="Avatar" title="Change the avatar">
             </div>
           </div>
           <h3>User: {{ $user->name }}</h3>
@@ -73,37 +73,38 @@
           </ul>
 
           <a class="btn btn-success btn-block" data-toggle="modal" data-target="#backend-user-show-message"><i class="fa fa-envelope" aria-hidden="true"></i> Send Message</a>
-          <a class="btn btn-danger btn-block" data-toggle="modal" data-target="#backend-user-change-active">
-            <i class="fa fa-adjust" aria-hidden="true"></i> {{ $user->isActive() == 1 ? 'Block User' : 'Unblock User'  }}
-          </a>
-          <div id="backend-user-show-message" class="modal fade" role="dialog">
-            <div class="modal-dialog">
+          @if (!$user->isAdmin())
+            <a class="btn btn-danger btn-block" data-toggle="modal" data-target="#backend-user-change-active">
+              <i class="fa fa-adjust" aria-hidden="true"></i> {{ $user->isActive() == 1 ? 'Block User' : 'Unblock User'  }}
+            </a>
+            <div id="backend-user-show-message" class="modal fade" role="dialog">
+              <div class="modal-dialog">
 
-              <!-- Modal content-->
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal">&times;</button>
-                  <h4 class="modal-title">Send Message To {{ $user->name }}</h4>
+                <!-- Modal content-->
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Send Message To {{ $user->name }}</h4>
+                  </div>
+                  <form method="POST" action="{{ route('admin.user.message') }}">
+                    <div class="modal-body">
+                        {{ csrf_field() }}
+                        <input type="hidden" name="id" value="{{$user->id}}">
+                        <div class="form-group">
+                          <label for="message">Message:</label>
+                          <textarea class="form-control" name="message" rows="5" id="message"></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="submit" class="btn btn-danger">Send</button>
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                  </form>
                 </div>
-                <form method="POST" action="{{ route('admin.user.message') }}">
-                  <div class="modal-body">
-                      {{ csrf_field() }}
-                      <input type="hidden" name="id" value="{{$user->id}}">
-                      <div class="form-group">
-                        <label for="message">Message:</label>
-                        <textarea class="form-control" name="message" rows="5" id="message"></textarea>
-                      </div>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="submit" class="btn btn-danger">Send</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                  </div>
-                </form>
-              </div>
 
+              </div>
             </div>
-          </div>
-          
+          @endif
           
           <!-- unblock or block user -->
           <div class="modal fade" id="backend-user-change-active" role="dialog">
@@ -183,7 +184,7 @@
                         <td class=" ">{{ $post->type }}</td>
                         <td class=" ">{{ $post->user->name }}</td>
                         <td class=" ">{{ $post->state }}</td>
-                        <td class="a-right a-right ">{{ number_format ( $post->price  , 0 , "." , "." ) }} VNĐ</td>
+                        <td class="a-right a-right ">{{ number_format ( $post->price  , 0 , "." , "." ) }} {{trans('common.label_currency')}}</td>
                         <td class="last">
                           <a href="{{ route('admin.post.show', [$post->id]) }}" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> View </a>
                           <a data-toggle="modal" data-target="#confirm-deleting" class="btn btn-danger btn-xs admin-post-index-delete">
@@ -233,7 +234,7 @@
                         <td class=" ">{{ $post->type }}</td>
                         <td class=" ">{{ $post->user->name }}</td>
                         <td class=" ">{{ $post->state }}</td>
-                        <td class="a-right a-right ">{{ number_format ( $post->price  , 0 , "." , "." ) }} VNĐ</td>
+                        <td class="a-right a-right ">{{ number_format ( $post->price  , 0 , "." , "." ) }} {{trans('common.label_currency')}}</td>
                         <td class="last">
                           <a href="{{ route('admin.post.show', [$post->id]) }}" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> View </a>
                           <a data-toggle="modal" data-target="#confirm-deleting" class="btn btn-danger btn-xs admin-post-index-delete">
@@ -281,7 +282,7 @@
                         <td class=" ">{{ $post->type }}</td>
                         <td class=" ">{{ $post->user->name }}</td>
                         <td class=" ">{{ $post->state }}</td>
-                        <td class="a-right a-right ">{{ number_format ( $post->price  , 0 , "." , "." ) }} VNĐ</td>
+                        <td class="a-right a-right ">{{ number_format ( $post->price  , 0 , "." , "." ) }} {{trans('common.label_currency')}}</td>
                         <td class="last">
                           <a href="{{ route('admin.post.show', [$post->id]) }}" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> View </a>
                           <a data-toggle="modal" data-target="#confirm-deleting" class="btn btn-danger btn-xs admin-post-index-delete">
@@ -328,7 +329,7 @@
                         <td class=" ">{{ $post->type }}</td>
                         <td class=" ">{{ $post->user->name }}</td>
                         <td class=" ">{{ $post->state }}</td>
-                        <td class="a-right a-right ">{{ number_format ( $post->price  , 0 , "." , "." ) }} VNĐ</td>
+                        <td class="a-right a-right ">{{ number_format ( $post->price  , 0 , "." , "." ) }} {{trans('common.label_currency')}}</td>
                         <td class="last">
                           <a href="{{ route('admin.post.show', [$post->id]) }}" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> View </a>
                           <a data-toggle="modal" data-target="#confirm-deleting" class="btn btn-danger btn-xs admin-post-index-delete">

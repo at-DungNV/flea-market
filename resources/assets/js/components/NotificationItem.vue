@@ -2,7 +2,7 @@
   <li class="notification-item list-group-item" v-bind:class="[notification.read_at == null ? 'unread-message' : 'read-message']">
     <div v-if="notification.data.url">
       <a v-bind:href="notification.data.url" class="notification-link" @click="viewNotification">
-        <img class="image" :src="'http://fleamarket.me/images/'+notification.data.approver" alt="" width="32" height="32" />
+        <img class="image" :src="notification.data.approver" alt="" width="32" height="32" />
         {{ notification.data.message }}
       </a>
     </div>

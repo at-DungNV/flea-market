@@ -4,38 +4,38 @@
 					<div id="row-1f">
 						<div class="text-row-1f">
 							<span style="font-weight:600;font-size:15px;color:#666;line-height:250%;text-transform:uppercase;letter-spacing:1.5px;">
-								Flea-Market là gì 
+								{{trans('common.label_what_is_flea_market')}}
 							</span><br>
-								Flea-Market là nơi chia sẽ những đồ dùng cũ người mới ta, tăng tới mức tối đa việc tiết kiệm các đồ dùng sinh hoạt hàng ngày và là nơi mua bán trao đồi hàng hóa.
+								{{trans('common.content_flea_market_definition')}}
 						</div>
 					</div>
 					
 					<div id="row-2f">
 						<div class="text-row-2f">
 							<span style="font-weight:600;font-size:15px;color:#666;line-height:250%;text-transform:uppercase;letter-spacing:1.5px;">
-								Flea-Market thu phí?
+								{{trans('common.label_flea_market_fee')}}
 							</span><br>
-							Flea-Market hoàn miễn phí và bạn có thể đăng bài bất cứ lúc nào.
+							{{trans('common.content_flea_market_fee')}}
 						</div>
 					</div>
 					
 					<div id="row-3f">
 						<div class="text-row-3f">
 							<span style="font-weight:600;font-size:15px;color:#666;line-height:250%;text-transform:uppercase;letter-spacing:1.5px;">
-								Hỗ trợ
+								{{trans('common.label_support')}}
 							</span><br>
-							Mọi chi tiết xin liên hệ Nguyễn Văn Dũng.<br>
-							Số Điện Thoại: 0986.605.612.
+							{{trans('common.content_support1')}}<br>
+							{{trans('common.content_support2')}}
 						</div>
 					</div>
 					
 					<div id="row-4f">
 						<div class="text-row-4f">
 							<span style="font-weight:600;font-size:15px;color:#666;line-height:250%;text-transform:uppercase;letter-spacing:1.5px;">
-								Gửi phản hồi
+								{{trans('common.label_feed_back')}}
 							</span><br>
-							Flea-Market luôn luôn mong muốn nhận được phản hồi của các bạn. Mọi sự góp ý đều được chúng tôi ghi nhận và chân thành tiếp thu.<br>
-							Xin gửi góp ý về hòm thư: dungnv.itdn@gmail.com
+							{{trans('common.content_feed_back1')}}<br>
+							{{trans('common.content_feed_back2')}}
 						</div>
 					</div>
 					

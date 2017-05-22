@@ -19,15 +19,15 @@ class NotificationsTableSeeder extends Seeder
         $users = User::all()->pluck('id');
         $posts = Post::all()->pluck('id');
         $types = array('1', '2');
-        for ($i=0; $i < 100; $i++) {
+        for ($i=0; $i < 500; $i++) {
+          $data = array();
+          $data["message"] = substr($faker->text, 0, 60);
+          $data['approver'] = 'http://fleamarket.me/images/default.png';
+          $data['url'] = url('/posts').'/'. Post::find($faker->randomElement($users->toArray()))->slug;
           Notification::create([
             'user_id' => $faker->randomElement($users->toArray()),
             // 'post_id' => $faker->randomElement($posts->toArray()),
-            'type' => $types[0],
-            'message' => $faker->text,
-            'seen' => $faker->boolean(50),
-            'approver' => 'default.png',
-            'url' => url('/post').'/'. Post::find($faker->randomElement($users->toArray()))->slug,
+            'data' => json_encode($data),
             'created_at' => $faker->dateTimeThisYear($max = 'now')
           ]);
         }

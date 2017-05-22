@@ -5,7 +5,7 @@
     </div>
     <div class="col-xs-12 col-sm-3 col-md-2 padding-left-0 padding-right-0 align-center">
       <a class="btn btn-success btn-block advanced-search" data-toggle="collapse" data-target="#advanced-search">
-        <i class="fa fa-caret-square-o-down" aria-hidden="true"></i> Advanced Search
+        <i class="fa fa-caret-square-o-down" aria-hidden="true"></i> {{trans('common.label_advanced_search')}}
       </a>
     </div>
     <div class="col-xs-12 col-sm-3 col-md-2 padding-left-0">
@@ -21,24 +21,24 @@
   
   <div class="" id="advanced-search-original-elements" style="display: none;">
     <div class="form-group">
-        <label>Địa danh:</label>
+        <label>{{trans('common.label_city')}}:</label>
         <select name="address" class="form-control">
-          <option value="">Địa danh</option>
+          <option value="">{{trans('common.label_city')}}</option>
           @foreach ($addresses as $province)
           <option value="{{$province->name}}" {{ $address == $province->name ? 'selected' : ' ' }}>{{$province->name}}</option>
           @endforeach
         </select>
     </div>
     <div class="form-group">
-        <label>Loại:</label>
+        <label>{{trans('common.label_type')}}:</label>
         <select name="type" class="form-control">
-            <option value="">Loại</option>
+            <option value="">{{trans('common.label_type')}}</option>
             <option value="{{ \Config::get('common.SELL_TYPE') }}" {{ $type == \Config::get('common.SELL_TYPE') ? 'selected' : ' ' }}>{{ \Config::get('common.SELL_TYPE') }}</option>
             <option value="{{ \Config::get('common.BUY_TYPE') }}" {{ $type == \Config::get('common.BUY_TYPE') ? 'selected' : ' ' }}>{{ \Config::get('common.BUY_TYPE') }}</option>
         </select>                                
     </div>
     <div class="form-group">
-        <label>Danh mục:</label>
+        <label>{{trans('common.label_category')}}:</label>
         <select name="category" class="form-control">
           @foreach ($categories as $category)
             <optgroup label="{{ $category->name }}">
@@ -50,11 +50,11 @@
         </select>                                
     </div>
     <div class="form-group">
-        <label class="filter-col" style="margin-right:0;" for="pref-orderby">Sắp xếp:</label>
+        <label class="filter-col" style="margin-right:0;" for="pref-orderby">{{trans('common.label_order')}}:</label>
         <select name="order" class="form-control">
             <option value="">Sắp xếp</option>
-            <option value="asc" {{ $order == \Config::get('common.ASCENDANT') ? 'selected' : ' ' }}>Giá thấp nhất</option>
-            <option value="desc" {{ $order == \Config::get('common.DESCENDANT') ? 'selected' : ' ' }}>Giá cao nhất</option>
+            <option value="asc" {{ $order == \Config::get('common.ASCENDANT') ? 'selected' : ' ' }}>{{trans('common.label_order_asc')}}</option>
+            <option value="desc" {{ $order == \Config::get('common.DESCENDANT') ? 'selected' : ' ' }}>{{trans('common.label_order_desc')}}</option>
         </select>                                
     </div>
   </div>

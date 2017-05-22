@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>@lang('backend/common.app_name')</title>
+    <title>@lang('common.app_name_backend')</title>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="/bower_resources/bootstrap/dist/css/bootstrap.min.css">
@@ -42,7 +42,7 @@
             <!-- menu profile quick info -->
             <div class="profile clearfix">
               <div class="profile_pic">
-                <img src="{{ route('post.getPostImages', [Auth::user()->avatar]) }}" alt="..." class="img-circle profile_img">
+                <img src="{{Auth::user()->avatar }}" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>

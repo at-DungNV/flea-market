@@ -84,7 +84,7 @@ Route::group(['namespace' => 'Frontend'], function () {
     Route::group(['middleware' => ['auth', 'active']], function () {
       
       Route::resource('posts', 'PostController', ['except' => [
-          'index'
+          'index', 'update'
       ]]);
 
       Route::group(['prefix' => 'dashboard'], function () {
@@ -112,6 +112,11 @@ Route::group(['namespace' => 'Frontend'], function () {
         Route::get('/posts', [
           'uses' => 'UserController@getApprovalPosts',
           'as'   => 'users.show.posts'
+        ]);
+
+        Route::put('/posts', [
+          'uses' => 'PostController@update',
+          'as'   => 'frontend.post.update'
         ]);
 
       });
@@ -215,5 +220,10 @@ Route::group(['namespace' => 'Backend', 'prefix' => 'admin', 'middleware' => ['a
   Route::put('/user', [
     'uses' => 'UserController@update',
     'as'   => 'admin.user.update'
+  ]);
+  
+  Route::delete('/user/{id}', [
+    'uses' => 'UserController@destroy',
+    'as'   => 'admin.user.destroy'
   ]);
 });

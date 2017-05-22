@@ -9,6 +9,9 @@ use App\Models\Post;
 use Auth;
 use Redirect;
 use Hash;
+use Storage;
+use Image as ImageIntervention;
+
 class UserController extends Controller
 {
     /**
@@ -79,17 +82,36 @@ class UserController extends Controller
      */
     public function update(Request $request)
     {
+      $image = $request->file('image');
       try {
-          $request['birthday'] = date("Y-m-d", strtotime($request['birthday']));
-          $input = $request->all();
-          $user = User::findOrFail(Auth::user()->id);
-          $user->fill($input);
-          $user->save();
-          return Redirect::back()
-              ->withMessage(trans('frontend/common.post.update_successfully'))
-              ->withInput();
+        if ($image) {
+              $user = User::findOrFail(Auth::user()->id);
+              
+              $path = Storage::disk('local')->getDriver()->getAdapter()->getPathPrefix();
+              if ($image) {
+                  $filename = $user->id.'.'.$image->getClientOriginalExtension();
+                  // store images to storage
+                  ImageIntervention::make($image)->resize(\Config::get('common.IMAGE_WIDTH'), \Config::get('common.IMAGE_HEIGHT'))
+                  ->save($path. \Config::get('common.DIRECTORY_SEPARATOR'). $filename);
+                  $user->avatar = url(\Config::get('common.DIRECTORY_SEPARATOR')).\Config::get('common.DIRECTORY_SEPARATOR').'images'.\Config::get('common.DIRECTORY_SEPARATOR').$filename;
+                  $user->update();
+
+                  return Redirect::back()->withMessage(trans('common.user.update_avatar_successfully'));
+              }
+
+              return Redirect::back()->withErrors(trans('common.user.update_unsuccessfully'));
+        } else {
+            $request['birthday'] = date("Y-m-d", strtotime($request['birthday']));
+            $input = $request->all();
+            $user = User::findOrFail(Auth::user()->id);
+            $user->fill($input);
+            $user->save();
+            return Redirect::back()
+            ->withMessage(trans('common.post.update_successfully'))
+            ->withInput();
+        }
       } catch (Exception $saveException) {
-          return Redirect::back()->withErrors(trans('frontend/common.post.update_unsuccessfully'));
+         return Redirect::back()->withErrors(trans('users.error_message'));
       }
     }
     /**
@@ -106,11 +128,43 @@ class UserController extends Controller
             if (Hash::check($request->current_password, $user->password)) {
                 $user->password = $request->password;
                 $user->save();
-                return Redirect::back()->withMessage(trans('frontend/common.user.change_password_successfully'));
+                return Redirect::back()->withMessage(trans('common.user.change_password_successfully'));
             }
-            return Redirect::back()->withErrors(trans('frontend/common.user.password_not_match'));
+            return Redirect::back()->withErrors(trans('common.user.password_not_match'));
         } catch (Exception $saveException) {
-            return Redirect::back()->withErrors(trans('frontend/common.error_message'));
+            return Redirect::back()->withErrors(trans('common.error_message'));
+        }
+    }
+    
+    /**
+     * Update user avatar.
+     *
+     * @param Request $request hold all data from request
+     * @param int     $id      determine specific user
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function updateAvatar(Request $request, $id)
+    {
+        try {
+            $user = User::findOrFail($id);
+            $image = $request->file('image');
+            
+            $path = Storage::disk('local')->getDriver()->getAdapter()->getPathPrefix();
+            if ($image) {
+                $filename = $user->id.'.'.$image->getClientOriginalExtension();
+                // store images to storage
+                ImageIntervention::make($image)->resize(\Config::get('common.IMAGE_WIDTH'), \Config::get('common.IMAGE_HEIGHT'))
+                ->save($path. '/'. $url);
+                $user->avatar = $filename;
+                $user->update();
+
+                return Redirect::back()->withMessage(trans('users.edit.edit_avatar_successful_message'));
+            }
+
+            return Redirect::back()->withErrors(trans('users.edit.error_password_incorrect'));
+        } catch (Exception $saveException) {
+            return Redirect::back()->withErrors(trans('users.error_message'));
         }
     }
     
@@ -124,27 +178,10 @@ class UserController extends Controller
     public function getApprovalPosts(Request $request, BreadcrumbsHelper $bc)
     {
       $crumbs = $bc->getCrumbs($request->path());
-      $query = Post::with(['images'=>function($query) {
-                        return $query->limit(1);
-                    }])
-                    ->where('user_id', '=', Auth::user()->id);
-      $approvalPosts = $query
-                    ->Where('state', '=', \Config::get('common.TYPE_POST_ACTIVE'))
-                    ->orderBy('created_at', 'desc')
-                    ->paginate(\Config::get('common.PAGINATION_LIMIT'));
-      $waitingPosts = $query
-                    ->Where('state', '=', \Config::get('common.TYPE_POST_WAITING'))
-                    ->orderBy('created_at', 'desc')
-                    ->paginate(\Config::get('common.PAGINATION_LIMIT'));
-      $hiddenPosts = $query
-                    ->Where('state', '=', \Config::get('common.TYPE_POST_HIDDEN'))
-                    ->orderBy('created_at', 'desc')
-                    ->paginate(\Config::get('common.PAGINATION_LIMIT'));
-      $rejectedPosts = $query
-                    ->Where('state', '=', \Config::get('common.TYPE_POST_REJECTED'))
-                    ->orderBy('created_at', 'desc')
-                    ->paginate(\Config::get('common.PAGINATION_LIMIT'));
-          
+      $approvalPosts = Post::getPostsByState(\Config::get('common.TYPE_POST_ACTIVE'));
+      $waitingPosts = Post::getPostsByState(\Config::get('common.TYPE_POST_WAITING'));
+      $hiddenPosts = Post::getPostsByState(\Config::get('common.TYPE_POST_HIDDEN'));
+      $rejectedPosts = Post::getPostsByState(\Config::get('common.TYPE_POST_REJECTED'));
       $data = array(
           'crumbs'  => $crumbs,
           'approvalPosts' => $approvalPosts,

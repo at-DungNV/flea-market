@@ -11,6 +11,7 @@ use App\Models\District;
 use App\Models\Ward;
 use App\Models\Notification;
 use Image as ImageIntervention;
+use Auth;
 
 class Post extends Model
 {
@@ -86,7 +87,7 @@ class Post extends Model
         $url = str_slug($this->title. ' '. $index, '-'). '.'. $image->getClientOriginalExtension();
         $index++;
         // store images to storage
-        ImageIntervention::make($image)->resize(600, 400)->save($path. '/'. $url);
+        ImageIntervention::make($image)->resize(\Config::get('common.IMAGE_WIDTH'), \Config::get('common.IMAGE_HEIGHT'))->save($path. '/'. $url);
 
         // store images to database
         $img = new Image;
@@ -137,8 +138,29 @@ class Post extends Model
     return $data;
   }
   
+  /**
+   * Delete dependencies of post
+   *
+   * @return void
+   */
   public function deleteReferences() {
       Image::where('post_id', '=', $this->id)->delete();
-      Notification::where('post_id', '=', $this->id)->delete();
+  }
+  
+  /**
+   * Get post by state
+   *
+   * @param String $state status of post
+   * @return Object Post
+   */
+  public static function getPostsByState($state) {
+      $posts = Post::with(['images'=>function($query) {
+                        return $query->limit(1);
+                    }])
+                    ->where('user_id', '=', Auth::user()->id)
+                    ->Where('state', '=', $state)
+                    ->orderBy('created_at', 'desc')
+                    ->paginate(\Config::get('common.PAGINATION_LIMIT'));
+      return $posts;
   }
 }

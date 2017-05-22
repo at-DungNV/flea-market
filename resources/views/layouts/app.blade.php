@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="icon" type="image/png" href="/images/small-logo-01.png">
-    <title>@lang('frontend/common.app_name')</title>
+    <title>@lang('common.app_name_frontend')</title>
 
     <link rel="stylesheet" href="/bower_resources/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="/bower_resources/font-awesome/css/font-awesome.min.css" media="screen" title="no title" charset="utf-8">
@@ -34,14 +34,6 @@
     		<div id="wrapper-sorting">
           @yield('breadcrumb')
         </div>
-        <div id="wrapper-bouton-icon">
-        	<div id="bouton-ai"><img src="/images/icon-ai.svg" alt="illustrator" title="Illustrator" height="28" width="28"></div>
-        	<div id="bouton-psd"><img src="/images/icon-psd.svg" alt="photoshop" title="Photoshop" height="28" width="28"></div>
-        	<div id="bouton-theme"><img src="/images/icon-themes.svg" alt="theme" title="Theme" height="28" width="28"></div>
-        	<div id="bouton-font"><img src="/images/icon-font.svg" alt="font" title="Font" height="28" width="28"></div>
-        	<div id="bouton-photo"><img src="/images/icon-photo.svg" alt="photo" title="Photo" height="28" width="28"></div>
-        	<div id="bouton-premium"><img src="/images/icon-premium.svg" alt="premium" title="Premium" height="28" width="28"></div>
-  			</div>
     	</div>
     </div>
 
@@ -56,32 +48,50 @@
         <div id="main-small-logo">
         	<div class="small-logo"></div>
         </div>
-        
-        <div id="main-premium-ressource">
-            <div class="premium-ressource"><a href="#">Premium resources</a></div>
+        <div class="responsive-menu-container">
+            <div class="item"><a href="#">{{trans('common.label_home')}}</a></div>
         </div>
         
-        <div id="main-themes">
-            <div class="themes"><a href="#">Latest themes</a></div>
+        <div class="responsive-menu-container">
+            <div class="item"><a href="#">{{trans('common.label_post_index')}}</a></div>
         </div>
         
-        <div id="main-psd">
-            <div class="psd"><a href="#">PSD goodies</a></div>
+        <div class="responsive-menu-container">
+            <div class="item"><a href="#">{{trans('common.label_post_create')}}</a></div>
         </div>
+        
+        @if (Auth::guest())
+        <div class="responsive-menu-container">
+            <div class="item">
+              <a href="{{ url('/login') }}">{{trans('common.label_login')}}</a>
+            </div>
+        </div>
+        <div class="responsive-menu-container">
+            <div class="item">
+              <a href="{{ url('/register') }}">{{trans('common.label_register')}}</a>
+            </div>
+        </div>
+        <div id="notification"></div>
+        @else
+        <div class="responsive-menu-container">
+            <div class="item"><a href="{{ route('users.profile') }}">{{trans('common.label_profile')}}</a></div>
+        </div>
+        
+        <div class="responsive-menu-container">
+            <div class="item">
+              <a href="{{ route('logout') }}"
+                onclick="event.preventDefault();
+                document.getElementById('logout-form').submit();">
+                {{trans('common.label_logout')}}
+              </a>
+              <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                {{ csrf_field() }}
+              </form>
+            </div>
+        </div>
+        @endif
             
-        <div id="main-ai">
-            <div class="ai"><a href="#">Illustrator freebies</a></div>
-        </div>
-        
-        <div id="main-font">
-            <div class="font"><a href="#">Free fonts</a></div>
-        </div>
-        
-        <div id="main-photo">
-            <div class="photo"><a href="#">Free stock photos</a></div>
-        </div>
-            
-        </div>
+      </div>
     </div>
 
 
@@ -92,13 +102,6 @@
       @yield('susscess-message')
       @yield('content')
       
-              
-    	<!-- <div id="wrapper-thank">
-        	<div class="thank">
-            	<div class="thank-text">pl<span style="letter-spacing:-5px;">a</span>tz</div>
-        	</div>
-    	</div> -->
-  	    
   		@include('layouts.parts.footer')
       
       

@@ -63,7 +63,7 @@
                 <td class=" ">{{ $post->type }}</td>
                 <td class=" ">{{ $post->user->name }}</td>
                 <td class=" ">{{ $post->state }}</td>
-                <td class="a-right a-right ">{{ number_format ( $post->price  , 0 , "." , "." ) }} VNĐ</td>
+                <td class="a-right a-right ">{{ number_format ( $post->price  , 0 , "." , "." ) }} {{trans('common.label_currency')}}</td>
                 <td class="last">
                   <a href="{{ route('admin.post.show', [$post->id]) }}" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> View </a>
                   <a data-toggle="modal" data-target="#confirm-deleting" class="btn btn-danger btn-xs admin-post-index-delete">
@@ -85,17 +85,17 @@
               <div class="modal-content">
                 <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal">&times;</button>
-                  <h4 class="modal-title">xoa bai dang</h4>
+                  <h4 class="modal-title">Xóa bài đăng</h4>
                 </div>
                 <div class="modal-body">
-                  <h5>ban co muon xoa khong</h5>
+                  <h5>Bạn có muốn xóa bài đăng này không</h5>
                 </div>
                 <div class="modal-footer">
                     <form action="{{ url('$post->id') }}" method="POST">
                         {{ csrf_field() }}
                         {{ method_field('DELETE') }}
-                        <button type="submit" class="btn btn-danger">xoa</button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal">cancel</button>
+                        <button type="submit" class="btn btn-danger">Xóa</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Hủy bỏ</button>
                     </form>
                 </div>
               </div>

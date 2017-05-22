@@ -31,8 +31,6 @@
       </div>
 
       <div class="x_content">
-        @yield('errors-message')
-        @yield('susscess-message')
         <div class="table-responsive">
           <table class="table table-striped jambo_table check-action" id="admin-user-index-table">
             <thead>
@@ -66,14 +64,16 @@
                 <td class=" ">{{ $user->created_at }}</td>
                 <td class="last">
                   <a href="{{ route('admin.user.show', [$user->id]) }}" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> View </a>
-                  @if ($user->is_active == 1)
-                  <a data-toggle="modal" data-target="#confirm-deleting" class="btn btn-danger btn-lock btn-xs admin-user-index-delete">
-                    <i class="fa fa-trash-o"></i> Block
-                  </a>
-                  @else
-                  <a data-toggle="modal" data-target="#confirm-deleting" class="btn btn-danger btn-lock btn-xs admin-user-index-delete">
-                    <i class="fa fa-trash-o"></i> Unblock
-                  </a>
+                  @if (!$user->isAdmin())
+                    @if ($user->is_active == 1)
+                    <a data-toggle="modal" data-target="#confirm-deleting" class="btn btn-danger btn-lock btn-xs admin-user-index-delete">
+                      <i class="fa fa-lock"></i> Block
+                    </a>
+                    @else
+                    <a data-toggle="modal" data-target="#confirm-deleting" class="btn btn-danger btn-lock btn-xs admin-user-index-delete">
+                      <i class="fa fa-unlock"></i> Unblock
+                    </a>
+                    @endif
                   @endif
                   <input type="hidden" value="{{ $user->id }}">
                 </td>
@@ -91,17 +91,17 @@
               <div class="modal-content">
                 <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal">&times;</button>
-                  <h4 class="modal-title">xoa bai dang</h4>
+                  <h4 class="modal-title">Block hoặc unblock người dùng</h4>
                 </div>
                 <div class="modal-body">
-                  <h5>ban co muon xoa khong</h5>
+                  <h5>Bạn có muốn <span id="backend-user-index-deleting-body"></span> người dùng này không?</h5>
                 </div>
                 <div class="modal-footer">
                     <form action="{{ url('') }}" method="POST">
                         {{ csrf_field() }}
                         {{ method_field('DELETE') }}
-                        <button type="submit" class="btn btn-danger">xoa</button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal">cancel</button>
+                        <button type="submit" class="btn btn-danger">Xác nhận</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Hủy bỏ</button>
                     </form>
                 </div>
               </div>
@@ -117,6 +117,7 @@
     });
     $(document).ready(function() {
         $(document).on('click',".admin-user-index-delete", function() {
+            $('#backend-user-index-deleting-body').html($(this).html());
             var id = $(this).next().val();
             $('form').attr('action','user/'+id);
         });

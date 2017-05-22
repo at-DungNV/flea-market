@@ -21,7 +21,7 @@ class CheckActiveUser
         if (!Auth::user()->isActive())
         {
             Session::flush();
-            return Redirect::back()->withErrors(trans('frontend/common.blocked_error_message'));
+            return Redirect::back()->withErrors(trans('common.blocked_error_message'));
         }
         return $next($request);
     }
