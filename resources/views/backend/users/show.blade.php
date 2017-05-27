@@ -35,10 +35,10 @@
           <div class="profile_img">
             <div id="crop-avatar">
               <!-- Current avatar -->
-              <img class="img-responsive avatar-view" src="{{ Auth::user()->avatar }}" width="221" height="221" alt="Avatar" title="Change the avatar">
+              <img class="img-responsive avatar-view" src="{{ $user->avatar }}" width="221" height="221" alt="Avatar" title="Change the avatar">
             </div>
           </div>
-          <h3>User: {{ $user->name }}</h3>
+          <h3 class="text-center">{{ $user->name }}</h3>
 
           <ul class="list-unstyled user_data" style="word-wrap: break-word;">
             <li>

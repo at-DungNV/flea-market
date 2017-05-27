@@ -106,7 +106,7 @@ class PostController extends Controller
     public function getPostImages($filename)
     {
       $file = Storage::disk('local')->get($filename);
-      return new Response($file, 200);
+      return new Response($file, \Config::get('common.SUCCESS_CODE'));
     }
 
     /**

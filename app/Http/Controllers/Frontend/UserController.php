@@ -91,7 +91,8 @@ class UserController extends Controller
               if ($image) {
                   $filename = $user->id.'.'.$image->getClientOriginalExtension();
                   // store images to storage
-                  ImageIntervention::make($image)->resize(\Config::get('common.IMAGE_WIDTH'), \Config::get('common.IMAGE_HEIGHT'))
+                  ImageIntervention::make($image)
+                  // ->resize(\Config::get('common.IMAGE_WIDTH'), \Config::get('common.IMAGE_HEIGHT'))
                   ->save($path. \Config::get('common.DIRECTORY_SEPARATOR'). $filename);
                   $user->avatar = url(\Config::get('common.DIRECTORY_SEPARATOR')).\Config::get('common.DIRECTORY_SEPARATOR').'images'.\Config::get('common.DIRECTORY_SEPARATOR').$filename;
                   $user->update();

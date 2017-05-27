@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "6ebb792c2e32b623b2cd83306b92d865",
+    "content-hash": "f4e5f34b6402978279ff0554aa5d8ee8",
     "packages": [
         {
             "name": "barryvdh/laravel-debugbar",
@@ -213,6 +213,39 @@
                 "string"
             ],
             "time": "2015-11-06T14:35:42+00:00"
+        },
+        {
+            "name": "dungnv/helloworld",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/at-dungnguyen2/demo-package.git",
+                "reference": "7c3ddf0d22bc47635760ea793cb38ef84c0e1d78"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/at-dungnguyen2/demo-package/zipball/7c3ddf0d22bc47635760ea793cb38ef84c0e1d78",
+                "reference": "7c3ddf0d22bc47635760ea793cb38ef84c0e1d78",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Dungnv\\Helloworld\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "dungnv",
+                    "email": "dung.nguyen2@asisantech.vn"
+                }
+            ],
+            "description": "this is my demo hello world",
+            "time": "2017-05-11 02:49:19"
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -4027,7 +4060,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "dungnv/helloworld": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

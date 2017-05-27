@@ -7,7 +7,7 @@
       </a>
     </div>
     <div class="" v-else>
-      <img class="image" :src="'http://fleamarket.me/images/'+notification.data.approver" alt="" width="32" height="32" />
+      <img class="image" :src="notification.data.approver" alt="" width="32" height="32" />
       {{ notification.data.message }}
     </div>
     <p>
