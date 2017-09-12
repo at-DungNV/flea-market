@@ -13,6 +13,27 @@
 
 Auth::routes();
 
+// use Mail;
+
+
+Route::get('sendemail', function () {
+
+    $data = array(
+        'name' => "Learning Laravel",
+    );
+
+    Mail::send('emails.welcome', $data, function ($message) {
+
+        $message->from('dungnv.itdn@gmail.com', 'Learning Laravel');
+
+        $message->to('nobinguyen94@gmail.com')->subject('Learning Laravel test email 333333333333333');
+
+    });
+
+    return "Your email has been sent successfully";
+
+});
+
 
 Route::get('/broadcast', function() {
     event(new \App\Events\TestEvent('Broadcasting in Laravel using Pusher!'));
